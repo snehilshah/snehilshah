@@ -1,8 +1,11 @@
 import Image from "next/image"
-import { Inter } from "next/font/google"
-
-const inter = Inter({ subsets: ["latin"] })
+import Navbar from "@/components/Navbar"
+import localFont from "next/font/local"
 
 export default function Home() {
-	return <main></main>
+	return (
+		<main>
+			<Navbar />
+		</main>
+	)
 }
