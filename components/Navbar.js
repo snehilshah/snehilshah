@@ -1,28 +1,48 @@
-import Link from "next/link"
+import { FaBars, FaTimes } from 'react-icons/fa'
+import { useEffect, useState } from 'react'
 
 export default function Navbar() {
+	const links = ['Home', 'About', 'Experience', 'Contact']
+	const [Nav, setNav] = useState(false)
+
+	const HorizontalNavList = ({ link }) => {
+		return (
+			<li className="px-4 cursor-pointer capitalize font-medium text-gray-500 hover:scale-105 duration-200">
+				{link}
+			</li>
+		)
+	}
+	const VerticalNavList = ({ link }) => {
+		return (
+			<li className="px-4 capitalize py-6 text-4xl cursor-pointer">{link}</li>
+		)
+	}
+
 	return (
-		<header>
-			<nav className="bg-transparent flex justify-around gap-96 bg-red-600">
-				<div id="logo">
-					<Link href="/">
-						<div className="font-supreme">Alef</div>
-					</Link>
-				</div>
-				<ul>
-					<li>
-						<Link href="/" className="font-supreme">
-							Home
-						</Link>
-					</li>
-					<li>
-						<Link href="/" className="font-cabinet">About</Link>
-					</li>
-					<li>
-						<Link href="/">Work</Link>
-					</li>
+		<nav id="nav" className='fixed w-full duration-700'>
+			<div className="flex justify-between items-center w-full h-20 bg-black text-white px-4">
+				<h1 className="text-5xl ml-2">Snehil</h1>
+				<ul className="hidden md:flex">
+					{links.map((link, index) => {
+						return <HorizontalNavList key={index} link={link} />
+					})}
 				</ul>
-			</nav>
-		</header>
+				<div
+					onClick={() => {
+						setNav(!Nav)
+					}}
+					className="cursor-pointer md:hidden text-gray-500 pr-4 z-10"
+				>
+					{Nav ? <FaTimes size={30} /> : <FaBars size={30} />}
+				</div>
+				{Nav && (
+					<ul className="flex flex-col justify-center items-center fixed top-0 left-0 w-full h-full bg-gradient-to-b from-black to-gray-500 text-gray-500">
+						{links.map((link, index) => {
+							return <VerticalNavList key={index} link={link} />
+						})}
+					</ul>
+				)}
+			</div>
+		</nav>
 	)
 }
