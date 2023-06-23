@@ -1,9 +1,9 @@
-import { FaBars, FaTimes } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 
 export default function Navbar() {
 	const links = ['Home', 'About', 'Experience', 'Contact']
-	const [Nav, setNav] = useState(false)
+	const [mobileNav, setMobileNav] = useState(false)
 
 	useEffect(() => {
 		let lastScrollTop = 0
@@ -19,13 +19,6 @@ export default function Navbar() {
 		})
 	})
 
-	useEffect(() => {
-		let navbar = document.getElementById('nav')
-		navbar.style.top = '-100px'
-		setTimeout(() => {
-			navbar.style.top = '0'
-		}, 3000);
-	})
 	const HorizontalNavList = ({ link }) => {
 		return (
 			<li className="px-4 cursor-pointer capitalize font-medium text-gray-500 hover:scale-105 duration-200">
@@ -39,9 +32,24 @@ export default function Navbar() {
 		)
 	}
 
+	const topVariants = {
+		open: { rotate: 45, y: 7, originX: '16px', originY: '10px' },
+		closed: { rotate: 0, y: 0, originX: 0, originY: 0 },
+	}
+
+	const centerVariants = {
+		open: { opacity: 0 },
+		closed: { opacity: 1 },
+	}
+
+	const bottomVariants = {
+		open: { rotate: -45, y: -5, originX: '16px', originY: '22px' },
+		closed: { rotate: 0, y: 0, originX: 0, originY: 0 },
+	}
+
 	return (
-		<nav id="nav" className="fixed w-full duration-700 top-[-100px]">
-			<div className="flex justify-between items-center w-full h-20 bg-black text-white px-4">
+		<nav id="nav" className="fixed w-full duration-700">
+			<div className="flex justify-between items-center w-full h-20 bg-stone-900 text-white px-4">
 				<h1 className="text-5xl ml-2">Snehil</h1>
 				<ul className="hidden md:flex">
 					{links.map((link, index) => {
@@ -50,13 +58,53 @@ export default function Navbar() {
 				</ul>
 				<div
 					onClick={() => {
-						setNav(!Nav)
+						setMobileNav(!mobileNav)
 					}}
 					className="cursor-pointer md:hidden text-gray-500 pr-4 z-10"
 				>
-					{Nav ? <FaTimes size={30} /> : <FaBars size={30} />}
+					<svg
+						width="48"
+						height="48"
+						viewBox="0 0 32 32"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<motion.rect
+							animate={mobileNav ? 'open' : 'closed'}
+							variants={topVariants}
+							transition={{ duration: 0.7 }}
+							x="6"
+							y="9"
+							width="20"
+							height="2"
+							rx="1"
+							fill="currentColor"
+						/>
+						<motion.rect
+							animate={mobileNav ? 'open' : 'closed'}
+							variants={centerVariants}
+							transition={{ duration: 0.4 }}
+							x="6"
+							y="15"
+							width="20"
+							height="2"
+							rx="1"
+							fill="currentColor"
+						/>
+						<motion.rect
+							animate={mobileNav ? 'open' : 'closed'}
+							variants={bottomVariants}
+							transition={{ duration: 0.4 }}
+							x="6"
+							y="21"
+							width="20"
+							height="2"
+							rx="1"
+							fill="currentColor"
+						/>
+					</svg>
 				</div>
-				{Nav && (
+				{mobileNav && (
 					<ul className="flex flex-col justify-center items-center fixed top-0 left-0 w-full h-full bg-gradient-to-b from-black to-gray-500 text-gray-500">
 						{links.map((link, index) => {
 							return <VerticalNavList key={index} link={link} />
