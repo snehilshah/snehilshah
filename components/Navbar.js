@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 export default function Navbar() {
 	const links = ['Home', 'About', 'Experience', 'Contact']
@@ -28,7 +28,21 @@ export default function Navbar() {
 	}
 	const VerticalNavList = ({ link }) => {
 		return (
-			<li className="px-4 capitalize py-6 text-4xl cursor-pointer">{link}</li>
+			<motion.li
+				className="px-4 capitalize py-6 text-4xl cursor-pointer"
+				variants={{
+					open: {
+						y: 0,
+						opacity: 1,
+					},
+					closed: {
+						y: '45%',
+						opacity: 0,
+					},
+				}}
+			>
+				{link}
+			</motion.li>
 		)
 	}
 
@@ -104,13 +118,38 @@ export default function Navbar() {
 						/>
 					</svg>
 				</div>
-				{mobileNav && (
-					<ul className="flex flex-col justify-center items-center fixed top-0 left-0 w-full h-full bg-gradient-to-b from-black to-gray-500 text-gray-500">
-						{links.map((link, index) => {
-							return <VerticalNavList key={index} link={link} />
-						})}
-					</ul>
-				)}
+				<AnimatePresence>
+					{mobileNav && (
+						<motion.div
+							variants={{
+								open: {
+									y: '0%',
+									transition: {
+										when: 'beforeChildren',
+										duration: 0.5,
+									},
+								},
+								closed: {
+									y: '-100%',
+									transition: {
+										when: 'afterChildren',
+										duration: 0.5,
+									},
+								},
+							}}
+							initial="closed"
+							animate={'open'}
+							exit={'closed'}
+							className="flex flex-col justify-center items-center fixed top-0 left-0 w-full h-full bg-gradient-to-b from-black to-gray-500 text-gray-500"
+						>
+							<ul className="text-center">
+								{links.map((link, index) => {
+									return <VerticalNavList key={index} link={link} />
+								})}
+							</ul>
+						</motion.div>
+					)}
+				</AnimatePresence>
 			</div>
 		</nav>
 	)
