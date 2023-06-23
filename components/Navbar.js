@@ -10,16 +10,22 @@ export default function Navbar() {
 		let navbar = document.getElementById('nav')
 		window.addEventListener('scroll', () => {
 			let scrollTop = window.scrollY || document.documentElement.scrollTop
-			if(scrollTop > lastScrollTop){
+			if (scrollTop > lastScrollTop) {
 				navbar.style.top = '-100px'
-			}
-			else{
+			} else {
 				navbar.style.top = '0'
 			}
 			lastScrollTop = scrollTop
 		})
 	})
 
+	useEffect(() => {
+		let navbar = document.getElementById('nav')
+		navbar.style.top = '-100px'
+		setTimeout(() => {
+			navbar.style.top = '0'
+		}, 3000);
+	})
 	const HorizontalNavList = ({ link }) => {
 		return (
 			<li className="px-4 cursor-pointer capitalize font-medium text-gray-500 hover:scale-105 duration-200">
@@ -34,7 +40,7 @@ export default function Navbar() {
 	}
 
 	return (
-		<nav id="nav" className='fixed w-full duration-700'>
+		<nav id="nav" className="fixed w-full duration-700 top-[-100px]">
 			<div className="flex justify-between items-center w-full h-20 bg-black text-white px-4">
 				<h1 className="text-5xl ml-2">Snehil</h1>
 				<ul className="hidden md:flex">
