@@ -17,7 +17,16 @@ export default function Navbar() {
 			}
 			lastScrollTop = scrollTop
 		})
-	})
+	}, [])
+
+	useEffect(() => {
+		let navbar = document.getElementById('nav')
+		navbar.style.top = '-100px'
+		setTimeout(() => {
+			navbar.style.top = '0'
+		}, 3000)
+	}, [])
+	
 
 	const HorizontalNavList = ({ link }) => {
 		return (
@@ -62,7 +71,7 @@ export default function Navbar() {
 	}
 
 	return (
-		<nav id="nav" className="fixed w-full duration-700">
+		<nav id="nav" className="fixed w-full duration-700 shadow-2xl">
 			<div className="flex justify-between items-center w-full h-20 bg-stone-900 text-white px-4">
 				<h1 className="text-5xl ml-2">Snehil</h1>
 				<ul className="hidden md:flex">
