@@ -11,9 +11,16 @@ const supreme = localFont({
   // variable: "--font-supreme",
 })
 
+const sans = localFont({
+  src: '../public/fonts/productSans/ProductSans-Regular.ttf'
+  // variable: "--font-supreme",
+})
+
 export default function App({ Component, pageProps }) {
   return (
-    <main className={`${supreme.className} ${cabinet.variable}`}>
+    <main
+      className={`${supreme.variable} ${cabinet.variable} ${sans.className}`}
+    >
       <Component {...pageProps} />
     </main>
   )
