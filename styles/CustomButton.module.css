@@ -1,20 +1,20 @@
 .Custombutton {
   height: 50px;
-  width: 200px;
+  width: 150px;
   position: relative;
-  background-color: transparent;
   cursor: pointer;
-  border: 2px solid #252525;
+  border: 2px solid black;
   overflow: hidden;
-  border-radius: 30px;
-  color: #333;
+  border-radius: 20px;
+  color: #1A1A1A;
   transition: all 0.5s ease-in-out;
+  background-color: #fff;
 }
 
 .btnTxt {
   z-index: 1;
-  font-weight: 800;
-  letter-spacing: 4px;
+  font-weight: 700;
+  letter-spacing: 2px;
 }
 
 .type1::after {
@@ -33,7 +33,7 @@
 
 .Custombutton:hover {
   box-shadow: 1px 1px 200px #252525;
-  color: #fff;
+  color: black;
   border: none;
 }
 
