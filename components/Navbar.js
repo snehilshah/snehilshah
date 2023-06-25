@@ -71,7 +71,7 @@ export default function Navbar() {
 
   return (
     <nav id="nav" className="fixed w-full duration-700 shadow-2xl z-50">
-      <div className="flex justify-between items-center w-full h-20 bg-stone-900 text-white px-4">
+      <div className="flex justify-between items-center w-full h-20 bg-stone-950 text-white px-4">
         <h1 className="text-5xl ml-2">Snehil</h1>
         <ul className="hidden md:flex">
           {links.map((link, index) => {
@@ -148,7 +148,7 @@ export default function Navbar() {
               initial="closed"
               animate={'open'}
               exit={'closed'}
-              className="flex flex-col justify-center items-center fixed top-0 left-0 w-full h-3/4 bg-gradient-to-b from-black to-gray-500 opacity-90"
+              className="flex flex-col justify-center items-center fixed top-0 left-0 w-full h-3/4 bg-gradient-to-b from-black to-stone-900 opacity-90"
             >
               <ul className="text-center">
                 {links.map((link, index) => {
