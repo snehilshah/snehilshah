@@ -32,8 +32,7 @@ const BGGrid = () => {
         </GridChild>
         <div className='left-3 relative md:static'>
           <GridChild>
-            <span>D</span>
-            <span>O</span>
+            <span>L</span>
           </GridChild>
         </div>
       </div>

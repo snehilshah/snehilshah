@@ -10,3 +10,9 @@ img,
 svg {
   max-width: 100%;
 }
+
+body{
+  margin: 0;
+  display: block;
+  overflow-x: hidden;
+}
