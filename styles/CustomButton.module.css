@@ -3,10 +3,10 @@
   width: 150px;
   position: relative;
   cursor: pointer;
-  border: 2px solid black;
+  border: 2px solid rgb(254, 202, 202);
   overflow: hidden;
   border-radius: 20px;
-  color: #1A1A1A;
+  color: #1a1a1a;
   transition: all 0.5s ease-in-out;
   background-color: #fff;
 }
