@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar'
 import BGGrid from '@/components/BGGrid'
 import HeroSection from '@/components/Hero/HeroSection'
 import SocialBar from '@/components/SocialBar'
+import About from '@/components/About/About'
 export default function Home() {
   return (
     <main className=''>
@@ -11,6 +12,7 @@ export default function Home() {
       <BGGrid />
       <HeroSection />
       <SocialBar /> 
+      <About />
       <div className=' h-[200vh]'></div>
     </main>
   )
