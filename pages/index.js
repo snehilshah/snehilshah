@@ -11,7 +11,7 @@ export default function Home() {
       <BGGrid />
       <HeroSection />
       <SocialBar /> 
-      {/* <div className=' h-[200vh]'></div> */}
+      <div className=' h-[200vh]'></div>
     </main>
   )
 }
