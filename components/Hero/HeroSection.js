@@ -26,7 +26,7 @@ const HeroSubtile = () => {
 
 const HeroSection = () => {
   return (
-    <div className='h-screen justify-center mx-[10vw] md:gap-36 flex flex-col md:flex-row-reverse md:items-end pb-8'>
+    <div className='h-screen mx-[10vw] md:gap-36 flex flex-col sm:items-center justify-center md:flex-row-reverse md:items-end pb-8'>
       <HeroText />
       <div className='md:flex md:flex-col'>
         <HeroSubtile />
