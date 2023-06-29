@@ -3,7 +3,7 @@ import CustomButton from './CustomButton'
 const HeroText = () => {
   return (
     <div className='mt-6'>
-      <h1 className='text-8xl text-white font-semibold tracking-[6px] md:text-[165px]'>
+      <h1 className='text-8xl md:text-8xl text-white font-semibold tracking-[6px] lg:text-[165px]'>
         Hello<span className='text-red-200'>.</span>
         <br />
         I am
@@ -16,7 +16,7 @@ const HeroText = () => {
 
 const HeroSubtile = () => {
   return (
-    <div className='mt-8 font-light min-w-[240px] md:-rotate-90 md:mb-48 md:mr-24'>
+    <div className='relative lg:right-24 mt-8 font-light min-w-[240px] md:-rotate-90 md:mb-48 md:mr-24'>
       <h3 className='text-stone-300 font-supreme md:text-3xl'>
         Coding Enthusiast <br /> Pursuing AI & ML <br /> Web Developer
       </h3>
@@ -26,7 +26,7 @@ const HeroSubtile = () => {
 
 const HeroSection = () => {
   return (
-    <div className='ml-16 h-[calc(90svh+5rem)] flex flex-col justify-center md:h-screen md:flex-row-reverse md:items-end md:pb-8 md:justify-around'>
+    <div className='h-screen justify-center mx-[10vw] md:gap-36 flex flex-col md:flex-row-reverse md:items-end pb-8'>
       <HeroText />
       <div className='md:flex md:flex-col'>
         <HeroSubtile />
