@@ -3,9 +3,9 @@ import Heading from '../Heading'
 
 const About = () => {
   return (
-    <section className='text-white body-font px-[10vw]'>
+    <section className='text-white body-font max-w-screen-xl mx-auto py-20'>
       <Heading title={'About Me'} details={''} />
-      <div className='container mx-auto flex px-5 py-24 md:flex-row flex-col-reverse items-center'>
+      <div className='container mx-auto flex px-5 md:flex-row flex-col-reverse items-center'>
         <div className='lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mt-16 md:mb-0 items-center text-center'>
           <h1 className='title-font sm:text-4xl text-3xl mb-4 font-medium text-white whitespace-nowrap'>
             Code with Passion
