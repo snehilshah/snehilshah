@@ -5,6 +5,7 @@ import HeroSection from '@/components/Hero/HeroSection'
 import SocialBar from '@/components/SocialBar'
 import About from '@/components/About/About'
 import Experience from '@/components/Experience/Experience'
+import Projects from '@/components/Projects/Projects'
 export default function Home() {
   return (
     <main className=''>
@@ -12,9 +13,10 @@ export default function Home() {
       <Navbar />
       <BGGrid />
       <HeroSection />
-      <SocialBar /> 
+      <SocialBar />
       <About />
       <Experience />
+      <Projects />
       <div className=' h-[200vh]'></div>
     </main>
   )
