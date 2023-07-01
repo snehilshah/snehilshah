@@ -1,30 +1,50 @@
-import Image from 'next/image'
 import Blue from '../../public/Blue.jpeg'
-import styles from '../../styles/Card.module.css'
-import clsx from 'clsx'
-const Projects = () => {
+import Image from 'next/image'
+import Cards from './Cards'
+
+import { motion } from 'framer-motion'
+import { useState, useEffect, useRef } from 'react'
+
+function Projects() {
+  const boxRef = useRef(null)
+
   return (
-    <div className={clsx(styles.card + ' ml-9')}>
-      <Image src={Blue} className='bg-contain'/>
-      <div className={clsx(styles.card__content)}>
-        <p className={clsx(styles.card__title)}>Card Title</p>
-        <p className={clsx(styles.card__description)}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco.
-        </p>
-      </div>
+    <div
+      ref={boxRef}
+      className='cursor-grab flex overflow-hidden max-w-6xl mx-auto'
+    >
+      <motion.div
+        drag='x'
+        dragConstraints={boxRef}
+        className='flex gap-10'
+      >
+        <div className='h-[40rem] py-10'>
+          <Cards />
+        </div>
+        <div className='h-[40rem] py-10 '>
+          <Cards />
+        </div>
+        <div className='h-[40rem] py-10 '>
+          <Cards />
+        </div>
+        <div className='h-[40rem] py-10 '>
+          <Cards />
+        </div>
+        <div className='h-[40rem] py-10 '>
+          <Cards />
+        </div>
+        <div className='h-[40rem] py-10 '>
+          <Cards />
+        </div>
+        <div className='h-[40rem] py-10 '>
+          <Cards />
+        </div>
+        <div className='h-[40rem] py-10 '>
+          <Cards />
+        </div>
+      </motion.div>
     </div>
   )
 }
 
 export default Projects
-{
-  /* <Atropos
-        classNameName='w-72 h-72 text-white flex justify-center items-center text-center'
-        shadow={false}
-      >
-        <Image src={Blue} alt='Hello' />
-      </Atropos>
- */
-}
