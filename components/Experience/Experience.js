@@ -36,8 +36,14 @@ const Experience = () => {
     }
   ]
   return (
-    <div className='mx-auto flex flex-col justify-center items-center text-white'>
-      <Heading title={'Tech Stack'} details={''} />
+    <div className='section'>
+      <div className='w-full max-w-screen-xl mx-auto text-white'>
+        <Heading
+          title={'Tech Stack'}
+          details={'Tech I have worked Upon'}
+          className='lmao'
+        />
+      </div>
       <div className='max-w-screen-lg mx-auto p-4 flex flex-col justify-center w-full h-full text-white'>
         <div
           className={clsx(

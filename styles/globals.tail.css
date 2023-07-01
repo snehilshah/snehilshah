@@ -16,3 +16,13 @@ body{
   display: block;
   overflow-x: hidden;
 }
+
+.section{
+  margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .section{
+    margin-top: 3rem;
+  }
+}
