@@ -11,18 +11,18 @@ svg {
   max-width: 100%;
 }
 
-body{
+body {
   margin: 0;
   display: block;
   overflow-x: hidden;
 }
 
-.section{
+.section {
   margin-top: 1rem;
 }
 
 @media (min-width: 768px) {
-  .section{
+  .section {
     margin-top: 3rem;
   }
 }

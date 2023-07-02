@@ -8,7 +8,7 @@ const cabinet = localFont({
 
 const supreme = localFont({
   src: '../public/fonts/supreme/Supreme-Variable.woff2',
-  variable: "--font-supreme",
+  variable: '--font-supreme'
 })
 
 const sans = localFont({
