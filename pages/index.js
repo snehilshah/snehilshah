@@ -21,6 +21,7 @@ export default function Home() {
       <Experience />
       <Projects />
       <Timeline />
+      <Footer />
     </main>
   )
 }
