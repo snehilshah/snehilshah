@@ -29,11 +29,11 @@ const About = () => {
             </button>
           </div> */}
         </div>
-        <div className='lg:max-w-lg lg:w-full md:w-1/2 w-5/6'>
+        <div className='lg:max-w-lg lg:w-full md:w-1/2 w-5/6 flex items-center justify-center'>
           <img
             className='object-cover object-center rounded'
             alt='hero'
-            src='https://dummyimage.com/720x600'
+            src='https://dummyimage.com/400x400'
           />
         </div>
       </div>
