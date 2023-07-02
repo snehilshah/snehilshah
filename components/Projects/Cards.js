@@ -21,7 +21,7 @@ const Cards = () => {
 export default Cards
 {
   /* <Atropos
-        classNameName='w-72 h-72 text-white flex justify-center items-center text-center'
+        className='w-72 h-72 text-white flex justify-center items-center text-center'
         shadow={false}
       >
         <Image src={Blue} alt='Hello' />
