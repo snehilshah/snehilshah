@@ -6,6 +6,9 @@ import SocialBar from '@/components/SocialBar'
 import About from '@/components/About/About'
 import Experience from '@/components/Experience/Experience'
 import Projects from '@/components/Projects/Projects'
+import Timeline from '@/components/Timeline/Timeline'
+import Footer from '@/components/Footer/Footer'
+
 export default function Home() {
   return (
     <main className=''>
@@ -17,7 +20,7 @@ export default function Home() {
       <About />
       <Experience />
       <Projects />
-      <div className=' h-[200vh]'></div>
+      <Timeline />
     </main>
   )
 }
