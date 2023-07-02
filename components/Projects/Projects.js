@@ -13,11 +13,7 @@ function Projects() {
       ref={boxRef}
       className='cursor-grab flex overflow-hidden max-w-6xl mx-auto'
     >
-      <motion.div
-        drag='x'
-        dragConstraints={boxRef}
-        className='flex gap-10'
-      >
+      <motion.div drag='x' dragConstraints={boxRef} className='flex gap-10'>
         <div className='h-[40rem] py-10'>
           <Cards />
         </div>

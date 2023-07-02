@@ -1,6 +1,6 @@
 const Heading = ({ title, details }) => {
   return (
-    <div className="flex flex-col items-center lg:block">
+    <div className='flex flex-col items-center lg:block'>
       <p className='text-4xl font-bold border-b-4 border-stone-500 p-2 inline tracking-wide'>
         {title}
       </p>
