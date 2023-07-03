@@ -8,11 +8,13 @@ import Experience from '@/components/Experience/Experience'
 import Projects from '@/components/Projects/Projects'
 import Timeline from '@/components/Timeline/Timeline'
 import Footer from '@/components/Footer/Footer'
+import Cursor from '@/components/Cursor'
 
 export default function Home() {
   return (
     <main className=''>
-      {/* <Loader /> */}
+      <Loader />
+      <Cursor />
       <Navbar />
       <BGGrid />
       <HeroSection />
