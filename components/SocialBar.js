@@ -33,7 +33,7 @@ const SocialBar = () => {
   ]
 
   return (
-    <div className='flex flex-col top-[35%] right-0 fixed'>
+    <div className='flex flex-col top-[35%] right-0 fixed z-50'>
       <ul>
         {socialLinks.map(
           ({ icon, text, href, style = '', download = '', id }) => (
