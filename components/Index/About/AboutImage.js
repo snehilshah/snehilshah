@@ -1,8 +1,8 @@
 import Image from 'next/image'
-import Blue from '../../public/Blue.jpeg'
-import Hero from '../../public/Hero.png'
+import Blue from '../../../public/Blue.jpeg'
+import Hero from '../../../public/Hero.png'
 import clsx from 'clsx'
-import styles from '../../styles/AboutImg.module.css'
+import styles from '../../../styles/AboutImg.module.css'
 
 const AboutImage = () => {
   return (

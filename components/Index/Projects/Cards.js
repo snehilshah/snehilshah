@@ -1,6 +1,6 @@
 import Image from 'next/image'
-import Blue from '../../public/Blue.jpeg'
-import styles from '../../styles/Card.module.css'
+import Blue from '../../../public/Blue.jpeg'
+import styles from '../../../styles/Card.module.css'
 import clsx from 'clsx'
 const Cards = () => {
   return (

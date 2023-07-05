@@ -1,6 +1,6 @@
 import { BsFillRocketTakeoffFill } from 'react-icons/bs'
 import Heading from '../Heading'
-import Wave from '../../public/footerBg/Vector.svg'
+import Wave from '../../../public/footerBg/Vector.svg'
 import Image from 'next/image'
 function Footer() {
   return (
