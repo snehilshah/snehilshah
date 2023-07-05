@@ -1,4 +1,4 @@
-import Blue from '../../public/Blue.jpeg'
+import Blue from '../../../public/Blue.jpeg'
 import Image from 'next/image'
 import Cards from './Cards'
 

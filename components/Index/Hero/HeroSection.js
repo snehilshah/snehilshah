@@ -1,3 +1,4 @@
+import FloatingCircle from '../FloatingCircle'
 import CustomButton from './CustomButton'
 
 const HeroText = () => {
@@ -27,6 +28,7 @@ const HeroSubtile = () => {
 const HeroSection = () => {
   return (
     <div className='h-screen mx-[10vw] md:gap-36 flex flex-col sm:items-center justify-center md:flex-row-reverse md:items-end pb-8'>
+      <FloatingCircle top='10px' left='10%' />
       <HeroText />
       <div className='md:flex md:flex-col'>
         <HeroSubtile />

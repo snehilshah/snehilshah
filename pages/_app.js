@@ -1,5 +1,6 @@
 import '@/styles/globals.tail.css'
 import localFont from 'next/font/local'
+import Navbar from "@/components/Index/Navbar";
 
 const cabinet = localFont({
   src: '../public/fonts/cabinet/CabinetGrotesk-Variable.woff2',
@@ -21,6 +22,7 @@ export default function App({ Component, pageProps }) {
     <main
       className={`${supreme.variable} ${cabinet.variable} ${sans.className}`}
     >
+      <Navbar />
       <Component {...pageProps} />
     </main>
   )
