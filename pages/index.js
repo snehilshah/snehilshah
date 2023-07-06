@@ -1,5 +1,5 @@
 import Loader from '@/components/Index/Loader'
-import Navbar from '@/components/Index/Navbar'
+import Cursor from '@/components/Index/Cursor'
 import BGGrid from '@/components/Index/BGGrid'
 import HeroSection from '@/components/Index/Hero/HeroSection'
 import SocialBar from '@/components/Index/SocialBar'
@@ -8,11 +8,12 @@ import Experience from '@/components/Index/Experience/Experience'
 import Projects from '@/components/Index/Projects/Projects'
 import Timeline from '@/components/Index/Timeline/Timeline'
 import Footer from '@/components/Index/Footer/Footer'
-import Cursor from '@/components/Index/Cursor'
+import Navbar from "@/components/Index/Navbar";
 
 export default function Home() {
   return (
     <main className=''>
+      <Navbar />
       <Loader />
       <Cursor />
       <BGGrid />
