@@ -17,11 +17,13 @@ const AboutImage = () => {
         <Image
           id='personCircle'
           src={Blue}
+          alt='Background Image'
           className='absolute aspect-square object-cover w-full top-auto inset-x-0 bottom-0 mx-auto rounded-full'
         />
         <Image
           id={clsx(styles.personImg)}
           src={Hero}
+          alt='Hero Image'
           className='relative z-20 w-[90%] mx-auto'
         />
       </div>

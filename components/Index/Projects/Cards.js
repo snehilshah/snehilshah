@@ -5,7 +5,7 @@ import clsx from 'clsx'
 const Cards = () => {
   return (
     <div className={clsx(styles.card + ' ')}>
-      <Image src={Blue} className='bg-contain' />
+      <Image src={Blue} className='bg-contain' alt='Project Background'/>
       <div className={clsx(styles.card__content)}>
         <p className={clsx(styles.card__title)}>Card Title</p>
         <p className={clsx(styles.card__description)}>
