@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import Medium from '../../public/blog/Medium.png'
+import Logo from '../../public/logo-s.png'
 
 export default function Header() {
   return (
@@ -8,9 +8,9 @@ export default function Header() {
       <div className={'flex items-center space-x-5'}>
         <Link href={'/'}>
           <Image
-            src={Medium}
+            src={Logo}
             alt={'Logo'}
-            className={'w-44 object-contain cursor-pointer'}
+            className={'w-8 object-contain cursor-pointer'}
           />
         </Link>
         <div className={'hidden md:inline-flex items-center space-x-5'}>
