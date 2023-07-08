@@ -8,8 +8,6 @@ description: 'This is the post description'
 ## This is a post title
 
 There is a lot of content here
-<br />
-<br />
 ![Test Image](/blog/prism.png)  
 There is a lot of content here
 
@@ -18,3 +16,9 @@ public static void main(String[] args) {
     System.out.println("Hello World");
 }
 ```
+
+## Hello Mummy
+
+- This is a list
+- This is a list
+- This is a list
