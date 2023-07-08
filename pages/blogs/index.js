@@ -1,32 +1,19 @@
-import Header from '@/components/Blog/Header'
+import BlogNav from '@/components/Blog/BlogNav'
 import Logo from '../../public/logo-s.png'
 import Image from 'next/image'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import Link from 'next/link'
+import BlogHero from '@/components/Blog/BlogHero'
+import BlogBGGrid from '@/components/Blog/BlogBGGrid'
 
 function blogs({ posts }) {
-  console.log(posts)
   return (
     <div className={'max-w-screen-2xl mx-auto'}>
-      <Header />
-      <div
-        className={
-          'flex justify-between items-center bg-stone-400 border-y border-black py-10 lg:py-0'
-        }
-      >
-        <div className={'px-10 space-y-5'}>
-          <h1 className={'text-6xl max-w-xl font-serif'}>Read and Connect</h1>
-          <h2>Stay Curious and Keep exploring</h2>
-        </div>
-        <Image
-          src={Logo}
-          className={'hidden md:inline-flex h-32 lg:h-full max-w-xs'}
-          alt={'Snehil Logo'}
-        />
-      </div>
-      {/*  Posts */}
+      <BlogBGGrid />
+      <BlogNav />
+      <BlogHero />
       <div
         className={
           'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 p-2 md:p-6'

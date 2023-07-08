@@ -3,7 +3,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import { marked } from 'marked'
 import Link from 'next/link'
-import Header from '@/components/Blog/Header'
+import BlogNav from '@/components/Blog/BlogNav'
 
 function PostPage({
   frontmatter: { title, date, cover_image, description },
@@ -17,13 +17,13 @@ function PostPage({
   })
   return (
     <main>
-      <Header />
+      <BlogNav />
       <img
         src={cover_image}
         alt='cover_image'
         className='w-full h-60 object-cover'
       />
-      <article className='max-w-3xl mx-auto p-5 prose prose-stone'>
+      <article className='max-w-4xl mx-auto p-5 prose prose-stone rounded-3xl'>
         <h1 className='text-3xl mt-10 mb-3 text-center font-bold'>{title}</h1>
         <h2 className='text-xl font-light text-stone-700 mb-2'>description</h2>
         <div dangerouslySetInnerHTML={{ __html: marked(content) }}></div>
