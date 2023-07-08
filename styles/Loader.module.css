@@ -8,15 +8,14 @@
   z-index: 9999;
   width: 100%;
   height: 100%;
-  background-color: #fff;
-  animation: anim2 1s cubic-bezier(0.19, 1, 0.22, 1) 4s both;
+  background-color: #292524;
+  animation: anim2 1.5s cubic-bezier(0.19, 1, 0.22, 1) 1.5s both;
 }
 
 #wrapperload {
   width: 500px;
-  height: 100px;
+  height: 500px;
   overflow: hidden;
-  background-color: #fff;
 }
 
 #wrapperload .elem {
@@ -25,24 +24,23 @@
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: #efefef;
 }
 
 #wrapperload .elem img {
   width: 40%;
 }
 
-#wrapperload .elem:nth-child(1) {
-  animation: anim 2s cubic-bezier(0.19, 1, 0.22, 1) 1s both;
-}
+/* #wrapperload .elem:nth-child(1) {
+  animation: anim 3s cubic-bezier(0.19, 1, 0.22, 1) 1s both;
+} */
 
-#wrapperload .elem:nth-child(2) {
+/* #wrapperload .elem:nth-child(2) {
   animation: anim 2s cubic-bezier(0.19, 1, 0.22, 1) 3s both;
-}
+} */
 
 @keyframes anim {
   to {
-    margin-top: -100px;
+    margin-top: -200px;
   }
 }
 
