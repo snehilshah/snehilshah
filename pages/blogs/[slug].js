@@ -1,19 +1,34 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-// import marked from 'marked'
+import { marked } from 'marked'
 import Link from 'next/link'
+import Header from '@/components/Blog/Header'
 
 function PostPage({
-  frontmatter: { title, date, cover_image },
+  frontmatter: { title, date, cover_image, description },
   slug,
   content
 }) {
+  marked.use({
+    langPrefix: '',
+    mangle: false,
+    headerIds: false
+  })
   return (
-    <div>
-      {/* <h1>{slug}</h1> */}
-      <div dangerouslySetInnerHTML={{ __html: content }}></div>
-    </div>
+    <main>
+      <Header />
+      <img
+        src={cover_image}
+        alt='cover_image'
+        className='w-full h-60 object-cover'
+      />
+      <article className='max-w-3xl mx-auto p-5 prose prose-stone'>
+        <h1 className='text-3xl mt-10 mb-3 text-center font-bold'>{title}</h1>
+        <h2 className='text-xl font-light text-stone-700 mb-2'>description</h2>
+        <div dangerouslySetInnerHTML={{ __html: marked(content) }}></div>
+      </article>
+    </main>
   )
 }
 
@@ -33,7 +48,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }) {
-
   const markdownWithMeta = fs.readFileSync(
     path.join('posts', slug + '.md'),
     'utf-8'
