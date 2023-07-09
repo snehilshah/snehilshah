@@ -1,13 +1,51 @@
-import Blue from '../../../public/Blue.jpeg'
-import Image from 'next/image'
 import Cards from './Cards'
-
+import Prism from '../../../public/Blue.jpeg'
 import { motion } from 'framer-motion'
 import { useState, useEffect, useRef } from 'react'
 import Heading from '../Heading'
+import StockScreen from '../../../public/Projects/StockScreen.jpg'
+import AgendaBuilder from '../../../public/Projects/agenda.png'
+import IDF from '../../../public/Projects/BalGurukul.webp'
 
 function Projects() {
   const boxRef = useRef(null)
+  const projects = [
+    {
+      title: 'Stock Analysis',
+      desc: 'This is the project description',
+      bgImage: StockScreen,
+      // source: react,
+      classes: ''
+    },
+    {
+      title: 'Agenda Builder',
+      desc: 'This is the project description',
+      bgImage: AgendaBuilder,
+      // source: python,  
+      classes: 'text-black'
+    },
+    {
+      title: 'IDF Balgurukul',
+      desc: 'This is the project description',
+      bgImage: IDF,
+      // source: aiml,
+      classes: 'text-black'
+    },
+    {
+      title: 'Project Gallery',
+      desc: 'This is the project description',
+      bgImage: Prism,
+      // source: database,
+      classes: ''
+    },
+    {
+      title: 'Spectral Image',
+      desc: 'This is the project description',
+      bgImage: Prism,
+      // source: html,
+      classes: ''
+    }
+  ]
   return (
     <div className='max-w-screen-xl mx-auto text-white my-32'>
       <Heading title={'Projects'} details={'Projects I have worked'} />
@@ -18,32 +56,11 @@ function Projects() {
         <motion.div
           drag='x'
           dragConstraints={boxRef}
-          className='flex gap-10 pl-2'
+          className='flex gap-8 pl-2'
         >
-          <div className='py-10'>
-            <Cards />
-          </div>
-          <div className='py-10 '>
-            <Cards />
-          </div>
-          <div className='py-10 '>
-            <Cards />
-          </div>
-          <div className='py-10 '>
-            <Cards />
-          </div>
-          <div className='py-10 '>
-            <Cards />
-          </div>
-          <div className='py-10 '>
-            <Cards />
-          </div>
-          <div className='py-10 '>
-            <Cards />
-          </div>
-          <div className='py-10 '>
-            <Cards />
-          </div>
+          {projects.map((project, index) => {
+            return <Cards key={index} title={project.title} desc={project.desc} src={project.bgImage} classes={project.classes}/>
+          })}
         </motion.div>
       </div>
     </div>

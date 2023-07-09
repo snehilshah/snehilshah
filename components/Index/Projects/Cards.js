@@ -1,18 +1,17 @@
 import Image from 'next/image'
-import Blue from '../../../public/Blue.jpeg'
 import styles from '../../../styles/Card.module.css'
 import clsx from 'clsx'
-const Cards = () => {
+const Cards = ({ title, desc, src, classes }) => {
   return (
-    <div className={clsx(styles.card + ' ')}>
-      <Image src={Blue} className='bg-contain' alt='Project Background'/>
-      <div className={clsx(styles.card__content)}>
-        <p className={clsx(styles.card__title)}>Card Title</p>
-        <p className={clsx(styles.card__description)}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco.
-        </p>
+    <div className={clsx(styles.card + ' my-10 mr-2 ' + classes)}>
+      <Image
+        src={src}
+        className='overflow-hidden object-cover'
+        alt='Project Background'
+      />
+      <div className={clsx(styles.card__content) + ' '}>
+        <p className={clsx(styles.card__title)+''}>{title}</p>
+        <p className={clsx(styles.card__description)+ ''}>{desc}</p>
       </div>
     </div>
   )
