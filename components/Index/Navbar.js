@@ -102,8 +102,8 @@ export default function Navbar() {
         <ul className='hidden md:flex'>
           {links.map((link, index) => {
             return (
-              <Link href={link.to + link.title}>
-                <HorizontalNavList key={index} link={link.title} />
+              <Link href={link.to + link.title} key={index}>
+                <HorizontalNavList link={link.title} />
               </Link>
             )
           })}
@@ -183,8 +183,8 @@ export default function Navbar() {
               <ul className='text-center'>
                 {links.map((link, index) => {
                   return (
-                    <Link href={link.to + link.title}>
-                      <VerticalNavList key={index} link={link.title} />
+                    <Link href={link.to + link.title} key={index}>
+                      <VerticalNavList link={link.title} />
                     </Link>
                   )
                 })}
