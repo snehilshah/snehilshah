@@ -1,9 +1,8 @@
-import React from 'react'
-
+import Link from 'next/link'
 const Custom404 = () => {
   return (
     <>
-      <div class='container h-screen bg-[#3498DB] text-white text-xl'>
+      <div className='container h-screen bg-[#3498DB] text-white text-xl'>
         <h1 className='text-9xl'>: (</h1>
         <br />
         <h2>
@@ -13,8 +12,8 @@ const Custom404 = () => {
         <br />
         <br />
         <h3>
-          <a href='/'>Return to home</a>&nbsp;|&nbsp;
-          <a href='javascript:history.back()'>Go Back</a>
+          <Link href='/'>Return to home</Link>&nbsp;|&nbsp;
+          <Link href='javascript:history.back()'>Go Back</Link>
         </h3>
       </div>
     </>
