@@ -16,6 +16,13 @@ export default function Home() {
     <main className=''>
       <Head>
         <title>Snehil Shah | Portfolio</title>
+        <meta charSet='UTF-8' />
+        <meta name='description' content='Portfolio Website for Snehil Shah' />
+        <meta
+          name='keywords'
+          content='Snehil Shah, Snehil, Shah, Snehil Shah Portfolio, Snehil Shah Website, Snehil Shah Developer, Snehil Shah Engineer, Snehil Shah Programmer, Snehil Shah Full Stack Developer'
+        />
+        <meta name='author' content='Snehil, Snehil Shah, Shah' />
       </Head>
       <Navbar />
       <Loader />

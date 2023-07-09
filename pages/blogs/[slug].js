@@ -19,6 +19,7 @@ function PostPage({
     <main>
       <Head>
         <title>{title}</title>
+        <meta name='author' content='Snehil, Snehil Shah, Shah' />
       </Head>
       <BlogNav />
       <img
