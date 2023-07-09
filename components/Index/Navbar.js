@@ -1,9 +1,32 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import NavBarLogo from '../SVG/NavbarLogo'
+import Link from 'next/link'
 
 export default function Navbar() {
-  const links = ['Home', 'About', 'Experience', 'Contact']
+  const links = [
+    {
+      title: 'home',
+      to: '#'
+    },
+    {
+      title: 'about',
+      to: '#'
+    },
+    {
+      title: 'experience',
+      to: '#'
+    },
+    {
+      title: 'contact',
+      to: '#'
+    },
+    {
+      title: 'blogs',
+      to: '/'
+    }
+  ]
+
   const [mobileNav, setMobileNav] = useState(false)
 
   useEffect(() => {
@@ -78,7 +101,11 @@ export default function Navbar() {
         </div>
         <ul className='hidden md:flex'>
           {links.map((link, index) => {
-            return <HorizontalNavList key={index} link={link} />
+            return (
+              <Link href={link.to + link.title}>
+                <HorizontalNavList key={index} link={link.title} />
+              </Link>
+            )
           })}
         </ul>
         <div
@@ -155,7 +182,11 @@ export default function Navbar() {
             >
               <ul className='text-center'>
                 {links.map((link, index) => {
-                  return <VerticalNavList key={index} link={link} />
+                  return (
+                    <Link href={link.to + link.title}>
+                      <VerticalNavList key={index} link={link.title} />
+                    </Link>
+                  )
                 })}
               </ul>
             </motion.div>
