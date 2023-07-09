@@ -50,8 +50,8 @@ const Loader = () => {
                 y2='199'
                 gradientUnits='userSpaceOnUse'
               >
-                <stop stop-color='#F5F5F5' />
-                <stop offset='1' stop-color='#78716C' />
+                <stop stopColor='#F5F5F5' />
+                <stop offset='1' stopColor='#78716C' />
               </linearGradient>
             </defs>
           </svg>
