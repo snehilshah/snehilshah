@@ -5,10 +5,14 @@ import matter from 'gray-matter'
 import Link from 'next/link'
 import BlogHero from '@/components/Blog/BlogHero'
 import BlogBGGrid from '@/components/Blog/BlogBGGrid'
+import Head from 'next/head'
 
 function blogs({ posts }) {
   return (
     <div className={'max-w-screen-2xl mx-auto'}>
+      <Head>
+        <title>Snehil Shah | Blogs</title>
+      </Head>
       <BlogBGGrid />
       <BlogNav />
       <BlogHero />

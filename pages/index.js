@@ -8,11 +8,15 @@ import Experience from '@/components/Index/Experience/Experience'
 import Projects from '@/components/Index/Projects/Projects'
 import Timeline from '@/components/Index/Timeline/Timeline'
 import Footer from '@/components/Index/Footer/Footer'
-import Navbar from "@/components/Index/Navbar";
+import Navbar from '@/components/Index/Navbar'
+import Head from 'next/head'
 
 export default function Home() {
   return (
     <main className=''>
+      <Head>
+        <title>Snehil Shah | Portfolio</title>
+      </Head>
       <Navbar />
       <Loader />
       <Cursor />
