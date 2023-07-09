@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Blue from '../../../public/Blue.jpeg'
+import Blue from '../../../public/BG.jpeg'
 import Hero from '../../../public/Hero.png'
 import clsx from 'clsx'
 import styles from '../../../styles/AboutImg.module.css'
@@ -19,12 +19,14 @@ const AboutImage = () => {
           src={Blue}
           alt='Background Image'
           className='absolute aspect-square object-cover w-full top-auto inset-x-0 bottom-0 mx-auto rounded-full'
+          width={250}
         />
         <Image
           id={clsx(styles.personImg)}
           src={Hero}
           alt='Hero Image'
-          className='relative z-20 w-[90%] mx-auto'
+          className='relative z-20 w-[90%] mx-auto right-3'
+          width={500}
         />
       </div>
     </div>
