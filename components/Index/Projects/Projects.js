@@ -2,11 +2,11 @@ import Cards from './Cards'
 import { motion } from 'framer-motion'
 import { useRef } from 'react'
 import Heading from '../Heading'
-import StockScreen from '../../../public/projects/StockScreen.jpg'
+import StockScreen from '../../../public/projects/stockscreen.jpg'
 import AgendaBuilder from '../../../public/projects/agenda.png'
-import IDF from '../../../public/projects/BalGurukul.webp'
-import ProjectGallery from '../../../public/projects/HomeBackground.jpg'
-import HyperSpectral from '../../../public/projects/HyperSceptral.png'
+import IDF from '../../../public/projects/balgurukul.webp'
+import ProjectGallery from '../../../public/projects/homebackground.jpg'
+import HyperSpectral from '../../../public/projects/hypersceptral.png'
 import Heart from '../../../public/projects/heart.png'
 
 function Projects() {
@@ -16,42 +16,36 @@ function Projects() {
       title: 'Stock Analysis',
       desc: 'This is the project description',
       bgImage: StockScreen,
-      // source: react,
       classes: ''
     },
     {
       title: 'Agenda Builder',
       desc: 'This is the project description',
       bgImage: AgendaBuilder,
-      // source: python,
       classes: 'text-black'
     },
     {
       title: 'IDF Balgurukul',
       desc: 'This is the project description',
       bgImage: IDF,
-      // source: aiml,
       classes: 'text-black'
     },
     {
       title: 'Project Gallery',
       desc: 'This is the project description',
       bgImage: ProjectGallery,
-      // source: database,
       classes: 'text-black'
     },
     {
       title: 'Hyperspectral Image',
       desc: 'This is the project description',
       bgImage: HyperSpectral,
-      // source: html,
       classes: 'text-black'
     },
     {
       title: 'Portfolio Website',
       desc: 'This is the project description',
       bgImage: Heart,
-      // source: html,
       classes: ''
     }
   ]
