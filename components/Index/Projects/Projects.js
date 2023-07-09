@@ -3,10 +3,10 @@ import { motion } from 'framer-motion'
 import { useRef } from 'react'
 import Heading from '../Heading'
 import StockScreen from '../../../public/projects/stockscreen.jpg'
-import AgendaBuilder from '../../../public/projects/agenda.png'
+import AgendaBuilder from '../../../public/projects/agenda.jpg'
 import IDF from '../../../public/projects/balgurukul.webp'
 import ProjectGallery from '../../../public/projects/homebackground.jpg'
-import HyperSpectral from '../../../public/projects/hypersceptral.png'
+import HyperSpectral from '../../../public/projects/hypersceptral.jpg'
 import Heart from '../../../public/projects/heart.png'
 
 function Projects() {
