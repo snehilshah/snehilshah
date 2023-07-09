@@ -40,7 +40,7 @@ const SocialBar = () => {
             <li
               key={id}
               className={
-                'flex justify-between items-center w-40 h-14 px-4 translate-x-[100px] hover:translate-x-[10px] hover:rounded-lg duration-300 bg-stone-500' +
+                'flex justify-between items-center w-40 h-14 px-4 translate-x-[100px] hover:translate-x-[10px] hover:rounded-lg duration-300 bg-stone-600/80' +
                 ' ' +
                 style
               }

@@ -24,7 +24,7 @@ const AboutImage = () => {
           id={clsx(styles.personImg)}
           src={Hero}
           alt='Hero Image'
-          className='relative z-20 w-[90%] mx-auto right-3'
+          className='relative z-20 w-[90%] mx-auto'
         />
       </div>
     </div>
@@ -32,5 +32,3 @@ const AboutImage = () => {
 }
 
 export default AboutImage
-
-//
