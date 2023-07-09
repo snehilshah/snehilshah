@@ -6,12 +6,20 @@ import Link from 'next/link'
 import BlogHero from '@/components/Blog/BlogHero'
 import BlogBGGrid from '@/components/Blog/BlogBGGrid'
 import Head from 'next/head'
+// import Image from 'next/image'
 
 function blogs({ posts }) {
   return (
     <div className={'max-w-screen-2xl mx-auto'}>
       <Head>
         <title>Snehil Shah | Blogs</title>
+        <meta charSet='UTF-8' />
+        <meta name='description' content='Blogging Website for Snehil Shah' />
+        <meta
+          name='keywords'
+          content='Snehil Shah, Snehil, Shah, Snehil Shah Blogs, Snehil Shah Website, Snehil Shah Blog, Snehil Shah Blogging, Snehil Shah Blogger'
+        />
+        <meta name='author' content='Snehil, Snehil Shah, Shah' />
       </Head>
       <BlogBGGrid />
       <BlogNav />
