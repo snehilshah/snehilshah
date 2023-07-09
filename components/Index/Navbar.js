@@ -51,14 +51,14 @@ export default function Navbar() {
     }, 3000)
   }, [])
 
-  const HorizontalNavList = ({ link }) => {
+  const HorizontalNavList = ({ title, url }) => {
     return (
       <li className='px-4 cursor-pointer capitalize font-medium text-gray-500 hover:scale-105 duration-200'>
-        {link}
+        <Link href={url}>{title}</Link>
       </li>
     )
   }
-  const VerticalNavList = ({ link }) => {
+  const VerticalNavList = ({ title, url }) => {
     return (
       <motion.li
         className='px-4 capitalize py-6 text-4xl cursor-pointer'
@@ -73,7 +73,7 @@ export default function Navbar() {
           }
         }}
       >
-        {link}
+        <Link href={url}>{title}</Link>
       </motion.li>
     )
   }
@@ -102,9 +102,11 @@ export default function Navbar() {
         <ul className='hidden md:flex'>
           {links.map((link, index) => {
             return (
-              <Link href={link.to + link.title} key={index}>
-                <HorizontalNavList link={link.title} />
-              </Link>
+              <HorizontalNavList
+                title={link.title}
+                url={link.to + link.title}
+                key={index}
+              />
             )
           })}
         </ul>
@@ -183,9 +185,11 @@ export default function Navbar() {
               <ul className='text-center'>
                 {links.map((link, index) => {
                   return (
-                    <Link href={link.to + link.title} key={index}>
-                      <VerticalNavList link={link.title} />
-                    </Link>
+                    <VerticalNavList
+                      title={link.title}
+                      url={link.to + link.title}
+                      key={index}
+                    />
                   )
                 })}
               </ul>
