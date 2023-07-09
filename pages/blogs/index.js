@@ -1,6 +1,4 @@
 import BlogNav from '@/components/Blog/BlogNav'
-import Logo from '../../public/logo-s.png'
-import Image from 'next/image'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
