@@ -1,6 +1,3 @@
-import Image from 'next/image'
-import Logo from '../../public/logo-s.png'
-
 const BlogHero = () => {
   return (
     <section class='text-gray-600 body-font'>
