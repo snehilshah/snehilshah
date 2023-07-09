@@ -69,6 +69,7 @@ const Experience = () => {
                   src={source}
                   alt={title + ' logo'}
                   className='w-20 mx-auto'
+                  width={512}
                 />
                 <p className='mt-4'>{title}</p>
               </div>
