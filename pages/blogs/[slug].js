@@ -2,8 +2,8 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { marked } from 'marked'
-import Link from 'next/link'
 import BlogNav from '@/components/Blog/BlogNav'
+import Head from 'next/head'
 
 function PostPage({
   frontmatter: { title, date, cover_image, description },
@@ -17,6 +17,9 @@ function PostPage({
   })
   return (
     <main>
+      <Head>
+        <title>{title}</title>
+      </Head>
       <BlogNav />
       <img
         src={cover_image}
