@@ -1,14 +1,13 @@
 import Cards from './Cards'
-import Prism from '../../../public/Blue.jpeg'
 import { motion } from 'framer-motion'
-import { useState, useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import Heading from '../Heading'
-import StockScreen from '../../../public/Projects/StockScreen.jpg'
-import AgendaBuilder from '../../../public/Projects/agenda.png'
-import IDF from '../../../public/Projects/BalGurukul.webp'
-import ProjectGallery from '../../../public/Projects/HomeBackground.jpg'
-import HyperSpectral from '../../../public/Projects/HyperSceptral.png'
-import Heart from '../../../public/Projects/heart.png'
+import StockScreen from '../../../public/projects/StockScreen.jpg'
+import AgendaBuilder from '../../../public/projects/agenda.png'
+import IDF from '../../../public/projects/BalGurukul.webp'
+import ProjectGallery from '../../../public/projects/HomeBackground.jpg'
+import HyperSpectral from '../../../public/projects/HyperSceptral.png'
+import Heart from '../../../public/projects/heart.png'
 
 function Projects() {
   const boxRef = useRef(null)

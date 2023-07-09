@@ -2,7 +2,8 @@ import aiml from '../../../public/domains/chip.png'
 import python from '../../../public/domains/python.png'
 import react from '../../../public/domains/react.png'
 import database from '../../../public/domains/sqlServer.png'
-import html from '../../../public/domains/html.png'
+import next from '../../../public/domains/Next.png'
+import tensorflow from '../../../public/domains/tensorflow.png'
 import Image from 'next/image'
 import clsx from 'clsx'
 import Heading from '../Heading'
@@ -15,6 +16,16 @@ const Experience = () => {
       style: 'shadow-teal-500 '
     },
     {
+      title: 'Database',
+      source: database,
+      style: 'shadow-blue-500 '
+    },
+    {
+      title: 'Next.js',
+      source: next,
+      style: 'shadow-white'
+    },
+    {
       title: 'Python',
       source: python,
       style: 'shadow-yellow-500 '
@@ -25,14 +36,9 @@ const Experience = () => {
       style: 'shadow-purple-500 '
     },
     {
-      title: 'Database',
-      source: database,
-      style: 'shadow-blue-500 '
-    },
-    {
-      title: 'HTML',
-      source: html,
-      style: 'shadow-orange-500'
+      title: 'TensorFlow',
+      source: tensorflow,
+      style: 'shadow-orange-500 '
     }
   ]
   return (
@@ -61,7 +67,7 @@ const Experience = () => {
               >
                 <Image
                   src={source}
-                  alt='Placeholder'
+                  alt={title + ' logo'}
                   className='w-20 mx-auto'
                 />
                 <p className='mt-4'>{title}</p>
