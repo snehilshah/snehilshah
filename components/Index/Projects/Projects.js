@@ -6,6 +6,9 @@ import Heading from '../Heading'
 import StockScreen from '../../../public/Projects/StockScreen.jpg'
 import AgendaBuilder from '../../../public/Projects/agenda.png'
 import IDF from '../../../public/Projects/BalGurukul.webp'
+import ProjectGallery from '../../../public/Projects/HomeBackground.jpg'
+import HyperSpectral from '../../../public/Projects/HyperSceptral.png'
+import Heart from '../../../public/Projects/heart.png'
 
 function Projects() {
   const boxRef = useRef(null)
@@ -21,7 +24,7 @@ function Projects() {
       title: 'Agenda Builder',
       desc: 'This is the project description',
       bgImage: AgendaBuilder,
-      // source: python,  
+      // source: python,
       classes: 'text-black'
     },
     {
@@ -34,14 +37,21 @@ function Projects() {
     {
       title: 'Project Gallery',
       desc: 'This is the project description',
-      bgImage: Prism,
+      bgImage: ProjectGallery,
       // source: database,
-      classes: ''
+      classes: 'text-black'
     },
     {
-      title: 'Spectral Image',
+      title: 'Hyperspectral Image',
       desc: 'This is the project description',
-      bgImage: Prism,
+      bgImage: HyperSpectral,
+      // source: html,
+      classes: 'text-black'
+    },
+    {
+      title: 'Portfolio Website',
+      desc: 'This is the project description',
+      bgImage: Heart,
       // source: html,
       classes: ''
     }
@@ -59,7 +69,15 @@ function Projects() {
           className='flex gap-8 pl-2'
         >
           {projects.map((project, index) => {
-            return <Cards key={index} title={project.title} desc={project.desc} src={project.bgImage} classes={project.classes}/>
+            return (
+              <Cards
+                key={index}
+                title={project.title}
+                desc={project.desc}
+                src={project.bgImage}
+                classes={project.classes}
+              />
+            )
           })}
         </motion.div>
       </div>
