@@ -8,6 +8,8 @@ const Cards = ({ title, desc, src, classes }) => {
         src={src}
         className='overflow-hidden object-cover'
         alt='Project Background'
+        width={300}
+        height={400}
       />
       <div className={clsx(styles.card__content) + ' '}>
         <p className={clsx(styles.card__title)+''}>{title}</p>

@@ -1,9 +1,3 @@
-import aiml from '../../../public/domains/chip.png'
-import python from '../../../public/domains/python.png'
-import react from '../../../public/domains/react.png'
-import database from '../../../public/domains/sqlServer.png'
-import next from '../../../public/domains/Next.png'
-import tensorflow from '../../../public/domains/tensorflow.png'
 import Image from 'next/image'
 import clsx from 'clsx'
 import Heading from '../Heading'
@@ -12,32 +6,32 @@ const Experience = () => {
   const technologies = [
     {
       title: 'React',
-      source: react,
+      source: '/domains/react.png',
       style: 'shadow-teal-500 '
     },
     {
       title: 'Database',
-      source: database,
+      source: '/domains/sqlServer.png',
       style: 'shadow-blue-500 '
     },
     {
       title: 'Next.js',
-      source: next,
+      source: '/domains/Next.png',
       style: 'shadow-white'
     },
     {
       title: 'Python',
-      source: python,
+      source: '/domains/chip.png',
       style: 'shadow-yellow-500 '
     },
     {
       title: 'AIML',
-      source: aiml,
+      source: '/domains/chip.png',
       style: 'shadow-purple-500 '
     },
     {
       title: 'TensorFlow',
-      source: tensorflow,
+      source: '/domains/tensorflow.png',
       style: 'shadow-orange-500 '
     }
   ]
@@ -70,6 +64,7 @@ const Experience = () => {
                   alt={title + ' logo'}
                   className='w-20 mx-auto'
                   width={512}
+                  height={512}
                 />
                 <p className='mt-4'>{title}</p>
               </div>
