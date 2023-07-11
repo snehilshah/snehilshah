@@ -5,7 +5,7 @@ const HeroText = () => {
   return (
     <div className='mt-6'>
       <h1 className='text-8xl md:text-8xl text-white font-semibold tracking-[6px] lg:text-[165px]'>
-        Hello<span className='text-red-200'>.</span>
+        Hello<span className='text-cyan-200'>.</span>
         <br />
         I am
         <br />
