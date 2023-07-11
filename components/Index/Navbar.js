@@ -53,7 +53,7 @@ export default function Navbar() {
 
   const HorizontalNavList = ({ title, url }) => {
     return (
-      <li className='px-4 cursor-pointer capitalize font-medium text-gray-400 hover:scale-105 duration-200'>
+      <li className='font-supreme px-4 cursor-pointer uppercase font-medium text-sm text-stone-400 hover:scale-105 duration-200'>
         <Link href={url}>{title}</Link>
       </li>
     )
@@ -61,7 +61,7 @@ export default function Navbar() {
   const VerticalNavList = ({ title, url }) => {
     return (
       <motion.li
-        className='px-4 capitalize py-6 text-4xl cursor-pointer'
+        className='px-4 uppercase py-6 text-4xl cursor-pointer'
         variants={{
           open: {
             y: 0,
