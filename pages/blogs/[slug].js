@@ -6,7 +6,7 @@ import BlogNav from '@/components/Blog/BlogNav'
 import Head from 'next/head'
 
 function PostPage({
-  frontmatter: { title, date, cover_image, description },
+  frontmatter: { title, date, cover_image, description, header },
   slug,
   content
 }) {
@@ -16,20 +16,24 @@ function PostPage({
     headerIds: false
   })
   return (
-    <main>
+    <main className='bg-[#dbe1f193]'>
       <Head>
         <title>{title}</title>
         <meta name='author' content='Snehil, Snehil Shah, Shah' />
       </Head>
       <BlogNav />
       <img
-        src={cover_image}
+        src={header}
         alt='cover_image'
         className='w-full h-60 object-cover'
       />
-      <article className='max-w-4xl mx-auto p-5 prose prose-stone rounded-3xl'>
-        <h1 className='text-3xl mt-10 mb-3 text-center font-bold'>{title}</h1>
-        <h2 className='text-xl font-light text-stone-700 mb-2'>description</h2>
+      <article className='max-w-4xl mx-auto p-5 prose rounded-3xl'>
+        <div className='font-cabinet'>
+          <h1 className='text-5xl mt-10 text-center font-bold mb-0'>{title}</h1>
+          <h2 className='text-xl font-light text-stone-700 mb-2 mt-1 text-center'>
+            {description}
+          </h2>
+        </div>
         <div dangerouslySetInnerHTML={{ __html: marked(content) }}></div>
       </article>
     </main>
