@@ -1,4 +1,6 @@
 import { FaGithub, FaLinkedin, FaMailBulk, FaPersonBooth } from 'react-icons/fa'
+import { BsFillPersonVcardFill } from 'react-icons/bs'
+import { AiFillMail } from 'react-icons/ai'
 import Link from 'next/link'
 
 const SocialBar = () => {
@@ -19,13 +21,13 @@ const SocialBar = () => {
     },
     {
       id: 3,
-      icon: <FaMailBulk className='text-2xl' />,
+      icon: <AiFillMail className='text-2xl' />,
       text: 'Mail',
       href: 'mailto:snehilshah27@gmail.com'
     },
     {
       id: 4,
-      icon: <FaPersonBooth className='text-2xl' />,
+      icon: <BsFillPersonVcardFill className='text-2xl' />,
       text: 'Resume',
       href: '',
       style: 'rounded-bl-lg'
