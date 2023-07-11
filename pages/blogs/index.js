@@ -43,7 +43,7 @@ function blogs({ posts }) {
                   <p className='text-sm'>{post.frontmatter.description}</p>
                 </div>
 
-                <p>{post.frontmatter.date}</p>
+                <p className='min-w-[5rem]'>{post.frontmatter.date}</p>
               </div>
             </div>
           </Link>
