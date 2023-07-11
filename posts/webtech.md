@@ -3,7 +3,7 @@ title: 'My Website Tech Stack'
 date: 'Jul 8, 2023'
 cover_image: '/posts/webtech/SnehilWebsite.png'
 description: 'Get to know the technologies I used and Why?'
-header: '/posts/webtech/header.jpg'
+header: '/posts/webtech/header.webp'
 ---
 
 ## How I Started
