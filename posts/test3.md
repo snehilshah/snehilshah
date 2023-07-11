@@ -6,7 +6,8 @@ cover_image: '/blog/prism.png'
 description: 'This is the post description'
 ---
 
-# Hello Blogging    
+# Hello Blogging
+
 ## This is my first Blog
 
 - Point 1

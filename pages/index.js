@@ -23,7 +23,7 @@ export default function Home() {
           content='Snehil Shah, Snehil, Shah, Snehil Shah Portfolio, Snehil Shah Website, Snehil Shah Developer, Snehil Shah Engineer, Snehil Shah Programmer, Snehil Shah Full Stack Developer'
         />
         <meta name='author' content='Snehil, Snehil Shah, Shah' />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel='icon' href='/favicon.ico' sizes='any' />
       </Head>
       <Navbar />
       <Loader />
