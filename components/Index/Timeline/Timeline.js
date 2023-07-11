@@ -43,7 +43,7 @@ const timelineData = [
 
 const Timeline = () => {
   return (
-    <div className='max-w-screen-xl overflow-x-hidden mx-auto'>
+    <div className='max-w-screen-xl overflow-x-hidden mx-auto' id='positions'>
       <div className='text-white'>
         <Heading
           title={'Positions'}

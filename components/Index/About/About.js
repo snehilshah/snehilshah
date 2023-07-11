@@ -3,7 +3,7 @@ import AboutImage from './AboutImage'
 
 const About = () => {
   return (
-    <section className='text-white body-font max-w-screen-xl mx-auto py-20'>
+    <section className='text-white body-font max-w-screen-xl mx-auto py-20' id='about'>
       <Heading title={'About Me'} details={'Get to know me more'} />
       <div className='container mx-auto flex md:flex-row flex-col-reverse items-center'>
         <div className='lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mt-16 md:mb-0 items-center text-center'>
