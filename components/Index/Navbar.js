@@ -53,7 +53,7 @@ export default function Navbar() {
 
   const HorizontalNavList = ({ title, url }) => {
     return (
-      <li className='font-supreme px-4 cursor-pointer uppercase font-medium text-sm text-stone-400 hover:scale-105 duration-200'>
+      <li className='font-supreme px-4 cursor-pointer uppercase font-medium text-sm text-stone-400 tracking-wide hover:scale-105 duration-200'>
         <Link href={url}>{title}</Link>
       </li>
     )

@@ -17,7 +17,7 @@ const Experience = () => {
     {
       title: 'Next.js',
       source: '/domains/Next.png',
-      style: 'shadow-white'
+      style: 'shadow-stone-400'
     },
     {
       title: 'Python',
