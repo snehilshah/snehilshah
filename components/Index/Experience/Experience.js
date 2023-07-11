@@ -21,7 +21,7 @@ const Experience = () => {
     },
     {
       title: 'Python',
-      source: '/domains/chip.png',
+      source: '/domains/python.png',
       style: 'shadow-yellow-500 '
     },
     {

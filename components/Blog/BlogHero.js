@@ -4,7 +4,7 @@ const BlogHero = () => {
       <div className='container px-5 py-24 mx-auto'>
         <div className='xl:w-1/2 lg:w-3/4 w-full mx-auto text-center'>
           <h3 className='leading-relaxed text-3xl text-stone-950'>
-            Lets Read and Connect
+            Lets Explore Discover and Connect
           </h3>
           <h3 className='leading-relaxed text-lg text-stone-950'>
             Find the latest of my writing here
