@@ -4,6 +4,10 @@ import {
 } from 'react-vertical-timeline-component'
 import 'react-vertical-timeline-component/style.min.css'
 import { FaGraduationCap } from 'react-icons/fa'
+import { IoBookSharp } from 'react-icons/io5'
+import { BsLaptop } from 'react-icons/bs'
+import { GiMicrophone } from 'react-icons/gi'
+import { AiOutlineFundProjectionScreen } from 'react-icons/ai'
 import Heading from '../Heading'
 
 const timelineData = [
@@ -11,29 +15,29 @@ const timelineData = [
     date: '2021-Present',
     header: 'Projects Team',
     organization: 'Research Cell',
-    qualities: 'Leadership | Discipline',
-    icon: <FaGraduationCap className='text-stone-700' />
+    qualities: 'Leadership | Management | Research',
+    icon: <AiOutlineFundProjectionScreen className='text-stone-700' />
+  },
+  {
+    date: '2022-Present',
+    header: 'Literature Reviewer',
+    organization: 'Shah & Anchor Student Council',
+    qualities: 'Documentation | Research',
+    icon: <IoBookSharp className='text-stone-700' />
+  },
+  {
+    date: '2021-2023',
+    header: 'Website Team',
+    organization: 'Computer Society of India',
+    qualities: 'WebDevelopment',
+    icon: <BsLaptop className='text-stone-700' />
   },
   {
     date: '2021-Present',
-    header: 'Projects Team',
-    organization: 'Research Cell',
-    qualities: 'Leadership | Discipline',
-    icon: <FaGraduationCap className='text-stone-700' />
-  },
-  {
-    date: '2021-Present',
-    header: 'Projects Team',
-    organization: 'Research Cell',
-    qualities: 'Leadership | Discipline',
-    icon: <FaGraduationCap className='text-stone-700' />
-  },
-  {
-    date: '2021-Present',
-    header: 'Projects Team',
-    organization: 'Research Cell',
-    qualities: 'Leadership | Discipline',
-    icon: <FaGraduationCap className='text-stone-700' />
+    header: 'IEEE Event Speaker',
+    organization: 'Institute of Electrical and Electronics Engineers',
+    qualities: 'Public Speaking | Community Contribution',
+    icon: <GiMicrophone className='text-stone-700' />
   }
 ]
 
@@ -41,7 +45,10 @@ const Timeline = () => {
   return (
     <div className='max-w-screen-xl overflow-x-hidden mx-auto'>
       <div className='text-white'>
-        <Heading title={'Experience'} details={'Events'} />
+        <Heading
+          title={'Positions'}
+          details={'Position I have been trusted with'}
+        />
       </div>
       <VerticalTimeline
         animate={true}
