@@ -31,13 +31,13 @@ function blogs({ posts }) {
       >
         {posts.map((post, index) => (
           <Link key={index} href={`/blogs/${post.slug}`}>
-            <div className='border rounded-lg group cursor-pointer overflow-hidden'>
+            <div className='rounded-lg group cursor-pointer overflow-hidden outline outline-stone-600 outline-1 shadow-lg'>
               <img
                 src={post.frontmatter.cover_image}
                 alt={'Post Cover Image'}
                 className='h-60 w-full object-cover group-hover:scale-105 transition-transform duration-200 ease-in-out'
               />
-              <div className='flex justify-between p-5 bg-white'>
+              <div className='flex justify-between p-5 bg-stone-100'>
                 <div className=''>
                   <p className='text-lg font-bold'>{post.frontmatter.title}</p>
                   <p className='text-sm'>{post.frontmatter.description}</p>

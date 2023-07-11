@@ -35,9 +35,9 @@ const Cursor = () => {
       requestAnimationFrame(updateMouse)
 
       displayedMouse.current.x +=
-        (realMouse.current.x - displayedMouse.current.x) * 0.1
+        (realMouse.current.x - displayedMouse.current.x) * 0.2
       displayedMouse.current.y +=
-        (realMouse.current.y - displayedMouse.current.y) * 0.1
+        (realMouse.current.y - displayedMouse.current.y) * 0.8
 
       if (cursorRef.current) {
         cursorRef.current.style.left = `${displayedMouse.current.x}px`
