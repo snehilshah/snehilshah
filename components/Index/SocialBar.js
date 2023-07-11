@@ -29,7 +29,7 @@ const SocialBar = () => {
       id: 4,
       icon: <BsFillPersonVcardFill className='text-2xl' />,
       text: 'Resume',
-      href: '',
+      href: '/SnehilShahResume.pdf',
       style: 'rounded-bl-lg'
     }
   ]
@@ -37,30 +37,23 @@ const SocialBar = () => {
   return (
     <div className='flex flex-col top-[35%] right-0 fixed z-50'>
       <ul>
-        {socialLinks.map(
-          ({ icon, text, href, style = '', download = '', id }) => (
-            <li
-              key={id}
-              className={
-                'flex justify-between items-center w-40 h-14 px-4 translate-x-[100px] hover:translate-x-[10px] hover:rounded-lg duration-300 bg-stone-600/80' +
-                ' ' +
-                style
-              }
-            >
-              <div className='flex justify-between items-center w-full'>
-                {icon}
-                <Link
-                  href={href}
-                  download={download}
-                  target='_blank'
-                  rel='noreferrer'
-                >
-                  {text}
-                </Link>
-              </div>
-            </li>
-          )
-        )}
+        {socialLinks.map(({ icon, text, href, style = '', id }) => (
+          <li
+            key={id}
+            className={
+              'flex justify-between items-center w-40 h-14 px-4 translate-x-[100px] hover:translate-x-[10px] hover:rounded-lg duration-300 bg-stone-600/80' +
+              ' ' +
+              style
+            }
+          >
+            <div className='flex justify-between items-center w-full'>
+              {icon}
+              <Link href={href} target='_blank' rel='noreferrer'>
+                {text}
+              </Link>
+            </div>
+          </li>
+        ))}
       </ul>
     </div>
   )
