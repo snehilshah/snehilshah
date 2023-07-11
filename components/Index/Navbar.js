@@ -18,13 +18,17 @@ export default function Navbar() {
       to: '#'
     },
     {
-      title: 'contact',
+      title: 'projects',
       to: '#'
+    },
+    {
+      title: 'positions',
+      to: '/'
     },
     {
       title: 'blogs',
       to: '/'
-    }
+    },
   ]
 
   const [mobileNav, setMobileNav] = useState(false)

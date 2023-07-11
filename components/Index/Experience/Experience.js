@@ -36,7 +36,7 @@ const Experience = () => {
     }
   ]
   return (
-    <div className='section'>
+    <div className='section' id='experience'>
       <div className='w-full max-w-screen-xl mx-auto text-white'>
         <Heading
           title={'Tech Stack'}
