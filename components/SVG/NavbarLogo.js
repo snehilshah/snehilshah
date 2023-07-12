@@ -29,7 +29,7 @@ const NavBarLogo = () => {
         <path
           d='M44.4724 72.0695C89.4638 57.1847 139.37 67.1742 156.333 68.6442'
           stroke='black'
-          stroke-width='2'
+          strokeWidth='2'
         />
       </mask>
       <g mask='url(#mask0_2_2)'>
