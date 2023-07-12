@@ -29,7 +29,7 @@ const Loader = () => {
               <path
                 d='M31 166.5C115.5 103.5 213.5 122.5 246.5 122.5'
                 stroke='black'
-                stroke-width='2'
+                strokeWidth='2'
               />
             </mask>
             <g mask='url(#mask0_19_9)'>
