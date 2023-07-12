@@ -3,14 +3,23 @@ import AboutImage from './AboutImage'
 
 const About = () => {
   return (
-    <section className='text-white body-font max-w-screen-xl mx-auto py-20' id='about'>
+    <section
+      className='text-white body-font max-w-screen-xl mx-auto py-20'
+      id='about'
+    >
       <Heading title={'About Me'} details={'Get to know me more'} />
       <div className='container mx-auto flex md:flex-row flex-col-reverse items-center'>
         <div className='lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mt-16 md:mb-0 items-center text-center'>
           <h1 className='title-font sm:text-4xl text-3xl mb-4 font-medium text-white whitespace-nowrap'>
-            Code with Passion
+            Code with 
+            <span className='bg-clip-text text-transparent bg-gradient-to-r from-cyan-200 to-teal-400 sm:text-5xl text-4xl ml-3'>
+              Passion
+            </span>
             <br />
-            Create with Purpose
+            Create with
+            <span className='bg-clip-text text-transparent bg-gradient-to-r from-cyan-200 to-teal-400 sm:text-5xl text-4xl ml-3'>
+              Purpose
+            </span>
           </h1>
           <p className='mb-8 leading-relaxed px-[10vw] md:p-0'>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum,

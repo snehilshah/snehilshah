@@ -61,7 +61,7 @@ const Timeline = () => {
             return (
               <VerticalTimelineElement
                 key={index}
-                contentArrowStyle={{ borderRight: '7px solid #0097A7' }}
+                contentArrowStyle={{ borderRight: '7px solid #a5f3fc' }}
                 iconStyle={{
                   background: '#a3a3a3',
                   boxShadow: '0 0 0 4px #0097A7'
