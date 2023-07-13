@@ -22,16 +22,16 @@ const About = () => {
             </span>
           </h1>
           <p className='mb-8 leading-relaxed px-[10vw] md:p-0'>
-            "Welcome to my website! I'm Snehil R. Shah, a passionate tech
-            enthusiast with a deep love for all things technology-related. I'm
-            here to share my knowledge and insights into the latest
+            Welcome to my website! I&apos;m Snehil R. Shah, a passionate tech
+            enthusiast with a deep love for all things technology-related.
+            I&apos;m here to share my knowledge and insights into the latest
             advancements, gadgets, and trends that shape our digital world. With
             a firm belief in the power of quality software, I strive to make our
             lives easier and more efficient. Join me on this exciting journey as
             we explore the limitless possibilities that technology offers. You
             can also find me on my blogging website, where I share everything
             that is mentioned here. Feel free to visit and dive deeper into the
-            topics we discuss."
+            topics we discuss.
           </p>
           {/* <div className='flex justify-center'>
             <button className='inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg'>
