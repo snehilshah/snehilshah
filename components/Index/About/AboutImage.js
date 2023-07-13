@@ -1,6 +1,6 @@
 import Image from 'next/image'
-import Blue from '../../../public/BG.jpeg'
-import Hero from '../../../public/Hero.png'
+import Blue from '../../../public/Blue.jpeg'
+import Hero from '../../../public/SnehilLatest.png'
 import clsx from 'clsx'
 import styles from '../../../styles/AboutImg.module.css'
 
@@ -24,7 +24,7 @@ const AboutImage = () => {
           id={clsx(styles.personImg)}
           src={Hero}
           alt='Hero Image'
-          className='relative z-20 w-[90%] mx-auto'
+          className='relative z-20 mx-auto scale-125'
         />
       </div>
     </div>

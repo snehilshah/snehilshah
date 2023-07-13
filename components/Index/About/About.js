@@ -11,7 +11,7 @@ const About = () => {
       <div className='container mx-auto flex md:flex-row flex-col-reverse items-center'>
         <div className='lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mt-16 md:mb-0 items-center text-center'>
           <h1 className='title-font sm:text-4xl text-3xl mb-4 font-medium text-white whitespace-nowrap'>
-            Code with 
+            Code with
             <span className='bg-clip-text text-transparent bg-gradient-to-r from-cyan-200 to-teal-400 sm:text-5xl text-4xl ml-3'>
               Passion
             </span>
@@ -22,12 +22,16 @@ const About = () => {
             </span>
           </h1>
           <p className='mb-8 leading-relaxed px-[10vw] md:p-0'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum,
-            necessitatibus, repellat cupiditate dignissimos sapiente dolorum
-            vero laboriosam id deleniti voluptas ea possimus, animi sint
-            ratione! Odit consequuntur iste commodi quidem libero sunt vitae ex
-            architecto, tenetur, tempora quis inventore facilis rerum maxime
-            aliquam expedita modi fugiat est? Reprehenderit, doloremque laborum.
+            "Welcome to my website! I'm Snehil R. Shah, a passionate tech
+            enthusiast with a deep love for all things technology-related. I'm
+            here to share my knowledge and insights into the latest
+            advancements, gadgets, and trends that shape our digital world. With
+            a firm belief in the power of quality software, I strive to make our
+            lives easier and more efficient. Join me on this exciting journey as
+            we explore the limitless possibilities that technology offers. You
+            can also find me on my blogging website, where I share everything
+            that is mentioned here. Feel free to visit and dive deeper into the
+            topics we discuss."
           </p>
           {/* <div className='flex justify-center'>
             <button className='inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg'>
