@@ -11,5 +11,5 @@
 }
 
 #personContainer:hover #personImg {
-  transform: translateY(-1rem) scale(1.1);
+  transform: translateY(-1rem) scale(1.3);
 }
