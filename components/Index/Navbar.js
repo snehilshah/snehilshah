@@ -23,7 +23,7 @@ export default function Navbar() {
     },
     {
       title: 'positions',
-      to: '/'
+      to: '#'
     },
     {
       title: 'blogs',
