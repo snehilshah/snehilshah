@@ -37,7 +37,7 @@ const HeroSection = () => {
       <div className='md:flex md:flex-col'>
         <HeroSubtile />
         <div className='mt-8 md:hidden'>
-          <CustomButton content={'Read Blogs'} />
+          <CustomButton content={'Read Blogs'} link={'/blogs'} />
         </div>
       </div>
     </div>
