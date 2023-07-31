@@ -4,6 +4,9 @@ import BlogNav from '@/components/Blog/BlogNav'
 import Head from 'next/head'
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote } from 'next-mdx-remote'
+import { Test } from '@/components/Test'
+
+const components = { Test }
 
 function PostPage({
   frontmatter: { title, date, description, header },
@@ -31,7 +34,7 @@ function PostPage({
             {description}
           </h2>
         </div>
-        <MDXRemote {...mdxSource} />
+        <MDXRemote {...mdxSource} components={components} />
       </article>
     </main>
   )
