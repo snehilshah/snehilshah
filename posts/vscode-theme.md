@@ -148,6 +148,6 @@ You can now go to your publisher profile and see your theme published.
 
 > Also share your theme with me and I will add it to this blog
 
-## [Chechout my Theme](https://marketplace.visualstudio.com/items?itemName=srshah.cosmic-gleam)
+## [Checkout my Theme](https://marketplace.visualstudio.com/items?itemName=srshah.cosmic-gleam)
 
 ![Cosmic Gleam](/posts/vscodeTheme/cosmicgleam.png)
