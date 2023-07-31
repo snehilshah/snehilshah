@@ -1,20 +1,15 @@
 import fs from 'fs'
 import path from 'path'
-import matter from 'gray-matter'
-import { marked } from 'marked'
 import BlogNav from '@/components/Blog/BlogNav'
 import Head from 'next/head'
+import { serialize } from 'next-mdx-remote/serialize'
+import { MDXRemote } from 'next-mdx-remote'
 
 function PostPage({
-  frontmatter: { title, date, cover_image, description, header },
+  frontmatter: { title, date, description, header },
   slug,
-  content
+  mdxSource
 }) {
-  marked.use({
-    langPrefix: '',
-    mangle: false,
-    headerIds: false
-  })
   return (
     <main className='bg-[#dbe1f193]'>
       <Head>
@@ -24,7 +19,7 @@ function PostPage({
       <BlogNav />
       <img
         src={header}
-        alt='cover_image'
+        alt={'header_img'}
         className='w-full h-60 object-cover'
       />
       <article className='max-w-4xl mx-auto p-5 prose rounded-3xl'>
@@ -36,10 +31,7 @@ function PostPage({
             {description}
           </h2>
         </div>
-        <div
-          dangerouslySetInnerHTML={{ __html: marked(content) }}
-          className='text-justify'
-        ></div>
+        <MDXRemote {...mdxSource} />
       </article>
     </main>
   )
@@ -66,13 +58,17 @@ export async function getStaticProps({ params: { slug } }) {
     'utf-8'
   )
 
-  const { data: frontmatter, content } = matter(markdownWithMeta)
+  const mdxSource = await serialize(markdownWithMeta, {
+    parseFrontmatter: true
+  })
+
+  const { frontmatter: frontmatter } = mdxSource
 
   return {
     props: {
       frontmatter,
       slug,
-      content
+      mdxSource
     }
   }
 }
