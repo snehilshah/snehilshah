@@ -29,7 +29,7 @@ const SocialBar = () => {
       id: 4,
       icon: <BsFillPersonVcardFill className='text-2xl' />,
       text: 'Resume',
-      href: 'https://youtu.be/j5a0jTc9S10',
+      href: '/SnehilShahResume.pdf',
       style: 'rounded-bl-lg'
     }
   ]
