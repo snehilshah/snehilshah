@@ -56,11 +56,11 @@ function blogs({ posts }) {
 export async function getStaticProps() {
   // get the files with from the directory posts
   const files = fs.readdirSync(path.join('posts'))
-
+  console.log('Slugs:')
   const posts = files.map(filename => {
     // remove the .md file extension
     const slugs = filename.replace('.md', '')
-    console.log(slugs)
+    console.info(slugs)
     // Get frontmatter
     const markdownWithMeta = fs.readFileSync(
       path.join('posts', filename),
