@@ -59,7 +59,7 @@ export async function getStaticProps() {
   console.log('Slugs:')
   const posts = files.map(filename => {
     // remove the .md file extension
-    const slugs = filename.replace('.md', '')
+    const slugs = filename.replace('.mdx', '')
     console.info(slugs)
     // Get frontmatter
     const markdownWithMeta = fs.readFileSync(
