@@ -4,9 +4,9 @@ import BlogNav from '@/components/Blog/BlogNav'
 import Head from 'next/head'
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote } from 'next-mdx-remote'
-import { Test } from '@/components/Test'
+import { InfoBox } from '@/components/MdxHelpers/InfoBox'
 
-const components = { Test }
+const components = { InfoBox  }
 
 function PostPage({
   frontmatter: { title, date, description, header },
