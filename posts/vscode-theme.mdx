@@ -8,32 +8,32 @@ header: '/posts/vscodeTheme/header.png'
 
 ## How do Themes Work?
 
-A Visual Studio Code theme works just like an Extension. So the question arises that how do VS Code Extensions Work.
+A Visual Studio Code theme works just like an Extension. Which leads to the question how do VS Code Extensions Work?
 
-VS Code Extensions are a collection of **JSON** files in the folder `.vscode/extenstions` inside your useer directory. You can check this folder in your computer by going to `%UserProfile%/.vscode/extension`
+VS Code Extensions are a collection of **JSON** files in the folder `.vscode/extenstions` inside your user directory. You can check this folder in your computer by going to the path `%UserProfile%/.vscode/extension`
 
-This JSON file will contain all the rules mapping your VS CODE UI elements to the color properties.
+This JSON file will contain all the rule mappings of your VS CODE UI elements to your color properties.
 
 Example:
 
-```json
-"button.foreground": "#ffffff",
+<CodeBox
+  code='"button.foreground": "#ffffff",
 "button.hoverBackground": "#6087cf",
 "diffEditor.insertedTextBackground": "#00809b33",
 "dropdown.background": "#353b45",
 "dropdown.border": "#181a1f",
 "editor.background": "#282c34",
 "editor.findMatchHighlightBackground": "#528bff3d",
-"editor.foreground": "#abb2bf",
-```
+"editor.foreground": "#abb2bf",'
+/>
 
 ## Creating the Theme Files
 
-To create a theme you will need to have a folder structure. We have many tools that can do that for us. We will be using [Yeoman](https://yeoman.io/) to create our folder structure.
+To create a theme you will need to have a folder structure. We have many tools that can do that for us. Here we will be using [Yeoman](https://yeoman.io/) to create our folder structure.
 
 ### Installing Yeoman & code-genrator
 
-<InfoBox text='You will need to have NodeJS installed in your computer to use Yeoman'/>
+<WarningBox text='You will need to have NodeJS installed in your computer to use Yeoman' />
 
 - Navigate to the folder where you want to create theme.
 - Open terminal and type: `npm i -g yo code-generator`
@@ -49,7 +49,8 @@ To create a theme you will need to have a folder structure. We have many tools t
 ### Running Yoeman Code Generator
 
 Open the terminal and run `yo code`
-![Yeoman](/posts/vscodeTheme/yeomanMasthead.png)
+
+<ImageBox link='/posts/vscodeTheme/yeomanMasthead.png' />
 
 This guy 👆 yeoman will ask you some questions.
 
@@ -66,7 +67,7 @@ Select the following:
 
 My terminal after entering all the details:
 
-![Terminal Installation](/posts/vscodeTheme/terminal.png)
+<ImageBox link='/posts/vscodeTheme/terminal.png' />
 
 Your Folder Structure must look something like this:
 
@@ -96,7 +97,7 @@ Here the json files contains all the rules for the theme. You can change the col
 
 To test the theme press `F5` or go to `Run > Start Debugging` in the VS Code Menu. This will open a new window with your theme applied.
 
-<InfoBox text='Creating a theme from scratch is a very long process, you can use [Theme Generator](https://themes.vscode.one/) to generate a theme and then edit it.'/>
+<InfoBox text='Creating a theme from scratch is a very long process, you can use [Theme Generator](https://themes.vscode.one/) to generate a theme and then edit it.' />
 
 ## Publishing the Theme
 
@@ -146,8 +147,8 @@ You can now go to your publisher profile and see your theme published.
 
 ## Voila! Your Theme is Ready to Share! 🎊🎉
 
-> Also share your theme with me and I will add it to this blog
+<InfoBox text='Also share your theme with me and I will add it to this blog' />
 
 ## [Checkout my Theme](https://marketplace.visualstudio.com/items?itemName=srshah.cosmic-gleam)
 
-![Cosmic Gleam](/posts/vscodeTheme/cosmicgleam.png)
+<ImageBox link='/posts/vscodeTheme/cosmicgleam.png' />
