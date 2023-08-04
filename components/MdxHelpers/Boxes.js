@@ -49,7 +49,7 @@ export const StyleBox = ({ text }) => {
     <>
       <div id={clsx(styles.content)}>
         <div id={clsx(styles.blurer)}>
-            <p className='z-50'>{text}</p>
+            <p className='z-50 text-center'>{text}</p>
         </div>
         <div className={clsx(styles.blob)}></div>
         <div className={clsx(styles.blob)}></div>
