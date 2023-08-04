@@ -9,9 +9,10 @@ import {
   ErrorBox,
   WarningBox,
   ImageBox,
-  CodeBox
+  CodeBox,
+  StyleBox
 } from '@/components/MdxHelpers/Boxes'
-import { StandOut } from '@/components/MdxHelpers/Texts'
+import { Standout } from '@/components/MdxHelpers/Texts'
 
 const components = {
   InfoBox,
@@ -19,7 +20,8 @@ const components = {
   WarningBox,
   ImageBox,
   CodeBox,
-  StandOut
+  Standout,
+  StyleBox
 }
 
 function PostPage({
@@ -39,7 +41,7 @@ function PostPage({
         alt={'header_img'}
         className='w-full h-60 object-cover'
       />
-      <article className='max-w-4xl mx-auto p-5 prose rounded-3xl prose-a:text-emerald-500'>
+      <article className='max-w-4xl mx-auto p-5 prose rounded-3xl prose-a:text-emerald-500 text-justify'>
         <div className='font-cabinet'>
           <h1 className='text-5xl mt-10 text-center font-bold mb-0S'>
             {title}
