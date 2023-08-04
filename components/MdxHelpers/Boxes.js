@@ -1,8 +1,9 @@
-import Image from 'next/image'
 import { AiFillInfoCircle, AiOutlineWarning } from 'react-icons/ai'
 import { BiErrorAlt } from 'react-icons/bi'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { nord } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
+import styles from '@/styles/StyleBox.module.css'
+import clsx from 'clsx'
 
 export const ErrorBox = ({ text }) => {
   return (
@@ -31,11 +32,31 @@ export const WarningBox = ({ text }) => {
   )
 }
 
-export const ImageBox = ({ link }) => {
+export const ImageBox = ({ link, text = '' }) => {
   return (
     <div className='rounded-xl'>
-      <img src={link} className='rounded-xl mx-auto outline outline-sky-400' />
+      <img
+        src={link}
+        className='rounded-xl mx-auto outline outline-sky-400 mb-3'
+      />
+      <p className='text-center mt-0'>{text}</p>
     </div>
+  )
+}
+
+export const StyleBox = ({ text }) => {
+  return (
+    <>
+      <div id={clsx(styles.content)}>
+        <div id={clsx(styles.blurer)}>
+            <p className='z-50'>{text}</p>
+        </div>
+        <div className={clsx(styles.blob)}></div>
+        <div className={clsx(styles.blob)}></div>
+        <div className={clsx(styles.blob)}></div>
+        <div className={clsx(styles.blob)}></div>
+      </div>
+    </>
   )
 }
 
