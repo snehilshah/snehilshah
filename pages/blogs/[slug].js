@@ -32,7 +32,7 @@ function PostPage({
   return (
     <main className='bg-[#dbe1f193]'>
       <Head>
-        <meta
+        {/* <meta
           property='og:title'
           content='How to change the address bar color in Chrome, Firefox, Opera, Safari'
         />
@@ -47,7 +47,7 @@ function PostPage({
         <meta
           property='og:image'
           content='https://github.com/srshah27/srshah27/blob/master/public/SnehilLogo/Group1.jpg'
-        />
+        /> */}
         <title>{title}</title>
         <meta name='author' content='Snehil, Snehil Shah, Shah' />
       </Head>
