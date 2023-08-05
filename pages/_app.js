@@ -22,6 +22,10 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
+        <meta
+          name='google-site-verification'
+          content='b1Y-2ooYNQfS62XWzvjH0-APwdJZpv3XRa9XF8kW6wk'
+        />
         <meta charSet='UTF-8' />
         <meta
           name='keywords'
