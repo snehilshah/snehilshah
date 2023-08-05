@@ -16,18 +16,18 @@ export default function Home() {
     <>
       <Head>
         <title>Snehil Shah | Portfolio</title>
-        <meta name='og:title' content='Snehil Shah | Portfolio' />
         <meta name='description' content='Portfolio Website for Snehil Shah' />
-        <meta
-          name='og:description'
-          content='Portfolio Website for Snehil Shah'
-        />
         <meta
           name='image'
           content='https://raw.githubusercontent.com/srshah27/srshah27/master/public/SnehilImage.jpg?token=GHSAT0AAAAAACD2NHDQ63AMHPRFZKQU6XAMZGO2G2A'
         />
+        <meta property='og:title' content='Snehil Shah | Portfolio' />
         <meta
-          name='og:image'
+          property='og:description'
+          content='Portfolio Website for Snehil Shah'
+        />
+        <meta
+          property='og:image'
           content='https://raw.githubusercontent.com/srshah27/srshah27/master/public/SnehilImage.jpg?token=GHSAT0AAAAAACD2NHDQ63AMHPRFZKQU6XAMZGO2G2A'
         />
       </Head>

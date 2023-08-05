@@ -33,11 +33,11 @@ function PostPage({
     <main className='bg-[#dbe1f193]'>
       <Head>
         <title>{title}</title>
-        <meta name='og:title' content={title} />
+        <meta property='og:title' content={title} />
         <meta name='description' content={description} />
-        <meta name='og:description' content={description} />
+        <meta property='og:description' content={description} />
         <meta name='image' content={header} />
-        <meta name='og:image' content={header} />
+        <meta property='og:image' content={header} />
       </Head>
       <BlogNav />
       <img
