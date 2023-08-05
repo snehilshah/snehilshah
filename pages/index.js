@@ -27,9 +27,11 @@ export default function Home() {
           content='Portfolio Website for Snehil Shah'
         />
         <meta
-          property='og:image'
+          property='og:image:secure_url'
           content='https://raw.githubusercontent.com/srshah27/srshah27/master/public/SnehilImage.jpg?token=GHSAT0AAAAAACD2NHDQ63AMHPRFZKQU6XAMZGO2G2A'
         />
+        <meta property='og:image:width' content='408' />
+        <meta property='og:image:height' content='408' />
       </Head>
       <main className=''>
         <Navbar />

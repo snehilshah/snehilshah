@@ -30,6 +30,7 @@ export default function App({ Component, pageProps }) {
         <meta name='author' content='Snehil, Snehil Shah, Shah' />
         <meta property='og:url' content='https://srshah.me' />
         <meta property='og:site_name' content='Snehil' />
+        <meta property='og:type' content='website' />
         <link rel='icon' href='/favicon.ico' sizes='any' />
       </Head>
       <Script
