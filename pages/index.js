@@ -13,29 +13,37 @@ import Head from 'next/head'
 
 export default function Home() {
   return (
-    <main className=''>
+    <>
       <Head>
         <title>Snehil Shah | Portfolio</title>
-        <meta charSet='UTF-8' />
+        <meta name='og:title' content='Snehil Shah | Portfolio' />
         <meta name='description' content='Portfolio Website for Snehil Shah' />
         <meta
-          name='keywords'
-          content='Snehil Shah, Snehil, Shah, Snehil Shah Portfolio, Snehil Shah Website, Snehil Shah Developer, Snehil Shah Engineer, Snehil Shah Programmer, Snehil Shah Full Stack Developer'
+          name='og:description'
+          content='Portfolio Website for Snehil Shah'
         />
-        <meta name='author' content='Snehil, Snehil Shah, Shah' />
-        <link rel='icon' href='/favicon.ico' sizes='any' />
+        <meta
+          name='image'
+          content='https://raw.githubusercontent.com/srshah27/srshah27/master/public/WebsiteFront.png?token=GHSAT0AAAAAACD2NHDQSUYH2WKPPFXYPFGIZGOZTIA'
+        />
+        <meta
+          name='og:image'
+          content='https://raw.githubusercontent.com/srshah27/srshah27/master/public/WebsiteFront.png?token=GHSAT0AAAAAACD2NHDQSUYH2WKPPFXYPFGIZGOZTIA'
+        />
       </Head>
-      <Navbar />
-      <Loader />
-      <Cursor />
-      <BGGrid />
-      <HeroSection />
-      <SocialBar />
-      <About />
-      <Experience />
-      <Projects />
-      <Timeline />
-      <Footer />
-    </main>
+      <main className=''>
+        <Navbar />
+        <Loader />
+        <Cursor />
+        <BGGrid />
+        <HeroSection />
+        <SocialBar />
+        <About />
+        <Experience />
+        <Projects />
+        <Timeline />
+        <Footer />
+      </main>
+    </>
   )
 }
