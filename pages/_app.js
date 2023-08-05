@@ -28,7 +28,8 @@ export default function App({ Component, pageProps }) {
           content='Snehil Shah, Snehil, Shah, Snehil Shah Portfolio, Snehil Shah Website, Snehil Shah Developer, Snehil Shah Engineer, Snehil Shah Programmer, Snehil Shah Full Stack Developer'
         />
         <meta name='author' content='Snehil, Snehil Shah, Shah' />
-        <meta name='og:url' content='https://srshah.me' />
+        <meta property='og:url' content='https://srshah.me' />
+        <meta property='og:site_name' content='Snehil' />
         <link rel='icon' href='/favicon.ico' sizes='any' />
       </Head>
       <Script
