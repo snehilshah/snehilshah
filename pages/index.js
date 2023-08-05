@@ -24,11 +24,11 @@ export default function Home() {
         />
         <meta
           name='image'
-          content='https://raw.githubusercontent.com/srshah27/srshah27/master/public/WebsiteFront.png?token=GHSAT0AAAAAACD2NHDQSUYH2WKPPFXYPFGIZGOZTIA'
+          content='https://raw.githubusercontent.com/srshah27/srshah27/master/public/SnehilImage.jpg?token=GHSAT0AAAAAACD2NHDQ63AMHPRFZKQU6XAMZGO2G2A'
         />
         <meta
           name='og:image'
-          content='https://raw.githubusercontent.com/srshah27/srshah27/master/public/WebsiteFront.png?token=GHSAT0AAAAAACD2NHDQSUYH2WKPPFXYPFGIZGOZTIA'
+          content='https://raw.githubusercontent.com/srshah27/srshah27/master/public/SnehilImage.jpg?token=GHSAT0AAAAAACD2NHDQ63AMHPRFZKQU6XAMZGO2G2A'
         />
       </Head>
       <main className=''>
