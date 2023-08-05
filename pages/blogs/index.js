@@ -13,19 +13,19 @@ function blogs({ posts }) {
     <div className={'max-w-screen-2xl mx-auto'}>
       <Head>
         <title>Snehil Shah | Blogs</title>
-        <meta name='og:title' content='Snehil Shah | Blogs' />
+        <meta property='og:title' content='Snehil Shah | Blogs' />
         <meta name='description' content='Blogging Website for Snehil Shah' />
         <meta
-          name='og:description'
+          property='og:description'
           content='Blogging Website for Snehil Shah'
         />
         <meta
           name='image'
-          content='https://raw.githubusercontent.com/srshah27/srshah27/master/public/WebsiteFront.png?token=GHSAT0AAAAAACD2NHDQSUYH2WKPPFXYPFGIZGOZTIA'
+          content='https://raw.githubusercontent.com/srshah27/srshah27/master/public/SnehilImage.jpg?token=GHSAT0AAAAAACD2NHDQ63AMHPRFZKQU6XAMZGO2G2A'
         />
         <meta
-          name='og:image'
-          content='https://raw.githubusercontent.com/srshah27/srshah27/master/public/WebsiteFront.png?token=GHSAT0AAAAAACD2NHDQSUYH2WKPPFXYPFGIZGOZTIA'
+          property='og:image'
+          content='https://raw.githubusercontent.com/srshah27/srshah27/master/public/SnehilImage.jpg?token=GHSAT0AAAAAACD2NHDQ63AMHPRFZKQU6XAMZGO2G2A'
         />
       </Head>
 
