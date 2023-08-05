@@ -13,14 +13,22 @@ function blogs({ posts }) {
     <div className={'max-w-screen-2xl mx-auto'}>
       <Head>
         <title>Snehil Shah | Blogs</title>
-        <meta charSet='UTF-8' />
+        <meta name='og:title' content='Snehil Shah | Blogs' />
         <meta name='description' content='Blogging Website for Snehil Shah' />
         <meta
-          name='keywords'
-          content='Snehil Shah, Snehil, Shah, Snehil Shah Blogs, Snehil Shah Website, Snehil Shah Blog, Snehil Shah Blogging, Snehil Shah Blogger'
+          name='og:description'
+          content='Blogging Website for Snehil Shah'
         />
-        <meta name='author' content='Snehil, Snehil Shah, Shah' />
+        <meta
+          name='image'
+          content='https://raw.githubusercontent.com/srshah27/srshah27/master/public/WebsiteFront.png?token=GHSAT0AAAAAACD2NHDQSUYH2WKPPFXYPFGIZGOZTIA'
+        />
+        <meta
+          name='og:image'
+          content='https://raw.githubusercontent.com/srshah27/srshah27/master/public/WebsiteFront.png?token=GHSAT0AAAAAACD2NHDQSUYH2WKPPFXYPFGIZGOZTIA'
+        />
       </Head>
+
       <BlogBGGrid />
       <BlogNav />
       <BlogHero />
