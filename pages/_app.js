@@ -31,6 +31,7 @@ export default function App({ Component, pageProps }) {
         <meta property='og:url' content='https://srshah.me' />
         <meta property='og:site_name' content='Snehil' />
         <meta property='og:type' content='website' />
+        <meta property='og:locale' content='en_IN' />
         <link rel='icon' href='/favicon.ico' sizes='any' />
       </Head>
       <Script
