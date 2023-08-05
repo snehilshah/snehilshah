@@ -2,6 +2,16 @@
   "name": "srshah27",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "18",
+    "npm": "9"
+  },
+  "description": "Portfolio and Bloggiong Website for Snehil",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srshah27/srshah27.git"
+  },
+  "author": "Snehil Shah (https://srshah.me/)",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
