@@ -1,5 +1,6 @@
 import '@/styles/globals.tail.css'
 import localFont from 'next/font/local'
+import Script from 'next/script'
 
 const cabinet = localFont({
   src: '../public/fonts/cabinet/CabinetGrotesk-Variable.woff2',
@@ -18,10 +19,25 @@ const sans = localFont({
 
 export default function App({ Component, pageProps }) {
   return (
-    <main
-      className={`${supreme.variable} ${cabinet.variable} ${sans.className}`}
-    >
-      <Component {...pageProps} />
-    </main>
+    <>
+      <Script
+        strategy='lazyOnload'
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+      />
+      <Script id='google-analytics-script' strategy='lazyOnload'>
+        {` 
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          
+          gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+        `}
+      </Script>
+      <main
+        className={`${supreme.variable} ${cabinet.variable} ${sans.className}`}
+      >
+        <Component {...pageProps} />
+      </main>
+    </>
   )
 }
