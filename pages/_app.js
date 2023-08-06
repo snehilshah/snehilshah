@@ -38,19 +38,18 @@ export default function App({ Component, pageProps }) {
         <meta property='og:locale' content='en_IN' />
         <link rel='icon' href='/favicon.ico' sizes='any' />
       </Head>
-      <Script
-        strategy='lazyOnload'
+      <script
+        async
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
       />
-      <Script id='google-analytics-script' strategy='lazyOnload'>
+      <script id='google-analytics-script'>
         {` 
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          
-          gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());      
+        gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
         `}
-      </Script>
+      </script>
       <main
         className={`${supreme.variable} ${cabinet.variable} ${sans.className}`}
       >
