@@ -29,14 +29,14 @@ export default function App({ Component, pageProps }) {
         <meta charSet='UTF-8' />
         <meta
           name='keywords'
-          content='Snehil Shah, Snehil, Shah, Snehil Shah Portfolio, Snehil Shah Website, Snehil Shah Developer, Snehil Shah Engineer, Snehil Shah Programmer, Snehil Shah Full Stack Developer'
+          content='Snehil Shah, Snehil, Portfolio, Engineer, Web Developer'
         />
         <meta name='author' content='Snehil, Snehil Shah, Shah' />
         <meta property='og:url' content='https://srshah.me' />
         <meta property='og:site_name' content='Snehil' />
         <meta property='og:type' content='website' />
         <meta property='og:locale' content='en_IN' />
-        <link rel='icon' href='/favicon.ico' sizes='any' />
+        <link rel='icon' href='/SRfavicon.ico' />
       </Head>
       <script
         async
