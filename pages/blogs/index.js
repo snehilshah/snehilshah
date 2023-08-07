@@ -21,11 +21,11 @@ function blogs({ posts }) {
         />
         <meta
           name='image'
-          content='https://raw.githubusercontent.com/srshah27/srshah27/master/public/SnehilImage.jpg?token=GHSAT0AAAAAACD2NHDQ63AMHPRFZKQU6XAMZGO2G2A'
+          content='https://www.srshah.me/SnehilImage3x.jpg'
         />
         <meta
           property='og:image'
-          content='https://raw.githubusercontent.com/srshah27/srshah27/master/public/SnehilImage.jpg?token=GHSAT0AAAAAACD2NHDQ63AMHPRFZKQU6XAMZGO2G2A'
+          content='https://www.srshah.me/SnehilImage3x.jpg'
         />
       </Head>
 
