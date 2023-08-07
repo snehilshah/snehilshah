@@ -19,7 +19,7 @@ export default function Home() {
         <meta name='description' content='Portfolio Website for Snehil Shah' />
         <meta
           name='image'
-          content='https://raw.githubusercontent.com/srshah27/srshah27/master/public/SnehilImage.jpg?token=GHSAT0AAAAAACD2NHDQ63AMHPRFZKQU6XAMZGO2G2A'
+          content='https://www.srshah.me/SnehilImage3x.jpg'
         />
         <meta property='og:title' content='Snehil Shah | Portfolio' />
         <meta
@@ -28,7 +28,7 @@ export default function Home() {
         />
         <meta
           property='og:image'
-          content='https://raw.githubusercontent.com/srshah27/srshah27/master/public/SnehilImage.jpg?token=GHSAT0AAAAAACD2NHDQ63AMHPRFZKQU6XAMZGO2G2A'
+          content='https://www.srshah.me/SnehilImage3x.jpg'
         />
       </Head>
       <main className=''>
