@@ -1,7 +1,7 @@
 import '@/styles/globals.tail.css'
 import localFont from 'next/font/local'
-import Script from 'next/script'
 import Head from 'next/head'
+import { Analytics } from '@vercel/analytics/react'
 
 const cabinet = localFont({
   src: '../public/fonts/cabinet/CabinetGrotesk-Variable.woff2',
@@ -42,6 +42,7 @@ export default function App({ Component, pageProps }) {
         className={`${supreme.variable} ${cabinet.variable} ${sans.className}`}
       >
         <Component {...pageProps} />
+        <Analytics />
       </main>
     </>
   )
