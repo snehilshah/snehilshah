@@ -25,10 +25,11 @@ const components = {
 }
 
 function PostPage({
-  frontmatter: { title, date, description, header },
+  frontmatter: { title, date, description, header, cover_image },
   slug,
   mdxSource
 }) {
+  let homeLink = 'https://www.srshah.me'
   return (
     <main className='bg-[#dbe1f193]'>
       <Head>
@@ -37,7 +38,7 @@ function PostPage({
         <meta name='description' content={description} />
         <meta property='og:description' content={description} />
         <meta name='image' content={header} />
-        <meta property='og:image' content={header} />
+        <meta property='og:image' content={homeLink + cover_image} />
       </Head>
       <BlogNav />
       <img
