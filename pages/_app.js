@@ -38,18 +38,6 @@ export default function App({ Component, pageProps }) {
         <meta property='og:locale' content='en_IN' />
         <link rel='icon' href='/SRfavicon.ico' />
       </Head>
-      <script
-        async
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-      />
-      <script id='google-analytics-script'>
-        {` 
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());      
-        gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
-        `}
-      </script>
       <main
         className={`${supreme.variable} ${cabinet.variable} ${sans.className}`}
       >
