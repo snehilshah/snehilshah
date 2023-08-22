@@ -1,0 +1,86 @@
+---
+title: 'Package Manager for Windows'
+date: 'Aug 7, 2023'
+cover_image: '/posts/windows/logo.png'
+description: 'Boost Your Windows Experience'
+header: '/posts/windows/header.jpg'
+# header: 'https://source.unsplash.com/GnvurwJsKaY/1920x300'
+---
+
+## The Problem
+
+Windows has being the most used operating system since a long time, Mostly because of its user-friendly interface and extensive software compatibility.
+However, Windows often falls short in delivering the robust and customizable capabilities found in Linux or Mac.
+Linux emerges as a compelling alternative, boasting powerful features, open-source flexibility, and a thriving community-driven ecosystem that helps to the needs of both novice users and seasoned professionals.
+One such feature is the **package manager** like `apt` or `yum`.
+
+## The Solution
+
+Windows still has some great features that can help you to boost your productivity and make your experience better.
+Today we will look at <Standout text='Winget' /> features that are not very well known but can help you to boost your experience.
+
+### Overwiew
+
+You must be familiar with the **package managers** like `apt` or `yum` in Linux,
+or the package managers like `pip` or `npm` in Python and Node which come pre-installed.
+
+Winget is the client interface to the **Windows Package Manager** service. The winget command line tool enables users to discover, install, upgrade, remove and configure applications on Windows 10 and Windows 11 computers.
+
+#### What does this mean for you?
+
+You no longer need to manually search online for setup files or worry about downloading and storing them locally yourself. Winget automates these processes, making software installation a breeze.
+
+<StyleBox>
+  Winget fetches the necessary files from trusted sources and is even
+  recommended by <br /> <b>Microsoft</b>
+</StyleBox>
+
+#### How to use it?
+
+I will demostrate the installation of `notepad++` using winget.
+
+- Searching for app
+  The command for searching is:
+
+  ```bash
+  winget search <appname>
+  ```
+
+  Hence I will search for notepad++ using:
+
+  ```bash
+  winget search notepad++
+  ```
+
+  <ImageBox link='/posts/windows/winget_search.png' text='winget search' />
+
+- Installing app
+  The command for installing is:
+  ```bash
+  winget install <appname>
+  ```
+  <ImageBox link='/posts/windows/winget_install.png' text='winget install' />
+  <InfoBox text='You can also use the unique ID under the `id` column in case 2 apps have same name' />
+- Updating app
+  Just run the following command to see all the apps available for update even the ones not installed using winget:
+
+  ```bash
+  winget upgrade
+  ```
+
+  <ImageBox link='/posts/windows/winget_upgrade.png' text='winget upgrade' />
+
+  To update a specific app use:
+
+  ```bash
+  winget upgrade <appname>
+  ```
+
+### Conclusion
+
+Here we tackled the problem of installing and updating apps on windows. We used winget to automate the process and make it easier. Hence, we can use more time towards productivity.
+
+<ImageBox link='/posts/windows/wingetSoftwares.png' text='My Softwares Folder' />
+
+No more searching for setup fils locally, I personally have faced this problem. I used to download setup files and store them locally. But now I can just use winget to install and update apps.
+Below you can see how I managed my files which was eating away almost 9GB of my disk space. Now I just use <Standout text='winget' /> 🙂
