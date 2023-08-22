@@ -38,18 +38,19 @@ export const ImageBox = ({ link, text = '' }) => {
       <img
         src={link}
         className='rounded-xl mx-auto outline outline-sky-400 mb-3'
+        alt='text'
       />
       <p className='text-center mt-0'>{text}</p>
     </div>
   )
 }
 
-export const StyleBox = ({ text }) => {
+export const StyleBox = props => {
   return (
     <>
       <div id={clsx(styles.content)}>
         <div id={clsx(styles.blurer)}>
-            <p className='z-50 text-center'>{text}</p>
+          <div className='z-50 text-center'>{props.children}</div>
         </div>
         <div className={clsx(styles.blob)}></div>
         <div className={clsx(styles.blob)}></div>
