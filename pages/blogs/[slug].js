@@ -37,7 +37,7 @@ function PostPage({
         <meta property='og:title' content={title} />
         <meta name='description' content={description} />
         <meta property='og:description' content={description} />
-        <meta name='image' content={header} />
+        <meta name='image' content={homeLink + cover_image} />
         <meta property='og:image' content={homeLink + cover_image} />
       </Head>
       <BlogNav />
