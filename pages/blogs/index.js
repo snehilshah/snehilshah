@@ -19,10 +19,7 @@ function blogs({ posts }) {
           property='og:description'
           content='Blogging Website for Snehil Shah'
         />
-        <meta
-          name='image'
-          content='https://www.srshah.me/SnehilImage3x.jpg'
-        />
+        <meta name='image' content='https://www.srshah.me/SnehilImage3x.jpg' />
         <meta
           property='og:image'
           content='https://www.srshah.me/SnehilImage3x.jpg'
@@ -66,11 +63,9 @@ function blogs({ posts }) {
 export async function getStaticProps() {
   // get the files with from the directory posts
   const files = fs.readdirSync(path.join('posts'))
-  console.log('Slugs:')
   const posts = files.map(filename => {
     // remove the .md file extension
     const slugs = filename.replace('.mdx', '')
-    console.info(slugs)
     // Get frontmatter
     const markdownWithMeta = fs.readFileSync(
       path.join('posts', filename),
@@ -78,11 +73,13 @@ export async function getStaticProps() {
     )
 
     const { data: frontmatter } = matter(markdownWithMeta)
-
     return {
       slug: slugs,
       frontmatter
     }
+  })
+  posts.sort((a, b) => {
+    return new Date(b.frontmatter.date) - new Date(a.frontmatter.date)
   })
   return {
     props: {
