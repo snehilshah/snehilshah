@@ -18,7 +18,7 @@ export const InfoBox = ({ text }) => {
   return (
     <div className='bg-sky-700 rounded-xl text-white mb-6 px-3 py-2 flex items-center gap-4'>
       <AiFillInfoCircle size={30} />
-      {text}
+      <span className='text-center w-full'>{text}</span>
     </div>
   )
 }
