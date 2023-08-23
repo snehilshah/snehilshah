@@ -9,10 +9,15 @@ header: '/posts/windows/header.jpg'
 
 ## The Problem
 
-Windows has being the most used operating system since a long time, Mostly because of its user-friendly interface and extensive software compatibility.
-However, Windows often falls short in delivering the robust and customizable capabilities found in Linux or Mac.
-Linux emerges as a compelling alternative, boasting powerful features, open-source flexibility, and a thriving community-driven ecosystem that helps to the needs of both novice users and seasoned professionals.
-One such feature is the **package manager** like `apt` or `yum`.
+Searching for setup files locally, I personally have faced this problem. I used to download setup files and store them locally. But now I can just use winget to install and update apps.
+Below you can see how I used to manage my files which was eating away almost 9GB of my disk space. Now I just use <Standout text='winget' /> 🙂
+
+<ImageBox
+  link='/posts/windows/wingetSoftwares.png'
+  text='My Softwares Folder'
+/>
+
+Here we tackled the problem of installing and updating apps on windows. We will use winget to automate the process and make it easier. Hence, we can use more time towards productivity.
 
 ## The Solution
 
@@ -39,7 +44,8 @@ You no longer need to manually search online for setup files or worry about down
 
 I will demostrate the installation of `notepad++` using winget.
 
-- Searching for app
+- **Searching for app**
+
   The command for searching is:
 
   ```bash
@@ -54,14 +60,19 @@ I will demostrate the installation of `notepad++` using winget.
 
   <ImageBox link='/posts/windows/winget_search.png' text='winget search' />
 
-- Installing app
+- **Installing app**
+
   The command for installing is:
+
   ```bash
   winget install <appname>
   ```
+
   <ImageBox link='/posts/windows/winget_install.png' text='winget install' />
   <InfoBox text='You can also use the unique ID under the `id` column in case 2 apps have same name' />
-- Updating app
+
+- **Updating app**
+
   Just run the following command to see all the apps available for update even the ones not installed using winget:
 
   ```bash
@@ -78,9 +89,7 @@ I will demostrate the installation of `notepad++` using winget.
 
 ### Conclusion
 
-Here we tackled the problem of installing and updating apps on windows. We used winget to automate the process and make it easier. Hence, we can use more time towards productivity.
-
-<ImageBox link='/posts/windows/wingetSoftwares.png' text='My Softwares Folder' />
-
-No more searching for setup fils locally, I personally have faced this problem. I used to download setup files and store them locally. But now I can just use winget to install and update apps.
-Below you can see how I managed my files which was eating away almost 9GB of my disk space. Now I just use <Standout text='winget' /> 🙂
+Windows has being the most used operating system since a long time, Mostly because of its user-friendly interface and extensive software compatibility.
+However, Windows often falls short in delivering the robust and customizable capabilities found in Linux or Mac.
+Linux emerges as a compelling alternative, boasting powerful features, open-source flexibility, and a thriving community-driven ecosystem that helps to the needs of both novice users and seasoned professionals.
+One such feature is the **package manager** like `apt` or `yum`.
