@@ -65,7 +65,7 @@ export default function Navbar() {
   const VerticalNavList = ({ title, url }) => {
     return (
       <motion.li
-        className='px-4 uppercase py-6 text-4xl cursor-pointer'
+        className='uppercase py-6 text-4xl cursor-pointer'
         variants={{
           open: {
             y: 0,

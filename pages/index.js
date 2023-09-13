@@ -12,15 +12,13 @@ import Navbar from '@/components/Index/Navbar'
 import Head from 'next/head'
 
 export default function Home() {
+  
   return (
     <>
       <Head>
         <title>Snehil Shah | Portfolio</title>
         <meta name='description' content='Portfolio Website for Snehil Shah' />
-        <meta
-          name='image'
-          content='https://www.srshah.me/SnehilImage3x.jpg'
-        />
+        <meta name='image' content='https://www.srshah.me/SnehilImage3x.jpg' />
         <meta property='og:title' content='Snehil Shah | Portfolio' />
         <meta
           property='og:description'
