@@ -9,7 +9,7 @@ export const ErrorBox = ({ text }) => {
   return (
     <div className='bg-rose-700 rounded-xl text-white mb-6 px-3 py-2 flex items-center gap-4'>
       <BiErrorAlt size={30} />
-      {text}
+      <span className='text-center w-full'>{text}</span>
     </div>
   )
 }
@@ -27,7 +27,7 @@ export const WarningBox = ({ text }) => {
   return (
     <div className='bg-amber-500 rounded-xl text-white mb-6 px-3 py-2 flex items-center gap-4'>
       <AiOutlineWarning size={30} />
-      {text}
+      <span className='text-center w-full'>{text}</span>
     </div>
   )
 }
