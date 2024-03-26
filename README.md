@@ -1,7 +1,9 @@
 <h1 align="center">Hello World 👋🏻, I'm Snehil Shah</h1></br>
 
 <p align="center">I'm a tech enthusiast ⚡</p>
-<p align="center">I love to talk about latest bleeding technologies on my [blogs](https://www.srshah.me/blogs)🚀</p>
+<p align="center">
+I love to talk about latest bleeding technologies on my <a href="https://www.srshah.me/blogs" target="_blank">blogs</a>🚀
+</p>
 <p align="center">
  <a href="https://srshah.me" target="_blank"><img alt="" src="https://img.shields.io/badge/Portfolio-000?logo=archlinux&logoColor=0d9488&style=for-the-badge" style="vertical-align:center" /></a>
 <a href="https://linkedin.com/in/VishwaGauravIn" target="_blank"><img alt="" src="https://img.shields.io/badge/LinkedIn-000?logo=linkedin&logoColor=0A66C2&style=for-the-badge" style="vertical-align:center" /></a>
