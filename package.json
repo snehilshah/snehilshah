@@ -2,16 +2,12 @@
   "name": "srshah27",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": "18",
-    "npm": "9"
-  },
   "description": "Portfolio and Bloggiong Website for Snehil",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/srshah27/srshah27.git"
   },
-  "author": "Snehil Shah (https://srshah.me/)",
+  "author": "Snehil Shah (https://srshah27.vercel.app/)",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -21,25 +17,25 @@
     "eslint": "eslint . --report-unused-disable-directives"
   },
   "dependencies": {
-    "@vercel/analytics": "^1.0.1",
-    "autoprefixer": "10.4.14",
-    "clsx": "^2.0.0",
-    "eslint": "8.43.0",
-    "eslint-config-next": "^12.0.4",
-    "framer-motion": "^10.16.2",
+    "@vercel/analytics": "^1.3.1",
+    "autoprefixer": "10.4.20",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.11.7",
     "gray-matter": "^4.0.3",
-    "next": "^13.5.6",
+    "next": "^14.2.15",
     "next-mdx-remote": "^4.4.1",
-    "postcss": "^8.4.31",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-icons": "^4.10.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.3.0",
     "react-syntax-highlighter": "^15.5.0",
-    "react-vertical-timeline-component": "^3.6.0",
-    "tailwindcss": "3.3.3"
+    "react-vertical-timeline-component": "^3.6.0"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.9",
-    "prettier": "2.8.8"
+    "@tailwindcss/typography": "^0.5.15",
+    "eslint": "^9.12.0",
+    "eslint-config-next": "14.2.15",
+    "postcss": "^8.4.47",
+    "prettier": "3.3.3",
+    "tailwindcss": "^3.4.13"
   }
 }
