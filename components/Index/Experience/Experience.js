@@ -2,47 +2,43 @@ import Image from 'next/image'
 import clsx from 'clsx'
 import Heading from '../Heading'
 
-const Experience = () => {
+export default function TechStack() {
   const technologies = [
     {
-      title: 'React',
-      source: '/domains/react.png',
-      style: 'shadow-teal-500 '
+      title: 'Golang',
+      source: '/domains/golangcrop.png',
+      style: 'shadow-teal-400 bg-teal-400/20'
     },
     {
       title: 'Database',
-      source: '/domains/sqlServer.png',
-      style: 'shadow-blue-500 '
+      source: '/domains/clouddatabase.png',
+      style: 'shadow-fuchsia-500 bg-fuchsia-400/20'
     },
     {
       title: 'Next.js',
       source: '/domains/Next.png',
-      style: 'shadow-stone-400'
+      style: 'shadow-white bg-stone-500/20'
     },
     {
       title: 'Python',
-      source: '/domains/python.png',
-      style: 'shadow-yellow-500 '
+      source: '/domains/pythonlogo.png',
+      style: 'shadow-amber-500 bg-amber-400/20'
     },
     {
-      title: 'AIML',
-      source: '/domains/chip.png',
-      style: 'shadow-purple-500 '
+      title: 'gRPC',
+      source: '/domains/grpc.png',
+      style: 'shadow-lime-500 bg-lime-400/20'
     },
     {
-      title: 'TensorFlow',
-      source: '/domains/tensorflow.png',
-      style: 'shadow-orange-500 '
+      title: 'Kubernetes',
+      source: '/domains/kuber.png',
+      style: 'shadow-sky-500 bg-sky-500/20'
     }
   ]
   return (
     <div className='section' id='experience'>
       <div className='w-full max-w-screen-xl mx-auto text-white'>
-        <Heading
-          title={'Tech Stack'}
-          details={'Tech I have worked Upon'}
-          className='lmao'
-        />
+        <Heading title={'Tech Stack'} details={'Tech I have worked Upon'} />
       </div>
       <div className='max-w-screen-lg mx-auto p-4 flex flex-col justify-center w-full h-full text-white'>
         <div
@@ -55,17 +51,19 @@ const Experience = () => {
               <div
                 key={index}
                 className={clsx(
-                  'shadow-md hover:scale-105 duration-500 p-8 rounded-lg bg-stone-700/60 ' +
+                  'shadow-md hover:scale-105 duration-500 p-8 rounded-lg h-48 ' +
                     style
                 )}
               >
-                <Image
-                  src={source}
-                  alt={title + ' logo'}
-                  className='w-20 mx-auto'
-                  width={512}
-                  height={512}
-                />
+                <div className='h-[80%] flex items-center w-full'>
+                  <Image
+                    src={source}
+                    alt={title + ' logo'}
+                    className='w-20 mx-auto'
+                    width={512}
+                    height={512}
+                  />
+                </div>
                 <p className='mt-4'>{title}</p>
               </div>
             )
@@ -75,5 +73,3 @@ const Experience = () => {
     </div>
   )
 }
-
-export default Experience

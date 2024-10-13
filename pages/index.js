@@ -4,7 +4,7 @@ import BGGrid from '@/components/Index/BGGrid'
 import HeroSection from '@/components/Index/Hero/HeroSection'
 import SocialBar from '@/components/Index/SocialBar'
 import About from '@/components/Index/About/About'
-import Experience from '@/components/Index/Experience/Experience'
+import TechStack from '@/components/Index/Experience/Experience'
 import Projects from '@/components/Index/Projects/Projects'
 import Timeline from '@/components/Index/Timeline/Timeline'
 import Footer from '@/components/Index/Footer/Footer'
@@ -36,7 +36,7 @@ export default function Home() {
         <HeroSection />
         <SocialBar />
         <About />
-        <Experience />
+        <TechStack />
         <Projects />
         <Timeline />
         <Footer />
