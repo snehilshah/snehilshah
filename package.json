@@ -1,13 +1,13 @@
 {
-  "name": "srshah27",
+  "name": "snehilshah",
   "version": "0.1.0",
   "private": true,
   "description": "Portfolio and Bloggiong Website for Snehil",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/srshah27/srshah27.git"
+    "url": "git+https://github.com/snehilshah/snehilshah.git"
   },
-  "author": "Snehil Shah (https://srshah27.vercel.app/)",
+  "author": "Snehil Shah (https://snehilshah.vercel.app/)",
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build",
