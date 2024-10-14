@@ -17,7 +17,7 @@ export default function Home() {
       <Head>
         <title>Snehil Shah | Portfolio</title>
         <meta name='description' content='Portfolio Website for Snehil Shah' />
-        <meta name='image' content='https://www.srshah.me/SnehilImage3x.jpg' />
+        <meta name='image' content='https://www.snehilshah.com/SnehilImage3x.jpg' />
         <meta property='og:title' content='Snehil Shah | Portfolio' />
         <meta
           property='og:description'
@@ -25,7 +25,7 @@ export default function Home() {
         />
         <meta
           property='og:image'
-          content='https://www.srshah.me/SnehilImage3x.jpg'
+          content='https://www.snehilshah.com/SnehilImage3x.jpg'
         />
       </Head>
       <main className=''>

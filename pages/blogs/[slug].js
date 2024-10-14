@@ -29,7 +29,7 @@ function PostPage({
   slug,
   mdxSource
 }) {
-  let homeLink = 'https://www.srshah.me'
+  let homeLink = 'https://www.snehilshah.com'
   return (
     <main className='bg-[#dbe1f193]'>
       <Head>

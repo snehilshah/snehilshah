@@ -32,7 +32,7 @@ export default function App({ Component, pageProps }) {
           content='Snehil Shah, Snehil, Portfolio, Engineer, Web Developer'
         />
         <meta name='author' content='Snehil, Snehil Shah, Shah' />
-        <meta property='og:url' content='https://srshah.me' />
+        <meta property='og:url' content='https://snehilshah.com' />
         <meta property='og:site_name' content='Snehil' />
         <meta property='og:type' content='website' />
         <meta property='og:locale' content='en_IN' />
