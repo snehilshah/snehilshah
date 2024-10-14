@@ -19,10 +19,10 @@ function blogs({ posts }) {
           property='og:description'
           content='Blogging Website for Snehil Shah'
         />
-        <meta name='image' content='https://www.srshah.me/SnehilImage3x.jpg' />
+        <meta name='image' content='https://www.snehilshah.com/SnehilImage3x.jpg' />
         <meta
           property='og:image'
-          content='https://www.srshah.me/SnehilImage3x.jpg'
+          content='https://www.snehilshah.com/SnehilImage3x.jpg'
         />
       </Head>
 

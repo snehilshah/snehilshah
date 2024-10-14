@@ -17,7 +17,7 @@ const SocialBar = () => {
       id: 2,
       icon: <FaGithub className='text-2xl' />,
       text: 'Github',
-      href: 'https://github.com/srshah27'
+      href: 'https://github.com/snehilshah'
     },
     {
       id: 3,
