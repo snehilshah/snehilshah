@@ -1,3 +1,4 @@
+'use client'
 import { useRef } from 'react'
 import Heading from '../Heading'
 import StockScreen from '../../../public/projects/stockscreen.webp'
