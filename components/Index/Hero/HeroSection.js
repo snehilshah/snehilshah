@@ -17,14 +17,14 @@ const HeroText = () => {
 
 const HeroSubtile = () => {
   return (
-    <div id='home' className='relative lg:right-24 mt-8 font-light min-w-[240px] md:-rotate-90 md:mb-48 md:mr-24'>
-      <h2 className='text-stone-300 font-supreme md:text-3xl'>
+    <div id='home' className='font-prsans relative lg:right-24 mt-8 font-light min-w-[240px] md:-rotate-90 md:mb-48 md:mr-24'>
+      <h2 className='text-stone-300 md:text-3xl'>
         Coding Enthusiast
       </h2>
-      <h2 className='text-stone-300 font-supreme md:text-3xl'>
+      <h2 className='text-stone-300 md:text-3xl'>
         Pursuing AI & ML
       </h2>
-      <h2 className='text-stone-300 font-supreme md:text-3xl'>Web Developer</h2>
+      <h2 className='text-stone-300 md:text-3xl'>Web Developer</h2>
     </div>
   )
 }

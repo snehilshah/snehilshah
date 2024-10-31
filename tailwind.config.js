@@ -9,7 +9,7 @@ const config = {
     extend: {
       fontFamily: {
         supreme: ['var(--font-supreme)'],
-        cabinet: ['var(--font-cabinet)']
+        prsans: ['var(--font-prsans)'],
       },
       borderRadius: {
         lg: 'var(--radius)',
