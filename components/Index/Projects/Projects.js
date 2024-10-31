@@ -10,7 +10,7 @@ import Heart from '../../../public/projects/heart.png'
 import {
   Carousel,
   CarouselContent,
-  CarouselItem, 
+  CarouselItem,
   CarouselNext,
   CarouselPrevious
 } from '../../ui/carousel'
@@ -22,44 +22,43 @@ const projects = [
   {
     title: 'Stock Analysis',
     desc: 'This is the project description',
-    classes: '',
-    bgColor: 'from-amber-600 to-neutral-900',
+    fontStyle: 'text-amber-200',
+    bgColor: 'from-amber-700 to-neutral-900',
     imagePath: StockScreen
   },
   {
     title: 'Agenda Builder',
     desc: 'This is the project description',
-    classes: '',
-    // bgColor: 'from-violet-500 to-pink-500',
-    bgColor: 'from-purple-500 via-pink-500 to-red-500',
+    fontStyle: 'text-rose-200',
+    bgColor: 'from-purple-700 via-pink-700 to-red-700',
     imagePath: AgendaBuilder
   },
   {
     title: 'IDF Balgurukul',
     desc: 'This is the project description',
-    classes: '',
-    bgColor: 'from-blue-600 to-cyan-500',
+    fontStyle: 'text-cyan-200',
+    bgColor: 'from-indigo-700 to-blue-700',
     imagePath: Balgurukul
   },
   {
     title: 'Project Gallery',
     desc: 'This is the project description',
-    classes: 'text-black',
-    bgColor: 'from-white via-neutral-700 to-black text-black',
+    fontStyle: 'text-stone-200',
+    bgColor: 'from-neutral-700 to-stone-900',
     imagePath: ProjectGallery
   },
   {
     title: 'Hyperspectral Image',
     desc: 'This is the project description',
-    classes: 'text-black',
-    bgColor: 'from-green-500 via-teal-500 to-blue-500',
+    fontStyle: 'text-teal-200',
+    bgColor: 'from-green-700 via-teal-700 to-blue-700',
     imagePath: HyperSpectral
   },
   {
     title: 'Portfolio Website',
     desc: 'This is the project description',
-    classes: '',
-    bgColor: 'from-neutral-600 via-neutral-800 to-rose-600',
+    fontStyle: 'text-rose-200',
+    bgColor: 'from-red-700 via-neutral-600 to-neutral-700',
     imagePath: Heart
   }
 ]
@@ -140,7 +139,7 @@ export default function Projects() {
                 desc={item.desc}
                 src={item.imagePath}
                 bgColor={item.bgColor}
-                classes={item.classes}
+                fontStyle={item.fontStyle}
               ></Cards>
             </CarouselItem>
           ))}
