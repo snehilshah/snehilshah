@@ -64,7 +64,7 @@ export default function TechStack() {
                     height={512}
                   />
                 </div>
-                <p className='mt-4'>{title}</p>
+                <p className='mt-4 font-supreme'>{title}</p>
               </div>
             )
           })}
