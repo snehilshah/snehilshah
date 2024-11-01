@@ -55,6 +55,7 @@ function PostPage({
             {description}
           </h2>
         </div>
+        {console.log(mdxSource)}
         <MDXRemote {...mdxSource} components={components} />
       </article>
     </main>

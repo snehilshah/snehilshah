@@ -60,6 +60,11 @@ const config = {
       }
     },
     keyframes: {
+      wave: {
+        '0%': { transform: 'translateY(-30px)' },
+        '50%': { transform: 'translateY(30px)' },
+        '100%': { transform: 'translateY(-30px)' },
+      },
       'background-shine': {
         from: {
           backgroundPosition: '0 0'
@@ -125,6 +130,7 @@ const config = {
       }
     },
     animation: {
+      wave: 'wave 1.5s infinite alternate',
       'logo-cloud': 'logo-cloud 30s linear infinite', // Adjust duration and timing as needed for your design.
       orbit: 'orbit calc(var(--duration)*1s) linear infinite',
       gradient: 'gradient 8s linear infinite',
