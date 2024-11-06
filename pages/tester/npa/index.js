@@ -11,7 +11,7 @@ export default function tester() {
                 <img src='/tester/create.png' alt='Create' />
                 <img src='/tester/macos.jpg' alt='macos' />
                 <img src='/tester/windows.jpg' alt='windows' />
-                <DesignSVG />
+                <img src='/tester/design.svg' alt='svg design' />
             </div>
         </main>
     )
