@@ -1,15 +1,4 @@
-import Loader from '@/components/Index/Loader'
-import Cursor from '@/components/Index/Cursor'
-import BGGrid from '@/components/Index/BGGrid'
-import HeroSection from '@/components/Index/Hero/HeroSection'
-import SocialBar from '@/components/Index/SocialBar'
-import About from '@/components/Index/About/About'
-import TechStack from '@/components/Index/Experience/Experience'
-import Projects from '@/components/Index/Projects/Projects'
-import Timeline from '@/components/Index/Timeline/Timeline'
-import Footer from '@/components/Index/Footer/Footer'
-import Navbar from '@/components/Index/Navbar'
-import Head from 'next/head'
+import Head from "next/head";
 
 export default function Home() {
   return (
@@ -28,18 +17,20 @@ export default function Home() {
           content='https://www.snehilshah.com/SnehilImage3x.jpg'
         />
       </Head>
-      <main className=''>
-        <Navbar />
-        <Loader />
-        <Cursor />
-        <BGGrid />
-        <HeroSection />
-        <SocialBar />
-        <About />
-        <TechStack />
-        <Projects />
-        <Timeline />
-        <Footer />
+      <main id='unique__main'>
+        <div className='main__container'>
+          <h1>Hello, World!!</h1>
+          <div className='unique'>
+            <h2>First Heading2</h2>
+            <h2>Second Heading2</h2>
+          </div>
+        </div>
+        <div>
+          <h2>Third Heading2</h2>
+        </div>
+        <footer>
+          There is only one footer tag in the whole html
+        </footer>
       </main>
     </>
   )
