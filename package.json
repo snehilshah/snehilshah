@@ -1,13 +1,13 @@
 {
   "name": "snehilshah",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "private": false,
   "description": "Portfolio and Bloggiong Website for Snehil",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/snehilshah/snehilshah.git"
   },
-  "author": "Snehil Shah (https://snehilshah.vercel.app/)",
+  "author": "Snehil Shah (https://www.snehilshah.com)",
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build",
@@ -17,32 +17,37 @@
     "eslint": "eslint . --report-unused-disable-directives"
   },
   "dependencies": {
-    "@radix-ui/react-icons": "^1.3.0",
-    "@radix-ui/react-slot": "^1.1.0",
-    "@vercel/analytics": "^1.3.1",
+    "@radix-ui/react-icons": "^1.3.2",
+    "@radix-ui/react-slot": "^1.1.1",
+    "@vercel/analytics": "^1.4.1",
     "autoprefixer": "10.4.20",
-    "class-variance-authority": "^0.7.0",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "embla-carousel-react": "^8.3.0",
-    "framer-motion": "^11.11.7",
+    "embla-carousel-react": "^8.5.2",
+    "framer-motion": "^11.18.2",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.452.0",
-    "next": "^14.2.15",
-    "next-mdx-remote": "^4.4.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-icons": "^5.3.0",
-    "react-syntax-highlighter": "^15.5.0",
+    "next": "^15.1.6",
+    "next-mdx-remote": "^5.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.4.0",
+    "react-syntax-highlighter": "^15.6.1",
     "react-vertical-timeline-component": "^3.6.0",
-    "tailwind-merge": "^2.5.3",
+    "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.15",
-    "eslint": "^9.12.0",
-    "eslint-config-next": "14.2.15",
-    "postcss": "^8.4.47",
+    "@tailwindcss/typography": "^0.5.16",
+    "eslint": "^9.19.0",
+    "eslint-config-next": "^15.1.6",
+    "postcss": "^8.5.1",
     "prettier": "3.3.3",
-    "tailwindcss": "^3.4.13"
+    "tailwindcss": "^3.4.17"
+  },
+  "pnpm": {
+    "overrides": {
+      "react-intersection-observer": "latest"
+    }
   }
 }
