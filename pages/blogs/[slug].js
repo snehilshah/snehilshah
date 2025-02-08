@@ -46,9 +46,9 @@ function PostPage({
         alt={'header_img'}
         className='w-full h-60 object-cover'
       />
-      <article className='max-w-4xl mx-auto p-5 prose rounded-3xl prose-a:text-emerald-500 text-justify'>
+      <article className='max-w-4xl mx-auto p-5 prose-lg rounded-3xl prose-a:text-emerald-500 text-justify'>
         <div className='font-cabinet'>
-          <h1 className='text-5xl mt-10 text-center font-bold mb-0S'>
+          <h1 className='text-5xl mt-10 text-center font-bold mb-10'>
             {title}
           </h1>
           <h2 className='text-xl font-light text-stone-700 mb-2 mt-1 text-center'>
