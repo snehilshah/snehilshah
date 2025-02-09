@@ -1,12 +1,13 @@
+import Image from 'next/image'
 import NavBarLogo from '../SVG/NavbarLogo'
 import Link from 'next/link'
 
 export default function BlogNav() {
   return (
-    <header className='p-4 flex justify-center relative bg-stone-900'>
-      <NavBarLogo />
-      <Link href={'/'}>
-        <button className='text-stone-300 inline-flex items-center bg-stone-500 py-1 px-3 rounded mt-4 md:mt-0 absolute right-5 top-6'>
+    <header className='p-4 flex justify-between items-center relative bg-stone-900'>
+      <Image src={'/SnehilLogo/Slice1.svg'} width={"110"} height={"110"}/>
+      <Link href={'/'} className=''>
+        <button className='text-stone-300 flex items-center bg-stone-500 py-1 px-3 rounded-xl'>
           Portfolio
           <svg
             fill='none'
