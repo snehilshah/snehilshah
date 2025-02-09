@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import fs from 'fs'
 import path from 'path'
 import BlogNav from '@/components/Blog/BlogNav'
@@ -13,6 +14,7 @@ import {
   StyleBox
 } from '@/components/MdxHelpers/Boxes'
 import { Standout } from '@/components/MdxHelpers/Texts'
+import { motion, cubicBezier } from 'framer-motion'
 
 const components = {
   InfoBox,
@@ -24,11 +26,29 @@ const components = {
   StyleBox
 }
 
+const bezierEase = cubicBezier(0.69, 0, 0.21, 1)
+
+const imageVariants = {
+  initial: { scale: 0.8 },
+  animate: {
+    scale: [0.8, 1.7, 1],
+    transition: { duration: 4, ease: bezierEase }
+  },
+  static: {
+    scale: 1,
+    transition: { duration: 0.8, ease: bezierEase }
+  },
+  hover: {
+    scale: 1.2,
+    transition: { duration: 0.8, ease: bezierEase }
+  }
+}
 function PostPage({
   frontmatter: { title, date, description, header, cover_image },
   slug,
   mdxSource
 }) {
+  const [animationComplete, setAnimationComplete] = useState(false)
   let homeLink = 'https://www.snehilshah.com'
   return (
     <main className='bg-[#dbe1f193]'>
@@ -41,12 +61,19 @@ function PostPage({
         <meta property='og:image' content={homeLink + cover_image} />
       </Head>
       <BlogNav />
-      <img
-        src={header}
-        alt={'header_img'}
-        className='w-full h-60 object-cover'
-      />
-      <article className='max-w-4xl mx-auto p-5 prose-lg rounded-3xl prose-a:text-emerald-500 text-justify'>
+      <div className='w-full bg-black h-[30rem] overflow-hidden'>
+        <motion.img
+          src={header}
+          alt={'header_img'}
+          variants={imageVariants}
+          initial='initial'
+          animate={animationComplete ? 'static' : 'animate'}
+          whileHover='hover'
+          onAnimationComplete={() => setAnimationComplete(true)}
+          className='w-full h-[30rem] object-cover rounded-3xl'
+        />
+      </div>
+      <article className='max-w-4xl mx-auto p-5 prose prose-lg rounded-3xl prose-a:text-emerald-500 text-justify'>
         <div className='font-cabinet'>
           <h1 className='text-5xl mt-10 text-center font-bold mb-10'>
             {title}
@@ -86,7 +113,7 @@ export async function getStaticProps({ params: { slug } }) {
     parseFrontmatter: true
   })
 
-  const { frontmatter: frontmatter } = mdxSource
+  const { frontmatter } = mdxSource
 
   return {
     props: {
