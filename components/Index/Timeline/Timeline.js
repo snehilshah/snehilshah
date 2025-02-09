@@ -8,32 +8,33 @@ import { IoBookSharp } from 'react-icons/io5'
 import { BsLaptop } from 'react-icons/bs'
 import { GiMicrophone } from 'react-icons/gi'
 import { AiOutlineFundProjectionScreen } from 'react-icons/ai'
+import { HiOutlineBriefcase } from "react-icons/hi";
 import Heading from '../Heading'
 
 const timelineData = [
   {
-    date: '2021-Present',
-    header: 'Projects Team',
+    date: '2024-Present',
+    header: 'SDE',
+    organization: <a target='_blank' href='https://www.n7.io'>N7</a>,
+    qualities: '',
+    icon: <HiOutlineBriefcase   className='text-stone-700' />
+  },
+  {
+    date: '2022-2024',
+    header: 'Projects Lead',
     organization: 'Research Cell',
     qualities: 'Leadership | Management | Research',
     icon: <AiOutlineFundProjectionScreen className='text-stone-700' />
   },
   {
-    date: '2022-Present',
-    header: 'Literature Reviewer',
-    organization: 'Shah & Anchor Student Council',
-    qualities: 'Documentation | Research',
-    icon: <IoBookSharp className='text-stone-700' />
-  },
-  {
     date: '2021-2023',
     header: 'Website Team',
-    organization: 'Computer Society of India',
+    organization: 'Computer Society of India (CSI)',
     qualities: 'WebDevelopment',
     icon: <BsLaptop className='text-stone-700' />
   },
   {
-    date: '2021-Present',
+    date: '2021-2022',
     header: 'IEEE Event Speaker',
     organization: 'Institute of Electrical and Electronics Engineers',
     qualities: 'Public Speaking | Community Contribution',
