@@ -1,16 +1,12 @@
-import {
-  GitHubLogoIcon,
-  LinkedInLogoIcon,
-  PersonIcon,
-  EnvelopeOpenIcon
-} from '@radix-ui/react-icons'
+import { UserRound, Mail } from 'lucide-react'
+import { GithubLogo, LinkedinLogo } from '@/lib/svg'
 import Link from 'next/link'
 
 const SocialBar = () => {
   const socialLinks = [
     {
       id: 1,
-      icon: <LinkedInLogoIcon className='text-2xl' />,
+      icon: <LinkedinLogo className='text-2xl' />,
 
       text: 'Linkedin',
       href: 'https://www.linkedin.com/in/snehil-shah-7794a9209/',
@@ -18,19 +14,19 @@ const SocialBar = () => {
     },
     {
       id: 2,
-      icon: <GitHubLogoIcon className='text-2xl' />,
+      icon: <GithubLogo className='text-2xl' />,
       text: 'Github',
       href: 'https://github.com/snehilshah'
     },
     {
       id: 3,
-      icon: <EnvelopeOpenIcon className='text-2xl' />,
+      icon: <Mail className='text-2xl' />,
       text: 'Mail',
       href: 'mailto:snehilshah27@gmail.com'
     },
     {
       id: 4,
-      icon: <PersonIcon className='text-2xl' />,
+      icon: <UserRound className='text-2xl' />,
       text: 'Resume',
       href: '/SnehilShahResume.pdf',
       style: 'rounded-bl-lg'
