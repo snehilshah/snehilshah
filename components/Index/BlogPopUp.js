@@ -1,7 +1,7 @@
 import styles from '../../styles/BlogPopUp.module.css'
 import Link from 'next/link'
 import clsx from 'clsx'
-import { AiFillHeart } from 'react-icons/ai'
+import { Heart } from 'lucide-react'
 
 const BlogPopUp = () => {
   return (
@@ -9,7 +9,7 @@ const BlogPopUp = () => {
       <div className={clsx(styles.animate)}>
         <Link href={'/blogs'} className='text-cyan-200'>
           BLOGS
-          <AiFillHeart className='ml-2 mb-1 inline text-cyan-200' />
+          <Heart className='ml-1 mb-1 inline w-4 fill-red-400 text-cyan-200' />
         </Link>
       </div>
     </div>
