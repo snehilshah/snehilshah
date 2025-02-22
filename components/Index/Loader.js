@@ -1,6 +1,5 @@
 import styles from '@/styles/Loader.module.css'
 import clsx from 'clsx'
-import NavBarLogo from '../SVG/NavbarLogo'
 const Loader = () => {
   return (
     <div id={clsx(styles.loader)}>
