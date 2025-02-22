@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaMailBulk, FaPersonBooth } from 'react-icons/fa'
+import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { BsFillPersonVcardFill } from 'react-icons/bs'
 import { AiFillMail } from 'react-icons/ai'
 import Link from 'next/link'

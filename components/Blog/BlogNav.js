@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import NavBarLogo from '../SVG/NavbarLogo'
 import Link from 'next/link'
 
 export default function BlogNav() {
