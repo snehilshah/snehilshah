@@ -2,8 +2,6 @@ import { AiFillInfoCircle, AiOutlineWarning } from 'react-icons/ai'
 import { BiErrorAlt } from 'react-icons/bi'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { nord } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
-import styles from '@/styles/StyleBox.module.css'
-import clsx from 'clsx'
 
 export const ErrorBox = ({ text }) => {
   return (

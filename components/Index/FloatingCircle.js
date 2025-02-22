@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-const FloatingCircle = ({ top, left }) => {
+const FloatingCircle = () => {
   return (
     <div
       className={clsx(
