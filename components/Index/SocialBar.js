@@ -1,13 +1,16 @@
-import { FaGithub, FaLinkedin } from 'react-icons/fa'
-import { BsFillPersonVcardFill } from 'react-icons/bs'
-import { AiFillMail } from 'react-icons/ai'
+import {
+  GitHubLogoIcon,
+  LinkedInLogoIcon,
+  PersonIcon,
+  EnvelopeOpenIcon
+} from '@radix-ui/react-icons'
 import Link from 'next/link'
 
 const SocialBar = () => {
   const socialLinks = [
     {
       id: 1,
-      icon: <FaLinkedin className='text-2xl' />,
+      icon: <LinkedInLogoIcon className='text-2xl' />,
 
       text: 'Linkedin',
       href: 'https://www.linkedin.com/in/snehil-shah-7794a9209/',
@@ -15,19 +18,19 @@ const SocialBar = () => {
     },
     {
       id: 2,
-      icon: <FaGithub className='text-2xl' />,
+      icon: <GitHubLogoIcon className='text-2xl' />,
       text: 'Github',
       href: 'https://github.com/snehilshah'
     },
     {
       id: 3,
-      icon: <AiFillMail className='text-2xl' />,
+      icon: <EnvelopeOpenIcon className='text-2xl' />,
       text: 'Mail',
       href: 'mailto:snehilshah27@gmail.com'
     },
     {
       id: 4,
-      icon: <BsFillPersonVcardFill className='text-2xl' />,
+      icon: <PersonIcon className='text-2xl' />,
       text: 'Resume',
       href: '/SnehilShahResume.pdf',
       style: 'rounded-bl-lg'

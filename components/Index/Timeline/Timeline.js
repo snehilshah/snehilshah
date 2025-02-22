@@ -3,10 +3,7 @@ import {
   VerticalTimelineElement
 } from 'react-vertical-timeline-component'
 import 'react-vertical-timeline-component/style.min.css'
-import { BsLaptop } from 'react-icons/bs'
-import { GiMicrophone } from 'react-icons/gi'
-import { AiOutlineFundProjectionScreen } from 'react-icons/ai'
-import { HiOutlineBriefcase } from 'react-icons/hi'
+import { Laptop, MicVocal, Users, BriefcaseBusiness } from 'lucide-react'
 import Heading from '../Heading'
 
 const timelineData = [
@@ -19,28 +16,28 @@ const timelineData = [
       </a>
     ),
     qualities: '',
-    icon: <HiOutlineBriefcase className='text-stone-700' />
+    icon: <BriefcaseBusiness className='text-stone-700' />
   },
   {
     date: '2022-2024',
     header: 'Projects Lead',
     organization: 'Research Cell',
     qualities: 'Leadership | Management | Research',
-    icon: <AiOutlineFundProjectionScreen className='text-stone-700' />
+    icon: <Users className='text-stone-700' />
   },
   {
     date: '2021-2023',
     header: 'Website Team',
     organization: 'Computer Society of India (CSI)',
     qualities: 'WebDevelopment',
-    icon: <BsLaptop className='text-stone-700' />
+    icon: <Laptop color='#000000' className='text-stone-700' />
   },
   {
     date: '2021-2022',
     header: 'IEEE Event Speaker',
     organization: 'Institute of Electrical and Electronics Engineers',
     qualities: 'Public Speaking | Community Contribution',
-    icon: <GiMicrophone className='text-stone-700' />
+    icon: <MicVocal className='text-stone-700' />
   }
 ]
 
