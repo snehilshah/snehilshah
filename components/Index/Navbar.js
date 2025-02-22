@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import NavBarLogo from '../SVG/NavbarLogo'
+import { NavbarLogo } from '@/lib/svg'
 import Link from 'next/link'
 
 export default function Navbar() {
@@ -29,7 +29,7 @@ export default function Navbar() {
     {
       title: 'blogs',
       to: '/'
-    },
+    }
   ]
 
   const [mobileNav, setMobileNav] = useState(false)
@@ -102,7 +102,7 @@ export default function Navbar() {
     <nav id='nav' className='fixed w-full duration-700 shadow-2xl z-50'>
       <div className='flex justify-between items-center w-full h-20 bg-stone-950 text-white px-4'>
         <div className='ml-2 pb-1'>
-          <NavBarLogo />
+          <NavbarLogo />
         </div>
         <ul className='hidden md:flex'>
           {links.map((link, index) => {
