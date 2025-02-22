@@ -44,8 +44,7 @@ const imageVariants = {
   }
 }
 function PostPage({
-  frontmatter: { title, date, description, header, cover_image },
-  slug,
+  frontmatter: { title, description, header, cover_image },
   mdxSource
 }) {
   const [animationComplete, setAnimationComplete] = useState(false)

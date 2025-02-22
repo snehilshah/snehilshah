@@ -1,7 +1,3 @@
-import { BsFillRocketTakeoffFill } from 'react-icons/bs'
-import Heading from '../Heading'
-import Wave from '../../../public/footerBg/Vector.svg'
-import Image from 'next/image'
 function Footer() {
   return (
     <section className='mt-40 mb-8'>

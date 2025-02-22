@@ -1,4 +1,4 @@
-const GridChild = ({ children }) => {
+const GridChild = () => {
   return (
     <div className='w-px h-screen bg-stone-400 border border-stone-400'>
       <div className='hidden text-[320px] text-stone-700/30 font-cabinet md:flex flex-col mt-24 font-bold'>

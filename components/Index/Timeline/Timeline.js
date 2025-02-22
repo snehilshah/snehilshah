@@ -3,21 +3,23 @@ import {
   VerticalTimelineElement
 } from 'react-vertical-timeline-component'
 import 'react-vertical-timeline-component/style.min.css'
-import { FaGraduationCap } from 'react-icons/fa'
-import { IoBookSharp } from 'react-icons/io5'
 import { BsLaptop } from 'react-icons/bs'
 import { GiMicrophone } from 'react-icons/gi'
 import { AiOutlineFundProjectionScreen } from 'react-icons/ai'
-import { HiOutlineBriefcase } from "react-icons/hi";
+import { HiOutlineBriefcase } from 'react-icons/hi'
 import Heading from '../Heading'
 
 const timelineData = [
   {
     date: '2024-Present',
     header: 'SDE',
-    organization: <a target='_blank' href='https://www.n7.io'>N7</a>,
+    organization: (
+      <a target='_blank' href='https://www.n7.io'>
+        N7
+      </a>
+    ),
     qualities: '',
-    icon: <HiOutlineBriefcase   className='text-stone-700' />
+    icon: <HiOutlineBriefcase className='text-stone-700' />
   },
   {
     date: '2022-2024',
