@@ -1,12 +1,11 @@
-import { AiFillInfoCircle, AiOutlineWarning } from 'react-icons/ai'
-import { BiErrorAlt } from 'react-icons/bi'
+import { Info, CircleAlert, OctagonX } from 'lucide-react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { nord } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 
 export const ErrorBox = ({ text }) => {
   return (
     <div className='bg-rose-700 rounded-xl text-white mb-6 px-3 py-2 flex items-center gap-4'>
-      <BiErrorAlt size={30} />
+      <OctagonX size={30} />
       <span className='text-center w-full'>{text}</span>
     </div>
   )
@@ -15,7 +14,7 @@ export const ErrorBox = ({ text }) => {
 export const InfoBox = ({ text }) => {
   return (
     <div className='bg-sky-700 rounded-xl text-white mb-6 px-3 py-2 flex items-center gap-4'>
-      <AiFillInfoCircle size={30} />
+      <Info size={30} />
       <span className='text-center w-full'>{text}</span>
     </div>
   )
@@ -24,7 +23,7 @@ export const InfoBox = ({ text }) => {
 export const WarningBox = ({ text }) => {
   return (
     <div className='bg-amber-500 rounded-xl text-white mb-6 px-3 py-2 flex items-center gap-4'>
-      <AiOutlineWarning size={30} />
+      <CircleAlert size={30} />
       <span className='text-center w-full'>{text}</span>
     </div>
   )
