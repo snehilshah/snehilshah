@@ -6,7 +6,6 @@ import Link from 'next/link'
 import BlogHero from '@/components/Blog/BlogHero'
 import BlogBGGrid from '@/components/Blog/BlogBGGrid'
 import Head from 'next/head'
-// import Image from 'next/image'
 
 function blogs({ posts }) {
   return (
@@ -19,7 +18,10 @@ function blogs({ posts }) {
           property='og:description'
           content='Blogging Website for Snehil Shah'
         />
-        <meta name='image' content='https://www.snehilshah.com/SnehilImage3x.jpg' />
+        <meta
+          name='image'
+          content='https://www.snehilshah.com/SnehilImage3x.jpg'
+        />
         <meta
           property='og:image'
           content='https://www.snehilshah.com/SnehilImage3x.jpg'
