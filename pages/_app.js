@@ -2,6 +2,26 @@ import '@/styles/globals.tail.css'
 import Head from 'next/head'
 import { Analytics } from '@vercel/analytics/react'
 
+const cabinet = localFont({
+  src: '../public/fonts/cabinet/CabinetGrotesk-Variable.woff2',
+  variable: '--font-cabinet'
+})
+
+const copernicus = localFont({
+  src: '../public/fonts/corp/copernicus.ttf',
+  variable: '--font-copernicus'
+})
+
+const supreme = localFont({
+  src: '../public/fonts/supreme/Supreme-Variable.woff2',
+  variable: '--font-supreme'
+})
+
+const product = localFont({
+  src: '../public/fonts/productSans/ProductSans-Regular.ttf',
+  variable: '--font-product'
+})
+
 export default function App({ Component, pageProps }) {
   return (
     <>
@@ -22,7 +42,9 @@ export default function App({ Component, pageProps }) {
         <meta property='og:locale' content='en_IN' />
         <link rel='icon' href='/SRfavicon.ico' />
       </Head>
-      <main>
+      <main
+        className={`${supreme.variable} ${cabinet.variable} ${copernicus.variable} ${product.variable}`}
+      >
         <Component {...pageProps} />
         <Analytics />
       </main>

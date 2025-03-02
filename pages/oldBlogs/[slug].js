@@ -50,7 +50,7 @@ function PostPage({
   const [animationComplete, setAnimationComplete] = useState(false)
   let homeLink = 'https://www.snehilshah.com'
   return (
-    <main className='bg-[#dbe1f193]'>
+    <main className='bg-[#FFF0DF]'>
       <Head>
         <title>{title}</title>
         <meta property='og:title' content={title} />
@@ -72,16 +72,14 @@ function PostPage({
           className='w-full h-[30rem] object-cover rounded-3xl'
         />
       </div>
-      <article className='max-w-4xl mx-auto p-5 prose prose-lg rounded-3xl prose-a:text-emerald-500 text-justify'>
-        <div className='font-cabinet'>
-          <h1 className='text-5xl mt-10 text-center font-bold mb-10'>
-            {title}
-          </h1>
-          <h2 className='text-xl font-light text-stone-700 mb-2 mt-1 text-center'>
-            {description}
-          </h2>
-        </div>
-        {console.log(mdxSource)}
+      <article className='font-copernicus max-w-4xl mx-auto p-5 prose prose-base md:prose-lg prose-colorful prose-a:text-[#21516F] prose-ul:text-[#59321A] text-justify'>
+        <h1 className='text-2xl md:text-4xl mt-10 text-center font-bold mb-4 bg-gradient-to-r text-[#59321A]'>
+          {title}
+        </h1>
+        <hr className='w-24 h-1 bg-[#59321A] mx-auto my-4 border-0' />
+        <h2 className='text-base md:text-xl font-light mb-8 mt-1 text-center italic text-[#4f2b15]'>
+          {description}
+        </h2>
         <MDXRemote {...mdxSource} components={components} />
       </article>
     </main>
