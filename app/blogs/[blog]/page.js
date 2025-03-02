@@ -12,8 +12,10 @@ import {
   StyleBox
 } from '../mdx-helpers/boxes'
 import { Standout } from '../mdx-helpers/texts'
+import { getFrontMatter } from '@/lib/helpers'
 
 export const dynamicParams = false
+export const dynamic = 'force-static'
 const components = {
   InfoBox,
   ErrorBox,
@@ -26,16 +28,7 @@ const components = {
 
 export async function generateMetadata({ params }) {
   const { blog } = await params
-  const markdownWithMeta = fs.readFileSync(
-    path.join('posts', blog + '.mdx'),
-    'utf-8'
-  )
-
-  const { frontmatter } = await compileMDX({
-    source: markdownWithMeta,
-    options: { parseFrontmatter: true }
-  })
-
+  const frontmatter = getFrontMatter(path.join('posts', blog + '.mdx'))
   const homeLink = 'https://www.snehilshah.com'
 
   return {
