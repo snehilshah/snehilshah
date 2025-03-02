@@ -50,7 +50,7 @@ function PostPage({
   const [animationComplete, setAnimationComplete] = useState(false)
   let homeLink = 'https://www.snehilshah.com'
   return (
-    <main className='bg-[#dbe1f193]'>
+    <main className='bg-[#FFF0DF]'>
       <Head>
         <title>{title}</title>
         <meta property='og:title' content={title} />
@@ -72,12 +72,13 @@ function PostPage({
           className='w-full h-[30rem] object-cover rounded-3xl'
         />
       </div>
-      <article className='max-w-4xl mx-auto p-5 prose prose-lg rounded-3xl prose-a:text-emerald-500 text-justify'>
-        <div className='font-cabinet'>
-          <h1 className='text-5xl mt-10 text-center font-bold mb-10'>
+      <article className='font-copernicus text-[#6f3f21d7] max-w-4xl mx-auto p-5 prose prose-lg prose-a:text-emerald-500 text-justify'>
+        <div className=''>
+          <h1 className='text-4xl mt-10 text-center font-bold mb-4 bg-gradient-to-r from-[#6f3f21d7] to-[#6f3f21d7] text-transparent bg-clip-text'>
             {title}
           </h1>
-          <h2 className='text-xl font-light text-stone-700 mb-2 mt-1 text-center'>
+          <div className='w-24 h-1 bg-emerald-500 mx-auto mb-6'></div>
+          <h2 className='text-xl font-light mb-8 mt-1 text-center italic text-gray-700'>
             {description}
           </h2>
         </div>

@@ -10,7 +10,9 @@ module.exports = {
     extend: {
       fontFamily: {
         supreme: ['var(--font-supreme)'],
-        cabinet: ['var(--font-cabinet)']
+        cabinet: ['var(--font-cabinet)'],
+        product: ['var(--font-product)'],
+        copernicus: ['var(--font-copernicus)']
       },
       borderRadius: {
         lg: 'var(--radius)',

@@ -8,14 +8,19 @@ const cabinet = localFont({
   variable: '--font-cabinet'
 })
 
+const copernicus = localFont({
+  src: '../public/fonts/corp/copernicus.ttf',
+  variable: '--font-copernicus'
+})
+
 const supreme = localFont({
   src: '../public/fonts/supreme/Supreme-Variable.woff2',
   variable: '--font-supreme'
 })
 
-const sans = localFont({
-  src: '../public/fonts/productSans/ProductSans-Regular.ttf'
-  // variable: "--font-supreme",
+const product = localFont({
+  src: '../public/fonts/productSans/ProductSans-Regular.ttf',
+  variable: '--font-product'
 })
 
 export default function App({ Component, pageProps }) {
@@ -39,7 +44,7 @@ export default function App({ Component, pageProps }) {
         <link rel='icon' href='/SRfavicon.ico' />
       </Head>
       <main
-        className={`${supreme.variable} ${cabinet.variable} ${sans.className}`}
+        className={`${supreme.variable} ${cabinet.variable} ${copernicus.variable} ${product.variable}`}
       >
         <Component {...pageProps} />
         <Analytics />
