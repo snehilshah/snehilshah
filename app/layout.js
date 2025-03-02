@@ -1,5 +1,6 @@
 import "@/styles/globals.tail.css";
 import { supreme, prsans } from '@/styles/fonts';
+import { Metadata } from 'next'
 
 const fontClasses = [supreme.variable, prsans.variable].join(' ');
 export const metadata = {

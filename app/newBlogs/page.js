@@ -5,7 +5,7 @@ import Link from 'next/link'
 import BlogHero from '@/components/Blog/BlogHero'
 import BlogBGGrid from '@/components/Blog/BlogBGGrid'
 import Head from 'next/head'
-import { getFrontMatter } from '@/lib/utils'
+import { getFrontMatter } from '@/lib/helpers'
 
 function blogs() {
   const postsDirectory = path.join(process.cwd(), 'posts')
