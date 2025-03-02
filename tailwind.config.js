@@ -60,6 +60,21 @@ module.exports = {
           4: 'hsl(var(--chart-4))',
           5: 'hsl(var(--chart-5))'
         }
+      },
+      typography: {
+        colorful: {
+          css: {
+            p: {
+              color: '#854C28'
+            },
+            strong: {
+              color: '#59321A'
+            },
+            'h1,h2,h3,h4,h5,h6': {
+              color: '#6F6621'
+            }
+          }
+        }
       }
     },
     keyframes: {
