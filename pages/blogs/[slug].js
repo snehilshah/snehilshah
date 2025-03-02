@@ -72,16 +72,14 @@ function PostPage({
           className='w-full h-[30rem] object-cover rounded-3xl'
         />
       </div>
-      <article className='font-copernicus text-[#6f3f21d7] max-w-4xl mx-auto p-5 prose prose-lg prose-a:text-emerald-500 text-justify'>
-        <div className=''>
-          <h1 className='text-4xl mt-10 text-center font-bold mb-4 bg-gradient-to-r from-[#6f3f21d7] to-[#6f3f21d7] text-transparent bg-clip-text'>
-            {title}
-          </h1>
-          <div className='w-24 h-1 bg-emerald-500 mx-auto mb-6'></div>
-          <h2 className='text-xl font-light mb-8 mt-1 text-center italic text-gray-700'>
-            {description}
-          </h2>
-        </div>
+      <article className='font-copernicus max-w-4xl mx-auto p-5 prose prose-lg prose-colorful prose-a:text-emerald-500 text-justify'>
+        <h1 className='text-4xl mt-10 text-center font-bold mb-4 bg-gradient-to-r from-[#59321A] to-[#6f3f21d7] text-transparent bg-clip-text'>
+          {title}
+        </h1>
+        <div className='w-24 h-1 bg-[#59321A] mx-auto mb-6'></div>
+        <h2 className='text-xl font-light mb-8 mt-1 text-center italic text-[#6F6621]'>
+          {description}
+        </h2>
         <MDXRemote {...mdxSource} components={components} />
       </article>
     </main>
