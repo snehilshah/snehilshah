@@ -38,12 +38,16 @@ export const WarningBox = ({ text }) => {
 export const ImageBox = ({ link, text = '' }) => {
   return (
     <div className='rounded-xl'>
-      <img
-        src={link}
-        className='rounded-xl mx-auto outline outline-sky-400 mb-3'
-        alt='text'
-      />
-      <p className='text-center mt-0'>{text}</p>
+      <div className='relative rounded-xl bg-gradient-to-r from-[#216F3F] via-rose-500 to-[#3F216F] animate-gradient-x'>
+        <img
+          src={link}
+          className='rounded-xl p-[3px] mx-auto w-full h-full object-cover'
+          alt={text || 'image'}
+        />
+      </div>
+      <figcaption className='text-center mt-0 text-[#59321A] font-bold'>
+        {text}
+      </figcaption>
     </div>
   )
 }
