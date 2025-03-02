@@ -7,9 +7,14 @@ const config = {
   ],
   theme: {
     extend: {
+      animation: {
+        'gradient-x': 'gradient-x 3s ease infinite'
+      },
       fontFamily: {
         supreme: ['var(--font-supreme)'],
-        prsans: ['var(--font-prsans)'],
+        cabinet: ['var(--font-cabinet)'],
+        product: ['var(--font-product)'],
+        copernicus: ['var(--font-copernicus)']
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -57,13 +62,33 @@ const config = {
           4: 'hsl(var(--chart-4))',
           5: 'hsl(var(--chart-5))'
         }
+      },
+      typography: {
+        colorful: {
+          css: {
+            p: {
+              color: '#854C28'
+            },
+            strong: {
+              color: '#59321A'
+            },
+            'h1,h2,h3,h4,h5,h6': {
+              color: '#6F6621'
+            }
+          }
+        }
       }
     },
     keyframes: {
-      wave: {
-        '0%': { transform: 'translateY(-30px)' },
-        '50%': { transform: 'translateY(30px)' },
-        '100%': { transform: 'translateY(-30px)' },
+      'gradient-x': {
+        '0%, 100%': {
+          'background-size': '200% 200%',
+          'background-position': 'left center'
+        },
+        '50%': {
+          'background-size': '200% 200%',
+          'background-position': 'right center'
+        }
       },
       'background-shine': {
         from: {
