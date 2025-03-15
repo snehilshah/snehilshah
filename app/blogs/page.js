@@ -17,31 +17,13 @@ async function blogs() {
       frontmatter
     })
   }
-  
+
   posts.sort((a, b) => {
     return new Date(b.frontmatter.date) - new Date(a.frontmatter.date)
   })
 
   return (
     <div className={'max-w-screen-2xl mx-auto'}>
-      <Head>
-        <title>Snehil Shah | Blogs</title>
-        <meta property='og:title' content='Snehil Shah | Blogs' />
-        <meta name='description' content='Blogging Website for Snehil Shah' />
-        <meta
-          property='og:description'
-          content='Blogging Website for Snehil Shah'
-        />
-        <meta
-          name='image'
-          content='https://www.snehilshah.com/SnehilImage3x.jpg'
-        />
-        <meta
-          property='og:image'
-          content='https://www.snehilshah.com/SnehilImage3x.jpg'
-        />
-      </Head>
-
       <BlogBGGrid />
       <BlogNav />
       <BlogHero />
@@ -50,7 +32,7 @@ async function blogs() {
           'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 p-2 md:p-6'
         }
       >
-        {posts && posts.map((post, index) => (
+        {posts.map((post, index) => (
           <Link key={index} href={`/blogs/${post.slug}`}>
             <div className='rounded-lg group cursor-pointer overflow-hidden outline outline-stone-600 outline-1 shadow-lg'>
               <img

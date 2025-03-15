@@ -1,5 +1,7 @@
 import '@/styles/globals.tail.css'
 import { supreme, product, copernicus, cabinet } from '@/styles/fonts'
+import '@/constants/defaultMetadata'
+import { defaultMetadata } from '@/constants/defaultMetadata'
 
 const fontClasses = [
   supreme.variable,
@@ -9,8 +11,7 @@ const fontClasses = [
 ].join(' ')
 
 export const metadata = {
-  title: 'Snehil Shah | Portfolio',
-  description: 'Portfolio Website for Snehil Shah'
+  ...defaultMetadata
 }
 
 export default function RootLayout({ children }) {
