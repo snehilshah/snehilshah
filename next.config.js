@@ -11,6 +11,12 @@ const nextConfig = {
         hostname: 'utfs.io'
       }
     ]
+  },
+  experimental: {
+    reactCompiler: {
+      compilationMode: 'all'
+    },
+    optimizeCss: true
   }
 }
 
