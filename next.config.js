@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  pageExtensions: ['js', 'jsx'],
+  pageExtensions: ['js', 'jsx', 'mdx'],
   reactStrictMode: true,
   images: {
     remotePatterns: [
