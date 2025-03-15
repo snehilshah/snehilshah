@@ -21,6 +21,7 @@
     "@radix-ui/react-slot": "^1.1.2",
     "@vercel/analytics": "^1.5.0",
     "autoprefixer": "10.4.20",
+    "babel-plugin-react-compiler": "19.0.0-beta-bafa41b-20250307",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.5.2",
