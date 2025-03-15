@@ -1,6 +1,6 @@
 {
   "name": "snehilshah",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "private": false,
   "description": "Portfolio and Bloggiong Website for Snehil",
   "repository": {
@@ -31,7 +31,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-syntax-highlighter": "^15.6.1",
-    "react-vertical-timeline-component": "^3.6.0",
+    "react-vertical-timeline-component": "3.5.3",
     "sharp": "^0.33.5",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
