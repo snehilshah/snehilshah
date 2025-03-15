@@ -7,7 +7,7 @@ import About from '@/components/Index/About/About'
 
 import TechStack from '@/components/Index/TechStack/TechStack'
 import Projects from '@/components/Index/Projects/Projects'
-// import Timeline from '@/components/Index/Timeline/Timeline'
+import Timeline from '@/components/Index/Timeline/Timeline'
 import Footer from '@/components/Index/Footer/Footer'
 import Navbar from '@/components/Index/Navbar'
 
@@ -23,7 +23,7 @@ export default function Home() {
       <About />
       <TechStack />
       <Projects />
-      {/* <Timeline /> */}
+      <Timeline />
       <Footer />
     </main>
   )
