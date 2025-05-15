@@ -185,7 +185,7 @@ export default function Navbar() {
               initial='closed'
               animate={'open'}
               exit={'closed'}
-              className='flex flex-col justify-center items-center fixed top-0 left-0 w-screen h-3/4 bg-gradient-to-b from-black to-stone-900 opacity-90'
+              className='flex flex-col justify-center items-center fixed top-0 left-0 w-screen h-3/4 bg-linear-to-b from-black to-stone-900 opacity-90'
             >
               <ul className='text-center'>
                 {links.map((link, index) => {
