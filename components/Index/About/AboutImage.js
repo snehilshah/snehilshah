@@ -8,7 +8,7 @@ const AboutImage = () => {
   return (
     <div
       id={clsx(styles.personContainer)}
-      className='max-w-[15rem] mx-auto relative'
+      className='max-w-60 mx-auto relative'
     >
       <div
         id='personContainer'

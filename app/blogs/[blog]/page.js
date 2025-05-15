@@ -62,11 +62,11 @@ async function PostPage({ params }) {
   return (
     <main className='bg-[#FFF0DF]'>
       <BlogNav />
-      <div className='w-full bg-black h-[30rem] overflow-hidden'>
+      <div className='w-full bg-black h-120 overflow-hidden'>
         <AnimatedImage src={frontmatter.header} />
       </div>
       <article className='font-copernicus max-w-4xl mx-auto p-5 prose prose-base md:prose-lg prose-colorful prose-a:text-[#21516F] prose-ul:text-[#59321A] text-justify'>
-        <h1 className='text-2xl md:text-4xl mt-10 text-center font-bold mb-4 bg-gradient-to-r text-[#59321A]'>
+        <h1 className='text-2xl md:text-4xl mt-10 text-center font-bold mb-4 bg-linear-to-r text-[#59321A]'>
           {frontmatter.title}
         </h1>
         <hr className='w-24 h-1 bg-[#59321A] mx-auto my-4 border-0' />
