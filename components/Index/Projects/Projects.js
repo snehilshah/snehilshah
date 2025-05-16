@@ -6,7 +6,7 @@ import AgendaBuilder from '../../../public/projects/agenda.webp'
 import Balgurukul from '../../../public/projects/balgurukul.webp'
 import ProjectGallery from '../../../public/projects/homebackground.webp'
 import HyperSpectral from '../../../public/projects/hypersceptral.webp'
-import Heart from '../../../public/projects/better_heart.avif'
+import Heart from '../../../public/projects/final_heart.avif'
 import {
   Carousel,
   CarouselContent,
