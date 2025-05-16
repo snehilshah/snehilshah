@@ -23,9 +23,8 @@
     "babel-plugin-react-compiler": "19.0.0-beta-bafa41b-20250307",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "critters": "^0.0.25",
     "embla-carousel-react": "^8.6.0",
-    "framer-motion": "^12.11.3",
+    "framer-motion": "^12.12.1",
     "lucide-react": "^0.477.0",
     "next": "^15.3.2",
     "next-mdx-remote": "^5.0.0",
@@ -52,7 +51,6 @@
       "react-intersection-observer": "latest"
     },
     "onlyBuiltDependencies": [
-      "@tailwindcss/oxide",
       "react-vertical-timeline-component",
       "sharp",
       "unrs-resolver"
