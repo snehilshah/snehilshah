@@ -23,7 +23,7 @@ async function blogs() {
   })
 
   return (
-    <div className={'max-w-screen-2xl mx-auto'}>
+    <div className={'max-w-(--breakpoint-2xl) mx-auto'}>
       <BlogBGGrid />
       <BlogNav />
       <BlogHero />
@@ -46,7 +46,7 @@ async function blogs() {
                   <p className='text-sm'>{post.frontmatter.description}</p>
                 </div>
 
-                <p className='min-w-[5rem] whitespace-nowrap'>
+                <p className='min-w-20 whitespace-nowrap'>
                   {post.frontmatter.date}
                 </p>
               </div>

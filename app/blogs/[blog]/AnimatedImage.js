@@ -29,7 +29,7 @@ const AnimatedImage = ({ src }) => {
       animate={animationComplete ? 'static' : 'animate'}
       whileHover='hover'
       onAnimationComplete={() => setAnimationComplete(true)}
-      className='w-full h-[30rem] object-cover rounded-3xl'
+      className='w-full h-120 object-cover rounded-3xl'
     />
   )
 }

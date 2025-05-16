@@ -1,47 +1,67 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-* {
-  box-sizing: border-box;
-}
+@config '../tailwind.config.js';
 
-html {
-  scroll-behavior: smooth;
-}
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
 
-img,
-svg {
-  max-width: 100%;
-}
-
-body {
-  margin: 0;
-  display: block;
-  overflow-x: hidden;
-}
-
-.section {
-  margin-top: 1rem;
-}
-
-@media (min-width: 768px) {
-  .section {
-    margin-top: 3rem;
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
   }
 }
 
-body::-webkit-scrollbar {
-  width: 8px;
-}
+@layer utilities {
+  * {
+    box-sizing: border-box;
+  }
 
-body::-webkit-scrollbar-track {
-  background-image: linear-gradient(180deg, #a8a29e 0%, #a5f3fc 99%);
-}
+  html {
+    scroll-behavior: smooth;
+  }
 
-body::-webkit-scrollbar-thumb {
-  background-color: #44403c;
-  border-radius: 10px;
+  img,
+  svg {
+    max-width: 100%;
+  }
+
+  body {
+    margin: 0;
+    display: block;
+    overflow-x: hidden;
+  }
+
+  .section {
+    margin-top: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .section {
+      margin-top: 3rem;
+    }
+  }
+
+  body::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  body::-webkit-scrollbar-track {
+    background-image: linear-gradient(180deg, #a8a29e 0%, #a5f3fc 99%);
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background-color: #44403c;
+    border-radius: 10px;
+  }
 }
 
 @layer base {
