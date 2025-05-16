@@ -12,12 +12,6 @@ const nextConfig = {
       }
     ]
   },
-  experimental: {
-    reactCompiler: {
-      compilationMode: 'all'
-    },
-    optimizeCss: true
-  }
 }
 
 module.exports = nextConfig
