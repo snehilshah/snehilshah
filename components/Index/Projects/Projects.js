@@ -111,7 +111,7 @@ export default function Projects() {
   }, [])
 
   return (
-    <div className='max-w-screen-xl mx-auto text-white my-32' id='projects'>
+    <div className='max-w-(--breakpoint-xl) mx-auto text-white my-32' id='projects'>
       <Heading title={'Projects'} details={'Projects I have worked'} />
       <Carousel className='w-full'>
         <div className='flex justify-between items-center'>
