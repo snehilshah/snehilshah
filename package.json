@@ -52,6 +52,7 @@
       "react-intersection-observer": "latest"
     },
     "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
       "react-vertical-timeline-component",
       "sharp",
       "unrs-resolver"
