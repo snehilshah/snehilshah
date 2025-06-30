@@ -1,9 +1,10 @@
-import { AudioPlayer } from './playerC/AudioPlayer'
+'use client'
+import { MusicPlayer } from './playerC/MusicPlayer'
 
 export default function MusicPlayerPage() {
   return (
     <div className='h-screen'>
-      <AudioPlayer />
+      <MusicPlayer />
     </div>
   )
 }
