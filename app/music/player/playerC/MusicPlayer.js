@@ -64,7 +64,7 @@ export function MusicPlayer() {
   }
 
   return (
-    <div className='relative h-screen text-white flex flex-col overflow-hidden'>
+    <div className='relative h-screen text-white flex flex-col overflow-hidden font-supreme'>
       {/* Blurred background from current song cover */}
       <div
         className='absolute inset-0 bg-cover bg-center blur-3xl scale-110'
@@ -108,7 +108,8 @@ export function MusicPlayer() {
             {/* Lyrics overlay */}
             {showLyrics && (
               <div className='absolute inset-0 bg-black/40 backdrop-blur-sm rounded-2xl flex items-center justify-center p-4 lg:p-6'>
-                <div className='w-full h-full overflow-y-auto custom-scrollbar'>
+                {/* keeping the overflow but hidding the scrollbar */}
+                <div className='w-full h-full overflow-y-auto no-scrollbar'>
                   <div className='text-center'>
                     <h3 className='text-lg lg:text-xl font-bold mb-2 text-white'>
                       {currentSong.title}
@@ -129,7 +130,7 @@ export function MusicPlayer() {
         {/* Right side - Library */}
         <div className='w-full lg:w-1/2 p-4 lg:p-6 flex flex-col min-h-0 flex-1'>
           <div className='flex items-center justify-between mb-4 lg:mb-6 flex-shrink-0'>
-            <h2 className='text-2xl lg:text-3xl font-bold'>Your Library</h2>
+            <h2 className='text-2xl lg:text-xl font-bold'>Your Library</h2>
             <div className='text-xs lg:text-sm text-white/60'>
               {songs.length} songs
             </div>
@@ -165,7 +166,7 @@ export function MusicPlayer() {
 
                   <div className='ml-3 lg:ml-4 flex-1 min-w-0'>
                     <h3
-                      className={`font-semibold truncate text-sm lg:text-base ${index === currentSongIndex ? 'text-purple-300' : 'text-white'}`}
+                      className={`font-semibold truncate text-lg lg:text-xl ${index === currentSongIndex ? 'text-purple-300' : 'text-white'}`}
                     >
                       {song.title}
                     </h3>
@@ -306,6 +307,9 @@ export function MusicPlayer() {
 
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
           background: rgba(139, 92, 246, 0.8);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
         }
       `}</style>
     </div>
