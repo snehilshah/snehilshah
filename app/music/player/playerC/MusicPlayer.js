@@ -116,7 +116,7 @@ export function MusicPlayer() {
                     <p className='text-xs lg:text-sm text-white/80 mb-4 lg:mb-6'>
                       {currentSong.artist}
                     </p>
-                    <div className='text-white leading-relaxed whitespace-pre-line text-sm lg:text-base'>
+                    <div className='text-white leading-relaxed whitespace-pre-line font-supreme text-lg lg:text-xl'>
                       {currentSong.lyrics}
                     </div>
                   </div>
