@@ -96,7 +96,7 @@ export function MusicPlayer() {
       {/* Main content area with cover and library */}
       <div className='relative z-10 flex-1 flex flex-col lg:flex-row min-h-0'>
         {/* Left side - Large cover image */}
-        <div className='w-full lg:w-1/2 p-4 lg:p-6 flex items-center justify-center pb-32 lg:pb-32'>
+        <div className='w-full lg:w-1/2 p-4 lg:p-6 flex items-center justify-center lg:pb-32'>
           <div className='relative w-full max-w-sm lg:max-w-md aspect-square'>
             <img
               src={currentSong.cover}
