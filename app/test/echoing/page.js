@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Head from 'next/head'
+import Link from 'next/link'
 
 export default function EchoService() {
   const [echoData, setEchoData] = useState(null)
@@ -290,9 +291,9 @@ export default function EchoService() {
             <span>•</span>
             <span>Uptime: {new Date().toLocaleTimeString()}</span>
             <span>•</span>
-            <a href="/" className="text-white hover:text-gray-300 transition-colors">
+            <Link href="/" className="text-white hover:text-gray-300 transition-colors">
               Back to Home
-            </a>
+            </Link>
           </div>
         </div>
       </div>
