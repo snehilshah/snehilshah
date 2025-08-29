@@ -82,10 +82,31 @@ export default function EchoService() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-        <div className="text-center">
-          <div className="w-6 h-6 border-2 border-white/20 border-t-white rounded-full animate-spin mb-4 mx-auto"></div>
-          <p className="text-gray-400 text-sm">Loading...</p>
+      <div style={{ 
+        minHeight: '100vh', 
+        backgroundColor: '#000000', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        fontFamily: 'JetBrains Mono, monospace, Arial, sans-serif'
+      }}>
+        <div style={{ textAlign: 'center' }}>
+          <div style={{
+            width: '24px',
+            height: '24px',
+            border: '2px solid rgba(255, 255, 255, 0.2)',
+            borderTop: '2px solid #ffffff',
+            borderRadius: '50%',
+            animation: 'spin 1s linear infinite',
+            margin: '0 auto 16px'
+          }}></div>
+          <p style={{ color: '#9ca3af', fontSize: '14px' }}>Loading...</p>
+          <style>{`
+            @keyframes spin {
+              0% { transform: rotate(0deg); }
+              100% { transform: rotate(360deg); }
+            }
+          `}</style>
         </div>
       </div>
     )
@@ -98,52 +119,175 @@ export default function EchoService() {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
         <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </Head>
-      <div className="min-h-screen bg-black text-white" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+      <div style={{ 
+        minHeight: '100vh', 
+        backgroundColor: '#000000', 
+        color: '#ffffff',
+        fontFamily: 'JetBrains Mono, monospace, Arial, sans-serif'
+      }}>
         {/* Navigation */}
-        <nav className="border-b border-gray-800 bg-black/50 backdrop-blur-sm sticky top-0 z-10">
-          <div className="max-w-6xl mx-auto px-6 py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-4">
-                <div className="w-6 h-6 bg-white rounded-sm flex items-center justify-center">
-                  <span className="text-black text-xs font-bold">E</span>
+        <nav style={{
+          borderBottom: '1px solid #374151',
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          backdropFilter: 'blur(12px)',
+          position: 'sticky',
+          top: 0,
+          zIndex: 10
+        }}>
+          <div style={{
+            maxWidth: '1152px',
+            margin: '0 auto',
+            padding: '16px 24px'
+          }}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between'
+            }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '16px'
+              }}>
+                <div style={{
+                  width: '24px',
+                  height: '24px',
+                  backgroundColor: '#ffffff',
+                  borderRadius: '4px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                  <span style={{
+                    color: '#000000',
+                    fontSize: '12px',
+                    fontWeight: '700'
+                  }}>E</span>
                 </div>
-                <span className="text-white font-medium">Echo Service</span>
+                <span style={{
+                  color: '#ffffff',
+                  fontWeight: '500'
+                }}>Echo Service</span>
               </div>
-              <div className="flex items-center space-x-4 text-sm">
-                <span className="text-gray-400">Status:</span>
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-green-400">Active</span>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '16px',
+                fontSize: '14px'
+              }}>
+                <span style={{ color: '#9ca3af' }}>Status:</span>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px'
+                }}>
+                  <div style={{
+                    width: '8px',
+                    height: '8px',
+                    backgroundColor: '#10b981',
+                    borderRadius: '50%'
+                  }}></div>
+                  <span style={{ color: '#10b981' }}>Active</span>
                 </div>
               </div>
             </div>
           </div>
         </nav>
 
-        <div className="max-w-6xl mx-auto px-6 py-8">
+        <div style={{
+          maxWidth: '1152px',
+          margin: '0 auto',
+          padding: '32px 24px'
+        }}>
           {/* Header */}
-          <div className="mb-8">
-            <h1 className="text-2xl font-semibold text-white mb-2">Request Inspector</h1>
-            <p className="text-gray-400">Debug and inspect HTTP request details</p>
+          <div style={{ marginBottom: '32px' }}>
+            <h1 style={{
+              fontSize: '24px',
+              fontWeight: '600',
+              color: '#ffffff',
+              marginBottom: '8px'
+            }}>Request Inspector</h1>
+            <p style={{ color: '#9ca3af' }}>Debug and inspect HTTP request details</p>
           </div>
 
           {/* Stats Overview */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-            <div className="bg-gray-950 border border-gray-800 rounded-lg p-4">
-              <div className="text-gray-400 text-xs uppercase tracking-wide mb-1">Protocol</div>
-              <div className="text-white font-medium">{echoData.protocol.replace(':', '')}</div>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '16px',
+            marginBottom: '32px'
+          }}>
+            <div style={{
+              backgroundColor: '#030712',
+              border: '1px solid #374151',
+              borderRadius: '8px',
+              padding: '16px'
+            }}>
+              <div style={{
+                color: '#9ca3af',
+                fontSize: '10px',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+                marginBottom: '4px'
+              }}>Protocol</div>
+              <div style={{
+                color: '#ffffff',
+                fontWeight: '500'
+              }}>{echoData.protocol.replace(':', '')}</div>
             </div>
-            <div className="bg-gray-950 border border-gray-800 rounded-lg p-4">
-              <div className="text-gray-400 text-xs uppercase tracking-wide mb-1">Host</div>
-              <div className="text-white font-medium">{echoData.host}</div>
+            <div style={{
+              backgroundColor: '#030712',
+              border: '1px solid #374151',
+              borderRadius: '8px',
+              padding: '16px'
+            }}>
+              <div style={{
+                color: '#9ca3af',
+                fontSize: '10px',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+                marginBottom: '4px'
+              }}>Host</div>
+              <div style={{
+                color: '#ffffff',
+                fontWeight: '500'
+              }}>{echoData.host}</div>
             </div>
-            <div className="bg-gray-950 border border-gray-800 rounded-lg p-4">
-              <div className="text-gray-400 text-xs uppercase tracking-wide mb-1">Status</div>
-              <div className="text-green-400 font-medium">200 OK</div>
+            <div style={{
+              backgroundColor: '#030712',
+              border: '1px solid #374151',
+              borderRadius: '8px',
+              padding: '16px'
+            }}>
+              <div style={{
+                color: '#9ca3af',
+                fontSize: '10px',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+                marginBottom: '4px'
+              }}>Status</div>
+              <div style={{
+                color: '#10b981',
+                fontWeight: '500'
+              }}>200 OK</div>
             </div>
-            <div className="bg-gray-950 border border-gray-800 rounded-lg p-4">
-              <div className="text-gray-400 text-xs uppercase tracking-wide mb-1">Response Time</div>
-              <div className="text-white font-medium">{Math.random().toFixed(0)}ms</div>
+            <div style={{
+              backgroundColor: '#030712',
+              border: '1px solid #374151',
+              borderRadius: '8px',
+              padding: '16px'
+            }}>
+              <div style={{
+                color: '#9ca3af',
+                fontSize: '10px',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+                marginBottom: '4px'
+              }}>Response Time</div>
+              <div style={{
+                color: '#ffffff',
+                fontWeight: '500'
+              }}>{Math.floor(Math.random() * 50) + 10}ms</div>
             </div>
           </div>
 
