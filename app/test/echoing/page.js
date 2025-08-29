@@ -411,19 +411,79 @@ export default function EchoService() {
         </div>
 
         {/* HTTP Headers */}
-        <div className="mt-6 bg-gray-950 border border-gray-800 rounded-lg">
-          <div className="border-b border-gray-800 px-6 py-4">
-            <h2 className="text-white font-medium">HTTP Headers</h2>
+        <div style={{
+          marginTop: '24px',
+          backgroundColor: '#030712',
+          border: '1px solid #374151',
+          borderRadius: '8px'
+        }}>
+          <div style={{
+            borderBottom: '1px solid #374151',
+            padding: '16px 24px'
+          }}>
+            <h2 style={{
+              color: '#ffffff',
+              fontWeight: '500',
+              fontSize: '16px',
+              margin: '0'
+            }}>HTTP Headers</h2>
           </div>
-          <div className="p-6">
-            <div className="space-y-3">
-              {Object.entries(echoData.headers).map(([key, value]) => (
-                <div key={key} className="grid grid-cols-3 gap-4 text-sm">
-                  <div className="text-gray-400 font-mono text-xs">{key}</div>
-                  <div className="col-span-2 text-white font-mono text-xs break-all">{value}</div>
-                </div>
-              ))}
-            </div>
+          <div style={{
+            padding: '24px'
+          }}>
+            <table style={{
+              width: '100%',
+              borderCollapse: 'collapse',
+              fontFamily: 'monospace'
+            }}>
+              <thead>
+                <tr>
+                  <th style={{
+                    textAlign: 'left',
+                    padding: '8px 12px',
+                    borderBottom: '1px solid #374151',
+                    color: '#9ca3af',
+                    fontSize: '12px',
+                    fontWeight: '500',
+                    width: '30%'
+                  }}>Header</th>
+                  <th style={{
+                    textAlign: 'left',
+                    padding: '8px 12px',
+                    borderBottom: '1px solid #374151',
+                    color: '#9ca3af',
+                    fontSize: '12px',
+                    fontWeight: '500',
+                    width: '70%'
+                  }}>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Object.entries(echoData.headers).map(([key, value]) => (
+                  <tr key={key} style={{
+                    borderBottom: '1px solid #1f2937'
+                  }}>
+                    <td style={{
+                      padding: '8px 12px',
+                      color: '#9ca3af',
+                      fontSize: '11px',
+                      fontFamily: 'monospace',
+                      verticalAlign: 'top',
+                      wordBreak: 'break-all'
+                    }}>{key}</td>
+                    <td style={{
+                      padding: '8px 12px',
+                      color: '#ffffff',
+                      fontSize: '11px',
+                      fontFamily: 'monospace',
+                      verticalAlign: 'top',
+                      wordBreak: 'break-all',
+                      lineHeight: '1.4'
+                    }}>{value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
 
