@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo Service - Request Inspector</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="page.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading" class="loading-screen">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p class="loading-text">Loading...</p>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="app" class="app hidden">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-left">
+                    <div class="nav-logo">
+                        <span class="logo-text">E</span>
+                    </div>
+                    <span class="nav-title">Echo Service</span>
+                </div>
+                <div class="nav-right">
+                    <span class="status-label">Status:</span>
+                    <div class="status-indicator">
+                        <div class="status-dot"></div>
+                        <span class="status-text">Active</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="main-container">
+            <!-- Header -->
+            <div class="header">
+                <h1 class="main-title">Request Inspector</h1>
+                <p class="main-subtitle">Debug and inspect HTTP request details</p>
+            </div>
+
+            <!-- Stats Overview -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Protocol</div>
+                    <div class="stat-value" id="protocol-value">HTTPS</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Host</div>
+                    <div class="stat-value" id="host-value">localhost</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Status</div>
+                    <div class="stat-value status-ok">200 OK</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Response Time</div>
+                    <div class="stat-value" id="response-time">-ms</div>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <!-- Request Details -->
+                <div class="info-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Request Information</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="info-row">
+                            <div class="info-label">URL</div>
+                            <div class="info-value code-text" id="url-value">-</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Path</div>
+                            <div class="info-value code-text" id="path-value">-</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Origin</div>
+                            <div class="info-value code-text" id="origin-value">-</div>
+                        </div>
+                        <div class="info-row" id="query-row" style="display: none;">
+                            <div class="info-label">Query</div>
+                            <div class="info-value code-text" id="query-value">-</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Referrer</div>
+                            <div class="info-value code-text" id="referrer-value">-</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Timestamp</div>
+                            <div class="info-value code-text" id="timestamp-value">-</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Client Information -->
+                <div class="info-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Client Details</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="info-row">
+                            <div class="info-label">Platform</div>
+                            <div class="info-value" id="platform-value">-</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Language</div>
+                            <div class="info-value" id="language-value">-</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Timezone</div>
+                            <div class="info-value" id="timezone-value">-</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Online</div>
+                            <div class="info-value">
+                                <span class="badge" id="online-badge">-</span>
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Cookies</div>
+                            <div class="info-value">
+                                <span class="badge" id="cookies-badge">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Display Information -->
+                <div class="info-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Display Specifications</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="display-grid">
+                            <div class="display-item">
+                                <div class="display-label">Screen Resolution</div>
+                                <div class="display-value" id="screen-resolution">-</div>
+                            </div>
+                            <div class="display-item">
+                                <div class="display-label">Available Space</div>
+                                <div class="display-value" id="available-space">-</div>
+                            </div>
+                        </div>
+                        <div class="display-grid">
+                            <div class="display-item">
+                                <div class="display-label">Viewport</div>
+                                <div class="display-value" id="viewport-size">-</div>
+                            </div>
+                            <div class="display-item">
+                                <div class="display-label">Color Depth</div>
+                                <div class="display-value" id="color-depth">-</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Languages -->
+                <div class="info-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Supported Languages</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="language-tags" id="language-tags">
+                            <!-- Languages will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HTTP Headers -->
+            <div class="info-card full-width">
+                <div class="card-header">
+                    <h2 class="card-title">HTTP Headers</h2>
+                </div>
+                <div class="card-content">
+                    <div class="headers-container" id="headers-container">
+                        <!-- Headers will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Agent -->
+            <div class="info-card full-width">
+                <div class="card-header">
+                    <h2 class="card-title">User Agent</h2>
+                </div>
+                <div class="card-content">
+                    <div class="code-block">
+                        <code id="user-agent-code">-</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cookie Data -->
+            <div class="info-card full-width">
+                <div class="card-header">
+                    <h2 class="card-title">Cookie Information</h2>
+                </div>
+                <div class="card-content">
+                    <div class="code-block">
+                        <code id="cookie-code">No cookies found</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Raw JSON -->
+            <div class="info-card full-width">
+                <div class="card-header">
+                    <h2 class="card-title">Raw JSON Output</h2>
+                    <button class="copy-button" id="copy-json">Copy</button>
+                </div>
+                <div class="card-content">
+                    <div class="code-block">
+                        <pre id="json-output">-</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="footer-content">
+                    <span>Echo Service v1.0</span>
+                    <span>•</span>
+                    <span id="uptime">Uptime: --:--:--</span>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "echo-service",
+  "version": "1.0.0",
+  "description": "Standalone Echo Service - HTTP Request Inspector",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "keywords": [
+    "echo",
+    "headers",
+    "http",
+    "request",
+    "inspector",
+    "debug"
+  ],
+  "author": "",
+  "license": "MIT"
+}

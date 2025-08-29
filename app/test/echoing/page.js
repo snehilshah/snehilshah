@@ -9,8 +9,37 @@ export default function EchoService() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Collect browser/client information
-    const collectEchoData = () => {
+    // Collect browser/client information and headers
+    const collectEchoData = async () => {
+      // Fetch headers from a simple endpoint
+      let headers = {};
+      try {
+        const response = await fetch('/api/headers', {
+          method: 'GET',
+          headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+          }
+        });
+        if (response.ok) {
+          const headerData = await response.json();
+          headers = headerData.headers || {};
+        }
+      } catch (error) {
+        console.log('Headers endpoint not available, using mock data');
+        // Mock headers for standalone usage
+        headers = {
+          'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+          'accept-encoding': 'gzip, deflate, br',
+          'accept-language': navigator.language + ',en;q=0.9',
+          'cache-control': 'no-cache',
+          'connection': 'keep-alive',
+          'host': window.location.host,
+          'user-agent': navigator.userAgent,
+          'x-forwarded-for': 'Client IP not available in browser',
+          'x-real-ip': 'Client IP not available in browser'
+        };
+      }
+
       const data = {
         timestamp: new Date().toISOString(),
         url: window.location.href,
@@ -26,6 +55,7 @@ export default function EchoService() {
         platform: navigator.platform,
         cookieEnabled: navigator.cookieEnabled,
         onLine: navigator.onLine,
+        headers: headers,
         screen: {
           width: window.screen.width,
           height: window.screen.height,
@@ -232,6 +262,23 @@ export default function EchoService() {
                   </span>
                 ))}
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* HTTP Headers */}
+        <div className="mt-6 bg-gray-950 border border-gray-800 rounded-lg">
+          <div className="border-b border-gray-800 px-6 py-4">
+            <h2 className="text-white font-medium">HTTP Headers</h2>
+          </div>
+          <div className="p-6">
+            <div className="space-y-3">
+              {Object.entries(echoData.headers).map(([key, value]) => (
+                <div key={key} className="grid grid-cols-3 gap-4 text-sm">
+                  <div className="text-gray-400 font-mono text-xs">{key}</div>
+                  <div className="col-span-2 text-white font-mono text-xs break-all">{value}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
