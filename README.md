@@ -15,7 +15,7 @@ I love to talk about latest bleeding technologies on my <a href="https://www.sne
 
 <div style="display: flex; gap: 1rem; object-fit: contain; aspect-ratio: 3/2;">
 
-![](https://github-readme-streak-stats.herokuapp.com/?user=AdityaSawant0912&theme=dark&hide_border=false)<br/>
+![](https://github-readme-streak-stats.herokuapp.com/?user=snehilshah&theme=dark&hide_border=false)<br/>
 
 ![](https://github-contributor-stats.vercel.app/api?username=snehilshah&limit=5&theme=onedark&combine_all_yearly_contributions=true)
 
