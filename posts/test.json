@@ -1,0 +1,77 @@
+{
+    "meta"    : { "version": 1, "timestamp": "2026-01-02T02:13:44Z", "flags": [true, false, null, "", 0] },
+    "user"    : {
+        "id"     : 912387,
+        "name"   : "John   Doe",
+        "email"  : "john.doe+test@EXAMPLE.com",
+        "roles"  : ["admin", "editor", "", "admin_copy"],
+        "profile": {
+            "age"        : 29,
+            "location"   : { "city": "New York", "zip": "10001", "coords": {"lat": 40.7128, "lng": -74.006} },
+            "preferences": {
+                "theme"         : "dark",
+                "theme_override": null,
+                "language"      : "en-US",
+                "timezone"      : "GMT-5",
+                "features"      : {
+                    "beta"        : true,
+                    "experimental": [true, false, true, true, false, null],
+                    "thresholds"  : {"min": 0, "max": 999999999, "default": 42}
+                }
+            }
+        }
+    },
+    "activity": [
+        {"type": "login", "success": true, "time": "2026-01-01T23:59:59Z", "ip": "192.168.0.1"},
+        {
+            "type" : "purchase",
+            "items": [
+                {"sku": "A1", "price":      12.5 , "qty": 2},
+                {"sku": "B9", "price":       0   , "qty": 0},
+                {"sku": "X",  "price": 9999999.99, "qty": 1}
+            ],
+            "total": 10000024.99
+        },
+        {"type": "logout", "reason": ""}
+    ],
+    "misc"    : {
+        "notes": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "weird": [
+            [
+                1,
+                2,
+                [
+                    3,
+                    [
+                        4,
+                        [
+                            5,
+                            [ 6, [7, null] ]
+                        ]
+                    ]
+                ]
+            ],
+            {
+                "a": {
+                    "b": {
+                        "c": {
+                            "d": {
+                                "e": { "f": {"g": "why"} }
+                            }
+                        }
+                    }
+                }
+            }
+        ],
+        "empty": {},
+        "nullValue": null
+    },
+    "debug"   : {
+        "stack"   : "Error: something went wrong\n at foo()\n at bar()\n at baz()",
+        "payload" : {
+            "escaped": true,
+            "data"   : [ 1, 2, 3, {"nested": "yes"} ]
+        },
+        "checksum": "000000000000000000000000000000000000000000000000000000"
+    }
+}
