@@ -44,7 +44,10 @@ const timelineData = [
 
 const Timeline = () => {
   return (
-    <div className='max-w-(--breakpoint-xl) overflow-x-hidden mx-auto' id='positions'>
+    <div
+      className='max-w-(--breakpoint-xl) overflow-x-hidden mx-auto'
+      id='positions'
+    >
       <div className='text-white'>
         <Heading
           title={'Positions'}
