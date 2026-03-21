@@ -46,16 +46,14 @@
     "prettier": "3.8.1",
     "tailwindcss": "^4.2.2"
   },
-  "pnpm": {
-    "overrides": {
-      "react-intersection-observer": "latest"
-    },
-    "onlyBuiltDependencies": [
-      "@tailwindcss/oxide",
-      "react-vertical-timeline-component",
-      "sharp",
-      "unrs-resolver"
-    ]
+  "overrides": {
+    "react-intersection-observer": "latest"
   },
-  "packageManager": "pnpm@10.32.1"
+  "trustedDependencies": [
+    "@tailwindcss/oxide",
+    "react-vertical-timeline-component",
+    "sharp",
+    "unrs-resolver"
+  ],
+  "packageManager": "bun@1.3.11"
 }

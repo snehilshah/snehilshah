@@ -12,7 +12,7 @@ const timelineData = [
     date: '2024-Present',
     header: 'SDE',
     organization: (
-      <a target='_blank' href='https://www.n7.io'>
+      <a target='_blank' href='https://www.n7.io' rel='noopener noreferrer'>
         N7
       </a>
     ),

@@ -47,7 +47,7 @@ const SocialBar = () => {
           >
             <div className='flex justify-between items-center w-full'>
               {icon}
-              <Link href={href} target='_blank' rel='noreferrer'>
+              <Link href={href} target='_blank' rel='noopener noreferrer'>
                 {text}
               </Link>
             </div>
