@@ -10,7 +10,8 @@ import fs from 'fs'
 async function blogs() {
   const posts = []
   for (const file of fs.readdirSync('posts')) {
-    fs.readFileSync(path.join('posts', file), 'utf-8')
+    // ⚡ Bolt: Removed redundant fs.readFileSync since getFrontMatter already reads the file internally.
+    // This halves the disk I/O operations required to list blogs.
     const frontmatter = getFrontMatter(path.join('posts', file))
     posts.push({
       slug: file.replace('.mdx', ''),
