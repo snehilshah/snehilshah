@@ -2,7 +2,6 @@ import BlogNav from '@/components/Blog/BlogNav'
 import Link from 'next/link'
 import BlogHero from '@/components/Blog/BlogHero'
 import BlogBGGrid from '@/components/Blog/BlogBGGrid'
-import Head from 'next/head'
 import { getFrontMatter } from '@/lib/helpers'
 import path from 'path'
 import fs from 'fs'
@@ -33,7 +32,7 @@ async function blogs() {
       >
         {posts.map((post, index) => (
           <Link key={index} href={`/blogs/${post.slug}`}>
-            <div className='rounded-lg group cursor-pointer overflow-hidden outline outline-stone-600 outline-1 shadow-lg'>
+            <div className='rounded-lg group cursor-pointer overflow-hidden outline-stone-600 outline-1 shadow-lg'>
               <img
                 src={post.frontmatter.cover_image}
                 alt={'Post Cover Image'}
