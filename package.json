@@ -48,7 +48,9 @@
     "tailwindcss": "^4.2.2"
   },
   "overrides": {
-    "react-intersection-observer": "latest"
+    "react-intersection-observer": "latest",
+    "minimatch": "^3.1.3",
+    "flatted": "^3.4.0"
   },
   "trustedDependencies": [
     "@tailwindcss/oxide",
