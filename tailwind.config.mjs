@@ -1,3 +1,6 @@
+import typography from '@tailwindcss/typography'
+import tailwindcssAnimate from 'tailwindcss-animate'
+
 const config = {
   darkMode: ['class'],
   content: [
@@ -167,7 +170,7 @@ const config = {
       'background-shine': 'background-shine 2s linear infinite'
     }
   },
-  plugins: [require('@tailwindcss/typography'), require('tailwindcss-animate')]
+  plugins: [typography, tailwindcssAnimate]
 }
 
 export default config;
