@@ -10,7 +10,6 @@ import fs from 'fs'
 async function blogs() {
   const posts = []
   for (const file of fs.readdirSync('posts')) {
-    fs.readFileSync(path.join('posts', file), 'utf-8')
     const frontmatter = getFrontMatter(path.join('posts', file))
     posts.push({
       slug: file.replace('.mdx', ''),
