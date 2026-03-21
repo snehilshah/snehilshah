@@ -1,6 +1,7 @@
 {
   "name": "snehilshah",
   "version": "2.1.1",
+  "type": "module",
   "private": false,
   "description": "Portfolio and Bloggiong Website for Snehil",
   "repository": {
