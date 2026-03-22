@@ -1,5 +1,6 @@
 import BlogNav from '@/components/Blog/BlogNav'
 import Link from 'next/link'
+import Image from 'next/image'
 import BlogHero from '@/components/Blog/BlogHero'
 import BlogBGGrid from '@/components/Blog/BlogBGGrid'
 import { getFrontMatter } from '@/lib/helpers'
@@ -33,11 +34,16 @@ async function blogs() {
         {posts.map((post, index) => (
           <Link key={index} href={`/blogs/${post.slug}`}>
             <div className='rounded-lg group cursor-pointer overflow-hidden outline-stone-600 outline-1 shadow-lg'>
-              <img
-                src={post.frontmatter.cover_image}
-                alt={'Post Cover Image'}
-                className='h-60 w-full object-cover group-hover:scale-105 transition-transform duration-200 ease-in-out'
-              />
+              <div className='relative h-60 w-full overflow-hidden'>
+                <Image
+                  src={post.frontmatter.cover_image}
+                  alt={'Post Cover Image'}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className='object-cover group-hover:scale-105 transition-transform duration-200 ease-in-out'
+                  unoptimized={post.frontmatter.cover_image.endsWith('.avif')}
+                />
+              </div>
               <div className='flex justify-between p-5 bg-stone-100'>
                 <div className=''>
                   <p className='text-lg font-bold'>{post.frontmatter.title}</p>
