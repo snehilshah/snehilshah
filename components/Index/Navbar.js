@@ -37,15 +37,32 @@ export default function Navbar() {
   useEffect(() => {
     let lastScrollTop = 0
     let navbar = document.getElementById('nav')
-    window.addEventListener('scroll', () => {
+    let ticking = false
+
+    const handleScroll = () => {
       let scrollTop = window.scrollY || document.documentElement.scrollTop
-      if (scrollTop > lastScrollTop) {
-        navbar.style.top = '-100px'
-      } else {
-        navbar.style.top = '0'
+      if (!ticking) {
+        // Throttling DOM updates using requestAnimationFrame to avoid layout thrashing
+        window.requestAnimationFrame(() => {
+          if (scrollTop > lastScrollTop) {
+            navbar.style.top = '-100px'
+          } else {
+            navbar.style.top = '0'
+          }
+          lastScrollTop = scrollTop
+          ticking = false
+        })
+        ticking = true
       }
-      lastScrollTop = scrollTop
-    })
+    }
+
+    // Using { passive: true } to improve scrolling performance
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    // Added cleanup function to prevent memory leaks on unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
   }, [])
 
   useEffect(() => {
