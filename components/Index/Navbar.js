@@ -42,7 +42,7 @@ export default function Navbar() {
     const handleScroll = () => {
       let scrollTop = window.scrollY || document.documentElement.scrollTop
       if (!ticking) {
-        // Bolt: Throttling DOM updates using requestAnimationFrame to avoid layout thrashing
+        // Throttling DOM updates using requestAnimationFrame to avoid layout thrashing
         window.requestAnimationFrame(() => {
           if (scrollTop > lastScrollTop) {
             navbar.style.top = '-100px'
@@ -56,10 +56,10 @@ export default function Navbar() {
       }
     }
 
-    // Bolt: Using { passive: true } to improve scrolling performance
+    // Using { passive: true } to improve scrolling performance
     window.addEventListener('scroll', handleScroll, { passive: true })
 
-    // Bolt: Added cleanup function to prevent memory leaks on unmount
+    // Added cleanup function to prevent memory leaks on unmount
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
