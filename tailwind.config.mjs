@@ -173,4 +173,4 @@ const config = {
   plugins: [typography, tailwindcssAnimate]
 }
 
-export default config;
+export default config

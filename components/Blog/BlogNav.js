@@ -4,7 +4,12 @@ import Link from 'next/link'
 export default function BlogNav() {
   return (
     <header className='p-4 flex justify-between items-center relative bg-stone-900'>
-      <Image src={'/SnehilLogo/Slice1.svg'} width={"110"} height={"110"} alt='snehil-logo'/>
+      <Image
+        src={'/SnehilLogo/Slice1.svg'}
+        width={'110'}
+        height={'110'}
+        alt='snehil-logo'
+      />
       <Link href={'/'} className=''>
         <button className='text-stone-300 flex items-center bg-stone-500 py-1 px-3 rounded-xl'>
           Portfolio

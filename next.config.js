@@ -11,7 +11,7 @@ const nextConfig = {
         hostname: 'utfs.io'
       }
     ]
-  },
+  }
 }
 
 export default nextConfig
