@@ -39,7 +39,7 @@ async function blogs() {
                   src={post.frontmatter.cover_image}
                   alt={'Post Cover Image'}
                   fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
                   className='object-cover group-hover:scale-105 transition-transform duration-200 ease-in-out'
                   unoptimized={post.frontmatter.cover_image.endsWith('.avif')}
                 />

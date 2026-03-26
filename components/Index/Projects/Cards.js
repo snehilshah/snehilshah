@@ -11,7 +11,9 @@ function Cards({ title, desc, src, fontSyle, bgColor }) {
       />
       <div className={`text bg-linear-to-br ${bgColor}`}></div>
       <div className='main-text'>
-        <p className={`${fontSyle}` + ' font-supreme text-xl font-normal'}>{title}</p>
+        <p className={`${fontSyle}` + ' font-supreme text-xl font-normal'}>
+          {title}
+        </p>
       </div>
       <p className=''>{desc}</p>
     </div>
