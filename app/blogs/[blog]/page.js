@@ -1,8 +1,10 @@
 import fs from 'fs'
 import path from 'path'
+import sharp from 'sharp'
 import Link from 'next/link'
 import Image from 'next/image'
 import { compileMDX } from 'next-mdx-remote/rsc'
+import { siteUrl } from '@/constants/defaultMetadata'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import BlogTopbar from '@/components/Blog/BlogTopbar'
 import ReadingProgress from '@/components/Blog/ReadingProgress'
@@ -48,18 +50,51 @@ const components = {
   h2: H2
 }
 
+// intrinsic dims so social cards render at the right aspect ratio
+async function imageSize(link) {
+  try {
+    const meta = await sharp(path.join(process.cwd(), 'public', link)).metadata()
+    if (meta.width && meta.height) return { width: meta.width, height: meta.height }
+  } catch {
+    /* ignore — omit dims if unreadable */
+  }
+  return {}
+}
+
 export async function generateMetadata({ params }) {
   const { blog } = await params
   const frontmatter = getFrontMatter(path.join('posts', blog + '.mdx'))
-  const homeLink = 'https://www.snehilshah.com'
+  const url = `/blogs/${blog}`
+  const dims = await imageSize(frontmatter.header)
+  const published = new Date(frontmatter.date).toISOString()
+  const topic = frontmatter.topic || 'General'
 
   return {
     title: frontmatter.title,
     description: frontmatter.description,
+    keywords: [topic, 'Snehil Shah', 'blog'],
+    authors: [{ name: 'Snehil Shah', url: siteUrl }],
+    alternates: {
+      canonical: url,
+      types: { 'application/rss+xml': '/rss.xml' }
+    },
     openGraph: {
+      type: 'article',
       title: frontmatter.title,
       description: frontmatter.description,
-      images: [{ url: `${homeLink}${frontmatter.header}` }]
+      url,
+      publishedTime: published,
+      authors: ['Snehil Shah'],
+      tags: [topic],
+      images: [
+        { url: frontmatter.header, alt: frontmatter.title, ...dims }
+      ]
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: frontmatter.title,
+      description: frontmatter.description,
+      images: [frontmatter.header]
     }
   }
 }
@@ -82,8 +117,28 @@ async function PostPage({ params }) {
   const idx = posts.findIndex(p => p.slug === blog)
   const next = posts.length > 1 ? posts[(idx + 1) % posts.length] : null
 
+  const url = `${siteUrl}/blogs/${blog}`
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: frontmatter.title,
+    description: frontmatter.description,
+    image: `${siteUrl}${frontmatter.header}`,
+    datePublished: new Date(frontmatter.date).toISOString(),
+    dateModified: new Date(frontmatter.date).toISOString(),
+    author: { '@type': 'Person', name: 'Snehil Shah', url: siteUrl },
+    publisher: { '@type': 'Person', name: 'Snehil Shah', url: siteUrl },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    keywords: topic,
+    url
+  }
+
   return (
     <main className='paper'>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <ReadingProgress />
       <BlogTopbar />
 
