@@ -50,11 +50,12 @@ const Timeline = () => {
   const [height, setHeight] = useState(0)
 
   useEffect(() => {
-    if (!ref.current) return
-    const measure = () => setHeight(ref.current.getBoundingClientRect().height)
+    const node = ref.current
+    if (!node) return
+    const measure = () => setHeight(node.getBoundingClientRect().height)
     measure()
     const observer = new ResizeObserver(measure)
-    observer.observe(ref.current)
+    observer.observe(node)
     return () => observer.disconnect()
   }, [])
 
