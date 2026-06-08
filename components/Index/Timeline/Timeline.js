@@ -77,8 +77,8 @@ const Timeline = () => {
       </div>
 
       <div ref={ref} className='relative pb-20'>
-        {timelineData.map(({ date, header, organization, qualities, Icon }, index) => (
-          <div key={index} className='flex justify-start pt-10 md:gap-10 md:pt-24'>
+        {timelineData.map(({ date, header, organization, qualities, Icon }) => (
+          <div key={date} className='flex justify-start pt-10 md:gap-10 md:pt-24'>
             {/* Sticky left: dot + date */}
             <div className='sticky top-28 z-20 flex max-w-xs flex-col items-center self-start md:w-full md:max-w-sm md:flex-row'>
               <div className='absolute left-2 flex h-12 w-12 items-center justify-center rounded-full bg-stone-400 ring-4 ring-[#0097A7] md:left-2'>
