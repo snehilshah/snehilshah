@@ -1,5 +1,5 @@
 'use client'
-import { motion, cubicBezier } from 'framer-motion'
+import { motion, cubicBezier } from 'motion/react'
 import { useState } from 'react'
 const bezierEase = cubicBezier(0.69, 0, 0.21, 1)
 const imageVariants = {
