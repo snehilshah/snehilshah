@@ -1,65 +1,14 @@
-import BlogNav from '@/components/Blog/BlogNav'
-import Link from 'next/link'
-import Image from 'next/image'
-import BlogHero from '@/components/Blog/BlogHero'
-import BlogBGGrid from '@/components/Blog/BlogBGGrid'
-import { getFrontMatter } from '@/lib/helpers'
-import path from 'path'
-import fs from 'fs'
+import BlogTopbar from '@/components/Blog/BlogTopbar'
+import BlogIndex from '@/components/Blog/BlogIndex'
+import { getAllPosts } from '@/lib/blog'
+import './blog-rework.css'
 
-async function blogs() {
-  const posts = []
-  for (const file of fs.readdirSync('posts')) {
-    const frontmatter = getFrontMatter(path.join('posts', file))
-    posts.push({
-      slug: file.replace('.mdx', ''),
-      frontmatter
-    })
-  }
-
-  posts.sort((a, b) => {
-    return new Date(b.frontmatter.date) - new Date(a.frontmatter.date)
-  })
-
+export default function Blogs() {
+  const posts = getAllPosts()
   return (
-    <div className={'max-w-(--breakpoint-2xl) mx-auto'}>
-      <BlogBGGrid />
-      <BlogNav />
-      <BlogHero />
-      <div
-        className={
-          'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 p-2 md:p-6'
-        }
-      >
-        {posts.map((post, index) => (
-          <Link key={index} href={`/blogs/${post.slug}`}>
-            <div className='rounded-lg group cursor-pointer overflow-hidden outline-stone-600 outline-1 shadow-lg'>
-              <div className='relative h-60 w-full overflow-hidden'>
-                <Image
-                  src={post.frontmatter.cover_image}
-                  alt={'Post Cover Image'}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className='object-cover group-hover:scale-105 transition-transform duration-200 ease-in-out'
-                  unoptimized={post.frontmatter.cover_image.endsWith('.avif')}
-                />
-              </div>
-              <div className='flex justify-between p-5 bg-stone-100'>
-                <div className=''>
-                  <p className='text-lg font-bold'>{post.frontmatter.title}</p>
-                  <p className='text-sm'>{post.frontmatter.description}</p>
-                </div>
-
-                <p className='min-w-20 whitespace-nowrap'>
-                  {post.frontmatter.date}
-                </p>
-              </div>
-            </div>
-          </Link>
-        ))}
-      </div>
-    </div>
+    <main className='paper'>
+      <BlogTopbar />
+      <BlogIndex posts={posts} />
+    </main>
   )
 }
-
-export default blogs
