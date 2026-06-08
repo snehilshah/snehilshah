@@ -14,42 +14,48 @@ const projects = [
     desc: 'This is the project description',
     accent: 'text-amber-200',
     bgColor: 'from-amber-700 to-neutral-900',
-    imagePath: StockScreen
+    imagePath: StockScreen,
+    link: ''
   },
   {
     title: 'Agenda Builder',
     desc: 'This is the project description',
     accent: 'text-rose-200',
     bgColor: 'from-purple-700 via-pink-700 to-red-700',
-    imagePath: AgendaBuilder
+    imagePath: AgendaBuilder,
+    link: ''
   },
   {
     title: 'IDF Balgurukul',
     desc: 'This is the project description',
     accent: 'text-cyan-200',
     bgColor: 'from-indigo-700 to-blue-700',
-    imagePath: Balgurukul
+    imagePath: Balgurukul,
+    link: ''
   },
   {
     title: 'Project Gallery',
     desc: 'This is the project description',
     accent: 'text-stone-200',
     bgColor: 'from-neutral-700 to-stone-900',
-    imagePath: ProjectGallery
+    imagePath: ProjectGallery,
+    link: ''
   },
   {
     title: 'Hyperspectral Image',
     desc: 'This is the project description',
     accent: 'text-teal-200',
     bgColor: 'from-green-700 via-teal-700 to-blue-700',
-    imagePath: HyperSpectral
+    imagePath: HyperSpectral,
+    link: ''
   },
   {
     title: 'Portfolio Website',
     desc: 'This is the project description',
     accent: 'text-rose-200',
     bgColor: 'from-red-700 via-neutral-600 to-neutral-700',
-    imagePath: Heart
+    imagePath: Heart,
+    link: 'https://www.snehilshah.com'
   }
 ]
 
@@ -62,7 +68,7 @@ export default function Projects() {
       <Heading title={'Projects'} details={'Projects I have worked'} />
       <div className='mt-6'>
         <Carousel>
-          {projects.map(({ title, desc, accent, bgColor, imagePath }) => (
+          {projects.map(({ title, desc, accent, bgColor, imagePath, link }) => (
             <Cards
               key={title}
               title={title}
@@ -70,6 +76,7 @@ export default function Projects() {
               src={imagePath}
               bgColor={bgColor}
               accent={accent}
+              link={link}
             />
           ))}
         </Carousel>
