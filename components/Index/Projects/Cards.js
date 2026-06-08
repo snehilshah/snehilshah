@@ -1,6 +1,4 @@
 import Image from 'next/image'
-import styles from '../../../styles/Card.module.css'
-import clsx from 'clsx'
 function Cards({ title, desc, src, fontSyle, bgColor }) {
   return (
     <div className='hero'>
