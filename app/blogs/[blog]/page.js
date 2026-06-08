@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import Link from 'next/link'
+import Image from 'next/image'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import BlogTopbar from '@/components/Blog/BlogTopbar'
@@ -95,7 +96,13 @@ async function PostPage({ params }) {
 
       <div className='post-hero-wrap'>
         <div className='post-hero'>
-          <img src={frontmatter.header} alt={frontmatter.title} />
+          <Image
+            src={frontmatter.header}
+            alt={frontmatter.title}
+            fill
+            sizes='100vw'
+            priority
+          />
         </div>
       </div>
 
