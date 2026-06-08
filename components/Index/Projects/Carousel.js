@@ -29,11 +29,36 @@ export default function Carousel({ children }) {
     return () => observer.disconnect()
   }, [x])
 
+  const spring = { type: 'spring', stiffness: 300, damping: 40 }
+
   const step = direction => {
     const viewport = viewportRef.current?.offsetWidth ?? 0
     const delta = viewport * 0.8 * direction
     const next = Math.min(0, Math.max(-maxDrag, x.get() + delta))
-    animate(x, next, { type: 'spring', stiffness: 300, damping: 40 })
+    animate(x, next, spring)
+  }
+
+  const handleKeyDown = e => {
+    switch (e.key) {
+      case 'ArrowLeft':
+        e.preventDefault()
+        step(1)
+        break
+      case 'ArrowRight':
+        e.preventDefault()
+        step(-1)
+        break
+      case 'Home':
+        e.preventDefault()
+        animate(x, 0, spring)
+        break
+      case 'End':
+        e.preventDefault()
+        animate(x, -maxDrag, spring)
+        break
+      default:
+        break
+    }
   }
 
   return (
@@ -57,7 +82,15 @@ export default function Carousel({ children }) {
         </button>
       </div>
 
-      <div ref={viewportRef} className='overflow-hidden'>
+      <div
+        ref={viewportRef}
+        role='group'
+        aria-roledescription='carousel'
+        aria-label='Projects'
+        tabIndex={0}
+        onKeyDown={handleKeyDown}
+        className='overflow-hidden rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/60'
+      >
         <motion.div
           ref={trackRef}
           style={{ x }}
