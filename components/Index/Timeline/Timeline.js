@@ -1,5 +1,5 @@
 'use client'
-import { useScroll, useTransform, motion } from 'framer-motion'
+import { useScroll, useTransform, motion } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
 import { Laptop, MicVocal, Users, BriefcaseBusiness } from 'lucide-react'
 import Heading from '../Heading'
