@@ -4,7 +4,7 @@ import AgendaBuilder from '../../../public/projects/agenda.webp'
 import Balgurukul from '../../../public/projects/balgurukul.webp'
 import ProjectGallery from '../../../public/projects/homebackground.webp'
 import HyperSpectral from '../../../public/projects/hypersceptral.webp'
-import Heart from '../../../public/projects/final_heart.avif'
+import Heart from '../../../public/projects/final_heart.webp'
 import Carousel from './Carousel'
 import Cards from './Cards'
 

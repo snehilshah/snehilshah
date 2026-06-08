@@ -16,7 +16,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang='en' className=''>
+    <html lang='en' className='' data-scroll-behavior='smooth'>
       <body className={`${fontClasses} font-product`}>{children}</body>
     </html>
   )
