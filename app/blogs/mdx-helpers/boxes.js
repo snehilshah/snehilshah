@@ -1,3 +1,6 @@
+import path from 'path'
+import sharp from 'sharp'
+import Image from 'next/image'
 import { Info, Lightbulb, TriangleAlert, OctagonX } from 'lucide-react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { nord } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
@@ -40,12 +43,33 @@ export const ErrorBox = ({ text, children }) => (
   </Callout>
 )
 
-export const ImageBox = ({ link, text = '' }) => (
-  <figure className='fig'>
-    <img src={link} alt={text || 'image'} />
-    {text && <figcaption>{text}</figcaption>}
-  </figure>
-)
+// async server component: read intrinsic size at build so next/image can
+// optimize (emit resized AVIF) instead of shipping the raw source
+export const ImageBox = async ({ link, text = '' }) => {
+  let width = 1600
+  let height = 900
+  try {
+    const meta = await sharp(path.join(process.cwd(), 'public', link)).metadata()
+    if (meta.width && meta.height) {
+      width = meta.width
+      height = meta.height
+    }
+  } catch {
+    /* fall back to 16:9 if the file can't be read */
+  }
+  return (
+    <figure className='fig'>
+      <Image
+        src={link}
+        alt={text || 'image'}
+        width={width}
+        height={height}
+        sizes='(max-width: 740px) 100vw, 44rem'
+      />
+      {text && <figcaption>{text}</figcaption>}
+    </figure>
+  )
+}
 
 export const CodeBox = ({ code, language }) => (
   <div className='codeblock'>

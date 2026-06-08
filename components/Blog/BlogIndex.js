@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 
 const Meta = ({ post }) => (
@@ -40,7 +41,13 @@ export default function BlogIndex({ posts }) {
         <Link className='feature' href={`/blogs/${featured.slug}`}>
           <span className='feature__tag'>Featured</span>
           <div className='fimg'>
-            <img src={featured.frontmatter.cover_image} alt={featured.frontmatter.title} />
+            <Image
+              src={featured.frontmatter.cover_image}
+              alt={featured.frontmatter.title}
+              fill
+              sizes='(max-width: 900px) 100vw, 42vw'
+              priority
+            />
           </div>
           <div className='fbody'>
             <Meta post={featured} />
@@ -57,7 +64,12 @@ export default function BlogIndex({ posts }) {
         {shown.map(p => (
           <Link className='card' key={p.slug} href={`/blogs/${p.slug}`}>
             <div className='cimg'>
-              <img src={p.frontmatter.cover_image} alt={p.frontmatter.title} loading='lazy' />
+              <Image
+                src={p.frontmatter.cover_image}
+                alt={p.frontmatter.title}
+                fill
+                sizes='(max-width: 560px) 100vw, (max-width: 900px) 50vw, 25vw'
+              />
               <span className='ctopic'>{p.frontmatter.topic}</span>
             </div>
             <div className='cbody'>
