@@ -1,7 +1,10 @@
-export const Standout = ({ text }) => {
-  return (
-    <span className='bg-clip-text text-transparent bg-linear-to-r from-fuchsia-600 to-rose-600'>
-      <b>{text}</b>
-    </span>
-  )
+const COLORS = {
+  rose: 'hl-rose',
+  blue: 'hl-blue',
+  green: 'hl-green',
+  amber: 'hl-amber'
+}
+
+export const Standout = ({ text, color = 'rose', children }) => {
+  return <span className={`hl ${COLORS[color] || COLORS.rose}`}>{text ?? children}</span>
 }
