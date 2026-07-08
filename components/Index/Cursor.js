@@ -18,7 +18,9 @@ const Cursor = () => {
   useEffect(() => {
     if (window.matchMedia('(pointer: coarse)').matches) return
 
-    window.addEventListener('mousemove', e => {
+    let animationFrameId;
+
+    const onMouseMove = e => {
       if (cursorRef.current) {
         if (isFirstMove.current) {
           cursorRef.current.style.display = 'block'
@@ -30,10 +32,13 @@ const Cursor = () => {
         realMouse.current.x = e.clientX
         realMouse.current.y = e.clientY
       }
-    })
+    }
+
+    // Using { passive: true } to improve scrolling performance
+    window.addEventListener('mousemove', onMouseMove, { passive: true })
 
     const updateMouse = () => {
-      requestAnimationFrame(updateMouse)
+      animationFrameId = requestAnimationFrame(updateMouse)
 
       displayedMouse.current.x +=
         (realMouse.current.x - displayedMouse.current.x) * 0.2
@@ -47,6 +52,12 @@ const Cursor = () => {
     }
 
     updateMouse()
+
+    // Added cleanup function to prevent memory leaks on unmount
+    return () => {
+      window.removeEventListener('mousemove', onMouseMove)
+      cancelAnimationFrame(animationFrameId)
+    }
   }, [])
 
   return (
