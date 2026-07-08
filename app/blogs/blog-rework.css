@@ -71,7 +71,9 @@
   cursor: pointer;
 }
 .bp-topbar__brand img {
-  height: 34px;
+  display: block;
+  width: auto;
+  height: 42px;
   filter: brightness(0) saturate(100%) invert(14%) sepia(18%) saturate(1600%)
     hue-rotate(346deg) brightness(95%) contrast(90%);
   transition: opacity 0.2s var(--ease);
