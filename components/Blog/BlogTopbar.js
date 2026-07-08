@@ -5,7 +5,7 @@ export default function BlogTopbar() {
   return (
     <div className='bp-topbar'>
       <Link href='/blogs' className='bp-topbar__brand' title='All posts'>
-        <img src='/Logo2Straight.svg' alt='Snehil Shah' />
+        <img src='/SnehilLogo/Logo2.svg' alt='Snehil Shah logo' />
       </Link>
       <a
         className='bp-topbar__cta'
