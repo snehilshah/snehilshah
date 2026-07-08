@@ -6,3 +6,7 @@
 ## 2024-05-20 - Global Prettier Runs
 **Learning:** Found that running `prettier --write .` globally can format unrelated files and pollute Git history, leading to messy PRs and making code review difficult.
 **Action:** Always target specific modified files when formatting code (`prettier --write <file>`) to ensure changes remain atomic and clean.
+## 2024-05-20 - Missing Cleanup in mousemove and requestAnimationFrame Loops
+
+**Learning:** Found a critical performance anti-pattern in `components/Index/Cursor.js` where a `mousemove` event listener and a recursive `requestAnimationFrame` loop lacked cleanups in the `useEffect` hook. This leads to severe memory leaks and "ghost" animation loops consuming unnecessary CPU cycles when the component is unmounted and remounted.
+**Action:** Always ensure high-frequency event listeners like `mousemove` and recursive functions like `requestAnimationFrame` inside React `useEffect` hooks return a cleanup function (`removeEventListener` and `cancelAnimationFrame`). Use the `{ passive: true }` flag to inform the browser that the listener won't block scrolling.
