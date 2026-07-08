@@ -6,3 +6,8 @@
 ## 2024-05-20 - Global Prettier Runs
 **Learning:** Found that running `prettier --write .` globally can format unrelated files and pollute Git history, leading to messy PRs and making code review difficult.
 **Action:** Always target specific modified files when formatting code (`prettier --write <file>`) to ensure changes remain atomic and clean.
+
+## 2026-03-25 - Cursor Animation Leaks
+
+**Learning:** Found a missing cleanup in `components/Index/Cursor.js` for both `mousemove` event listeners and `requestAnimationFrame` loops. This causes a memory leak and continuous background CPU usage if the component is unmounted (e.g., navigating to the blog).
+**Action:** Always include a cleanup function in `useEffect` to remove event listeners and cancel animation frames using `cancelAnimationFrame` when setting up continuous background tasks in React.
