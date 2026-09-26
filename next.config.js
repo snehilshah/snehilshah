@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
   transpilePackages:
     process.env.NODE_ENV !== 'production' ? ['next-mdx-remote'] : undefined,
   pageExtensions: ['js', 'jsx', 'mdx'],
@@ -12,7 +13,7 @@ const nextConfig = {
         hostname: 'utfs.io'
       }
     ]
-  },
+  }
 }
 
 export default nextConfig
