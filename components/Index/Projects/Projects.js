@@ -5,7 +5,7 @@ import Balgurukul from '../../../public/projects/balgurukul.webp'
 import ProjectGallery from '../../../public/projects/homebackground.webp'
 import HyperSpectral from '../../../public/projects/hypersceptral.webp'
 import Heart from '../../../public/projects/final_heart.webp'
-import Carousel from './Carousel'
+import LazyCarousel from './LazyCarousel'
 import Cards from './Cards'
 
 const projects = [
@@ -67,7 +67,7 @@ export default function Projects() {
     >
       <Heading title={'Projects'} details={'Projects I have worked'} />
       <div className='mt-6'>
-        <Carousel>
+        <LazyCarousel>
           {projects.map(({ title, desc, accent, bgColor, imagePath, link }) => (
             <Cards
               key={title}
@@ -79,7 +79,7 @@ export default function Projects() {
               link={link}
             />
           ))}
-        </Carousel>
+        </LazyCarousel>
       </div>
     </div>
   )

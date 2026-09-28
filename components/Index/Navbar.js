@@ -1,6 +1,5 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'motion/react'
 import { NavbarLogo } from '@/lib/svg'
 import Link from 'next/link'
 
@@ -82,37 +81,10 @@ export default function Navbar() {
   }
   const VerticalNavList = ({ title, url }) => {
     return (
-      <motion.li
-        className='uppercase py-6 text-4xl cursor-pointer'
-        variants={{
-          open: {
-            y: 0,
-            opacity: 1
-          },
-          closed: {
-            y: '45%',
-            opacity: 0
-          }
-        }}
-      >
+      <li className={`uppercase py-6 text-4xl cursor-pointer transition-all duration-500 ${mobileNav ? 'translate-y-0 opacity-100' : 'translate-y-[45%] opacity-0'}`}>
         <Link href={url} prefetch={title === 'blogs' ? false : undefined}>{title}</Link>
-      </motion.li>
+      </li>
     )
-  }
-
-  const topVariants = {
-    open: { rotate: 45, y: 7, originX: '16px', originY: '10px' },
-    closed: { rotate: 0, y: 0, originX: 0, originY: 0 }
-  }
-
-  const centerVariants = {
-    open: { opacity: 0 },
-    closed: { opacity: 1 }
-  }
-
-  const bottomVariants = {
-    open: { rotate: -45, y: -5, originX: '16px', originY: '22px' },
-    closed: { rotate: 0, y: 0, originX: 0, originY: 0 }
   }
 
   return (
@@ -132,7 +104,10 @@ export default function Navbar() {
             )
           })}
         </ul>
-        <div
+        <button
+          type='button'
+          aria-label='Toggle navigation'
+          aria-expanded={mobileNav}
           onClick={() => {
             setMobileNav(!mobileNav)
           }}
@@ -145,79 +120,54 @@ export default function Navbar() {
             fill='none'
             xmlns='http://www.w3.org/2000/svg'
           >
-            <motion.rect
-              animate={mobileNav ? 'open' : 'closed'}
-              variants={topVariants}
-              transition={{ duration: 0.7 }}
+            <rect
               x='6'
               y='9'
               width='20'
               height='2'
               rx='1'
               fill='currentColor'
+              className='transition-transform duration-700'
+              style={{ transform: mobileNav ? 'translateY(7px) rotate(45deg)' : 'none', transformOrigin: '16px 10px' }}
             />
-            <motion.rect
-              animate={mobileNav ? 'open' : 'closed'}
-              variants={centerVariants}
-              transition={{ duration: 0.4 }}
+            <rect
               x='6'
               y='15'
               width='20'
               height='2'
               rx='1'
               fill='currentColor'
+              className={`transition-opacity duration-400 ${mobileNav ? 'opacity-0' : 'opacity-100'}`}
             />
-            <motion.rect
-              animate={mobileNav ? 'open' : 'closed'}
-              variants={bottomVariants}
-              transition={{ duration: 0.4 }}
+            <rect
               x='6'
               y='21'
               width='20'
               height='2'
               rx='1'
               fill='currentColor'
+              className='transition-transform duration-400'
+              style={{ transform: mobileNav ? 'translateY(-7px) rotate(-45deg)' : 'none', transformOrigin: '16px 22px' }}
             />
           </svg>
+        </button>
+        <div
+          aria-hidden={!mobileNav}
+          inert={!mobileNav}
+          className={`flex flex-col justify-center items-center fixed top-0 left-0 w-screen h-3/4 bg-linear-to-b from-black to-stone-900 opacity-90 transition-transform duration-500 ${mobileNav ? 'translate-y-0' : '-translate-y-full pointer-events-none'}`}
+        >
+          <ul className='text-center'>
+            {links.map((link, index) => {
+              return (
+                <VerticalNavList
+                  title={link.title}
+                  url={link.to + link.title}
+                  key={index}
+                />
+              )
+            })}
+          </ul>
         </div>
-        <AnimatePresence>
-          {mobileNav && (
-            <motion.div
-              variants={{
-                open: {
-                  y: '0%',
-                  transition: {
-                    when: 'beforeChildren',
-                    duration: 0.5
-                  }
-                },
-                closed: {
-                  y: '-100%',
-                  transition: {
-                    when: 'afterChildren',
-                    duration: 0.5
-                  }
-                }
-              }}
-              initial='closed'
-              animate={'open'}
-              exit={'closed'}
-              className='flex flex-col justify-center items-center fixed top-0 left-0 w-screen h-3/4 bg-linear-to-b from-black to-stone-900 opacity-90'
-            >
-              <ul className='text-center'>
-                {links.map((link, index) => {
-                  return (
-                    <VerticalNavList
-                      title={link.title}
-                      url={link.to + link.title}
-                      key={index}
-                    />
-                  )
-                })}
-              </ul>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
     </nav>
   )
