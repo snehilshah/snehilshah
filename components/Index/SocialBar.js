@@ -1,8 +1,29 @@
+'use client'
+
+import { useEffect, useRef, useState } from 'react'
 import { UserRound, Mail } from 'lucide-react'
 import { GithubLogo, LinkedinLogo } from '@/lib/svg'
-import Link from 'next/link'
 
 const SocialBar = () => {
+  // Touch devices have no hover, so the first tap opens a row and the second follows the link
+  const [openId, setOpenId] = useState(null)
+  const barRef = useRef(null)
+
+  useEffect(() => {
+    if (openId === null) return
+    const close = (e) => {
+      if (!barRef.current?.contains(e.target)) setOpenId(null)
+    }
+    document.addEventListener('pointerdown', close)
+    return () => document.removeEventListener('pointerdown', close)
+  }, [openId])
+
+  const handleClick = (e, id) => {
+    if (window.matchMedia('(hover: hover)').matches || openId === id) return
+    e.preventDefault()
+    setOpenId(id)
+  }
+
   const socialLinks = [
     {
       id: 1,
@@ -34,23 +55,29 @@ const SocialBar = () => {
   ]
 
   return (
-    <div className='flex flex-col top-[35%] right-0 fixed z-50'>
+    <div ref={barRef} className='flex flex-col top-[35%] right-0 fixed z-50'>
       <ul>
         {socialLinks.map(({ icon, text, href, style = '', id }) => (
           <li
             key={id}
             className={
-              'flex justify-between items-center w-40 h-14 px-4 translate-x-[100px] hover:translate-x-[10px] hover:rounded-lg duration-300 bg-stone-600/80' +
+              'w-40 h-14 duration-300 bg-stone-600/80 hover:translate-x-[10px] hover:rounded-lg ' +
+              (openId === id ? 'translate-x-[10px] rounded-lg' : 'translate-x-[100px]') +
               ' ' +
               style
             }
           >
-            <div className='flex justify-between items-center w-full'>
+            <a
+              href={href}
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label={text}
+              onClick={(e) => handleClick(e, id)}
+              className='flex justify-between items-center w-full h-full px-4'
+            >
               {icon}
-              <Link href={href} target='_blank' rel='noopener noreferrer'>
-                {text}
-              </Link>
-            </div>
+              {text}
+            </a>
           </li>
         ))}
       </ul>
