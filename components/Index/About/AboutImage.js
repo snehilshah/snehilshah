@@ -18,12 +18,14 @@ const AboutImage = () => {
           id='personCircle'
           src={Blue}
           alt='Background Image'
+          sizes='240px'
           className='absolute aspect-square object-cover w-full top-auto inset-x-0 bottom-0 mx-auto rounded-full'
         />
         <Image
           id={clsx(styles.personImg)}
           src={Hero}
           alt='Hero Image'
+          sizes='300px'
           className='relative z-20 mx-auto scale-125'
         />
       </div>
