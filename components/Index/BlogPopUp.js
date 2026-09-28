@@ -7,7 +7,7 @@ const BlogPopUp = () => {
   return (
     <div className='hidden md:block fixed -rotate-90 text-white bottom-52 -left-0 font-supreme'>
       <div className={clsx(styles.animate)}>
-        <Link href={'/blogs'} className='text-cyan-200'>
+        <Link href={'/blogs'} prefetch={false} className='text-cyan-200'>
           BLOGS
           <Heart className='ml-1 mb-1 inline w-4 fill-red-400 text-cyan-200' />
         </Link>

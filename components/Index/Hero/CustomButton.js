@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const CustomButton = ({ content, link }) => {
   return (
-    <Link href={link}>
+    <Link href={link} prefetch={false}>
       <button className={clsx(styles.Custombutton, styles.type1)}>
         <span className={clsx(styles.btnTxt)}>{content}</span>
       </button>
