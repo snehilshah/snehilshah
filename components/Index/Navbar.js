@@ -76,7 +76,7 @@ export default function Navbar() {
   const HorizontalNavList = ({ title, url }) => {
     return (
       <li className='font-supreme px-4 cursor-pointer uppercase font-medium text-sm text-stone-400 tracking-wide hover:scale-105 duration-200'>
-        <Link href={url}>{title}</Link>
+        <Link href={url} prefetch={title === 'blogs' ? false : undefined}>{title}</Link>
       </li>
     )
   }
@@ -95,7 +95,7 @@ export default function Navbar() {
           }
         }}
       >
-        <Link href={url}>{title}</Link>
+        <Link href={url} prefetch={title === 'blogs' ? false : undefined}>{title}</Link>
       </motion.li>
     )
   }
