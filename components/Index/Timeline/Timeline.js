@@ -1,8 +1,6 @@
-'use client'
-import { useScroll, useTransform, motion } from 'motion/react'
-import { useEffect, useRef, useState } from 'react'
 import { Laptop, MicVocal, Users, BriefcaseBusiness } from 'lucide-react'
 import Heading from '../Heading'
+import TimelineProgress from './TimelineProgress'
 
 const timelineData = [
   {
@@ -45,39 +43,16 @@ const timelineData = [
 ]
 
 const Timeline = () => {
-  const ref = useRef(null)
-  const containerRef = useRef(null)
-  const [height, setHeight] = useState(0)
-
-  useEffect(() => {
-    const node = ref.current
-    if (!node) return
-    const measure = () => setHeight(node.getBoundingClientRect().height)
-    measure()
-    const observer = new ResizeObserver(measure)
-    observer.observe(node)
-    return () => observer.disconnect()
-  }, [])
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start 10%', 'end 50%']
-  })
-
-  const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height])
-  const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1])
-
   return (
     <div
       className='max-w-(--breakpoint-xl) mx-auto overflow-x-hidden'
       id='positions'
-      ref={containerRef}
     >
       <div className='text-white'>
         <Heading title={'Positions'} details={'Position I have been trusted with'} />
       </div>
 
-      <div ref={ref} className='relative pb-20'>
+      <div className='relative pb-20'>
         {timelineData.map(({ date, header, organization, qualities, Icon }) => (
           <div key={date} className='flex justify-start pt-10 md:gap-10 md:pt-24'>
             {/* Sticky left: dot + date */}
@@ -105,11 +80,8 @@ const Timeline = () => {
         ))}
 
         {/* Progress line */}
-        <div className='absolute left-8 top-0 w-[2px] overflow-hidden bg-stone-600/40 [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]' style={{ height: height + 'px' }}>
-          <motion.div
-            style={{ height: heightTransform, opacity: opacityTransform }}
-            className='absolute inset-x-0 top-0 w-[2px] rounded-full bg-gradient-to-t from-cyan-500 via-[#0097A7] to-cyan-200'
-          />
+        <div className='absolute inset-y-0 left-8 w-[2px] overflow-hidden bg-stone-600/40 [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]'>
+          <TimelineProgress />
         </div>
       </div>
     </div>
