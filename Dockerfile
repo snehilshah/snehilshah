@@ -1,7 +1,7 @@
 # syntax=docker.io/docker/dockerfile:1
 
 FROM node:24-alpine AS base
-RUN npm install -g npm@12
+RUN npm install -g npm@12.2.0
 
 # Install dependencies only when needed
 FROM base AS deps
