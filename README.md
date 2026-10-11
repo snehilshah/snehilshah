@@ -13,3 +13,25 @@ I love to talk about latest bleeding technologies on my <a href="https://www.sne
 
 <!--
 [![](https://visitcount.itsvg.in/api?id=snehilshah&label=Profile%20Views&color=8&icon=2&pretty=true)](https://visitcount.itsvg.in) -->
+
+## Development
+
+Use Node.js 24 (see `.nvmrc`) and pnpm 12.11.2, pinned in `package.json`.
+
+```sh
+npm install --global pnpm@12.11.2
+pnpm install --frozen-lockfile
+pnpm dev
+```
+
+Run `pnpm lint` and `pnpm build` before pushing. Use `pnpm start` to serve a
+production build. Commit `pnpm-lock.yaml` when dependencies change.
+
+`pnpm-workspace.yaml` contains dependency overrides and explicit install-script
+permissions. The shared store reuses packages across installs; Docker also caches
+that store between builds.
+
+```sh
+docker build -t snehilshah .
+docker run --rm -p 3000:3000 snehilshah
+```

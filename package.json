@@ -11,7 +11,7 @@
   "author": "Snehil Shah (https://www.snehilshah.com)",
   "engines": {
     "node": "24.x",
-    "npm": ">=11.0.0"
+    "pnpm": "12.x"
   },
   "scripts": {
     "dev": "next dev --turbopack",
@@ -49,25 +49,5 @@
     "prettier": "3.9.10",
     "tailwindcss": "^4.3.3"
   },
-  "overrides": {
-    "flatted": "^3.4.4",
-    "eslint-plugin-import": {
-      "eslint": "$eslint"
-    },
-    "eslint-plugin-jsx-a11y": {
-      "eslint": "$eslint"
-    },
-    "eslint-plugin-react": {
-      "eslint": "$eslint"
-    },
-    "@tailwindcss/typography": {
-      "postcss-selector-parser": "^7.1.6"
-    }
-  },
-  "packageManager": "npm@12.2.0",
-  "allowScripts": {
-    "sharp": true,
-    "@tailwindcss/oxide": true,
-    "unrs-resolver": true
-  }
+  "packageManager": "pnpm@12.11.2"
 }

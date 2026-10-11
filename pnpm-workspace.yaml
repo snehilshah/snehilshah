@@ -1,0 +1,22 @@
+preferOffline: true
+packageImportMethod: auto
+sideEffectsCache: true
+
+# These exact releases were selected for the latest-version upgrade before
+# pnpm's default 24-hour release delay elapsed.
+minimumReleaseAgeExclude:
+  - lucide-react@1.55.0
+  - prettier@3.9.10
+
+overrides:
+  flatted: ^3.4.4
+  '@tailwindcss/typography>postcss-selector-parser': ^7.1.6
+  # These plugins still declare ESLint 9 peers; lint passes with ESLint 10.
+  'eslint-plugin-import>eslint': ^10.12.0
+  'eslint-plugin-jsx-a11y>eslint': ^10.12.0
+  'eslint-plugin-react>eslint': ^10.12.0
+
+allowBuilds:
+  sharp: true
+  '@tailwindcss/oxide': true
+  unrs-resolver: true
