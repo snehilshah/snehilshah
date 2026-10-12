@@ -9,10 +9,20 @@ const nextConfig = {
     NEXT_PUBLIC_LISTENING_BASE: LISTENING_HOST ? '' : '/listening'
   },
   async rewrites() {
-    if (!LISTENING_HOST) return []
+    // Other ranges and older history are pages of their own, so each is
+    // built once and cached; links keep the short query form.
+    const range = { type: 'query', key: 'range', value: '(?<range>[0-9a-z-]{2,10})' }
+    const before = { type: 'query', key: 'before', value: '(?<before>\\d{1,16})' }
+    const cached = (from, has = []) => [
+      { source: from || '/', has: [...has, range], destination: '/listening/by-range/:range' },
+      { source: `${from}/:section(artists|albums|tracks)`, has: [...has, range], destination: '/listening/:section/by-range/:range' },
+      { source: `${from}/history`, has: [...has, before], destination: '/listening/history/before/:before' }
+    ]
+    if (!LISTENING_HOST) return { beforeFiles: cached('/listening') }
     const onHost = [{ type: 'host', value: LISTENING_HOST }]
     return {
       beforeFiles: [
+        ...cached('', onHost),
         { source: '/', has: onHost, destination: '/listening' },
         { source: '/:path((?!_next/|api/|fonts/|favicon|listening(?:/|$)).*)', has: onHost, destination: '/listening/:path' }
       ]

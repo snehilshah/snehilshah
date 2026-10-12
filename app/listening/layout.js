@@ -1,8 +1,8 @@
 import './listening.css'
-import { chubbo } from '@/styles/fonts'
+import { libron, productSans } from '@/styles/fonts'
 
 export const metadata = {
-  title: { default: 'Listening · Snehil Shah', template: '%s · Listening' },
+  title: { default: 'Music · Snehil Shah', template: '%s · Music · Snehil Shah' },
   description: 'What I listen to, across my phone and computers.'
 }
 
@@ -14,5 +14,5 @@ export const viewport = {
 }
 
 export default function ListeningLayout({ children }) {
-  return <div className={`${chubbo.variable} font-supreme`}>{children}</div>
+  return <div className={`${libron.variable} ${productSans.variable}`}>{children}</div>
 }

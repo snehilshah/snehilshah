@@ -3,20 +3,13 @@ import { ArrowDown, ArrowUp } from 'lucide-react'
 import { RANGES } from '../_lib/goonj'
 import { withRange } from '../_lib/paths'
 
-/** Title tabs: the current one in full ink, the rest quieter. No pill, no underline. */
+/** Range chips; the current one filled. */
 export function RangeTabs({ path, range, extra = [] }) {
   const all = [...RANGES, ...extra]
   return (
-    <div className='flex gap-4 overflow-x-auto no-scrollbar -mx-4 px-4 py-1'>
+    <div className='flex gap-1.5 overflow-x-auto no-scrollbar max-w-full'>
       {all.map((r) => (
-        <Link
-          key={r.key}
-          href={withRange(path, r.key)}
-          scroll={false}
-          className={`name text-[15px] shrink-0 transition-colors ${
-            r.key === range ? 'text-m-on-surface' : 'text-m-on-surface-variant hover:text-m-on-surface'
-          }`}
-        >
+        <Link key={r.key} href={withRange(path, r.key)} scroll={false} className='chip' aria-current={r.key === range ? 'true' : undefined}>
           {r.label}
         </Link>
       ))}
@@ -24,12 +17,35 @@ export function RangeTabs({ path, range, extra = [] }) {
   )
 }
 
-/** A section: a label plus space. Hidden when empty. */
+/** A page's title row: the h1, with range chips beside it (under it on phones). */
+export function PageHead({ title, eyebrow, children }) {
+  return (
+    <header className='mt-12 flex flex-wrap items-end justify-between gap-x-6 gap-y-4'>
+      <div className='min-w-0'>
+        {eyebrow && <p className='meta mb-1'>{eyebrow}</p>}
+        <h1 className='h1 break-words'>{title}</h1>
+      </div>
+      {children}
+    </header>
+  )
+}
+
+/** A group of sections: an h2 over a hairline. */
+export function Group({ title, children }) {
+  return (
+    <section className='mt-16'>
+      <h2 className='h2 group-head'>{title}</h2>
+      {children}
+    </section>
+  )
+}
+
+/** One list or chart: an h3 and its content. Inside a Group. */
 export function Section({ title, action, children, className = '' }) {
   return (
-    <section className={`mt-12 ${className}`}>
-      <div className='flex items-baseline justify-between gap-4 mb-4'>
-        <h2 className='display text-[24px]'>{title}</h2>
+    <section className={`mt-8 min-w-0 ${className}`}>
+      <div className='flex items-baseline justify-between gap-4 mb-3'>
+        <h3 className='h3'>{title}</h3>
         {action}
       </div>
       {children}
@@ -39,26 +55,20 @@ export function Section({ title, action, children, className = '' }) {
 
 export function More({ href, children = 'See all' }) {
   return (
-    <Link href={href} className='meta hover:text-m-on-surface transition-colors shrink-0'>
+    <Link href={href} className='text-[14px] font-medium text-m-primary hover:underline shrink-0'>
       {children}
     </Link>
   )
 }
 
-/** Rank change against the previous period: ▲3, ▼2, new, or nothing. */
+/** Rank change against the previous period: ▲3, ▼2, or nothing. */
 export function RankChange({ rank, prevRank, show = true }) {
-  if (!show) return null
-  if (!prevRank)
-    return (
-      <span className='text-[11px] font-medium rounded-full px-1.5 py-px bg-m-tertiary-container text-m-on-tertiary-container'>
-        new
-      </span>
-    )
+  if (!show || !prevRank) return null
   const d = prevRank - rank
   if (d === 0) return null
   const Up = d > 0
   return (
-    <span className={`inline-flex items-center text-[11px] ${Up ? 'text-m-primary' : 'text-m-on-surface-variant'}`}>
+    <span className={`inline-flex items-center text-[11px] font-medium ${Up ? 'text-m-primary' : 'text-m-on-surface-variant'}`}>
       {Up ? <ArrowUp size={11} strokeWidth={2.5} /> : <ArrowDown size={11} strokeWidth={2.5} />}
       {Math.abs(d)}
     </span>
@@ -80,8 +90,8 @@ export function Figures({ items, cols = 'grid-cols-2 sm:grid-cols-3 lg:grid-cols
     <div className={`segmented ${cols}`}>
       {items.map((f) => (
         <div key={f.label} className='px-4 py-4 min-w-0'>
-          <div className='display text-[28px] whitespace-nowrap'>{f.value}</div>
-          <div className='flex items-center gap-2 mt-1.5 min-w-0'>
+          <div className='display text-[30px] sm:text-[34px] whitespace-nowrap'>{f.value}</div>
+          <div className='flex items-center gap-2 mt-1 min-w-0'>
             <span className='meta truncate'>{f.label}</span>
             {f.sub && <span className='text-[11px] text-m-on-surface-variant whitespace-nowrap'>{f.sub}</span>}
           </div>
