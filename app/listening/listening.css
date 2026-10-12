@@ -116,12 +116,18 @@
 }
 .goonj .tabs > a {
   flex-shrink: 0;
-  padding: 7px 14px;
+  padding: 7px 10px;
   border-radius: 9999px;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 13.5px;
   color: var(--m-on-surface-variant);
   transition: color 150ms, background-color 150ms;
+}
+@media (min-width: 640px) {
+  .goonj .tabs > a {
+    padding: 7px 14px;
+    font-size: 14px;
+  }
 }
 .goonj .tabs > a:hover {
   color: var(--m-on-surface);
