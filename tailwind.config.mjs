@@ -17,7 +17,8 @@ const config = {
         supreme: ['var(--font-supreme)'],
         cabinet: ['var(--font-cabinet)'],
         product: ['var(--font-product)'],
-        copernicus: ['var(--font-copernicus)']
+        copernicus: ['var(--font-copernicus)'],
+        chubbo: ['var(--font-chubbo)']
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -25,6 +26,29 @@ const config = {
         sm: 'calc(var(--radius) - 4px)'
       },
       colors: {
+        // Listening dashboard: M3 roles generated from the art (app/listening/_lib/theme.js).
+        m: {
+          'surface': 'var(--m-surface)',
+          'surface-dim': 'var(--m-surface-dim)',
+          'surface-container-low': 'var(--m-surface-container-low)',
+          'surface-container': 'var(--m-surface-container)',
+          'surface-container-high': 'var(--m-surface-container-high)',
+          'surface-container-highest': 'var(--m-surface-container-highest)',
+          'on-surface': 'var(--m-on-surface)',
+          'on-surface-variant': 'var(--m-on-surface-variant)',
+          'outline': 'var(--m-outline)',
+          'outline-variant': 'var(--m-outline-variant)',
+          'primary': 'var(--m-primary)',
+          'on-primary': 'var(--m-on-primary)',
+          'primary-container': 'var(--m-primary-container)',
+          'on-primary-container': 'var(--m-on-primary-container)',
+          'secondary': 'var(--m-secondary)',
+          'secondary-container': 'var(--m-secondary-container)',
+          'on-secondary-container': 'var(--m-on-secondary-container)',
+          'tertiary': 'var(--m-tertiary)',
+          'tertiary-container': 'var(--m-tertiary-container)',
+          'on-tertiary-container': 'var(--m-on-tertiary-container)',
+        },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {

@@ -1,0 +1,117 @@
+/* Listening dashboard. Geet's language: art is the room, matte not glass,
+   one 16px edge, sections are a label plus space, tabular figures. */
+
+.goonj {
+  background: var(--m-surface);
+  color: var(--m-on-surface);
+  font-family: var(--font-supreme), system-ui, sans-serif;
+  font-feature-settings: 'tnum' 1;
+  min-height: 100dvh;
+  isolation: isolate;
+  transition: background-color 400ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.goonj ::selection {
+  background: var(--m-primary-container);
+  color: var(--m-on-primary-container);
+}
+
+/* The art, blurred once (a 48px image scaled up), under a surface scrim. */
+.goonj-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.goonj-backdrop > .art {
+  position: absolute;
+  inset: -10%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(48px) saturate(1.25);
+  transform: scale(1.1);
+}
+.goonj-backdrop > .scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in oklab, var(--m-surface) 38%, transparent) 0,
+    color-mix(in oklab, var(--m-surface) 72%, transparent) 480px,
+    var(--m-surface) 1200px
+  );
+}
+/* A little grain, like Geet's matte surfaces. Static. */
+.goonj-backdrop > .grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.goonj .display {
+  font-family: var(--font-chubbo), var(--font-cabinet), sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+.goonj .name {
+  font-family: var(--font-cabinet), sans-serif;
+  font-weight: 600;
+}
+.goonj .meta {
+  font-weight: 300;
+  font-size: 13px;
+  color: var(--m-on-surface-variant);
+}
+
+/* Segmented tiles: 2px apart, 20px outer corners, 6px inner. */
+.goonj .segmented {
+  display: grid;
+  gap: 2px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.goonj .segmented > * {
+  background: color-mix(in oklab, var(--m-surface-container-high) 82%, transparent);
+  border-radius: 6px;
+}
+
+.goonj .row-link {
+  border-radius: 12px;
+  transition: background-color 150ms cubic-bezier(0.2, 0, 0, 1);
+}
+.goonj .row-link:hover {
+  background: color-mix(in oklab, var(--m-on-surface) 6%, transparent);
+}
+
+.goonj .tile-art {
+  transition: transform 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+.goonj a:hover .tile-art {
+  transform: scale(1.02);
+}
+
+.goonj .no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.goonj .no-scrollbar {
+  scrollbar-width: none;
+}
+
+@keyframes goonj-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+.goonj .rise {
+  animation: goonj-rise 450ms cubic-bezier(0.2, 0, 0, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .goonj .rise {
+    animation: none;
+  }
+}

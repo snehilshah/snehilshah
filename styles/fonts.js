@@ -19,3 +19,9 @@ export const product = localFont({
   src: '../public/fonts/productSans/ProductSans-Regular.ttf',
   variable: '--font-product'
 })
+
+export const chubbo = localFont({
+  src: '../public/fonts/chubbo/Chubbo-Variable.ttf',
+  variable: '--font-chubbo',
+  display: 'swap'
+})
