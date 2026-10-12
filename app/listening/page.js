@@ -4,7 +4,8 @@ import { Art } from './_components/Art'
 import { Figures, More, RangeTabs, Section, Badge } from './_components/bits'
 import { TrackRow, TileGrid, Shelf } from './_components/rows'
 import { Bars, ListeningClock, Split, YearCalendar } from './_components/charts'
-import { overview, days, series, rediscover, imageBytes, imageUrl, rangeKey, RANGES } from './_lib/goonj'
+import { NowPlaying } from './_components/NowPlaying'
+import { API, overview, days, series, rediscover, imageBytes, imageUrl, rangeKey, RANGES } from './_lib/goonj'
 import { ago, count, delta, hours, isoDay, listening, percent, plays } from './_lib/format'
 import { artistHref, href, withRange } from './_lib/paths'
 
@@ -25,6 +26,10 @@ export default async function Overview({ searchParams }) {
 
   return (
     <Shell art={art} active='/'>
+      <div className='mt-8'>
+        <NowPlaying api={API} last={o.recent[0]} />
+      </div>
+
       <header className='mt-10 flex flex-col sm:flex-row sm:items-end gap-6 rise'>
         {hero && (
           <Link href={artistHref(hero.key)} className='shrink-0'>

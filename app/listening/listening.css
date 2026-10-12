@@ -115,3 +115,51 @@
     animation: none;
   }
 }
+
+/* Now playing: a matte card; three bars move only while music plays. */
+.goonj .now-card {
+  border-radius: 20px;
+  background: color-mix(in oklab, var(--m-surface-container-high) 82%, transparent);
+}
+.goonj .now-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  flex-shrink: 0;
+  background: var(--m-outline);
+}
+.goonj .now-bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+}
+.goonj .now-bars i {
+  width: 3px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--m-primary);
+}
+.goonj .now-bars.on i {
+  animation: goonj-bar 900ms cubic-bezier(0.2, 0, 0, 1) infinite alternate;
+}
+.goonj .now-bars.on i:nth-child(2) {
+  animation-delay: -300ms;
+}
+.goonj .now-bars.on i:nth-child(3) {
+  animation-delay: -600ms;
+}
+@keyframes goonj-bar {
+  from {
+    height: 3px;
+  }
+  to {
+    height: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .goonj .now-bars.on i {
+    animation: none;
+    height: 8px;
+  }
+}

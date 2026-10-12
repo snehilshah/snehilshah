@@ -3,7 +3,7 @@ import 'server-only'
 // Goonj, the listening history every device reports to. Data is cached and
 // refreshed when Goonj says new plays arrived (tag "goonj"), with a time
 // fallback in case that call is ever missed.
-const API = (process.env.GOONJ_URL || 'https://goonj.snehilshah.com').replace(/\/$/, '')
+export const API = (process.env.GOONJ_URL || 'https://goonj.snehilshah.com').replace(/\/$/, '')
 
 export const RANGES = [
   { key: '7d', label: '7 days' },
