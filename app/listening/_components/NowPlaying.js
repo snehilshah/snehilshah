@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
+import { Pause } from 'lucide-react'
 import { Art } from './Art'
 import { Ago } from './Ago'
 import { duration } from '../_lib/format'
@@ -10,7 +11,10 @@ import { albumHref, artistHref, trackHref } from '../_lib/paths'
 /**
  * What's playing right now, pushed by Goonj as it changes (server-sent
  * events; nothing polls, and the stream is open only while the page is on
- * screen). Goonj sends one device: whichever started first. When the track
+ * screen). Goonj sends one device: a playing one before a paused one,
+ * the first to start among players, the last to pause otherwise. The state
+ * sits on the cover as a badge; nothing playing shows the last play, dimmed.
+ * When the track
  * changes, the page's stats refresh a few seconds later, once that play
  * has landed.
  */
@@ -82,8 +86,7 @@ function Card({ n, api, skew }) {
   const pos = Math.min(n.positionMs + (playing ? Math.max(now - n.at, 0) : 0), n.durationMs || Infinity)
   const frac = n.durationMs ? pos / n.durationMs : 0
   const cover = n.albumKey ? `${api}/v1/images/album/${encodeURIComponent(n.albumKey)}?s=512` : null
-  const where = n.device ? ` on my ${n.device.toLowerCase()}` : ''
-  const eyebrow = idle ? 'Not listening right now' : playing ? `Listening now${where}` : `Paused${where}`
+  const device = n.device || ''
 
   return (
     <article className={`np ${state}`}>
@@ -93,15 +96,18 @@ function Card({ n, api, skew }) {
         </div>
       )}
       <div className='flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7'>
-        <Link href={trackHref(n.trackKey)} className='shrink-0 self-start sm:self-auto'>
+        <Link href={trackHref(n.trackKey)} className='relative shrink-0 self-start sm:self-auto'>
           <Art key={n.trackKey} src={cover} label={n.album || n.title} className='np-art np-in' />
+          {!idle && (
+            <span className='np-badge'>
+              {playing ? <span className='np-live' /> : <Pause size={12} strokeWidth={2.5} fill='currentColor' aria-hidden />}
+              <span className='sr-only'>{playing ? 'Playing' : 'Paused'}{device && ' on my'} </span>
+              <span className='label'>{device || (playing ? 'Playing' : 'Paused')}</span>
+            </span>
+          )}
         </Link>
         <div className='min-w-0 flex-1'>
-          <p className='flex items-center gap-2.5 text-[14px] font-medium text-m-on-surface-variant'>
-            <span className='np-live' />
-            {eyebrow}
-          </p>
-          <div key={n.trackKey} className='np-in mt-2'>
+          <div key={n.trackKey} className='np-in'>
             <Link
               href={trackHref(n.trackKey)}
               className={`display block truncate hover:underline ${idle ? 'text-[24px] sm:text-[28px]' : 'text-[28px] sm:text-[38px]'}`}

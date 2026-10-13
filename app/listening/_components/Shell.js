@@ -46,6 +46,14 @@ export async function Shell({ art, active, children }) {
           </div>
         </nav>
         {children}
+        <footer className='mt-24 pt-6 border-t border-m-outline-variant/60 flex flex-wrap justify-between gap-x-6 gap-y-2 text-[14px] text-m-on-surface-variant'>
+          <Link href={href('/docs')} className='font-medium hover:text-m-on-surface'>
+            How it works
+          </Link>
+          <a href='https://www.snehilshah.com' className='hover:text-m-on-surface'>
+            snehilshah.com
+          </a>
+        </footer>
       </div>
     </div>
   )

@@ -16,7 +16,7 @@ export async function TopPage({ kind, range }) {
   const showChange = !r.allTime
   return (
     <Shell art={art} active={`/${kind}`}>
-      <PageHead title={TITLES[kind]} eyebrow={rangeTitle(range)}>
+      <PageHead title={TITLES[kind]}>
         <RangeTabs path={`/${kind}`} range={range} />
       </PageHead>
       <div className='mt-8'>
@@ -33,7 +33,7 @@ export async function TopPage({ kind, range }) {
                 trailing={
                   <span className='flex flex-col items-end'>
                     <PlayCount n={it.plays} />
-                    <span className='text-[11px]'>{listening(it.listenedMs)}</span>
+                    <span className='text-[11px]'>{listening(it.listenedMs, 1)}</span>
                   </span>
                 }
               />

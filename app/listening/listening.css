@@ -145,6 +145,12 @@
   color: var(--m-on-surface-variant);
   transition: color 150ms, background-color 150ms;
 }
+@media (max-width: 639px) {
+  .goonj .chip {
+    padding: 6px 11px;
+    font-size: 13.5px;
+  }
+}
 .goonj .chip:hover {
   color: var(--m-on-surface);
 }
@@ -268,6 +274,43 @@
     transform: scale(1.025);
     box-shadow: 0 26px 56px -10px rgb(0 0 0 / 0.65);
   }
+}
+/* The state, on the cover's corner: a live dot and the device, or paused. */
+.goonj .np-badge {
+  position: absolute;
+  left: 6px;
+  bottom: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  max-width: calc(100% - 12px);
+  padding: 3px 9px 3px 7px;
+  border-radius: 9999px;
+  font-size: 11.5px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--m-on-surface);
+  background: color-mix(in oklab, var(--m-surface-container-highest) 90%, transparent);
+  box-shadow: 0 4px 12px -4px rgb(0 0 0 / 0.4);
+}
+.goonj .np-badge > svg {
+  flex-shrink: 0;
+}
+.goonj .np-badge > .label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (min-width: 640px) {
+  .goonj .np-badge {
+    left: 10px;
+    bottom: 10px;
+    font-size: 12.5px;
+    padding: 4px 11px 4px 9px;
+  }
+}
+.goonj .np.paused .np-badge {
+  color: var(--m-on-surface-variant);
 }
 .goonj .np-live {
   width: 8px;
@@ -405,4 +448,28 @@
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* How it works: numbered steps and inline commands. */
+.goonj ol.steps {
+  list-style: decimal;
+  padding-left: 1.4em;
+  max-width: 720px;
+  font-size: 16px;
+  line-height: 1.65;
+}
+.goonj ol.steps > li + li {
+  margin-top: 8px;
+}
+.goonj ol.steps > li::marker {
+  color: var(--m-primary);
+  font-weight: 500;
+}
+.goonj code {
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  font-size: 0.86em;
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: color-mix(in oklab, var(--m-surface-container-highest) 90%, transparent);
+  overflow-wrap: anywhere;
 }

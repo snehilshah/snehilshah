@@ -7,7 +7,7 @@ import { Figures, Group, Section, Badge } from './bits'
 import { TrackRow, TileGrid } from './rows'
 import { Bars, ListeningClock } from './charts'
 import { entity, imageBytes, imageUrl, recent } from '../_lib/goonj'
-import { count, date, duration, fullDate, hours, listening, monthYear, month, plays, time } from '../_lib/format'
+import { count, date, duration, fullDate, listening, monthYear, month, plays, time, timeFigure } from '../_lib/format'
 import { albumHref, artistHref } from '../_lib/paths'
 
 const ACTIVE = { artists: '/artists', albums: '/albums', tracks: '/tracks' }
@@ -19,7 +19,6 @@ export async function EntityPage({ kind, entityKey }) {
   const isArtist = kind === 'artists'
   const art = isArtist ? await imageBytes('artist', e.key) : await imageBytes('album', e.albumKey || e.key)
   const recentPlays = kind === 'tracks' ? (await recent(undefined, 12, e.key)).items : []
-  const kindLabel = { artists: 'Artist', albums: 'Album', tracks: 'Track' }[kind]
 
   return (
     <Shell art={art} active={ACTIVE[kind]}>
@@ -31,11 +30,7 @@ export async function EntityPage({ kind, entityKey }) {
           className={`size-44 sm:size-52 shrink-0 shadow-2xl shadow-black/20 ${isArtist ? '' : 'rounded-[28px]'}`}
         />
         <div className='min-w-0'>
-          <p className='meta'>
-            {kindLabel}
-            {e.rank ? ` · #${e.rank} all time` : ''}
-          </p>
-          <h1 className='h1 mt-1 break-words'>{e.name}</h1>
+          <h1 className='h1 break-words'>{e.name}</h1>
           <p className='meta mt-2 text-[14px] flex flex-wrap gap-x-1.5'>
             {e.artist &&
               (e.artistKey ? (
@@ -64,14 +59,14 @@ export async function EntityPage({ kind, entityKey }) {
         <Figures
           items={[
             { label: 'plays', value: count(e.plays) },
-            { label: 'hours', value: hours(e.listenedMs) },
+            timeFigure(e.listenedMs),
             { label: 'first heard', value: e.firstPlayedAt ? date(e.firstPlayedAt) : '–' },
-            { label: 'last heard', value: e.lastPlayedAt ? <Ago at={e.lastPlayedAt} /> : '–' },
+            { label: 'last heard', value: e.lastPlayedAt ? date(e.lastPlayedAt) : '–', sub: e.lastPlayedAt && <Ago at={e.lastPlayedAt} /> },
             { label: 'skips', value: count(e.skips) },
             { label: 'all-time rank', value: e.rank ? `#${e.rank}` : '–' }
           ]}
         />
-        {e.importedPlays > 0 && <p className='meta mt-2'>Includes {count(e.importedPlays)} plays from before per-play history</p>}
+        {e.importedPlays > 0 && <p className='meta mt-2'>Includes {plays(e.importedPlays)} from before per-play history</p>}
       </div>
 
       {(e.topTracks?.length > 0 || e.topAlbums?.length > 0) && (

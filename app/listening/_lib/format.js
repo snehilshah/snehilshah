@@ -1,25 +1,38 @@
-// Figures as Geet shows them: compact, tabular, never wrapping.
+// Figures in full: whole numbers with separators and units in words, never
+// "2K" or "3h".
 
-const compact = new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 })
 const whole = new Intl.NumberFormat('en-IN')
 
-export const count = (n) => (n >= 10000 ? compact.format(n) : whole.format(n ?? 0))
+export const count = (n) => whole.format(n ?? 0)
 
-/** "1 play", "12 plays" */
-export const plays = (n) => `${count(n)} ${n === 1 ? 'play' : 'plays'}`
+/** "1 play", "1,204 plays"; any word: unit(3, 'day') = "3 days". */
+export const unit = (n, word) => `${count(n)} ${n === 1 ? word : `${word}s`}`
+export const plays = (n) => unit(n, 'play')
 
-/** 8d 6h · 3h 20m · 12m */
-export function listening(ms) {
+/**
+ * Time listened, in words: "12 minutes", "3 hours 20 minutes",
+ * "8 days 6 hours". parts = 1 keeps only the largest unit, for tight spots.
+ */
+export function listening(ms, parts = 2) {
   const m = Math.round((ms ?? 0) / 60000)
-  if (m < 60) return `${m}m`
   const h = Math.floor(m / 60)
-  if (h < 24) return m % 60 ? `${h}h ${m % 60}m` : `${h}h`
   const d = Math.floor(h / 24)
-  return h % 24 ? `${d}d ${h % 24}h` : `${d}d`
+  const all =
+    m < 60 ? [unit(m, 'minute')] : h < 24 ? [unit(h, 'hour'), m % 60 && unit(m % 60, 'minute')] : [unit(d, 'day'), h % 24 && unit(h % 24, 'hour')]
+  return all.filter(Boolean).slice(0, parts).join(' ')
 }
 
 /** Whole hours, for big headline figures. */
-export const hours = (ms) => whole.format(Math.round((ms ?? 0) / 3600000))
+export const hours = (ms) => count(Math.round((ms ?? 0) / 3600000))
+
+/** A time figure split for a tile: { value: '12', label: 'hours' }, minutes under an hour. */
+export function timeFigure(ms) {
+  const [value, label] = totalTime(ms).split(' ')
+  return { value, label }
+}
+
+/** Total time as hours ("1,204 hours"), or minutes under an hour. */
+export const totalTime = (ms) => (ms >= 3600000 ? unit(Math.round(ms / 3600000), 'hour') : unit(Math.round((ms ?? 0) / 60000), 'minute'))
 
 export const duration = (ms) => {
   const s = Math.round((ms ?? 0) / 1000)
@@ -45,15 +58,15 @@ export const monthYear = (iso) => monthYearFmt.format(new Date(iso + 'T00:00:00Z
 /** "2026-10-03" → "3 Oct 2026" */
 export const isoDay = (iso) => dayYearFmt.format(new Date(iso + 'T12:00:00+05:30'))
 
-/** Relative: "just now", "12m ago", "3h ago", then the date. */
+/** Relative: "just now", "12 minutes ago", "3 hours ago", then the date. */
 export function ago(ms, now = Date.now()) {
   const m = Math.floor((now - ms) / 60000)
   if (m < 1) return 'just now'
-  if (m < 60) return `${m}m ago`
+  if (m < 60) return `${unit(m, 'minute')} ago`
   const h = Math.floor(m / 60)
-  if (h < 24) return `${h}h ago`
+  if (h < 24) return `${unit(h, 'hour')} ago`
   const d = Math.floor(h / 24)
-  if (d < 7) return `${d}d ago`
+  if (d < 7) return `${unit(d, 'day')} ago`
   return date(ms)
 }
 
@@ -69,4 +82,4 @@ export function delta(now, before) {
 
 const WEEKDAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 export const weekday = (i) => WEEKDAYS[i]
-export const hourLabel = (h) => (h === 0 ? '12a' : h < 12 ? `${h}a` : h === 12 ? '12p' : `${h - 12}p`)
+export const hourLabel = (h) => `${h % 12 || 12} ${h < 12 ? 'am' : 'pm'}`

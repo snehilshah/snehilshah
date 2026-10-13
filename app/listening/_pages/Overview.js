@@ -3,12 +3,12 @@ import { notFound } from 'next/navigation'
 import { Shell } from '../_components/Shell'
 import { Art } from '../_components/Art'
 import { Ago } from '../_components/Ago'
-import { Figures, Group, More, PageHead, RangeTabs, Section, Badge } from '../_components/bits'
+import { Figures, Group, More, PageHead, Periods, RangeTabs, Section, Badge } from '../_components/bits'
 import { TrackRow, TileGrid, Shelf } from '../_components/rows'
 import { Bars, ListeningClock, Split, YearCalendar } from '../_components/charts'
 import { NowPlaying } from '../_components/NowPlaying'
 import { API, overview, days, series, rediscover, imageBytes, imageUrl, rangeTitle } from '../_lib/goonj'
-import { count, delta, hours, isoDay, listening, percent, plays } from '../_lib/format'
+import { count, delta, isoDay, listening, percent, plays, timeFigure, unit } from '../_lib/format'
 import { artistHref, href, withRange } from '../_lib/paths'
 
 export async function OverviewPage({ range }) {
@@ -32,6 +32,12 @@ export async function OverviewPage({ range }) {
         <NowPlaying api={API} last={o.recent[0]} />
       </div>
 
+      {o.periods?.length > 0 && (
+        <div className='mt-6 rise'>
+          <Periods periods={o.periods} />
+        </div>
+      )}
+
       <PageHead title={rangeTitle(range)}>
         <RangeTabs path='/' range={range} />
       </PageHead>
@@ -44,14 +50,14 @@ export async function OverviewPage({ range }) {
             <Figures
               items={[
                 { label: 'plays', value: count(t.plays), sub: delta(t.plays, p?.plays) },
-                { label: 'hours', value: hours(t.listenedMs), sub: delta(t.listenedMs, p?.listenedMs) },
+                { ...timeFigure(t.listenedMs), sub: delta(t.listenedMs, p?.listenedMs) },
                 { label: 'tracks', value: count(t.tracks), sub: delta(t.tracks, p?.tracks) },
                 { label: 'artists', value: count(t.artists), sub: delta(t.artists, p?.artists) },
-                { label: 'days listening', value: count(t.activeDays) },
-                { label: o.streaks.current ? 'day streak' : 'longest streak', value: count(o.streaks.current || o.streaks.longest) }
+                { label: 'albums', value: count(t.albums), sub: delta(t.albums, p?.albums) },
+                { label: 'days listening', value: count(t.activeDays) }
               ]}
             />
-            {t.importedPlays > 0 && <p className='meta mt-2'>Includes {count(t.importedPlays)} plays from before per-play history</p>}
+            {t.importedPlays > 0 && <p className='meta mt-2'>Includes {plays(t.importedPlays)} from before per-play history</p>}
           </div>
 
           {hero && (
@@ -62,12 +68,11 @@ export async function OverviewPage({ range }) {
             >
               <Art src={imageUrl('artist', hero.key, 256)} label={hero.name} round className='size-20 sm:size-24 shrink-0' />
               <div className='min-w-0'>
-                <p className='meta'>Top artist</p>
                 <p className='h2 truncate'>{hero.name}</p>
-                <p className='meta text-[14px] truncate'>
-                  {plays(hero.plays)} · {listening(hero.listenedMs)}
-                  {o.topTracks[0] && <> · most played: {o.topTracks[0].name}</>}
+                <p className='meta text-[14px] truncate mt-1'>
+                  Top artist · {plays(hero.plays)} · {listening(hero.listenedMs)}
                 </p>
+                {o.topTracks[0] && <p className='meta text-[14px] truncate'>Most played track: {o.topTracks[0].name}</p>}
               </div>
             </Link>
           )}
@@ -133,8 +138,10 @@ export async function OverviewPage({ range }) {
               <Figures
                 cols='grid-cols-2'
                 items={[
-                  { label: 'busiest day', value: o.busiestDay ? listening(o.busiestDay.listenedMs) : '–', sub: o.busiestDay && isoDay(o.busiestDay.date) },
-                  { label: 'longest streak', value: `${count(o.streaks.longest)}d`, sub: o.streaks.longestFrom && isoDay(o.streaks.longestFrom) },
+                  { label: 'busiest day', value: o.busiestDay ? listening(o.busiestDay.listenedMs, 1) : '–', sub: o.busiestDay && isoDay(o.busiestDay.date) },
+                  { label: 'a day, on average', value: listening(t.listenedMs / Math.max(t.activeDays, 1), 1) },
+                  { label: 'current streak', value: unit(o.streaks.current, 'day') },
+                  { label: 'longest streak', value: unit(o.streaks.longest, 'day'), sub: o.streaks.longestFrom && isoDay(o.streaks.longestFrom) },
                   { label: 'skipped', value: percent(o.rates.skipRate) },
                   { label: 'heard through', value: percent(o.rates.completion) }
                 ]}

@@ -12,7 +12,7 @@ export function ListeningClock({ clock }) {
         <div className='grid gap-[3px] min-w-[560px]' style={{ gridTemplateColumns: '32px repeat(24, 1fr)' }}>
           <div />
           {Array.from({ length: 24 }, (_, h) => (
-            <div key={h} className='text-[10px] text-m-on-surface-variant text-center'>
+            <div key={h} className='text-[10px] text-m-on-surface-variant text-center whitespace-nowrap'>
               {h % 3 === 0 ? hourLabel(h) : ''}
             </div>
           ))}
