@@ -9,7 +9,7 @@ import { Bars, ListeningClock, Split, YearCalendar } from '../_components/charts
 import { NowPlaying } from '../_components/NowPlaying'
 import { API, overview, days, series, rediscover, imageBytes, imageUrl, rangeTitle } from '../_lib/goonj'
 import { count, delta, isoDay, listening, percent, plays, timeFigure, unit } from '../_lib/format'
-import { artistHref, href, withRange } from '../_lib/paths'
+import { DEFAULT_RANGE, artistHref, href, withRange } from '../_lib/paths'
 
 export async function OverviewPage({ range }) {
   const [o, year, months, again] = await Promise.all([
@@ -207,5 +207,5 @@ export async function OverviewPage({ range }) {
 }
 
 export function overviewTitle(range) {
-  return { title: { absolute: range === '30d' ? 'Music · Snehil Shah' : `Music · ${rangeTitle(range)} · Snehil Shah` } }
+  return { title: { absolute: range === DEFAULT_RANGE ? 'Music · Snehil Shah' : `Music · ${rangeTitle(range)} · Snehil Shah` } }
 }

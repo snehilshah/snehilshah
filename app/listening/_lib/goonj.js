@@ -1,4 +1,5 @@
 import 'server-only'
+import { DEFAULT_RANGE } from './paths'
 
 // Goonj, the listening history every device reports to. Data is cached and
 // refreshed when Goonj says new plays arrived (tag "goonj"), with a time
@@ -16,7 +17,7 @@ export const RANGES = [
 /** The page title for a range: "Last 30 days", "All time", "2026". */
 export const rangeTitle = (key) => RANGES.find((r) => r.key === key)?.title ?? key
 
-export function rangeKey(value, fallback = '30d') {
+export function rangeKey(value, fallback = DEFAULT_RANGE) {
   if (!value) return fallback
   if (RANGES.some((r) => r.key === value)) return value
   if (/^\d{4}(-\d{2})?$/.test(value)) return value

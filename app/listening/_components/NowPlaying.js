@@ -13,10 +13,9 @@ import { albumHref, artistHref, trackHref } from '../_lib/paths'
  * events; nothing polls, and the stream is open only while the page is on
  * screen). Goonj sends one device: a playing one before a paused one,
  * the first to start among players, the last to pause otherwise. The state
- * sits on the cover as a badge; nothing playing shows the last play, dimmed.
- * When the track
- * changes, the page's stats refresh a few seconds later, once that play
- * has landed.
+ * sits on the cover as a badge; with nothing live, the card shows the last
+ * track heard, dimmed. When the track changes, the page's stats refresh a
+ * few seconds later, once that play has landed.
  */
 export function NowPlaying({ api, last }) {
   const [snap, setSnap] = useState(null)
@@ -60,17 +59,15 @@ export function NowPlaying({ api, last }) {
     }
   }, [api, router])
 
-  if (!snap) return <div className='np h-[172px] sm:h-[240px] opacity-0' aria-hidden />
+  if (!snap) return <div className='np h-[156px] sm:h-[240px] opacity-0' aria-hidden />
   const n = snap.items[0]
   if (n) return <Card n={n} api={api} skew={skew} />
-  if (!last) return null
-  return (
-    <Card
-      api={api}
-      skew={skew}
-      n={{ ...last, state: 'idle', trackKey: last.trackKey, title: last.title, artistKey: last.artistKey }}
-    />
-  )
+  // Nothing live: the last track Goonj heard (however short the listen),
+  // or the last recorded play if that's newer.
+  const played = last && { ...last, at: last.startedAt + (last.listenedMs || 0) }
+  const idle = snap.last && (!played || snap.last.at >= played.at) ? snap.last : played
+  if (!idle) return null
+  return <Card api={api} skew={skew} n={{ ...idle, state: 'idle' }} />
 }
 
 function Card({ n, api, skew }) {
@@ -95,8 +92,8 @@ function Card({ n, api, skew }) {
           <div key={cover} style={{ backgroundImage: `url("${cover}")` }} />
         </div>
       )}
-      <div className='flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7'>
-        <Link href={trackHref(n.trackKey)} className='relative shrink-0 self-start sm:self-auto'>
+      <div className='np-grid'>
+        <Link href={trackHref(n.trackKey)} className='np-cover relative'>
           <Art key={n.trackKey} src={cover} label={n.album || n.title} className='np-art np-in' />
           {!idle && (
             <span className='np-badge'>
@@ -106,52 +103,46 @@ function Card({ n, api, skew }) {
             </span>
           )}
         </Link>
-        <div className='min-w-0 flex-1'>
-          <div key={n.trackKey} className='np-in'>
-            <Link
-              href={trackHref(n.trackKey)}
-              className={`display block truncate hover:underline ${idle ? 'text-[24px] sm:text-[28px]' : 'text-[28px] sm:text-[38px]'}`}
-            >
-              {n.title}
+        <div key={n.trackKey} className='np-text np-in min-w-0'>
+          <Link href={trackHref(n.trackKey)} className='np-title display hover:underline'>
+            {n.title}
+          </Link>
+          <p className='text-[14px] sm:text-[16px] text-m-on-surface-variant truncate mt-1'>
+            by{' '}
+            <Link href={artistHref(n.artistKey)} className='font-medium text-m-on-surface hover:underline'>
+              {n.artist}
             </Link>
-            <p className='text-[15px] sm:text-[16px] text-m-on-surface-variant truncate mt-1'>
-              by{' '}
-              <Link href={artistHref(n.artistKey)} className='font-medium text-m-on-surface hover:underline'>
-                {n.artist}
+          </p>
+          {!idle && n.album && (
+            <p className='text-[14px] sm:text-[16px] text-m-on-surface-variant truncate'>
+              on{' '}
+              <Link href={albumHref(n.albumKey)} className='font-medium text-m-on-surface hover:underline'>
+                {n.album}
               </Link>
             </p>
-            {!idle && n.album && (
-              <p className='text-[15px] sm:text-[16px] text-m-on-surface-variant truncate'>
-                on{' '}
-                <Link href={albumHref(n.albumKey)} className='font-medium text-m-on-surface hover:underline'>
-                  {n.album}
-                </Link>
-              </p>
-            )}
-          </div>
-          {idle ? (
-            <p className='meta text-[14px] mt-3'>
-              Last played <Ago at={n.startedAt} />
+          )}
+          {idle && (
+            <p className='meta text-[13px] sm:text-[14px] mt-2'>
+              Last played <Ago at={n.at} />
             </p>
-          ) : (
-            n.durationMs > 0 && (
-              <div className='mt-5 flex items-center gap-3 text-[13px] text-m-on-surface-variant tabular-nums'>
-                <span className='np-eq' aria-hidden>
-                  <i />
-                  <i />
-                  <i />
-                  <i />
-                  <i />
-                </span>
-                <span>{duration(pos)}</span>
-                <div className='np-track flex-1'>
-                  <div className='np-fill' style={{ width: `${frac * 100}%` }} />
-                </div>
-                <span>{duration(n.durationMs)}</span>
-              </div>
-            )
           )}
         </div>
+        {!idle && n.durationMs > 0 && (
+          <div className='np-bar flex items-center gap-3 text-[13px] text-m-on-surface-variant tabular-nums'>
+            <span className='np-eq' aria-hidden>
+              <i />
+              <i />
+              <i />
+              <i />
+              <i />
+            </span>
+            <span>{duration(pos)}</span>
+            <div className='np-track flex-1'>
+              <div className='np-fill' style={{ width: `${frac * 100}%` }} />
+            </div>
+            <span>{duration(n.durationMs)}</span>
+          </div>
+        )}
       </div>
     </article>
   )

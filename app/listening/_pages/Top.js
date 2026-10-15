@@ -4,6 +4,7 @@ import { PageHead, RangeTabs } from '../_components/bits'
 import { PlayCount, TileGrid, TrackRow } from '../_components/rows'
 import { RANGES, topList, imageBytes, rangeKey, rangeTitle } from '../_lib/goonj'
 import { listening } from '../_lib/format'
+import { DEFAULT_RANGE } from '../_lib/paths'
 
 const TITLES = { artists: 'Artists', albums: 'Albums', tracks: 'Tracks' }
 
@@ -47,6 +48,6 @@ export async function TopPage({ kind, range }) {
   )
 }
 
-export const topStaticParams = () => RANGES.filter((r) => r.key !== '30d').map((r) => ({ range: r.key }))
+export const topStaticParams = () => RANGES.filter((r) => r.key !== DEFAULT_RANGE).map((r) => ({ range: r.key }))
 
-export const topTitle = (kind, range) => ({ title: range === '30d' ? TITLES[kind] : `${TITLES[kind]} · ${rangeTitle(range)}` })
+export const topTitle = (kind, range) => ({ title: range === DEFAULT_RANGE ? TITLES[kind] : `${TITLES[kind]} · ${rangeTitle(range)}` })

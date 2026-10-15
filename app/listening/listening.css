@@ -254,19 +254,67 @@
     transform: rotate(360deg) scale(1.1);
   }
 }
+/* Cover beside the words at every width; the progress runs under both on
+   phones, under the words on wider screens. */
+.goonj .np-grid {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-areas: 'art text' 'bar bar';
+  align-items: center;
+  column-gap: 16px;
+  row-gap: 18px;
+}
+.goonj .np-cover {
+  grid-area: art;
+}
+.goonj .np-grid:not(:has(.np-bar)) {
+  grid-template-areas: 'art text';
+}
+.goonj .np-text {
+  grid-area: text;
+}
+.goonj .np-bar {
+  grid-area: bar;
+}
+.goonj .np-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  font-size: 22px;
+  line-height: 1.15;
+}
 .goonj .np-art {
-  width: 132px;
-  height: 132px;
-  border-radius: 20px;
+  width: 108px;
+  height: 108px;
+  border-radius: 18px;
   flex-shrink: 0;
   box-shadow: 0 18px 40px -10px rgb(0 0 0 / 0.55);
   animation: goonj-breathe 4.8s ease-in-out infinite;
   transition: filter 600ms, transform 600ms;
 }
 @media (min-width: 640px) {
+  .goonj .np-grid {
+    grid-template-areas: 'art text' 'art bar';
+    column-gap: 28px;
+    row-gap: 20px;
+    align-content: center;
+  }
+  .goonj .np-grid:has(.np-bar) .np-text {
+    align-self: end;
+  }
+  .goonj .np-bar {
+    align-self: start;
+  }
+  .goonj .np-title {
+    font-size: 36px;
+  }
   .goonj .np-art {
     width: 184px;
     height: 184px;
+    border-radius: 20px;
   }
 }
 @keyframes goonj-breathe {
@@ -437,10 +485,23 @@
   animation-play-state: paused;
 }
 .goonj .np.idle .np-art {
-  width: 96px;
-  height: 96px;
+  width: 80px;
+  height: 80px;
+  border-radius: 16px;
   filter: grayscale(0.6) brightness(0.85);
   animation: none;
+}
+.goonj .np.idle .np-title {
+  font-size: 20px;
+}
+@media (min-width: 640px) {
+  .goonj .np.idle .np-art {
+    width: 112px;
+    height: 112px;
+  }
+  .goonj .np.idle .np-title {
+    font-size: 26px;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .goonj .np *,

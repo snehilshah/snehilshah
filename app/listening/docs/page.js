@@ -101,7 +101,10 @@ export default function Docs() {
           </Rule>
           <Rule title='It goes away on its own.'>
             A paused device drops off after 10 minutes, and a playing one 2 minutes after its track should have ended, in case the device went
-            quiet. Then the card shows the last thing played.
+            quiet.
+          </Rule>
+          <Rule title='Then it shows the last track heard.'>
+            However short: a few seconds and a pause is enough, even though that is not a play. The time under it is when it was last heard.
           </Rule>
           <Rule title='Only the kind of device is shown.'>A phone or a computer, never its name.</Rule>
         </ul>

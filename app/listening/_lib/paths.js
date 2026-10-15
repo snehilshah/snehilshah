@@ -8,4 +8,7 @@ export const artistHref = (key) => href(`/artists/${encodeURIComponent(key)}`)
 export const albumHref = (key) => href(`/albums/${encodeURIComponent(key)}`)
 export const trackHref = (key) => href(`/tracks/${encodeURIComponent(key)}`)
 
-export const withRange = (path, range) => (range && range !== '30d' ? `${href(path)}?range=${range}` : href(path))
+/** The range a page shows when none is picked; its links carry no ?range. */
+export const DEFAULT_RANGE = '7d'
+
+export const withRange = (path, range) => (range && range !== DEFAULT_RANGE ? `${href(path)}?range=${range}` : href(path))
