@@ -14,11 +14,14 @@ const ACTIVE = { artists: '/artists', albums: '/albums', tracks: '/tracks' }
 const ord = (n) => `${count(n)}${n % 100 >= 11 && n % 100 <= 13 ? 'th' : ['th', 'st', 'nd', 'rd'][n % 10] ?? 'th'}`
 
 export async function EntityPage({ kind, entityKey }) {
-  const e = await entity(kind, entityKey)
+  const [e, history] = await Promise.all([
+    entity(kind, entityKey),
+    kind === 'tracks' ? recent(undefined, 12, entityKey) : null
+  ])
   if (!e) notFound()
   const isArtist = kind === 'artists'
-  const art = isArtist ? await imageBytes('artist', e.key) : await imageBytes('album', e.albumKey || e.key)
-  const recentPlays = kind === 'tracks' ? (await recent(undefined, 12, e.key)).items : []
+  const art = isArtist ? imageBytes('artist', e.key) : imageBytes('album', e.albumKey || e.key)
+  const recentPlays = history?.items ?? []
 
   return (
     <Shell art={art} active={ACTIVE[kind]}>

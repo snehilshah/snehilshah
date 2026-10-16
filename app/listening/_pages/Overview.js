@@ -22,7 +22,7 @@ export async function OverviewPage({ range }) {
   const t = o.totals
   const p = o.prevTotals
   const hero = o.topArtists[0]
-  const art = (await imageBytes('artist', hero?.key)) ?? (await imageBytes('album', o.topTracks[0]?.albumKey))
+  const art = imageBytes('artist', hero?.key).then((bytes) => bytes ?? imageBytes('album', o.topTracks[0]?.albumKey))
   const empty = t.plays === 0
   const showChange = !o.range.allTime && p?.plays > 0
 

@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { PLink as Link } from './PLink'
 import { ArrowDown, ArrowUp } from 'lucide-react'
 import { RANGES } from '../_lib/goonj'
 import { withRange } from '../_lib/paths'

@@ -12,7 +12,7 @@ const PAGE = 150
 /** Every play, newest first, by day; before pages back from a startedAt. */
 export async function HistoryPage({ before }) {
   const { items } = await recent(before, PAGE)
-  const art = await imageBytes('album', items[0]?.albumKey)
+  const art = imageBytes('album', items[0]?.albumKey)
   const groups = []
   for (const r of items) {
     const k = dayKey.format(new Date(r.startedAt))

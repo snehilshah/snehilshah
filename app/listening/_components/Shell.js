@@ -1,4 +1,5 @@
-import Link from 'next/link'
+import { PLink as Link } from './PLink'
+import { Suspense } from 'react'
 import { themeCss, seedFrom, backdrop } from '../_lib/theme'
 import { href } from '../_lib/paths'
 
@@ -16,14 +17,28 @@ const NAV = [
  * centred, and the content on the
  * 16px edge.
  */
-export async function Shell({ art, active, children }) {
-  const seed = await seedFrom(art)
-  const blur = await backdrop(art)
+const fallbackTheme = themeCss(0xff6b5b95, '#goonj')
+
+// Artwork is decoration: stream it independently of the navigation and data.
+async function Artwork({ art }) {
+  const bytes = await art
+  const [seed, blur] = await Promise.all([seedFrom(bytes), backdrop(bytes)])
+  return (
+    <>
+      <style>{themeCss(seed, '#goonj')}</style>
+      {blur && <div className='art' style={{ backgroundImage: `url(${blur})` }} />}
+    </>
+  )
+}
+
+export function Shell({ art, active, children }) {
   return (
     <div className='goonj' id='goonj'>
-      <style>{themeCss(seed, '#goonj')}</style>
+      <style>{fallbackTheme}</style>
       <div className='goonj-backdrop'>
-        {blur && <div className='art' style={{ backgroundImage: `url(${blur})` }} />}
+        <Suspense fallback={null}>
+          <Artwork art={art} />
+        </Suspense>
         <div className='scrim' />
         <div className='grain' />
       </div>

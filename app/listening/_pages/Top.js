@@ -13,7 +13,7 @@ export async function TopPage({ kind, range }) {
   if (rangeKey(range, null) !== range) notFound()
   const { items, range: r } = await topList(kind, range, kind === 'tracks' ? 200 : 100)
   const art =
-    kind === 'artists' ? await imageBytes('artist', items[0]?.key) : await imageBytes('album', items[0]?.albumKey)
+    kind === 'artists' ? imageBytes('artist', items[0]?.key) : imageBytes('album', items[0]?.albumKey)
   const showChange = !r.allTime
   return (
     <Shell art={art} active={`/${kind}`}>
