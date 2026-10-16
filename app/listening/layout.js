@@ -1,5 +1,5 @@
 import './listening.css'
-import { libron, productSans } from '@/styles/fonts'
+import { libron, productSans } from '@/styles/music-fonts'
 
 export const metadata = {
   title: { default: 'Music · Snehil Shah', template: '%s · Music · Snehil Shah' },
