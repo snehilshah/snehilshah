@@ -27,27 +27,26 @@ const SocialBar = () => {
   const socialLinks = [
     {
       id: 1,
-      icon: <LinkedinLogo className='text-2xl' />,
-
+      icon: <LinkedinLogo className='text-2xl shrink-0' />,
       text: 'Linkedin',
       href: 'https://www.linkedin.com/in/snehil-shah-7794a9209/',
       style: 'rounded-tl-lg'
     },
     {
       id: 2,
-      icon: <GithubLogo className='text-2xl' />,
+      icon: <GithubLogo className='text-2xl shrink-0' />,
       text: 'Github',
       href: 'https://github.com/snehilshah'
     },
     {
       id: 3,
-      icon: <Mail className='text-2xl' />,
+      icon: <Mail aria-hidden='true' className='text-2xl shrink-0' />,
       text: 'Mail',
       href: 'mailto:snehilshah27@gmail.com'
     },
     {
       id: 4,
-      icon: <UserRound className='text-2xl' />,
+      icon: <UserRound aria-hidden='true' className='text-2xl shrink-0' />,
       text: 'Resume',
       href: '/SnehilShahResume.pdf',
       style: 'rounded-bl-lg'
@@ -56,13 +55,17 @@ const SocialBar = () => {
 
   return (
     <div ref={barRef} className='flex flex-col top-[35%] right-0 fixed z-50'>
-      <ul>
+      <ul className='divide-y divide-stone-300'>
         {socialLinks.map(({ icon, text, href, style = '', id }) => (
           <li
             key={id}
             className={
-              'w-40 h-14 duration-300 bg-stone-600/80 hover:translate-x-[10px] hover:rounded-lg ' +
-              (openId === id ? 'translate-x-[10px] rounded-lg' : 'translate-x-[100px]') +
+              'w-40 h-14 duration-300 bg-stone-200/95 text-stone-950 shadow-lg shadow-black/40 ' +
+              'hover:translate-x-[10px] hover:rounded-l-lg hover:bg-cyan-200 hover:text-stone-950 ' +
+              'focus-within:translate-x-[10px] focus-within:rounded-l-lg focus-within:bg-cyan-200 ' +
+              (openId === id
+                ? 'translate-x-[10px] rounded-l-lg bg-cyan-200'
+                : 'translate-x-[100px]') +
               ' ' +
               style
             }
@@ -71,12 +74,11 @@ const SocialBar = () => {
               href={href}
               target='_blank'
               rel='noopener noreferrer'
-              aria-label={text}
               onClick={(e) => handleClick(e, id)}
-              className='flex justify-between items-center w-full h-full px-4'
+              className='flex justify-between items-center w-full h-full px-4 font-semibold tracking-wide focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-stone-950'
             >
               {icon}
-              {text}
+              <span>{text}</span>
             </a>
           </li>
         ))}
