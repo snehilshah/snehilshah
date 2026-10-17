@@ -2,20 +2,23 @@ import { PLink as Link } from './PLink'
 import { Suspense } from 'react'
 import { themeCss, seedFrom, backdrop } from '../_lib/theme'
 import { href } from '../_lib/paths'
+import { ActiveTab } from './ActiveTab'
 
 const NAV = [
   ['/', 'Overview'],
   ['/artists', 'Artists'],
   ['/albums', 'Albums'],
   ['/tracks', 'Tracks'],
-  ['/history', 'History']
+  ['/history', 'History'],
+  ['/player', 'Player']
 ]
 
 /**
  * Every page: colours and backdrop from its art (bytes of a cover or photo),
  * the name (back to the main site), "music" (home here), the section tabs
  * centred, and the content on the
- * 16px edge.
+ * 16px edge. A page that changes its art as it goes (the player) draws its
+ * own backdrop and colours instead (ownBackdrop).
  */
 const fallbackTheme = themeCss(0xff6b5b95, '#goonj')
 
@@ -31,14 +34,16 @@ async function Artwork({ art }) {
   )
 }
 
-export function Shell({ art, active, children }) {
+export function Shell({ art, active, ownBackdrop = false, children }) {
   return (
     <div className='goonj' id='goonj'>
       <style>{fallbackTheme}</style>
       <div className='goonj-backdrop'>
-        <Suspense fallback={null}>
-          <Artwork art={art} />
-        </Suspense>
+        {!ownBackdrop && (
+          <Suspense fallback={null}>
+            <Artwork art={art} />
+          </Suspense>
+        )}
         <div className='scrim' />
         <div className='grain' />
       </div>
@@ -59,6 +64,7 @@ export function Shell({ art, active, children }) {
               </Link>
             ))}
           </div>
+          <ActiveTab />
         </nav>
         {children}
         <footer className='mt-24 pt-6 border-t border-m-outline-variant/60 flex flex-wrap justify-between gap-x-6 gap-y-2 text-[14px] text-m-on-surface-variant'>

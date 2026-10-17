@@ -73,3 +73,8 @@ export async function backdrop(bytes) {
     return null
   }
 }
+
+/** The scheme's custom properties for light and dark, for a page that switches art itself. */
+export function themeVars(seed) {
+  return { light: vars(seed, false), dark: vars(seed, true) }
+}

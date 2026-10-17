@@ -29,8 +29,11 @@ const nextConfig = {
     }
   },
   async redirects() {
-    if (!LISTENING_HOST) return []
+    // The old player moved into the music section.
+    const player = { source: '/music/player', destination: LISTENING_HOST ? `https://${LISTENING_HOST}/player` : '/listening/player', permanent: true }
+    if (!LISTENING_HOST) return [player]
     return [
+      player,
       { source: '/listening', missing: [{ type: 'host', value: LISTENING_HOST }], destination: `https://${LISTENING_HOST}/`, permanent: false },
       { source: '/listening/:path*', missing: [{ type: 'host', value: LISTENING_HOST }], destination: `https://${LISTENING_HOST}/:path*`, permanent: false }
     ]

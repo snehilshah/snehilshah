@@ -1,0 +1,705 @@
+/* The player: the now-playing card grown into something you can hold, the
+   songs, and the words. Each song brings its own colours; registering the
+   roles lets the page ease between them. */
+@property --m-surface { syntax: '<color>'; inherits: true; initial-value: #141218; }
+@property --m-surface-container-high { syntax: '<color>'; inherits: true; initial-value: #2b2930; }
+@property --m-surface-container-highest { syntax: '<color>'; inherits: true; initial-value: #36343b; }
+@property --m-on-surface { syntax: '<color>'; inherits: true; initial-value: #e6e0e9; }
+@property --m-on-surface-variant { syntax: '<color>'; inherits: true; initial-value: #cac4d0; }
+@property --m-outline { syntax: '<color>'; inherits: true; initial-value: #938f99; }
+@property --m-outline-variant { syntax: '<color>'; inherits: true; initial-value: #49454f; }
+@property --m-primary { syntax: '<color>'; inherits: true; initial-value: #d0bcff; }
+@property --m-on-primary { syntax: '<color>'; inherits: true; initial-value: #381e72; }
+@property --m-primary-container { syntax: '<color>'; inherits: true; initial-value: #4f378b; }
+@property --m-on-primary-container { syntax: '<color>'; inherits: true; initial-value: #eaddff; }
+@property --m-secondary-container { syntax: '<color>'; inherits: true; initial-value: #4a4458; }
+@property --m-on-secondary-container { syntax: '<color>'; inherits: true; initial-value: #e8def8; }
+
+.goonj:has(.pl) {
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  transition: --m-surface 900ms var(--ease), --m-surface-container-high 900ms var(--ease),
+    --m-surface-container-highest 900ms var(--ease), --m-on-surface 900ms var(--ease),
+    --m-on-surface-variant 900ms var(--ease), --m-outline 900ms var(--ease), --m-outline-variant 900ms var(--ease),
+    --m-primary 900ms var(--ease), --m-on-primary 900ms var(--ease), --m-primary-container 900ms var(--ease),
+    --m-on-primary-container 900ms var(--ease), --m-secondary-container 900ms var(--ease),
+    --m-on-secondary-container 900ms var(--ease);
+}
+.goonj .pl :focus-visible {
+  outline: 2px solid var(--m-primary);
+  outline-offset: 2px;
+  border-radius: 12px;
+}
+
+/* The cover, blurred, under the shell's scrim. Two layers so songs crossfade. */
+.goonj .pl-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  overflow: hidden;
+}
+.goonj .pl-backdrop > div {
+  position: absolute;
+  inset: -10%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(48px) saturate(1.25);
+  transform: scale(1.1);
+  opacity: 0;
+  transition: opacity 900ms cubic-bezier(0.2, 0, 0, 1);
+}
+.goonj .pl-backdrop > div.on {
+  opacity: 1;
+}
+
+/* The card. */
+.goonj .pl-card {
+  margin-top: 32px;
+}
+@media (min-width: 768px) {
+  .goonj .pl-card {
+    padding: 32px;
+  }
+}
+.goonj .np.ready .np-aura > div {
+  animation-play-state: paused;
+}
+.goonj .pl-grid {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-areas: 'art text' 'seek seek' 'ctl ctl';
+  align-items: center;
+  column-gap: 16px;
+  row-gap: 20px;
+}
+.goonj .pl-cover {
+  grid-area: art;
+  position: relative;
+}
+.goonj .pl-text {
+  grid-area: text;
+  min-width: 0;
+}
+.goonj .pl-seek {
+  grid-area: seek;
+}
+.goonj .pl-ctl {
+  grid-area: ctl;
+}
+@media (min-width: 768px) {
+  .goonj .pl-grid {
+    grid-template-areas: 'art text' 'art seek' 'art ctl';
+    grid-template-rows: 1fr auto auto;
+    column-gap: 36px;
+    row-gap: 16px;
+    align-items: stretch;
+  }
+  .goonj .pl-text {
+    align-self: end;
+  }
+}
+
+.goonj .pl-art {
+  display: block;
+  width: 116px;
+  height: 116px;
+  border-radius: 18px;
+  object-fit: cover;
+  background: var(--m-surface-container-highest);
+  box-shadow: 0 18px 40px -10px rgb(0 0 0 / 0.55);
+  transition: filter 600ms, transform 600ms cubic-bezier(0.2, 0, 0, 1);
+  animation: pl-cover-in 600ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@media (min-width: 768px) {
+  .goonj .pl-art {
+    width: 296px;
+    height: 296px;
+    border-radius: 24px;
+  }
+}
+.goonj .np.playing .pl-art {
+  animation: pl-cover-in 600ms cubic-bezier(0.2, 0.8, 0.2, 1) both, goonj-breathe 4.8s ease-in-out 600ms infinite;
+}
+.goonj .np.paused .pl-art {
+  transform: scale(0.97);
+  filter: saturate(0.7) brightness(0.92);
+}
+@keyframes pl-cover-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9) rotate(-3deg);
+  }
+}
+.goonj .np.ready .np-badge {
+  display: none;
+}
+@media (min-width: 768px) {
+  .goonj .pl .np-badge {
+    left: 12px;
+    bottom: 12px;
+  }
+}
+
+.goonj .pl-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  font-size: 24px;
+  line-height: 1.12;
+}
+@media (min-width: 768px) {
+  .goonj .pl-title {
+    font-size: 52px;
+    line-height: 1.04;
+  }
+}
+.goonj .pl-title a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+.goonj .pl-sub {
+  font-size: 14px;
+  color: var(--m-on-surface-variant);
+  margin-top: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.goonj .pl-sub + .pl-sub {
+  margin-top: 0;
+}
+@media (min-width: 768px) {
+  .goonj .pl-sub {
+    font-size: 17px;
+    margin-top: 10px;
+  }
+}
+.goonj .pl-sub a,
+.goonj .pl-sub b {
+  font-weight: 500;
+  color: var(--m-on-surface);
+}
+.goonj .pl-sub a:hover {
+  text-decoration: underline;
+}
+
+/* Seek and volume: a 6px track that fills with the primary; the thumb shows on intent. */
+.goonj .pl-seek {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--m-on-surface-variant);
+}
+.goonj .pl-seek > span {
+  min-width: 3.2ch;
+}
+.goonj .pl-seek > span:last-child {
+  text-align: right;
+}
+.goonj .pl-range {
+  --p: 0%;
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 1;
+  min-width: 0;
+  height: 22px;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.goonj .pl-range::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 6px;
+  background: linear-gradient(
+    to right,
+    var(--m-primary) var(--p),
+    color-mix(in oklab, var(--m-on-surface) 14%, transparent) var(--p)
+  );
+}
+.goonj .pl-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  margin-top: -5px;
+  border-radius: 50%;
+  background: var(--m-primary);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.35);
+  transform: scale(0);
+  transition: transform 150ms cubic-bezier(0.2, 0, 0, 1);
+}
+.goonj .pl-range:hover::-webkit-slider-thumb,
+.goonj .pl-range:focus-visible::-webkit-slider-thumb,
+.goonj .pl-range:active::-webkit-slider-thumb {
+  transform: scale(1);
+}
+.goonj .pl-range::-moz-range-track {
+  height: 6px;
+  border-radius: 6px;
+  background: color-mix(in oklab, var(--m-on-surface) 14%, transparent);
+}
+.goonj .pl-range::-moz-range-progress {
+  height: 6px;
+  border-radius: 6px;
+  background: var(--m-primary);
+}
+.goonj .pl-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--m-primary);
+  transform: scale(0);
+  transition: transform 150ms;
+}
+.goonj .pl-range:hover::-moz-range-thumb,
+.goonj .pl-range:active::-moz-range-thumb {
+  transform: scale(1);
+}
+.goonj .pl-range:focus-visible {
+  outline: none;
+}
+
+/* Controls: transport in the middle, shuffle and repeat either side; volume on wide screens. */
+.goonj .pl-ctl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+@media (min-width: 768px) {
+  .goonj .pl-ctl {
+    justify-content: flex-start;
+    gap: 10px;
+  }
+}
+.goonj .pl-ib {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  color: var(--m-on-surface-variant);
+  transition: color 150ms, background-color 150ms;
+}
+.goonj .pl-ib:hover {
+  color: var(--m-on-surface);
+  background: color-mix(in oklab, var(--m-on-surface) 8%, transparent);
+}
+.goonj .pl-ib[aria-pressed='true'] {
+  color: var(--m-primary);
+}
+.goonj .pl-ib[aria-pressed='true']::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.goonj .pl-ib.big {
+  width: 52px;
+  height: 52px;
+  color: var(--m-on-surface);
+}
+.goonj .pl-play {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  background: var(--m-primary);
+  color: var(--m-on-primary);
+  box-shadow: 0 10px 24px -8px color-mix(in oklab, var(--m-primary) 60%, black);
+  transition: transform 200ms cubic-bezier(0.2, 0, 0, 1), border-radius 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+.goonj .pl-play:hover {
+  transform: scale(1.05);
+}
+.goonj .pl-play:active {
+  transform: scale(0.96);
+}
+.goonj .pl-play.on {
+  border-radius: 22px;
+}
+.goonj .pl-vol {
+  display: none;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  width: 168px;
+}
+@media (min-width: 768px) {
+  .goonj .pl-vol {
+    display: flex;
+  }
+}
+
+/* Below the card: the songs, and the words (first, on phones). */
+.goonj .pl-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0 40px;
+}
+@media (min-width: 1024px) {
+  .goonj .pl-cols {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  }
+}
+@media (max-width: 1023px) {
+  .goonj .pl-lyrics-group {
+    order: -1;
+  }
+}
+.goonj .pl-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+.goonj .pl-tag {
+  align-self: center;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-family: var(--font-product-sans), system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--m-secondary-container);
+  color: var(--m-on-secondary-container);
+}
+
+.goonj .pl-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: calc(100% + 20px);
+  margin: 0 -10px;
+  padding: 8px 10px;
+  border-radius: 16px;
+  text-align: left;
+  transition: background-color 150ms;
+}
+.goonj .pl-row:hover {
+  background: color-mix(in oklab, var(--m-on-surface) 6%, transparent);
+}
+.goonj .pl-row[aria-current='true'] {
+  background: color-mix(in oklab, var(--m-secondary-container) 75%, transparent);
+  color: var(--m-on-secondary-container);
+}
+.goonj .pl-row .n {
+  width: 32px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  color: var(--m-on-surface-variant);
+}
+.goonj .pl-row .art {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+}
+.goonj .pl-row .art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px -2px rgb(0 0 0 / 0.2);
+  background: var(--m-surface-container-highest);
+}
+.goonj .pl-row .art span {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: rgb(0 0 0 / 0.4);
+  color: #fff;
+  opacity: 0;
+  transition: opacity 150ms;
+}
+.goonj .pl-row:hover .art span {
+  opacity: 1;
+}
+.goonj .pl-row .t {
+  min-width: 0;
+  flex: 1;
+}
+.goonj .pl-row .t b {
+  display: block;
+  font-size: 16px;
+  line-height: 1.35;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (min-width: 640px) {
+  .goonj .pl-row .t b {
+    font-size: 17px;
+  }
+}
+.goonj .pl-row .t span {
+  display: block;
+  font-size: 14px;
+  color: var(--m-on-surface-variant);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.goonj .pl-row[aria-current='true'] .t span {
+  color: color-mix(in oklab, var(--m-on-secondary-container) 75%, transparent);
+}
+.goonj .pl-row .d {
+  flex-shrink: 0;
+  font-size: 13px;
+  color: var(--m-on-surface-variant);
+}
+.goonj .pl-row .np-eq i {
+  height: 4px;
+}
+.goonj .pl-row .np-eq.still i {
+  animation: none;
+  height: 6px;
+  background: var(--m-on-surface-variant);
+}
+
+/* Lyrics: a card in the song's colour, set large and bold. Synced lyrics
+   follow the song: the current line lit, the rest dimmed, a click jumps
+   there; dots breathe through instrumental breaks. */
+.goonj .lyr {
+  position: relative;
+  margin-top: 16px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: color-mix(in oklab, var(--m-primary-container) 90%, transparent);
+  color: var(--m-on-primary-container);
+  box-shadow: 0 24px 60px -28px rgb(0 0 0 / 0.45);
+}
+.goonj .lyr-scroll {
+  position: relative;
+  height: min(60vh, 460px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 40px 24px 40%;
+  scrollbar-width: none;
+  mask-image: linear-gradient(to bottom, transparent 0, #000 44px, #000 calc(100% - 72px), transparent);
+}
+.goonj .lyr-scroll::-webkit-scrollbar {
+  display: none;
+}
+@media (min-width: 640px) {
+  .goonj .lyr-scroll {
+    height: 540px;
+    padding: 48px 36px 40%;
+  }
+}
+.goonj .ln {
+  padding: 7px 0;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+@media (min-width: 640px) {
+  .goonj .ln {
+    font-size: 30px;
+    padding: 8px 0;
+  }
+}
+.goonj .lyr[data-mode='synced'] .ln {
+  cursor: pointer;
+  opacity: 0.4;
+  transform: scale(0.96);
+  transform-origin: left center;
+  transition: opacity 400ms cubic-bezier(0.2, 0, 0, 1), transform 500ms cubic-bezier(0.2, 0, 0, 1);
+}
+.goonj .lyr[data-mode='synced'] .ln:hover {
+  opacity: 0.75;
+}
+.goonj .lyr[data-mode='synced'] .ln.on {
+  opacity: 1;
+  transform: none;
+}
+/* Word-timed lines (enhanced LRC): words light up as they're sung. */
+.goonj .lyr[data-mode='synced'] .ln.on.words span {
+  opacity: 0.4;
+  transition: opacity 180ms linear;
+}
+.goonj .lyr[data-mode='synced'] .ln.on.words span.sung {
+  opacity: 1;
+}
+.goonj .lyr[data-mode='synced'] .ln.gap {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  height: 46px;
+  padding: 0;
+  cursor: default;
+  opacity: 0;
+  transform: none;
+}
+.goonj .lyr[data-mode='synced'] .ln.gap.on {
+  opacity: 1;
+  animation: pl-dots 2.4s ease-in-out infinite;
+}
+.goonj .ln.gap i {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.3;
+  transform: scale(0.8);
+  transition: opacity 300ms, transform 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+.goonj .ln.gap i.lit {
+  opacity: 1;
+  transform: none;
+}
+@keyframes pl-dots {
+  50% {
+    transform: scale(1.12);
+  }
+}
+.goonj .lyr[data-mode='plain'] .lyr-scroll {
+  padding-bottom: 56px;
+}
+.goonj .lyr[data-mode='plain'] .ln {
+  font-size: 22px;
+  padding: 5px 0;
+  opacity: 0.94;
+}
+@media (min-width: 640px) {
+  .goonj .lyr[data-mode='plain'] .ln {
+    font-size: 26px;
+  }
+}
+.goonj .lyr .stanza {
+  height: 20px;
+}
+.goonj .lyr[data-mode='none'] .lyr-scroll {
+  height: auto;
+  padding: 56px 24px;
+  mask-image: none;
+  text-align: center;
+}
+.goonj .lyr-empty {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  font-size: 15px;
+  opacity: 0.85;
+}
+.goonj .lyr-resume {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 500;
+  background: var(--m-primary);
+  color: var(--m-on-primary);
+  box-shadow: 0 8px 24px -8px rgb(0 0 0 / 0.5);
+  opacity: 0;
+  transform: translate(-50%, 12px);
+  pointer-events: none;
+  transition: opacity 250ms, transform 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+.goonj .lyr-resume.on {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}
+
+/* Mini player: once the card's controls scroll away, it follows you. Matte, not glass. */
+.goonj .pl-mini {
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  z-index: 10;
+  width: min(560px, calc(100% - 24px));
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: color-mix(in oklab, var(--m-surface-container-highest) 96%, transparent);
+  box-shadow: 0 20px 48px -12px rgb(0 0 0 / 0.5);
+  transform: translate(-50%, 140%);
+  visibility: hidden;
+  transition: transform 400ms cubic-bezier(0.2, 0, 0, 1), visibility 0s 400ms;
+}
+.goonj .pl-mini.on {
+  transform: translate(-50%, 0);
+  visibility: visible;
+  transition: transform 400ms cubic-bezier(0.2, 0, 0, 1);
+}
+.goonj .pl-mini img {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.goonj .pl-mini .t {
+  min-width: 0;
+  flex: 1;
+  text-align: left;
+}
+.goonj .pl-mini .t b {
+  display: block;
+  font-size: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.goonj .pl-mini .t span {
+  display: block;
+  font-size: 13px;
+  color: var(--m-on-surface-variant);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.goonj .pl-mini .pl-play {
+  width: 48px;
+  height: 48px;
+  box-shadow: none;
+}
+.goonj .pl-mini .pl-play.on {
+  border-radius: 16px;
+}
+.goonj .pl-mini .bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: color-mix(in oklab, var(--m-on-surface) 10%, transparent);
+}
+.goonj .pl-mini .bar > div {
+  height: 100%;
+  background: var(--m-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .goonj .pl *,
+  .goonj .pl *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
