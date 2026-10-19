@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import { HistoryPage } from '../../../_pages/History'
 
 // Older history, reached as /history?before=<ms> (a rewrite in next.config.js).
-export const revalidate = 3600
+export const revalidate = 86400
 export const metadata = { title: 'History' }
 
 export function generateStaticParams() {

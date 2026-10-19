@@ -5,7 +5,7 @@ import { DEFAULT_RANGE } from '../../_lib/paths'
 
 // The overview for another range. Reached as /?range=7d (a rewrite in
 // next.config.js), so each range is its own cached page.
-export const revalidate = 600
+export const revalidate = 3600
 
 export function generateStaticParams() {
   return RANGES.filter((r) => r.key !== DEFAULT_RANGE).map((r) => ({ range: r.key }))

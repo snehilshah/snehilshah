@@ -43,10 +43,10 @@ const nextConfig = {
     process.env.NODE_ENV !== 'production' ? ['next-mdx-remote'] : undefined,
   pageExtensions: ['js', 'jsx', 'mdx'],
   reactStrictMode: true,
-  experimental: {
-    // Inline CSS into the HTML so it doesn't block first render as a separate request
-    inlineCss: true
-  },
+  // No experimental.inlineCss: it put the whole stylesheet (~70 KB) into
+  // every page's HTML and twice into every navigation payload, so each cached
+  // page cost twice the storage, reads and transfer. A <link> is fetched once
+  // and cached across pages.
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [

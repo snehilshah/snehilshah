@@ -54,10 +54,10 @@ async function bytes(url) {
   }
 }
 
-// Uploaded lyrics show up within five minutes.
+// Uploaded lyrics show up within the hour.
 async function lrc(id) {
   try {
-    const res = await fetch(`${BUCKET}/lyrics/${id}.lrc`, { next: { revalidate: 300 } })
+    const res = await fetch(`${BUCKET}/lyrics/${id}.lrc`, { next: { revalidate: 3600 } })
     return res.ok ? await res.text() : null
   } catch {
     return null

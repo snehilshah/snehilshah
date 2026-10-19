@@ -1,9 +1,21 @@
 import 'server-only'
+import { createHash } from 'node:crypto'
 import { DEFAULT_RANGE } from './paths'
 
 // Goonj, the listening history every device reports to. Data is cached and
-// refreshed when Goonj says new plays arrived (tag "goonj"), with a time
-// fallback in case that call is ever missed.
+// refreshed when Goonj says what changed (app/api/listening/revalidate), with
+// a time fallback in case that call is ever missed. Cache tags:
+//   FEED  the overview, top lists and latest history: every new play;
+//   keyTag(kind, key)  one track, album or artist page (and its art): plays of it;
+//   ALL   everything (imports).
+export const FEED = 'goonj'
+export const ALL = 'goonj-all'
+// Hashed: keys can be longer than a tag may be (256 characters).
+export const keyTag = (kind, key) => `goonj:${kind}:${createHash('sha1').update(key).digest('hex').slice(0, 20)}`
+
+const HOUR = 3600
+const DAY = 86400
+
 export const API = (process.env.GOONJ_URL || 'https://goonj.snehilshah.com').replace(/\/$/, '')
 
 export const RANGES = [
@@ -24,8 +36,10 @@ export function rangeKey(value, fallback = DEFAULT_RANGE) {
   return fallback
 }
 
-async function get(path, { revalidate = 600 } = {}) {
-  const res = await fetch(API + path, { next: { revalidate, tags: ['goonj'] } })
+// The feed moves with each play (and its ranges with the clock): hourly.
+// A page of one thing changes only when it's played: daily.
+async function get(path, { revalidate = HOUR, tags = [FEED] } = {}) {
+  const res = await fetch(API + path, { next: { revalidate, tags: [ALL, ...tags] } })
   if (res.status === 404) return null
   if (!res.ok) throw new Error(`Goonj ${res.status} for ${path}`)
   return res.json()
@@ -41,9 +55,11 @@ export const topList = (kind, range, limit = 100, offset = 0) => get(`/v1/top/${
 export const series = (range, bucket) => get(`/v1/series${q({ range, bucket })}`)
 export const days = (range) => get(`/v1/days${q({ range })}`)
 export const rediscover = (limit = 12) => get(`/v1/rediscover${q({ limit })}`)
-export const recent = (before, limit = 100, track) => get(`/v1/recent${q({ before, limit, track })}`, { revalidate: 300 })
+// Older history pages (before) only change if a play arrives late: daily.
+export const recent = (before, limit = 100, track) =>
+  get(`/v1/recent${q({ before, limit, track })}`, track ? { revalidate: DAY, tags: [keyTag('tracks', track)] } : before ? { revalidate: DAY, tags: [] } : {})
 export const discoveries = (kind, range, limit = 50) => get(`/v1/discoveries/${kind}${q({ range, limit })}`)
-export const entity = (kind, key) => get(`/v1/${kind}/${encodeURIComponent(key)}`)
+export const entity = (kind, key) => get(`/v1/${kind}/${encodeURIComponent(key)}`, { revalidate: DAY, tags: [keyTag(kind, key)] })
 
 /**
  * Public image URL for an album cover or artist photo (404 = none). size
@@ -56,7 +72,7 @@ export const imageUrl = (kind, key, size) =>
 export async function imageBytes(kind, key) {
   if (!key) return null
   try {
-    const res = await fetch(imageUrl(kind, key, 128), { next: { revalidate: 86400 } })
+    const res = await fetch(imageUrl(kind, key, 128), { next: { revalidate: DAY, tags: [ALL, keyTag(`${kind}s`, key)] } })
     if (!res.ok) return null
     return Buffer.from(await res.arrayBuffer())
   } catch {
