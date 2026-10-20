@@ -3,7 +3,8 @@ import { libron, productSans } from '@/styles/music-fonts'
 
 export const metadata = {
   title: { default: 'Music · Snehil Shah', template: '%s · Music · Snehil Shah' },
-  description: 'What I listen to, across my phone and computers.'
+  description: 'What I listen to, across my phone and computers.',
+  robots: { index: false, follow: false }
 }
 
 export const viewport = {

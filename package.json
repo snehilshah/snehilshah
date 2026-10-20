@@ -17,6 +17,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
+    "test:music-access": "node --conditions=react-server --test tests/music-access.test.js",
     "lint": "eslint . --report-unused-disable-directives",
     "prettier": "prettier --write .",
     "eslint": "eslint . --report-unused-disable-directives"

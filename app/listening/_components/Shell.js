@@ -71,6 +71,10 @@ export function Shell({ art, active, ownBackdrop = false, children }) {
           <Link href={href('/docs')} className='font-medium hover:text-m-on-surface'>
             How it works
           </Link>
+          <form action='/api/listening/access' method='post'>
+            <input type='hidden' name='intent' value='lock' />
+            <button type='submit' className='hover:text-m-on-surface cursor-pointer'>Lock music</button>
+          </form>
           <a href='https://www.snehilshah.com' className='hover:text-m-on-surface'>
             snehilshah.com
           </a>
