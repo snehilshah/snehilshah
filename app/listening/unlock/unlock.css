@@ -1,6 +1,6 @@
 .music-gate {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto 1fr;
   padding: 0 clamp(20px, 5vw, 72px);
 }
 .music-gate :focus-visible {
@@ -18,27 +18,28 @@
   color: var(--m-on-surface-variant);
 }
 .gate-main {
-  flex: 1;
   display: grid;
   place-items: center;
-  padding: 32px 0 112px;
+  /* Sits a little above centre; the bottom gap shrinks before the page would scroll. */
+  padding: 16px 0 clamp(24px, 12vh, 104px);
 }
 .gate-card {
   width: min(100%, 460px);
   padding: 44px 36px 32px;
   border: 1px solid color-mix(in oklab, var(--m-on-surface) 16%, transparent);
   border-radius: 28px;
+  /* Matte, not glass: a backdrop-filter over the drifting art re-blurs every
+     frame, which shimmers and costs battery. */
   background: linear-gradient(
     145deg,
-    color-mix(in oklab, var(--m-surface) 68%, transparent),
-    color-mix(in oklab, var(--m-surface-container-high) 46%, transparent)
+    color-mix(in oklab, var(--m-surface) 82%, transparent),
+    color-mix(in oklab, var(--m-surface-container-high) 74%, transparent)
   );
-  backdrop-filter: blur(32px) saturate(1.3);
-  -webkit-backdrop-filter: blur(32px) saturate(1.3);
   box-shadow:
     0 32px 100px -40px rgb(0 0 0 / 0.35),
     inset 0 1px 0 rgb(255 255 255 / 0.16);
-  animation: gate-arrive 600ms ease-out both;
+  /* Fade only: a sliding entrance briefly makes short pages scrollable. */
+  animation: gate-arrive 320ms ease-out both;
 }
 .gate-card h1 {
   font-size: clamp(29px, 4.5vw, 36px);
@@ -47,10 +48,6 @@
   text-wrap: balance;
 }
 .gate-form {
-  margin-top: 32px;
-}
-.gate-form-placeholder {
-  height: 191px;
   margin-top: 32px;
 }
 .gate-form > label {
@@ -131,11 +128,10 @@
 }
 
 /* The native modal lives in the top layer, so opening it never resizes the
-   card or inherits the card's animation transform. Short screens scroll only
-   the calendar, with its close button kept visible. */
-html:has(.gate-calendar[open]) {
-  overflow: hidden;
-}
+   card or inherits the card's animation transform. Every panel has the same
+   fixed size, so switching days, months and years never resizes or scrolls
+   the calendar. Only screens too short for it scroll, with the top bar kept
+   in view and no scrollbar drawn. */
 .gate-calendar {
   position: fixed;
   inset: 0;
@@ -144,9 +140,9 @@ html:has(.gate-calendar[open]) {
   max-width: none;
   max-height: calc(100dvh - 32px);
   padding: 0;
-  overflow: hidden;
+  overflow: hidden auto;
   overscroll-behavior: contain;
-  scrollbar-width: thin;
+  scrollbar-width: none;
   border: 1px solid var(--m-outline-variant);
   border-radius: 24px;
   color: var(--m-on-surface);
@@ -154,14 +150,11 @@ html:has(.gate-calendar[open]) {
   box-shadow: 0 24px 80px -24px rgb(0 0 0 / 0.5);
   font-family: var(--font-product-sans), system-ui, sans-serif;
 }
-.gate-calendar[open] {
-  display: flex;
-  flex-direction: column;
+.gate-calendar::-webkit-scrollbar {
+  display: none;
 }
 .gate-calendar::backdrop {
-  background: rgb(0 0 0 / 0.3);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgb(0 0 0 / 0.42);
 }
 .gate-calendar-top {
   flex-shrink: 0;
@@ -190,14 +183,9 @@ html:has(.gate-calendar[open]) {
   cursor: pointer;
 }
 .gate-calendar-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  overflow: hidden;
   padding: 0 16px 16px;
 }
 .gate-calendar-head {
-  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -213,6 +201,7 @@ html:has(.gate-calendar[open]) {
 }
 .gate-calendar-selects > button {
   display: flex;
+  min-width: 56px;
   align-items: center;
   justify-content: center;
   gap: 4px;
@@ -235,24 +224,38 @@ html:has(.gate-calendar[open]) {
 .gate-calendar-selects > button[aria-expanded='true'] svg {
   transform: rotate(180deg);
 }
+.gate-calendar-grid,
+.gate-calendar-choices {
+  height: 292px;
+}
 .gate-calendar-choices {
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-template-rows: repeat(4, minmax(44px, 1fr));
+  grid-template-rows: repeat(4, 1fr);
   gap: 8px;
-  height: 292px;
-  padding: 4px;
-  overflow: auto;
-  overscroll-behavior: contain;
-  scrollbar-width: thin;
-  scrollbar-color: var(--m-primary) var(--m-surface-container-high);
+  padding: 6px;
 }
+/* 120-odd years scroll in place; faded edges show there is more. */
 .gate-calendar-choices.years {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-template-rows: none;
   grid-auto-rows: 44px;
   align-content: start;
+  overflow: hidden auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  /* The padding matches the fade, so the first and last rows rest unfaded. */
+  padding-block: 16px;
+  mask-image: linear-gradient(
+    transparent,
+    #000 16px,
+    #000 calc(100% - 16px),
+    transparent
+  );
+}
+.gate-calendar-choices.years::-webkit-scrollbar {
+  display: none;
 }
 .gate-calendar-choices button {
   border-radius: 12px;
@@ -272,18 +275,8 @@ html:has(.gate-calendar[open]) {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
   grid-template-rows: 28px repeat(6, 40px);
-  height: 292px;
   text-align: center;
   gap: 4px 0;
-}
-.gate-calendar-grid,
-.gate-calendar-choices {
-  flex: 0 1 292px;
-  min-height: 0;
-  overflow: auto;
-  overscroll-behavior: contain;
-  scrollbar-width: thin;
-  scrollbar-color: var(--m-primary) var(--m-surface-container-high);
 }
 .gate-weekday {
   font-size: 11px;
@@ -317,6 +310,11 @@ html:has(.gate-calendar[open]) {
 .gate-backdrop > .art {
   opacity: 0.8;
   animation: gate-drift 32s ease-in-out infinite alternate;
+}
+/* Blur once on their own layers; the drift then only moves them. */
+.gate-backdrop > .art,
+.gate-glow {
+  will-change: transform;
 }
 .gate-backdrop > .scrim {
   background: color-mix(in oklab, var(--m-surface) 50%, transparent);
@@ -352,11 +350,6 @@ html:has(.gate-calendar[open]) {
 @keyframes gate-arrive {
   from {
     opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 @media (max-width: 480px) {
@@ -376,13 +369,26 @@ html:has(.gate-calendar[open]) {
 }
 @media (max-height: 560px) {
   .gate-header {
-    padding: 16px 0;
+    padding: 12px 0;
   }
   .gate-main {
-    padding: 16px 0 32px;
+    padding: 4px 0 12px;
   }
   .gate-card {
-    padding-block: 24px;
+    padding-block: 20px;
+  }
+  .gate-card h1 {
+    font-size: 26px;
+  }
+  .gate-form {
+    margin-top: 16px;
+  }
+  .gate-form > label {
+    margin-bottom: 8px;
+  }
+  .gate-feedback {
+    min-height: 20px;
+    padding: 2px 0;
   }
 }
 @media (prefers-reduced-motion: reduce) {

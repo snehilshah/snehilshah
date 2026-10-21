@@ -1,7 +1,7 @@
 'use client'
 
-import { Suspense, useEffect, useRef, useState } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useEffect, useRef, useState, useTransition } from 'react'
+import { useRouter } from 'next/navigation'
 import {
   ArrowRight,
   CalendarDays,
@@ -25,28 +25,125 @@ const ERRORS = {
 const iso = date =>
   `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
 
-export function BirthdayForm() {
-  return (
-    <Suspense
-      fallback={<div className='gate-form-placeholder' aria-busy='true' />}
-    >
-      <Form />
-    </Suspense>
-  )
+// What this browser says about itself, sent with each attempt.
+function gpu() {
+  try {
+    const gl = document.createElement('canvas').getContext('webgl')
+    const debug = gl?.getExtension('WEBGL_debug_renderer_info')
+    return gl?.getParameter(debug ? debug.UNMASKED_RENDERER_WEBGL : gl.RENDERER)
+  } catch {
+    return undefined
+  }
 }
 
-function Form() {
-  const params = useSearchParams()
+// A random ID kept in this browser, to tell repeat visitors apart.
+let visit
+function visitor() {
+  if (visit) return visit
+  try {
+    const saved = JSON.parse(localStorage.getItem('music-gate-visitor'))
+    visit = saved?.id
+      ? { ...saved, visits: (Number(saved.visits) || 0) + 1 }
+      : {
+          id: Math.random().toString(36).slice(2, 10),
+          first: new Date().toISOString(),
+          visits: 1
+        }
+    localStorage.setItem('music-gate-visitor', JSON.stringify(visit))
+  } catch {
+    visit = {}
+  }
+  return visit
+}
+
+async function describeBrowser() {
+  const n = navigator
+  const media = query => matchMedia(query).matches
+  const connection = n.connection
+  const info = {
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    languages: n.languages?.join(', '),
+    screen: `${screen.width}×${screen.height}`,
+    available: `${screen.availWidth}×${screen.availHeight}`,
+    viewport: `${innerWidth}×${innerHeight}`,
+    dpr: devicePixelRatio,
+    colorDepth: screen.colorDepth,
+    orientation: screen.orientation?.type,
+    platform: n.platform,
+    cores: n.hardwareConcurrency,
+    memory: n.deviceMemory,
+    touch: n.maxTouchPoints,
+    scheme: media('(prefers-color-scheme: dark)') ? 'dark' : 'light',
+    standalone: media('(display-mode: standalone)') || n.standalone === true,
+    connection:
+      connection &&
+      [
+        connection.type,
+        connection.effectiveType,
+        connection.downlink && `${connection.downlink} Mb/s`,
+        connection.rtt && `${connection.rtt} ms`,
+        connection.saveData && 'data saver'
+      ]
+        .filter(Boolean)
+        .join(', '),
+    gpu: gpu(),
+    referrer: document.referrer,
+    webdriver: n.webdriver === true,
+    brave: Boolean(n.brave)
+  }
+  try {
+    const hints = await n.userAgentData?.getHighEntropyValues([
+      'architecture',
+      'bitness',
+      'formFactors',
+      'fullVersionList',
+      'model',
+      'platformVersion'
+    ])
+    if (hints)
+      info.hints = {
+        platform: hints.platform,
+        platformVersion: hints.platformVersion,
+        model: hints.model,
+        architecture: hints.architecture,
+        bitness: hints.bitness,
+        mobile: String(hints.mobile),
+        formFactors: hints.formFactors?.join(', '),
+        brands: (hints.fullVersionList || hints.brands || [])
+          .filter(({ brand }) => !/not.?a.?brand/i.test(brand))
+          .map(({ brand, version }) => `${brand} ${version}`)
+          .join(', ')
+      }
+  } catch {
+    /* Client hints are optional. */
+  }
+  return info
+}
+
+export function BirthdayForm({ next, initialError }) {
+  const router = useRouter()
+  const [, startNavigation] = useTransition()
   const [selected, setSelected] = useState(null)
   const [open, setOpen] = useState(false)
   const [pending, setPending] = useState(false)
-  const [failure, setFailure] = useState(params.get('error'))
+  const [failure, setFailure] = useState(initialError)
   const [attempt, setAttempt] = useState(0)
   const formRef = useRef(null)
+  const report = useRef(null)
+  const loadedAt = useRef(0)
+  const guesses = useRef([])
   const error = ERRORS[failure]
 
-  // A browser back navigation can restore this form from the page cache.
   useEffect(() => {
+    loadedAt.current = Date.now()
+    const seen = visitor()
+    report.current = describeBrowser().then(info => ({
+      ...info,
+      visitor: seen.id,
+      firstSeen: seen.first,
+      visits: seen.visits
+    }))
+    // A browser back navigation can restore this form from the page cache.
     const resetPending = () => setPending(false)
     window.addEventListener('pageshow', resetPending)
     return () => window.removeEventListener('pageshow', resetPending)
@@ -56,9 +153,24 @@ function Form() {
     event.preventDefault()
     if (pending || !selected) return
     const body = new FormData(event.currentTarget)
+    const guess = iso(selected)
     setPending(true)
     setFailure(null)
     try {
+      const info = await Promise.race([
+        report.current,
+        new Promise(resolve => setTimeout(resolve, 800))
+      ])
+      body.set(
+        'client',
+        JSON.stringify({
+          ...info,
+          localTime: new Date().toString(),
+          onPage: Date.now() - loadedAt.current,
+          tries: guesses.current.length + 1,
+          guesses: guesses.current
+        })
+      )
       const response = await fetch('/api/listening/access', {
         method: 'POST',
         headers: { Accept: 'application/json' },
@@ -69,7 +181,8 @@ function Form() {
       })
       const result = await response.json()
       if (response.ok && result.next) {
-        window.location.assign(result.next)
+        // Stay in the app: no full reload, so no blank flash between pages.
+        startNavigation(() => router.replace(result.next))
         return
       }
       const code =
@@ -78,6 +191,7 @@ function Form() {
           : result.error in ERRORS
             ? result.error
             : 'unavailable'
+      if (code === 'incorrect') guesses.current = [...guesses.current, guess].slice(-20)
       setFailure(code)
       setAttempt(value => value + 1)
       if (
@@ -117,7 +231,7 @@ function Form() {
         name='birthday'
         value={selected ? iso(selected) : ''}
       />
-      <input type='hidden' name='next' value={params.get('next') || ''} />
+      <input type='hidden' name='next' value={next} />
       <label id='birthday-label' htmlFor='birthday-trigger'>
         When’s my birthday?
       </label>

@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+import { after, NextResponse } from 'next/server'
 import {
   accessConfigured,
   correctBirthday,
@@ -8,22 +8,25 @@ import {
   musicDestination,
   SESSION_SECONDS
 } from '@/lib/music-access'
+import { requestDetails, sendAttemptAlert } from '@/lib/music-alert'
 
 // Best-effort per-instance throttling. Use an edge/WAF rate limit as well for
 // distributed deployments; this memory is not shared between instances.
 const attempts = new Map()
 const WINDOW = 15 * 60 * 1000
+const LIMIT = 10
 
-function throttled(request) {
+/** This IP's submission count in the current window (over LIMIT means blocked). */
+function count(request) {
   const now = Date.now()
   for (const [key, entry] of attempts)
     if (entry.until <= now) attempts.delete(key)
   const key =
     request.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'local'
   const entry = attempts.get(key) || { count: 0, until: now + WINDOW }
-  if (!attempts.has(key) && attempts.size >= 2000) return true
+  if (!attempts.has(key) && attempts.size >= 2000) return Infinity
   attempts.set(key, entry)
-  return ++entry.count > 10
+  return ++entry.count
 }
 
 export async function POST(request) {
@@ -41,7 +44,7 @@ export async function POST(request) {
       { status: 403 }
     )
   }
-  if (Number(request.headers.get('content-length')) > 4096)
+  if (Number(request.headers.get('content-length')) > 16384)
     return new Response(null, { status: 413 })
   const form = await request.formData().catch(() => null)
   if (!form) return Response.json({ error: 'Invalid form.' }, { status: 400 })
@@ -64,9 +67,26 @@ export async function POST(request) {
   }
 
   let error
+  let tries = 0
+  const birthday = form.get('birthday')
   if (!accessConfigured()) error = 'unavailable'
-  else if (throttled(request)) error = 'limited'
-  else if (!correctBirthday(form.get('birthday'))) error = 'incorrect'
+  else if ((tries = count(request)) > LIMIT) error = 'limited'
+  else if (!correctBirthday(birthday)) error = 'incorrect'
+
+  // Email every attempt; once blocked, only the first blocked one.
+  if (error !== 'unavailable' && (error !== 'limited' || tries === LIMIT + 1)) {
+    const details = requestDetails(request)
+    const client = form.get('client')
+    after(() =>
+      sendAttemptAlert({
+        outcome: error || 'unlocked',
+        guess: typeof birthday === 'string' ? birthday : undefined,
+        next,
+        details,
+        client
+      })
+    )
+  }
 
   if (error) {
     if (wantsJson) {

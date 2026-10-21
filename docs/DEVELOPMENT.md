@@ -34,7 +34,8 @@ LISTENING_HOST=music.snehilshah.com
 
 Generate a secret with `openssl rand -hex 32`. Keep both access variables
 server-only; never use a `NEXT_PUBLIC_` prefix or commit `.env.local`. Missing
-configuration keeps the gate locked. Rotating the secret revokes all sessions.
+configuration keeps the gate locked. Rotating the secret revokes all sessions. To sign
+everyone out without a new secret, bump `VERSION` in `lib/music-access.js`.
 The proxy checks page requests, including navigation/prefetch payloads, before
 the existing cached pages are served. Browser/CDN responses are private and
 uncacheable; the server's listening-data cache remains available.
@@ -47,6 +48,28 @@ proxy/WAF and ensure it overwrites the client IP header. This gate covers this
 website only. The Goonj API (goonj.snehilshah.com/v1/...) and audio storage
 are hosted separately and stay public: anyone who calls the API directly can
 read the listening data.
+
+### Attempt emails
+
+Every birthday attempt (right or wrong, and the first one past the guess limit)
+emails the owner through Resend, after the response is sent. Each email has
+what is known about the visitor: IP, ISP/ASN, reverse DNS and city-level
+location (from the hosting edge and [ipwho.is](https://ipwho.is), falling back
+to ipinfo.io), VPN signs (device vs IP timezone, hosting providers), device,
+OS, browser, screen, GPU, client hints, earlier wrong guesses in that visit,
+time on the page, and a random per-browser ID with a visit count (kept in
+`localStorage`). Location is IP-based only; visitors see no prompt. Each server
+instance sends at most 40 emails an hour.
+
+```dotenv
+RESEND_API_KEY=<Resend API key>
+MUSIC_ALERT_TO=you@example.com          # comma-separated for several
+MUSIC_ALERT_FROM="Music gate <music@snehilshah.com>"   # a Resend-verified domain
+MUSIC_ALERT_TIMEZONE=Asia/Kolkata       # optional, for the time in the email
+```
+
+Without `RESEND_API_KEY` or `MUSIC_ALERT_TO`, no emails are sent and the gate
+works as before.
 
 ## Dependencies and Docker
 

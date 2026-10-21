@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { createHmac } from 'node:crypto'
 import { test } from 'node:test'
 import {
   accessConfigured,
@@ -49,11 +50,19 @@ test('sessions expire, reject tampering, and do not contain the birthday', () =>
     '',
     'true',
     `${token}x`,
-    token.replace('music.v1', 'music.v2'),
+    token.replace('music.v2', 'music.v3'),
     `${token.slice(0, -1)}!`,
     'x'.repeat(200)
   ])
     assert.equal(validMusicSession(value, now), false)
+})
+
+test('sessions signed before the reset (v1) no longer work', () => {
+  const value = `music.v1.${Math.floor(now / 1000) + 3600}`
+  const sig = createHmac('sha256', process.env.MUSIC_SESSION_SECRET)
+    .update(value)
+    .digest('base64url')
+  assert.equal(validMusicSession(`${value}.${sig}`, now), false)
 })
 
 test('rotating the secret revokes existing sessions', () => {
