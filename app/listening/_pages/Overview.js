@@ -2,23 +2,32 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Shell } from '../_components/Shell'
 import { Art } from '../_components/Art'
-import { Ago } from '../_components/Ago'
-import { Figures, Group, More, PageHead, Periods, RangeTabs, Section, Badge } from '../_components/bits'
-import { TrackRow, TileGrid, Shelf } from '../_components/rows'
+import { Figures, Group, More, PageHead, Periods, RangeTabs, Section } from '../_components/bits'
+import { TrackRow, TileGrid } from '../_components/rows'
 import { Bars, ListeningClock, Split, YearCalendar } from '../_components/charts'
 import { NowPlaying } from '../_components/NowPlaying'
-import { API, overview, days, series, rediscover, imageBytes, imageUrl, rangeTitle } from '../_lib/goonj'
+import { API, overview, days, recent, series, imageBytes, imageUrl, rangeTitle } from '../_lib/goonj'
 import { count, delta, isoDay, listening, percent, plays, timeFigure, unit } from '../_lib/format'
-import { DEFAULT_RANGE, artistHref, href, withRange } from '../_lib/paths'
+import { DEFAULT_RANGE, artistHref, withRange } from '../_lib/paths'
 
 export async function OverviewPage({ range }) {
-  const [o, year, months, again] = await Promise.all([
+  const [o, year, months, latest] = await Promise.all([
     overview(range, 10),
     days('365d'),
     series(range === 'all' ? 'all' : '365d', 'month'),
-    rediscover(12)
+    // The same request as History's first page, so it shares its cache.
+    recent(undefined, 150).catch(() => null)
   ])
   if (!o) notFound()
+  // Which days, and which of today's hours, had music: for the period cards.
+  const musicDays = new Set(year.days.filter((d) => d.plays > 0).map((d) => d.date))
+  const today = o.periods?.find((p) => p.key === 'today')
+  const musicHours = new Set(
+    (latest?.items ?? [])
+      .filter((r) => today && r.startedAt >= today.from && r.startedAt < today.to)
+      .map((r) => Math.floor((r.startedAt - today.from) / 3600000))
+  )
+  const topPlays = o.topTracks[0]?.plays || 0
   const t = o.totals
   const p = o.prevTotals
   const hero = o.topArtists[0]
@@ -34,7 +43,7 @@ export async function OverviewPage({ range }) {
 
       {o.periods?.length > 0 && (
         <div className='mt-6 rise'>
-          <Periods periods={o.periods} />
+          <Periods periods={o.periods} musicDays={musicDays} musicHours={musicHours} />
         </div>
       )}
 
@@ -81,7 +90,7 @@ export async function OverviewPage({ range }) {
             <Section title='Tracks' action={<More href={withRange('/tracks', range)} />}>
               <div className='grid grid-cols-1 md:grid-cols-2 gap-x-8'>
                 {o.topTracks.map((it, i) => (
-                  <TrackRow key={it.key} item={it} rank={i + 1} showChange={showChange} />
+                  <TrackRow key={it.key} item={it} rank={i + 1} showChange={showChange} share={topPlays && it.plays / topPlays} />
                 ))}
               </div>
             </Section>
@@ -151,57 +160,6 @@ export async function OverviewPage({ range }) {
         )}
       </Group>
 
-      <Group title='Lately'>
-        {!empty && o.newArtists.length > 0 && (
-          <Section title='New artists'>
-            <Shelf items={o.newArtists} kind='artists' />
-          </Section>
-        )}
-        {!empty && o.newTracks.length > 0 && (
-          <Section title='New tracks'>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-x-8'>
-              {o.newTracks.slice(0, 8).map((it) => (
-                <TrackRow key={it.key} item={it} />
-              ))}
-            </div>
-          </Section>
-        )}
-        <div className='grid grid-cols-1 lg:grid-cols-2 gap-x-10'>
-          {again.onRepeat.length > 0 && (
-            <Section title='On repeat'>
-              {again.onRepeat.slice(0, 6).map((it) => (
-                <TrackRow key={it.key} item={it} trailing={`${count(it.plays)} in 2 weeks`} />
-              ))}
-            </Section>
-          )}
-          {again.forgotten.length > 0 && (
-            <Section title='Not lately'>
-              {again.forgotten.slice(0, 6).map((it) => (
-                <TrackRow key={it.key} item={it} />
-              ))}
-            </Section>
-          )}
-        </div>
-        {o.recent.length > 0 && (
-          <Section title='Recently played' action={<More href={href('/history')}>History</More>}>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-x-8'>
-              {o.recent.map((r) => (
-                <TrackRow
-                  key={r.id}
-                  item={r}
-                  meta={r.artist}
-                  trailing={
-                    <span className='flex flex-col items-end gap-0.5'>
-                      <Ago at={r.startedAt} />
-                      {r.skipped && <Badge>skipped</Badge>}
-                    </span>
-                  }
-                />
-              ))}
-            </div>
-          </Section>
-        )}
-      </Group>
     </Shell>
   )
 }

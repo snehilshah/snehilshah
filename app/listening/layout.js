@@ -1,5 +1,5 @@
 import './listening.css'
-import { libron, productSans } from '@/styles/music-fonts'
+import { bricolage, productSans } from '@/styles/music-fonts'
 
 export const metadata = {
   title: { default: 'Music · Snehil Shah', template: '%s · Music · Snehil Shah' },
@@ -15,5 +15,5 @@ export const viewport = {
 }
 
 export default function ListeningLayout({ children }) {
-  return <div className={`${libron.variable} ${productSans.variable}`}>{children}</div>
+  return <div className={`${productSans.variable} ${bricolage.variable}`}>{children}</div>
 }

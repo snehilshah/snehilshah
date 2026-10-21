@@ -54,7 +54,6 @@ export const overview = (range, top = 10) => get(`/v1/overview${q({ range, top }
 export const topList = (kind, range, limit = 100, offset = 0) => get(`/v1/top/${kind}${q({ range, limit, offset })}`)
 export const series = (range, bucket) => get(`/v1/series${q({ range, bucket })}`)
 export const days = (range) => get(`/v1/days${q({ range })}`)
-export const rediscover = (limit = 12) => get(`/v1/rediscover${q({ limit })}`)
 // Older history pages (before) only change if a play arrives late: daily.
 export const recent = (before, limit = 100, track) =>
   get(`/v1/recent${q({ before, limit, track })}`, track ? { revalidate: DAY, tags: [keyTag('tracks', track)] } : before ? { revalidate: DAY, tags: [] } : {})

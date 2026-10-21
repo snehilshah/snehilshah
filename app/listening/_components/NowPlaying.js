@@ -59,6 +59,13 @@ export function NowPlaying({ api, last }) {
     }
   }, [api, router])
 
+  // Lets the rest of the page react to live music (today's record spins).
+  const live = snap?.items[0]?.state === 'playing'
+  useEffect(() => {
+    document.documentElement.toggleAttribute('data-music-playing', live)
+    return () => document.documentElement.removeAttribute('data-music-playing')
+  }, [live])
+
   if (!snap) return <div className='np h-[156px] sm:h-[240px] opacity-0' aria-hidden />
   const n = snap.items[0]
   if (n) return <Card n={n} api={api} skew={skew} />

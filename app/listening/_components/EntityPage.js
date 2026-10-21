@@ -108,7 +108,7 @@ export async function EntityPage({ kind, entityKey }) {
             <ol className='segmented grid-cols-1'>
               {e.milestones.map((m) => (
                 <li key={m.n} className='flex items-center gap-3 px-4 py-3 min-w-0'>
-                  <span className='display text-[20px] w-14 shrink-0'>{ord(m.n)}</span>
+                  <span className='num text-[20px] w-14 shrink-0'>{ord(m.n)}</span>
                   <span className='font-medium text-[15px] truncate flex-1'>{m.title}</span>
                   <span className='meta shrink-0'>{fullDate(m.at)}</span>
                 </li>

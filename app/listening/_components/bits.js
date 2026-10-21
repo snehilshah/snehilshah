@@ -1,8 +1,8 @@
 import { PLink as Link } from './PLink'
-import { ArrowDown, ArrowUp } from 'lucide-react'
+import { ArrowDown, ArrowUp, Disc3, MicVocal, Music2 } from 'lucide-react'
 import { RANGES } from '../_lib/goonj'
 import { withRange } from '../_lib/paths'
-import { count, totalTime, unit } from '../_lib/format'
+import { count, totalTime } from '../_lib/format'
 
 /** Range chips; the current one filled. */
 export function RangeTabs({ path, range, extra = [] }) {
@@ -89,13 +89,13 @@ export function Figures({ items, cols = 'grid-cols-2 sm:grid-cols-3 lg:grid-cols
       {items.map((f) => (
         <div key={f.label} className='px-4 py-4 min-w-0'>
           <div
-            className={`display whitespace-nowrap ${
-              typeof f.value === 'string' && f.value.length > 8 ? 'text-[24px] sm:text-[28px] leading-[1.3]' : 'text-[30px] sm:text-[34px]'
+            className={`num big whitespace-nowrap ${
+              typeof f.value === 'string' && f.value.length > 8 ? 'text-[24px] sm:text-[28px]' : 'text-[32px] sm:text-[38px]'
             }`}
           >
             {f.value}
           </div>
-          <div className='flex items-center gap-2 mt-1 min-w-0'>
+          <div className='flex items-center gap-2 mt-2 min-w-0'>
             <span className='meta truncate'>{f.label}</span>
             {f.sub && <span className='text-[11px] text-m-on-surface-variant whitespace-nowrap'>{f.sub}</span>}
           </div>
@@ -105,42 +105,98 @@ export function Figures({ items, cols = 'grid-cols-2 sm:grid-cols-3 lg:grid-cols
   )
 }
 
+const HOUR = 3600000
+const DAY = 86400000
+const TONES = ['primary', 'secondary', 'tertiary', 'secondary', 'primary']
+const istDate = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Kolkata' })
+
 /**
  * Totals for each calendar period (today, this week, this month, this
- * year, all time), whatever the page's range. periods: [{ key, label, totals }]
+ * year, all time), whatever the page's range. periods: [{ key, label, from, to, totals }].
+ * musicDays: the dates ("2026-10-21") with plays; musicHours: today's hours (0–23) with plays.
  */
-export function Periods({ periods }) {
+export function Periods({ periods, musicDays = new Set(), musicHours = new Set() }) {
+  // All time ends now, by Goonj's clock.
+  const now = periods.find((p) => p.allTime)?.to ?? periods.at(-1)?.to
   return (
     <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3'>
-      {periods.map((p) => {
-        const t = p.totals
-        return (
-          <div key={p.key} className={`rounded-[24px] bg-m-surface-container-high/80 p-4 min-w-0 ${p.allTime ? 'max-sm:col-span-2' : ''}`}>
-            <p className='font-medium text-[15px]'>{p.label}</p>
-            <p className='display text-[30px] sm:text-[34px] mt-3 whitespace-nowrap'>{count(t.plays)}</p>
-            <p className='meta'>{t.plays === 1 ? 'play' : 'plays'}</p>
-            <ul className='mt-3 pt-3 border-t border-m-outline-variant/60 space-y-1 text-[14px] text-m-on-surface-variant'>
-              <li>
-                <span className='font-medium text-m-on-surface'>{totalTime(t.listenedMs)}</span> listened
-              </li>
-              <Line n={t.tracks} word='track' />
-              <Line n={t.artists} word='artist' />
-              <Line n={t.albums} word='album' />
-              {!p.allTime && p.key !== 'today' && <Line n={t.activeDays} word='day' after=' with music' />}
-            </ul>
-          </div>
-        )
-      })}
+      {periods.map((p, i) => (
+        <Period key={p.key} period={p} tone={TONES[i % TONES.length]} now={now} musicDays={musicDays} musicHours={musicHours} />
+      ))}
     </div>
   )
 }
 
-function Line({ n, word, after = '' }) {
-  const [num, ...rest] = unit(n, word).split(' ')
+function Period({ period: p, tone, now, musicDays, musicHours }) {
+  const t = p.totals
+  const [time, timeUnit] = totalTime(t.listenedMs).split(' ')
+  const span = p.allTime ? 0 : Math.round((p.to - p.from) / DAY)
+  const sofar = (size) => Math.max(1, Math.ceil((Math.min(now, p.to) - p.from) / size))
+  let meter = null
+  if (span === 1) {
+    // Today: an hour a segment.
+    const elapsed = Math.min(24, sofar(HOUR))
+    const on = Array.from({ length: 24 }, (_, h) => musicHours.has(h))
+    meter = <Meter on={on} elapsed={elapsed} count={on.filter(Boolean).length} word='hour' />
+  } else if (span > 1 && span <= 31) {
+    // A week or month: a day a segment, lit on the days with music.
+    const elapsed = Math.min(span, sofar(DAY))
+    const on = Array.from({ length: span }, (_, d) => musicDays.has(istDate.format(p.from + d * DAY + 12 * HOUR)))
+    const lit = on.filter(Boolean).length
+    // Fall back to the period's own count if the daily list is missing.
+    meter = <Meter on={lit ? on : on.map((_, d) => d < t.activeDays)} elapsed={elapsed} count={lit || Math.min(t.activeDays, elapsed)} word='day' />
+  } else if (span > 31) {
+    const elapsed = Math.min(span, sofar(DAY))
+    meter = <Meter elapsed={elapsed} count={Math.min(t.activeDays, elapsed)} word='day' />
+  }
   return (
-    <li>
-      <span className='font-medium text-m-on-surface'>{num}</span> {rest.join(' ')}
-      {after}
-    </li>
+    <div className={`period ${p.allTime ? 'max-sm:col-span-2' : ''}`} data-key={p.key} data-tone={tone} data-all={p.allTime || undefined}>
+      <span className='period-disc' aria-hidden />
+      <p className='period-label'>{p.label}</p>
+      <p className='num big text-[38px] sm:text-[44px] mt-5 whitespace-nowrap'>{count(t.plays)}</p>
+      <p className='meta mt-1.5 whitespace-nowrap'>
+        {t.plays === 1 ? 'play' : 'plays'} · <span className='num text-[14px] text-current'>{time}</span> {timeUnit}
+      </p>
+      {meter}
+      <dl className='period-stats'>
+        <Stat icon={Music2} n={t.tracks} word='track' />
+        <Stat icon={MicVocal} n={t.artists} word='artist' />
+        <Stat icon={Disc3} n={t.albums} word='album' />
+      </dl>
+    </div>
+  )
+}
+
+/** Segments lit where there was music (`on`), dimmer past `elapsed`; a plain bar without `on`. */
+function Meter({ on, elapsed, count: lit, word }) {
+  return (
+    <div className='mt-4 mb-4'>
+      {on ? (
+        <div className='period-meter' aria-hidden>
+          {on.map((yes, i) => (
+            <i key={i} data-on={yes || undefined} data-future={i >= elapsed || undefined} />
+          ))}
+        </div>
+      ) : (
+        <div className='period-meter bar' aria-hidden>
+          <i style={{ width: `${(lit / elapsed) * 100}%` }} />
+        </div>
+      )}
+      <p className='meta mt-2 text-[12px]'>
+        <span className='num text-[13px] text-current'>{lit}</span> of {elapsed} {word}s with music
+      </p>
+    </div>
+  )
+}
+
+/** A count with its icon; the word is for screen readers and on hover. */
+function Stat({ icon: Icon, n, word }) {
+  const label = `${count(n)} ${n === 1 ? word : `${word}s`}`
+  return (
+    <div title={label}>
+      <dt className='sr-only'>{n === 1 ? word : `${word}s`}</dt>
+      <Icon size={14} strokeWidth={2.25} aria-hidden />
+      <dd className='num'>{count(n)}</dd>
+    </div>
   )
 }

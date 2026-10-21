@@ -289,7 +289,7 @@ export function Player({ songs }) {
                         <i />
                       </span>
                     ) : (
-                      <span className='display'>{i + 1}</span>
+                      <span className='rank'>{i + 1}</span>
                     )}
                   </span>
                   <span className='art'>

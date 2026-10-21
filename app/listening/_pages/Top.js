@@ -31,12 +31,8 @@ export async function TopPage({ kind, range }) {
                 item={it}
                 rank={it.rank}
                 showChange={showChange}
-                trailing={
-                  <span className='flex flex-col items-end'>
-                    <PlayCount n={it.plays} />
-                    <span className='text-[11px]'>{listening(it.listenedMs, 1)}</span>
-                  </span>
-                }
+                share={items[0].plays && it.plays / items[0].plays}
+                trailing={<PlayCount n={it.plays} detail={listening(it.listenedMs, 1)} />}
               />
             ))}
           </div>

@@ -1,6 +1,6 @@
 /* Listening dashboard. Geet's language: art is the room, matte not glass,
-   one 16px edge, tabular figures. Libron for headings and figures, Product
-   Sans for everything else. Headings step down: page (h1), group (h2), list (h3). */
+   one 16px edge, tabular figures. Bricolage Grotesque for headings and
+   figures, Product Sans for everything else. Headings step down: page (h1), group (h2), list (h3). */
 
 .goonj {
   background: var(--m-surface);
@@ -54,9 +54,9 @@
 }
 
 .goonj .display {
-  font-family: var(--font-libron), Georgia, serif;
+  font-family: var(--font-bricolage), var(--font-product-sans), system-ui, sans-serif;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.025em;
   line-height: 1.08;
 }
 .goonj .name {
@@ -68,18 +68,291 @@
   color: var(--m-on-surface-variant);
 }
 
-.goonj .h1 {
-  font-family: var(--font-libron), Georgia, serif;
+/* Figures: Bricolage Grotesque, so a count or a rank never reads as part
+   of the name beside it. Tabular, so columns of numbers line up. */
+.goonj .num {
+  font-family: var(--font-bricolage), var(--font-product-sans), system-ui, sans-serif;
+  font-feature-settings: normal;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+/* Headline figures: proportional, heavier, a touch condensed. */
+.goonj .num.big {
+  font-variant-numeric: proportional-nums lining-nums;
+  font-weight: 720;
+  letter-spacing: -0.015em;
+}
+/* Chart positions: narrow and quiet, the top three in the accent. */
+.goonj .rank {
+  font-family: var(--font-bricolage), var(--font-product-sans), system-ui, sans-serif;
+  font-feature-settings: normal;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-weight: 500;
+  font-stretch: 78%;
+  line-height: 1;
+  color: color-mix(in oklab, var(--m-on-surface-variant) 75%, transparent);
+}
+/* The top three: gold, silver and bronze, deeper on light backgrounds.
+   (A media query, not light-dark(): the build rewrites that into variables
+   the theme never sets.) */
+.goonj {
+  --gold: #9a6e00;
+  --silver: #5f6873;
+  --bronze: #94501f;
+  --gold-fill: linear-gradient(135deg, #fbe38e, #dcaa30 55%, #b8831a);
+  --silver-fill: linear-gradient(135deg, #f6f8fa, #bcc4cc 55%, #8e97a2);
+  --bronze-fill: linear-gradient(135deg, #f4c294, #c47b42 55%, #985327);
+}
+@media (prefers-color-scheme: dark) {
+  .goonj {
+    --gold: #f2c94c;
+    --silver: #c7cfd8;
+    --bronze: #e39a62;
+  }
+}
+.goonj .rank[data-medal] {
+  font-weight: 750;
+}
+.goonj .rank[data-medal='1'] {
+  color: var(--gold);
+}
+.goonj .rank[data-medal='2'] {
+  color: var(--silver);
+}
+.goonj .rank[data-medal='3'] {
+  color: var(--bronze);
+}
+/* A rank as a sticker on the artwork: in the corner of a cover, on the rim
+   of an artist's circle. */
+.goonj .tile-rank {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: grid;
+  place-items: center;
+  min-width: 30px;
+  height: 30px;
+  padding: 0 8px;
+  border-radius: 9999px;
+  background: var(--m-surface-container-highest);
+  color: var(--m-on-surface);
+  font-family: var(--font-bricolage), var(--font-product-sans), system-ui, sans-serif;
+  font-feature-settings: normal;
+  font-variant-numeric: tabular-nums lining-nums;
   font-weight: 700;
+  font-size: 15px;
+  line-height: 1;
+  box-shadow: 0 0 0 3px var(--m-surface), 0 6px 14px -6px rgb(0 0 0 / 0.5);
+}
+.goonj .tile-rank.round {
+  /* On the circle at its lower left (45°): 14.6% in from each edge. */
+  top: auto;
+  left: calc(14.6% - 15px);
+  bottom: calc(14.6% - 15px);
+}
+.goonj .tile-rank[data-medal='1'] {
+  background: var(--gold-fill);
+  color: #3b2800;
+}
+.goonj .tile-rank[data-medal='2'] {
+  background: var(--silver-fill);
+  color: #1f252b;
+}
+.goonj .tile-rank[data-medal='3'] {
+  background: var(--bronze-fill);
+  color: #2c1405;
+}
+
+/* Plays against the list's first: a hairline under the row's text. */
+.goonj .row-share {
+  height: 2px;
+  margin-top: 7px;
+  border-radius: 1px;
+  background: color-mix(in oklab, var(--m-on-surface) 8%, transparent);
+  overflow: hidden;
+}
+.goonj .row-share > i {
+  display: block;
+  height: 100%;
+  border-radius: 1px;
+  background: color-mix(in oklab, var(--m-primary) 70%, transparent);
+}
+.goonj .row-share[data-medal='1'] > i {
+  background: var(--gold);
+}
+.goonj .row-share[data-medal='2'] > i {
+  background: var(--silver);
+}
+.goonj .row-share[data-medal='3'] > i {
+  background: var(--bronze);
+}
+
+/* Calendar periods: each card carries a record in its corner, in its own
+   tone, that turns a little on hover. All time is filled. */
+.goonj .period {
+  --tone: var(--m-primary);
+  --tone-soft: var(--m-primary-container);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 16px;
+  border-radius: 24px;
+  background: color-mix(in oklab, var(--m-surface-container-high) 82%, transparent);
+}
+.goonj .period[data-tone='secondary'] {
+  --tone: var(--m-secondary);
+  --tone-soft: var(--m-secondary-container);
+}
+.goonj .period[data-tone='tertiary'] {
+  --tone: var(--m-tertiary);
+  --tone-soft: var(--m-tertiary-container);
+}
+.goonj .period[data-all] {
+  background: linear-gradient(
+    150deg,
+    var(--m-primary-container),
+    color-mix(in oklab, var(--m-primary-container) 55%, var(--m-surface-container-high))
+  );
+  color: var(--m-on-primary-container);
+}
+.goonj .period[data-all] .meta,
+.goonj .period[data-all] .period-stats dd {
+  color: color-mix(in oklab, var(--m-on-primary-container) 72%, transparent);
+}
+.goonj .period-label {
+  font-weight: 500;
+  font-size: 15px;
+}
+.goonj .period-disc {
+  position: absolute;
+  z-index: -1;
+  top: -30px;
+  right: -30px;
+  width: 92px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, #0e0d10 0 4%, var(--tone) 4.5% 25%, #0e0d10 25.5% 28%, transparent 28.5%),
+    conic-gradient(
+      from 20deg,
+      transparent 0 8%,
+      rgb(255 255 255 / 0.13) 13%,
+      transparent 19% 58%,
+      rgb(255 255 255 / 0.09) 63%,
+      transparent 69%
+    ),
+    repeating-radial-gradient(circle, rgb(255 255 255 / 0.07) 0 0.5px, transparent 1px 3.5px),
+    #17151a;
+  box-shadow:
+    inset 0 0 0 1px rgb(255 255 255 / 0.08),
+    0 8px 24px -10px rgb(0 0 0 / 0.6);
+  transition: transform 1400ms cubic-bezier(0.2, 0, 0, 1);
+}
+.goonj .period[data-all] .period-disc {
+  top: -38px;
+  right: -38px;
+  width: 112px;
+}
+.goonj .period:hover .period-disc {
+  transform: rotate(140deg);
+}
+/* Days with music, out of the days so far: one segment a day, or a bar for a year. */
+.goonj .period-meter {
+  display: flex;
+  gap: 2px;
+  height: 6px;
+}
+.goonj .period-meter > i {
+  flex: 1;
+  border-radius: 2px;
+  background: color-mix(in oklab, var(--m-on-surface) 10%, transparent);
+}
+.goonj .period-meter > i[data-on] {
+  background: var(--tone);
+}
+.goonj .period-meter > i[data-future] {
+  background: color-mix(in oklab, var(--m-on-surface) 4%, transparent);
+}
+.goonj .period-meter.bar {
+  border-radius: 3px;
+  overflow: hidden;
+  background: color-mix(in oklab, var(--m-on-surface) 10%, transparent);
+}
+.goonj .period-meter.bar > i {
+  flex: none;
+  border-radius: 0;
+  background: var(--tone);
+}
+.goonj .period-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px 10px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid color-mix(in oklab, var(--m-outline-variant) 60%, transparent);
+}
+.goonj .period-stats > div {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
+}
+@media (max-width: 639px) {
+  .goonj .period:not([data-all]) .period-stats {
+    column-gap: 6px;
+  }
+  .goonj .period:not([data-all]) .period-stats > div {
+    gap: 2px;
+    font-size: 13.5px;
+  }
+  .goonj .period:not([data-all]) .period-stats svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+.goonj .period-stats svg {
+  flex-shrink: 0;
+  color: var(--tone);
+}
+.goonj .period[data-all] .period-stats svg {
+  color: currentColor;
+  opacity: 0.75;
+}
+/* While music plays, today's record spins. */
+@keyframes goonj-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+html[data-music-playing] .goonj .period[data-key='today'] .period-disc {
+  animation: goonj-spin 1.8s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .goonj .period-disc {
+    transition: none;
+    animation: none !important;
+  }
+}
+
+.goonj .h1 {
+  font-family: var(--font-bricolage), var(--font-product-sans), system-ui, sans-serif;
+  font-weight: 750;
   font-size: 36px;
   line-height: 1.05;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.035em;
 }
 .goonj .h2 {
-  font-family: var(--font-libron), Georgia, serif;
+  font-family: var(--font-bricolage), var(--font-product-sans), system-ui, sans-serif;
   font-weight: 700;
   font-size: 26px;
   line-height: 1.15;
+  letter-spacing: -0.025em;
 }
 .goonj .h3 {
   font-weight: 500;
@@ -534,3 +807,4 @@
   background: color-mix(in oklab, var(--m-surface-container-highest) 90%, transparent);
   overflow-wrap: anywhere;
 }
+
