@@ -89,7 +89,11 @@ function Card({ n, api, skew }) {
   }, [playing, skew])
   const pos = Math.min(n.positionMs + (playing ? Math.max(now - n.at, 0) : 0), n.durationMs || Infinity)
   const frac = n.durationMs ? pos / n.durationMs : 0
-  const cover = n.albumKey ? `${api}/v1/images/album/${encodeURIComponent(n.albumKey)}?s=512` : null
+  // coverAt changes when the album's cover is uploaded mid-song (its first
+  // play), so the browser fetches it instead of remembering the miss.
+  const cover = n.albumKey
+    ? `${api}/v1/images/album/${encodeURIComponent(n.albumKey)}?s=512${n.coverAt ? `&v=${n.coverAt}` : ''}`
+    : null
   const device = n.device || ''
 
   return (
@@ -101,7 +105,7 @@ function Card({ n, api, skew }) {
       )}
       <div className='np-grid'>
         <Link href={trackHref(n.trackKey)} className='np-cover relative'>
-          <Art key={n.trackKey} src={cover} label={n.album || n.title} className='np-art np-in' />
+          <Art key={`${n.trackKey}|${n.coverAt || 0}`} src={cover} label={n.album || n.title} className='np-art np-in' />
           {!idle && (
             <span className='np-badge'>
               {playing ? <span className='np-live' /> : <Pause size={12} strokeWidth={2.5} fill='currentColor' aria-hidden />}
