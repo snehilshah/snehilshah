@@ -8,7 +8,7 @@
 <link rel="preload" href="https://khidhki.com/wp-content/themes/khidhki/assets/fonts/isidora-bold.woff2" as="font" type="font/woff2" crossorigin="">
 
 	<!-- This site is optimized with the Yoast SEO plugin v28.7 - https://yoast.com/product/yoast-seo-wordpress/ -->
-	<title>Mock: Indian Law Partners profile</title>
+	<title>Option 4: Portraits · Indian Law Partners on Khidhki (draft)</title>
 	
 	
 	
@@ -6806,42 +6806,115 @@ dialog::backdrop {
 .mock-bar button { font: 12px Axiforma-Bold, sans-serif; padding: 6px 12px; border-radius: 16px; border: 1px solid #fff; background: transparent; color: #fff; cursor: pointer; }
 .mock-bar button[aria-pressed="true"] { background: #FFAD00; border-color: #FFAD00; color: #0F183C; }
 .mock-bar span { opacity: .75; }
-body:not(.show-a) .kh-variant--a, body:not(.show-b) .kh-variant--b { display: none !important; }
 .site-header .sub-menu, .site-header [class*="dropdown"] { visibility: hidden !important; }
 
 /* ---- Suggestions/placeholders to confirm ---- */
-.kh-profile__suitable, .kh-profile-hero__role, .kh-profile-hero .kh-ticks, .kh-profile__tagline, .kh-team__intro, .kh-offer.is-placeholder { outline: 1.5px dashed #b0b0b0; outline-offset: 4px; }
+.kh-profile__suitable, .kh-profile-hero__role, .kh-profile-hero .kh-ticks, .kh-profile__tagline, .kh-team__intro, .kh-offer.is-placeholder, .kh-profile__steps,
+.kh-profile-hero__heading .kh-profile-hero__credentials {  }
 
-/* ---- Proposed: firm logo in the profile photo square ---- */
+/* ---- Firm logo in the photo square; readable gold for small text ---- */
 .kh-profile-hero__photo.is-logo { object-fit: contain; background: #fff; padding: 18px; }
+.kh-profile-hero__heading .kh-profile-hero__credentials { color: #9A6400; }
 
-/* ---- Proposed: "What to expect" items with a short title ---- */
+/* ---- "What to expect" items with a short title ---- */
 .kh-profile__expect.is-titled li strong { display: block; margin-bottom: 4px; font-family: Axiforma-Bold, sans-serif; font-weight: normal; }
 
-/* ---- Proposed: the lawyers who represent the firm ---- */
-.kh-profile__team { margin: 48px 0; }
-.kh-profile__team h2, .kh-team-band h2 { margin: 0 0 8px; font: 18px/1.4 Isidora-Bold, sans-serif; color: var(--text-dark, #0F183C); }
-.kh-team__intro { margin: 0 0 22px; font-size: 15px; }
-.kh-team__list { display: grid; gap: 16px; }
-.kh-lawyer { padding: 22px 24px 8px; border: 1px solid #e7e1d2; border-radius: 20px; background: #fff; }
-.kh-lawyer__head { display: flex; gap: 14px; align-items: center; margin-bottom: 14px; }
-.kh-lawyer__avatar { display: grid; place-items: center; width: 52px; height: 52px; flex: none; border-radius: 50%;
-	background: color-mix(in srgb, var(--category-color) 22%, #fff); color: #0F183C; font: 16px Isidora-Bold, sans-serif; }
-.kh-lawyer h3 { margin: 0; font: 18px/1.3 Isidora-Bold, sans-serif; color: #0F183C; }
-.kh-lawyer__role { margin: 2px 0 0; font: 13px/1.4 Axiforma-Bold, sans-serif; color: color-mix(in srgb, var(--category-color) 55%, #6b4500); }
-.kh-lawyer .kh-hut-list li { margin-bottom: 10px; font-size: 14.5px; line-height: 1.45; }
-.kh-team-band { padding: 56px 0 8px; }
+/* ---- The lawyers, under the banner ---- */
+.kh-team-band { padding: 56px 0 0; color: #0F183C; }
 .kh-team-band .container { max-width: 1170px; }
-.kh-team__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-@media (max-width: 991px) { .kh-team__grid { grid-template-columns: 1fr; } }
-.kh-lawyer .kh-hut-list { padding-left: 25px; }
-.kh-lawyer, .kh-lawyer li, .kh-team__intro { color: #0F183C; }
-/* Suggestion: the Financial & Legal yellow is hard to read as small text on cream; a darker shade for the credentials line. */
-.kh-profile-hero__heading .kh-profile-hero__credentials { color: #9A6400; outline: 1.5px dashed #b0b0b0; outline-offset: 4px; }
+.kh-team-band h2 { margin: 0 0 6px; font: 24px/1.3 Isidora-Bold, sans-serif; color: #0F183C; }
+.kh-team__intro { display: inline-block; margin: 0 0 26px; font-size: 15px; }
+body:not(.style-a) .tA, body:not(.style-b) .tB, body:not(.style-c) .tC { display: none !important; }
+.kh-av { display: grid; place-items: center; flex: none; width: 60px; height: 60px; border-radius: 50%;
+	background: color-mix(in srgb, var(--category-color) 26%, #fff); font: 18px Isidora-Bold, sans-serif; color: #0F183C; }
+.kh-team-band h3, .kh-cred-dialog h3 { margin: 0; font: 19px/1.25 Isidora-Bold, sans-serif; color: #0F183C; }
+.kh-role { margin: 3px 0 0; font: 13px/1.4 Axiforma-Bold, sans-serif; color: #9A6400; }
+.kh-more { padding: 0; border: 0; background: none; cursor: pointer; font: 14px Axiforma-Bold, sans-serif; color: #0F183C; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+.kh-more::after { content: " →"; }
+
+/* A: list */
+.tA { background: #fff; border: 1px solid #e7e1d2; border-radius: 20px; padding: 0 28px; }
+.tA__row { display: grid; grid-template-columns: 60px 250px 1fr auto; gap: 24px; align-items: center; padding: 22px 0; border-bottom: 1px solid #efe9da; }
+.tA__row:last-child { border-bottom: 0; }
+.tA__facts { display: flex; flex-wrap: wrap; gap: 6px 0; margin: 0; padding: 0; list-style: none; font-size: 14.5px; }
+.tA__facts li:not(:last-child)::after { content: ""; display: inline-block; width: 4px; height: 4px; margin: 0 12px 3px; border-radius: 50%; background: var(--category-color); }
+@media (max-width: 991px) {
+	.tA { padding: 0 20px; }
+	.tA__row { grid-template-columns: 52px 1fr; gap: 6px 14px; }
+	.tA__row .kh-av { width: 52px; height: 52px; grid-row: span 1; }
+	.tA__facts, .tA__row .kh-more { grid-column: 1 / -1; }
+	.tA__facts { flex-direction: column; margin-top: 8px; }
+	.tA__facts li::after { display: none !important; }
+	.tA__facts li::before { content: "·"; margin-right: 8px; color: #9A6400; font-weight: bold; }
+	.tA__row .kh-more { justify-self: start; margin-top: 6px; }
+}
+
+/* B: tabs */
+.tB { display: grid; grid-template-columns: 300px 1fr; background: #fff; border: 1px solid #e7e1d2; border-radius: 20px; overflow: hidden; }
+.tB__tabs { display: flex; flex-direction: column; background: #f6f2e7; }
+.tB__tabs button { display: flex; gap: 14px; align-items: center; padding: 18px 22px; border: 0; border-left: 4px solid transparent; background: none; text-align: left; cursor: pointer; color: #0F183C; }
+.tB__tabs button + button { border-top: 1px solid #ebe4d3; }
+.tB__tabs button[aria-selected="true"] { background: #fff; border-left-color: var(--category-color); }
+.tB__tabs .kh-av { width: 46px; height: 46px; font-size: 15px; }
+.tB__tabs strong { display: block; font: 16px/1.3 Isidora-Bold, sans-serif; }
+.tB__tabs small { display: block; font: 12.5px/1.4 Axiforma-Regular, sans-serif; color: #6b6352; }
+.tB__panel { padding: 30px 36px; }
+.tB__head { margin-bottom: 22px; }
+.tB__chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; padding: 0; list-style: none; }
+.tB__chips li { padding: 5px 12px; border-radius: 14px; background: color-mix(in srgb, var(--category-color) 16%, #fff); font: 12.5px Axiforma-Bold, sans-serif; }
+.tB .kh-cred { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 991px) {
+	.tB { grid-template-columns: 1fr; }
+	.tB__tabs { flex-direction: row; overflow-x: auto; }
+	.tB__tabs button { flex: 1 0 auto; flex-direction: column; gap: 6px; padding: 14px 12px; border-left: 0; border-bottom: 3px solid transparent; text-align: center; }
+	.tB__tabs button + button { border-top: 0; }
+	.tB__tabs button[aria-selected="true"] { border-bottom-color: var(--category-color); }
+	.tB__tabs small { display: none; }
+	.tB__tabs strong { font-size: 13px; }
+	.tB__panel { padding: 22px 20px; }
+	.tB .kh-cred { grid-template-columns: 1fr; }
+}
+
+/* C: portraits */
+.tC { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.tC__card { overflow: hidden; background: #fff; border: 1px solid #e7e1d2; border-radius: 20px; }
+.tC__photo { display: grid; place-items: center; aspect-ratio: 4 / 3; background: color-mix(in srgb, var(--category-color) 20%, #fff); }
+.kh-av--big { width: 120px; height: 120px; font-size: 38px; background: #fff; }
+.tC__body { padding: 20px 24px 24px; }
+.tC__fact { margin: 10px 0 14px; font-size: 14.5px; }
+@media (max-width: 991px) { .tC { grid-template-columns: 1fr; } .tC__photo { aspect-ratio: 16 / 7; } }
+
+/* Credentials, shared by the tabs and the pop-up */
+.kh-cred { display: grid; gap: 22px; margin: 0; }
+.kh-cred dt { margin: 0 0 8px; font: 11px/1.2 Axiforma-Bold, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: #8a8270; }
+.kh-cred dd { margin: 0 0 6px; font-size: 14.5px; line-height: 1.45; }
+.kh-cred-dialog { width: min(560px, calc(100% - 32px)); padding: 30px 32px; border: 0; border-radius: 20px; color: #0F183C; }
+.kh-cred-dialog::backdrop { background: rgba(15, 24, 60, .55); }
+.kh-cred-dialog__close { position: absolute; top: 12px; right: 16px; border: 0; background: none; font-size: 28px; cursor: pointer; color: #0F183C; }
+.kh-cred-dialog__head { display: flex; gap: 14px; align-items: center; margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid #efe9da; }
+
+/* ---- Enquiry-only offer card ---- */
+.kh-offer.is-enquiry .kh-offer__price { display: none; }
+
+/* ---- "How it works" instead of the payment policy ---- */
+.kh-profile__steps h2 { margin: 0 0 18px; font: 18px/1.4 Isidora-Bold, sans-serif; }
+.kh-steps { margin: 0; padding: 0; list-style: none; counter-reset: s; }
+.kh-steps li { position: relative; margin: 0 0 18px; padding-left: 46px; counter-increment: s; }
+.kh-steps li::before { content: counter(s); position: absolute; left: 0; top: 0; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: color-mix(in srgb, var(--category-color) 24%, #fff); font: 14px Axiforma-Bold, sans-serif; }
+.kh-steps strong { display: block; font-family: Axiforma-Bold, sans-serif; font-weight: normal; }
+
+/* The short facts are my selection from the PDF. */
+.tA__facts, .tB__chips, .tC__fact {  }
+/* A: the three facts in aligned columns */
+.tA__facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 20px; }
+.tA__facts li { padding-left: 14px; border-left: 2px solid color-mix(in srgb, var(--category-color) 45%, #fff); line-height: 1.4; }
+.tA__facts li::after { display: none !important; }
+@media (max-width: 991px) { .tA__facts { grid-template-columns: 1fr; gap: 8px; } .tA__facts li::before { display: none; } }
+dialog.kh-cred-dialog { background: #fff !important; padding: 30px 32px !important; max-height: calc(100vh - 40px); overflow: auto; box-shadow: 0 20px 60px rgba(15,24,60,.35); }
+dialog.kh-cred-dialog .kh-cred-dialog__close { line-height: 1; }
+@media (max-width: 991px) { .tB__tabs button { flex: 1 1 0; min-width: 0; } .tB__tabs strong { white-space: normal; line-height: 1.25; } }
 </style></head>
-<body class="wp-singular page-template-default page page-id-741 wp-custom-logo wp-embed-responsive wp-theme-khidhki cmatic-26102223 bm-messages-dark show-a"><div class="mock-bar"><b>Mock</b> Indian Law Partners profile ·
-    <button data-v="a" aria-pressed="true">Lawyers under About</button><button data-v="b" aria-pressed="false">Lawyers under the banner</button>
-    <span>Dashed boxes = placeholders/suggestions to confirm.</span></div>
+<body class="wp-singular page-template-default page page-id-741 wp-custom-logo wp-embed-responsive wp-theme-khidhki cmatic-26102223 bm-messages-dark style-c"><div class="mock-bar"><button type="button" onclick="location.assign(location.origin+location.pathname.replace(/[^/]*$/,'index.html'))">← All<span class="w"> options</span></button><b>Option 4 of 4: Portraits</b><button type="button" onclick="location.assign(location.origin+location.pathname.replace(/[^/]*$/,'option-1-cards.html'))">Next<span class="w"> option</span> →</button></div><style>.mock-bar b{font-weight:normal;font-family:Axiforma-Bold,sans-serif}@media (max-width:600px){.mock-bar{left:12px;transform:none;max-width:calc(100% - 90px);flex-wrap:nowrap;gap:8px;padding:8px 10px;font-size:12px}.mock-bar button{padding:5px 9px;white-space:nowrap}.mock-bar .w{display:none}}</style>
 <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
 <div id="page" class="site">
 	<header id="masthead" class="site-header">
@@ -6923,10 +6996,10 @@ body:not(.show-a) .kh-variant--a, body:not(.show-b) .kh-variant--b { display: no
 					<button type="button" class="kh-save " aria-pressed="false" aria-label="Save to wishlist" data-expert="8" data-term="7" data-category="16">
 	<svg xmlns="http://www.w3.org/2000/svg" width="21" height="19" viewBox="0 0 21 19" fill="none" aria-hidden="true" focusable="false"><path d="M11.265 2.20229L10.5 3.02422L9.73495 2.20229C7.62233 -0.0674291 4.19709 -0.0674305 2.08447 2.20229C-0.0281558 4.472 -0.028157 8.15194 2.08447 10.4217L8.9699 17.8191C9.81495 18.727 11.185 18.727 12.0301 17.8191L18.9155 10.4217C21.0282 8.15194 21.0282 4.472 18.9155 2.20229C16.8029 -0.0674293 13.3777 -0.0674295 11.265 2.20229Z" stroke="currentColor" stroke-linejoin="round"></path></svg></button>
 				</div>
-									<ul class="kh-ticks kh-reveal-group"><li>Legal Consultation</li><li>Cross-border Matters</li><li>Inheritance &amp; Succession</li></ul>
+									<ul class="kh-ticks kh-reveal-group"><li>Legal Consultation</li><li>Corporate &amp; Commercial</li><li>Inheritance &amp; Succession</li></ul>
 							</div>
 		</div>
-	</section><section class="kh-team-band kh-variant kh-variant--b"><div class="container"><h2>Who you’ll speak with</h2><p class="kh-team__intro">Your session is with one of ILP’s partners, chosen for your matter.</p><div class="kh-team__grid"><article class="kh-lawyer"><div class="kh-lawyer__head"><span class="kh-lawyer__avatar" aria-hidden="true">GP</span><div><h3>Gopika Pant</h3><p class="kh-lawyer__role">Founder and Managing Partner</p></div></div><ul class="kh-hut-list"><li>40+ years’ experience</li><li>B.A. (Hons), St. Stephen’s; LL.B., University of Delhi; LL.M., Columbia</li><li>Admitted in India and New York</li><li>Forbes India Top Managing Partner (2020, 2021)</li><li>IBLJ Top 100 Lawyers for 11 consecutive years (2016–2026); named an Icon</li></ul></article><article class="kh-lawyer"><div class="kh-lawyer__head"><span class="kh-lawyer__avatar" aria-hidden="true">KP</span><div><h3>Kanika Premnarayen</h3><p class="kh-lawyer__role">Partner</p></div></div><ul class="kh-hut-list"><li>LL.B., Government Law College, Mumbai</li><li>Advocate, Bar Council of Maharashtra and Goa</li><li>Solicitor in India (2008) and England and Wales (2011)</li><li>BusinessWorld 40 Under 40; Forbes India Top Individual Lawyers; IBLJ Top 50 Future Legal Leaders</li></ul></article><article class="kh-lawyer"><div class="kh-lawyer__head"><span class="kh-lawyer__avatar" aria-hidden="true">VG</span><div><h3>Vineet Gupta</h3><p class="kh-lawyer__role">Partner</p></div></div><ul class="kh-hut-list"><li>B.Com. LL.B. (Hons.), Gujarat National Law University; LL.M.</li><li>Company Secretary, ICSI; admitted to an Indian State Bar Council</li><li>IIM Ahmedabad executive education</li><li>BusinessWorld 40 Under 40 (2024); Forbes India Top Individual Lawyers (2022); LegalOne 2025 Banking &amp; Finance Blue Ribbon and Stellar Accolade</li></ul></article></div></div></section>
+	</section><section class="kh-team-band"><div class="container"><h2>Who you’ll speak with</h2><p class="kh-team__intro">Your enquiry goes to ILP’s partners; the right partner for your matter gets in touch.</p><div class="tA tstyle" data-style="a"><div class="tA__row"><span class="kh-av " aria-hidden="true">GP</span><div class="tA__who"><h3>Gopika Pant</h3><p class="kh-role">Founder and Managing Partner</p></div><ul class="tA__facts"><li>40+ years’ experience</li><li>Admitted in India and New York</li><li>LL.M., Columbia</li></ul><button type="button" class="kh-more" data-lawyer="0">View credentials</button></div><div class="tA__row"><span class="kh-av " aria-hidden="true">KP</span><div class="tA__who"><h3>Kanika Premnarayen</h3><p class="kh-role">Partner</p></div><ul class="tA__facts"><li>Solicitor in India and England and Wales</li><li>LL.B., Government Law College, Mumbai</li><li>BusinessWorld 40 Under 40</li></ul><button type="button" class="kh-more" data-lawyer="1">View credentials</button></div><div class="tA__row"><span class="kh-av " aria-hidden="true">VG</span><div class="tA__who"><h3>Vineet Gupta</h3><p class="kh-role">Partner</p></div><ul class="tA__facts"><li>Lawyer and Company Secretary</li><li>LL.M.; Gujarat National Law University</li><li>BusinessWorld 40 Under 40 (2024)</li></ul><button type="button" class="kh-more" data-lawyer="2">View credentials</button></div></div><div class="tB tstyle" data-style="b"><div class="tB__tabs" role="tablist"><button type="button" role="tab" aria-selected="true" data-tab="0"><span class="kh-av " aria-hidden="true">GP</span><span><strong>Gopika Pant</strong><small>Founder and Managing Partner</small></span></button><button type="button" role="tab" aria-selected="false" data-tab="1"><span class="kh-av " aria-hidden="true">KP</span><span><strong>Kanika Premnarayen</strong><small>Partner</small></span></button><button type="button" role="tab" aria-selected="false" data-tab="2"><span class="kh-av " aria-hidden="true">VG</span><span><strong>Vineet Gupta</strong><small>Partner</small></span></button></div><div class="tB__panel" role="tabpanel" data-panel="0"><div class="tB__head"><h3>Gopika Pant</h3><p class="kh-role">Founder and Managing Partner</p><ul class="tB__chips"><li>40+ years’ experience</li><li>Admitted in India and New York</li><li>LL.M., Columbia</li></ul></div><dl class="kh-cred"><div><dt>Education</dt><dd>B.A. (Hons), St. Stephen’s</dd><dd>LL.B., University of Delhi</dd><dd>LL.M., Columbia</dd></div><div><dt>Admitted</dt><dd>India and New York</dd></div><div><dt>Recognition</dt><dd>Forbes India Top Managing Partner (2020, 2021)</dd><dd>IBLJ Top 100 Lawyers for 11 consecutive years (2016–2026); named an Icon</dd></div></dl></div><div class="tB__panel" role="tabpanel" data-panel="1" hidden=""><div class="tB__head"><h3>Kanika Premnarayen</h3><p class="kh-role">Partner</p><ul class="tB__chips"><li>Solicitor in India and England and Wales</li><li>LL.B., Government Law College, Mumbai</li><li>BusinessWorld 40 Under 40</li></ul></div><dl class="kh-cred"><div><dt>Education</dt><dd>LL.B., Government Law College, Mumbai</dd></div><div><dt>Admitted</dt><dd>Advocate, Bar Council of Maharashtra and Goa</dd><dd>Solicitor in India (2008) and England and Wales (2011)</dd></div><div><dt>Recognition</dt><dd>BusinessWorld 40 Under 40</dd><dd>Forbes India Top Individual Lawyers</dd><dd>IBLJ Top 50 Future Legal Leaders</dd></div></dl></div><div class="tB__panel" role="tabpanel" data-panel="2" hidden=""><div class="tB__head"><h3>Vineet Gupta</h3><p class="kh-role">Partner</p><ul class="tB__chips"><li>Lawyer and Company Secretary</li><li>LL.M.; Gujarat National Law University</li><li>BusinessWorld 40 Under 40 (2024)</li></ul></div><dl class="kh-cred"><div><dt>Education</dt><dd>B.Com. LL.B. (Hons.), Gujarat National Law University</dd><dd>LL.M.</dd><dd>IIM Ahmedabad executive education</dd></div><div><dt>Admitted</dt><dd>Indian State Bar Council</dd><dd>Company Secretary, ICSI</dd></div><div><dt>Recognition</dt><dd>BusinessWorld 40 Under 40 (2024)</dd><dd>Forbes India Top Individual Lawyers (2022)</dd><dd>LegalOne 2025 Banking &amp; Finance Blue Ribbon and Stellar Accolade</dd></div></dl></div></div><div class="tC tstyle" data-style="c"><article class="tC__card"><div class="tC__photo"><span class="kh-av kh-av--big" aria-hidden="true">GP</span></div><div class="tC__body"><h3>Gopika Pant</h3><p class="kh-role">Founder and Managing Partner</p><p class="tC__fact">40+ years’ experience</p><button type="button" class="kh-more" data-lawyer="0">View credentials</button></div></article><article class="tC__card"><div class="tC__photo"><span class="kh-av kh-av--big" aria-hidden="true">KP</span></div><div class="tC__body"><h3>Kanika Premnarayen</h3><p class="kh-role">Partner</p><p class="tC__fact">Solicitor in India and England and Wales</p><button type="button" class="kh-more" data-lawyer="1">View credentials</button></div></article><article class="tC__card"><div class="tC__photo"><span class="kh-av kh-av--big" aria-hidden="true">VG</span></div><div class="tC__body"><h3>Vineet Gupta</h3><p class="kh-role">Partner</p><p class="tC__fact">Lawyer and Company Secretary</p><button type="button" class="kh-more" data-lawyer="2">View credentials</button></div></article></div></div><dialog class="kh-cred-dialog"><button type="button" class="kh-cred-dialog__close" aria-label="Close">×</button><div class="kh-cred-dialog__body"></div></dialog><template id="cred-0"><div class="kh-cred-dialog__head"><span class="kh-av " aria-hidden="true">GP</span><div><h3>Gopika Pant</h3><p class="kh-role">Founder and Managing Partner</p></div></div><dl class="kh-cred"><div><dt>Education</dt><dd>B.A. (Hons), St. Stephen’s</dd><dd>LL.B., University of Delhi</dd><dd>LL.M., Columbia</dd></div><div><dt>Admitted</dt><dd>India and New York</dd></div><div><dt>Recognition</dt><dd>Forbes India Top Managing Partner (2020, 2021)</dd><dd>IBLJ Top 100 Lawyers for 11 consecutive years (2016–2026); named an Icon</dd></div></dl></template><template id="cred-1"><div class="kh-cred-dialog__head"><span class="kh-av " aria-hidden="true">KP</span><div><h3>Kanika Premnarayen</h3><p class="kh-role">Partner</p></div></div><dl class="kh-cred"><div><dt>Education</dt><dd>LL.B., Government Law College, Mumbai</dd></div><div><dt>Admitted</dt><dd>Advocate, Bar Council of Maharashtra and Goa</dd><dd>Solicitor in India (2008) and England and Wales (2011)</dd></div><div><dt>Recognition</dt><dd>BusinessWorld 40 Under 40</dd><dd>Forbes India Top Individual Lawyers</dd><dd>IBLJ Top 50 Future Legal Leaders</dd></div></dl></template><template id="cred-2"><div class="kh-cred-dialog__head"><span class="kh-av " aria-hidden="true">VG</span><div><h3>Vineet Gupta</h3><p class="kh-role">Partner</p></div></div><dl class="kh-cred"><div><dt>Education</dt><dd>B.Com. LL.B. (Hons.), Gujarat National Law University</dd><dd>LL.M.</dd><dd>IIM Ahmedabad executive education</dd></div><div><dt>Admitted</dt><dd>Indian State Bar Council</dd><dd>Company Secretary, ICSI</dd></div><div><dt>Recognition</dt><dd>BusinessWorld 40 Under 40 (2024)</dd><dd>Forbes India Top Individual Lawyers (2022)</dd><dd>LegalOne 2025 Banking &amp; Finance Blue Ribbon and Stellar Accolade</dd></div></dl></template></section>
 
 	<div class="container kh-profile">
 		<div class="kh-profile__details">
@@ -6937,63 +7010,27 @@ body:not(.show-a) .kh-variant--a, body:not(.show-b) .kh-variant--b { display: no
 									<ul class="kh-hut-list"><li><strong>India legal and regulatory guidance</strong> Understand the requirements relevant to your business plans and operations.</li><li><strong>Cross-border transactions</strong> Navigate M&amp;A, joint ventures, private equity, and inbound or outbound investment matters.</li><li><strong>Banking, finance, and projects</strong> Get legal support for financing and infrastructure matters involving India.</li><li><strong>Corporate operations and compliance</strong> Address governance, regulatory, employment, and intellectual property matters.</li><li><strong>Sector-specific legal advice</strong> Explore matters across real estate, technology, energy, pharmaceuticals, competition, media, sports, and transport.</li><li><strong>Inheritance law</strong> Discuss inheritance and succession matters.</li></ul>
 							</div>
 
-			<div class="kh-profile__about"><h2>About Indian Law Partners</h2><p class="kh-profile__tagline"><em>Legal guidance on matters involving India</em></p><p>Founded in 1999 by Gopika Pant, Indian Law Partners (ILP) is a boutique corporate and commercial law firm with offices in Delhi and Mumbai. Its partners advise Indian and international clients on legal matters involving India, with work spanning cross-border mergers and acquisitions, joint ventures, private equity, banking and finance, regulatory matters, employment, intellectual property, real estate, technology, infrastructure, energy, pharmaceuticals, competition, media, and sports. ILP also collaborates with international law firms on inbound and outbound matters connected with India. Its experience includes India’s first private banking merger, major cross-border financings, infrastructure investments, and greenfield projects.</p></div><div class="kh-profile__team kh-variant kh-variant--a"><h2>Who you’ll speak with</h2><p class="kh-team__intro">Your session is with one of ILP’s partners, chosen for your matter.</p><div class="kh-team__list"><article class="kh-lawyer"><div class="kh-lawyer__head"><span class="kh-lawyer__avatar" aria-hidden="true">GP</span><div><h3>Gopika Pant</h3><p class="kh-lawyer__role">Founder and Managing Partner</p></div></div><ul class="kh-hut-list"><li>40+ years’ experience</li><li>B.A. (Hons), St. Stephen’s; LL.B., University of Delhi; LL.M., Columbia</li><li>Admitted in India and New York</li><li>Forbes India Top Managing Partner (2020, 2021)</li><li>IBLJ Top 100 Lawyers for 11 consecutive years (2016–2026); named an Icon</li></ul></article><article class="kh-lawyer"><div class="kh-lawyer__head"><span class="kh-lawyer__avatar" aria-hidden="true">KP</span><div><h3>Kanika Premnarayen</h3><p class="kh-lawyer__role">Partner</p></div></div><ul class="kh-hut-list"><li>LL.B., Government Law College, Mumbai</li><li>Advocate, Bar Council of Maharashtra and Goa</li><li>Solicitor in India (2008) and England and Wales (2011)</li><li>BusinessWorld 40 Under 40; Forbes India Top Individual Lawyers; IBLJ Top 50 Future Legal Leaders</li></ul></article><article class="kh-lawyer"><div class="kh-lawyer__head"><span class="kh-lawyer__avatar" aria-hidden="true">VG</span><div><h3>Vineet Gupta</h3><p class="kh-lawyer__role">Partner</p></div></div><ul class="kh-hut-list"><li>B.Com. LL.B. (Hons.), Gujarat National Law University; LL.M.</li><li>Company Secretary, ICSI; admitted to an Indian State Bar Council</li><li>IIM Ahmedabad executive education</li><li>BusinessWorld 40 Under 40 (2024); Forbes India Top Individual Lawyers (2022); LegalOne 2025 Banking &amp; Finance Blue Ribbon and Stellar Accolade</li></ul></article></div></div>
+			<div class="kh-profile__about"><h2>About Indian Law Partners</h2><p class="kh-profile__tagline"><em>Legal guidance on matters involving India</em></p><p>Founded in 1999 by Gopika Pant, Indian Law Partners (ILP) is a boutique corporate and commercial law firm with offices in Delhi and Mumbai. Its partners advise Indian and international clients on legal matters involving India, with work spanning cross-border mergers and acquisitions, joint ventures, private equity, banking and finance, regulatory matters, employment, intellectual property, real estate, technology, infrastructure, energy, pharmaceuticals, competition, media, and sports. ILP also collaborates with international law firms on inbound and outbound matters connected with India. Its experience includes India’s first private banking merger, major cross-border financings, infrastructure investments, and greenfield projects.</p></div>
 
-			<div class="kh-profile__policy">
-				<h2>Payment &amp; Booking Policy</h2>
-				<ul class="kh-hut-list">
-											<li>Full payment is required to confirm your booking.</li>
-											<li>Shared sessions are charged at a fixed rate, regardless of the number of participants within the respective group range, ensuring fair compensation for the expert’s time and preparation.</li>
-											<li>For bundle sessions, your first session is booked during checkout, while the remaining sessions are scheduled progressively throughout your programme.</li>
-										<li>
-						For cancellations, rescheduling and refunds, please see our <a href="https://khidhki.com/booking-policy/">Booking Policy</a>.					</li>
-				</ul>
-			</div>
+			<div class="kh-profile__steps"><h2>How it works</h2><ol class="kh-steps"><li><strong>Express interest</strong>Fill in the short form with a few lines about your matter. We confirm your email with a code.</li><li><strong>We connect you</strong>The Khidhki team shares your enquiry with Indian Law Partners.</li><li><strong>ILP gets in touch</strong>A partner contacts you to understand your requirements, then scope and fees are agreed with ILP.</li></ol></div>
 		</div>
 
-		<div class="kh-profile__offers"><article class="kh-offer is-placeholder">
-	<p class="kh-offer__label">Solo Session</p>
+		<div class="kh-profile__offers"><article class="kh-offer is-placeholder is-enquiry">
+	<p class="kh-offer__label">Enquiry</p>
 
 	<div class="kh-offer__about">
 		<h3>Legal Consultation</h3>
-							<div class="kh-offer__description"><ul><li>Placeholder: ILP’s services, session lengths and prices are still to be decided</li><li>A one-to-one online session with an ILP partner</li></ul></div>
+							<div class="kh-offer__description"><ul><li>Tell us briefly about your legal matter</li><li>The Khidhki team passes it to Indian Law Partners</li><li>ILP contacts you to understand your needs; scope and fees are agreed with them</li></ul></div>
 			</div>
 
 	<p class="kh-offer__price">
-		<span>$—</span>
-					<span>1 session, 60 minutes</span>
+		<span>from $105</span>
 			</p>
 
 	<div class="kh-offer__actions">
-											<button type="button" class="kh-button kh-button--large book-service-160-employee-7" data-booking-offer="service-160" style="">
-				Book Now <span class="kh-button__arrow"></span>
+					<button type="button" class="kh-button kh-button--large" data-enquiry-open="" data-service="Legal Consultation" data-expert="Indian Law Partners" data-category="Legal Consultation">
+				Express Interest <span class="kh-button__arrow"></span>
 			</button>
-			
-
-
-
-			</div>
-</article><article class="kh-offer is-placeholder">
-	<p class="kh-offer__label">Solo Session</p>
-
-	<div class="kh-offer__about">
-		<h3>15-Minute Discovery Call</h3>
-							<div class="kh-offer__description"><ul><li>Only if ILP takes part in the Discovery Call</li><li>A complimentary 15-minute introductory call</li></ul></div>
-			</div>
-
-	<p class="kh-offer__price">
-		<span>$0</span>
-					<span>1 session, 15 minutes</span>
-			</p>
-
-	<div class="kh-offer__actions">
-											<button type="button" class="kh-button kh-button--large book-service-160-employee-7" data-booking-offer="service-160" style="">
-				Book Now <span class="kh-button__arrow"></span>
-			</button>
-			
-
-
-
 			</div>
 </article></div>
 	</div>
@@ -7004,20 +7041,11 @@ body:not(.show-a) .kh-variant--a, body:not(.show-b) .kh-variant--b { display: no
 		</div>
 		<div class="kh-marquee kh-services-marquee">
 	<div style="transform: translateX(-1px);">
-					<div class="kh-services-marquee__item"><a href="https://khidhki.com/employee-category/language-learning/?vendor_cat=10" class="kh-service-tile" style="--kh-tile-color: #00BFB3">
-	<img src="https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-hindi-768x945.webp" sizes="auto, 260px" alt="Hindi teacher helping a woman learn Hindi" width="960" height="1181">
+					<div class="kh-services-marquee__item"><a href="https://khidhki.com/employee-category/health-wellness/?vendor_cat=7" class="kh-service-tile" style="--kh-tile-color: #FF313F">
+	<img src="https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-dermatology-768x945.webp" sizes="auto, 260px" alt="Dermatologist examining a woman's skin during an online consultation" width="960" height="1181">
 	<span class="kh-service-tile__label">
 		<span class="kh-service-tile__flower"></span>
-		<span class="kh-service-tile__name">Hindi</span>
-		<span class="kh-service-tile__arrow"></span>
-	</span>
-</a>
-</div>
-					<div class="kh-services-marquee__item"><a href="https://khidhki.com/employee-category/language-learning/?vendor_cat=11" class="kh-service-tile" style="--kh-tile-color: #00BFB3">
-	<img src="https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-regional-languages-768x945.webp" sizes="auto, 260px" alt="A teacher and mother helping a child learn Indian regional languages" width="960" height="1181">
-	<span class="kh-service-tile__label">
-		<span class="kh-service-tile__flower"></span>
-		<span class="kh-service-tile__name">Regional Languages</span>
+		<span class="kh-service-tile__name">Dermatology</span>
 		<span class="kh-service-tile__arrow"></span>
 	</span>
 </a>
@@ -7031,29 +7059,11 @@ body:not(.show-a) .kh-variant--a, body:not(.show-b) .kh-variant--b { display: no
 	</span>
 </a>
 </div>
-					<div class="kh-services-marquee__item"><a href="https://khidhki.com/employee-category/arts-culture/?vendor_cat=16" class="kh-service-tile" style="--kh-tile-color: #E36F00">
-	<img src="https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-indian-dance-768x945.webp" sizes="auto, 260px" alt="Indian dance teachers practising traditional dance movements" width="960" height="1181">
+					<div class="kh-services-marquee__item"><a href="https://khidhki.com/employee-category/financial-legal/?vendor_cat=18" class="kh-service-tile" style="--kh-tile-color: #FFAD00">
+	<img src="https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-legal-consultation-768x945.webp" sizes="auto, 260px" alt="Lawyer discussing a legal document with a couple in a courtroom" width="960" height="1181">
 	<span class="kh-service-tile__label">
 		<span class="kh-service-tile__flower"></span>
-		<span class="kh-service-tile__name">Indian Dance</span>
-		<span class="kh-service-tile__arrow"></span>
-	</span>
-</a>
-</div>
-					<div class="kh-services-marquee__item"><a href="https://khidhki.com/employee-category/health-wellness/?vendor_cat=8" class="kh-service-tile" style="--kh-tile-color: #FF313F">
-	<img src="https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-nutrition-diet-768x945.webp" sizes="auto, 260px" alt="Nutritionist discussing healthy Indian food choices with a woman" width="960" height="1181">
-	<span class="kh-service-tile__label">
-		<span class="kh-service-tile__flower"></span>
-		<span class="kh-service-tile__name">Nutrition &amp; Diet</span>
-		<span class="kh-service-tile__arrow"></span>
-	</span>
-</a>
-</div>
-					<div class="kh-services-marquee__item"><a href="https://khidhki.com/employee-category/arts-culture/?vendor_cat=6" class="kh-service-tile" style="--kh-tile-color: #E36F00">
-	<img src="https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-indian-fashion-768x945.webp" sizes="auto, 260px" alt="Indian fashion stylist helping a woman choose traditional clothing and fabrics" width="960" height="1181">
-	<span class="kh-service-tile__label">
-		<span class="kh-service-tile__flower"></span>
-		<span class="kh-service-tile__name">Fashion &amp; Styling</span>
+		<span class="kh-service-tile__name">Legal Consultation</span>
 		<span class="kh-service-tile__arrow"></span>
 	</span>
 </a>
@@ -7067,11 +7077,29 @@ body:not(.show-a) .kh-variant--a, body:not(.show-b) .kh-variant--b { display: no
 	</span>
 </a>
 </div>
-					<div class="kh-services-marquee__item"><a href="https://khidhki.com/employee-category/health-wellness/?vendor_cat=9" class="kh-service-tile" style="--kh-tile-color: #FF313F">
-	<img src="https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-mental-health-768x945.webp" sizes="auto, 260px" alt="Mental health counsellor speaking with a woman during a counselling session" width="960" height="1181">
+					<div class="kh-services-marquee__item"><a href="https://khidhki.com/employee-category/religion-spirituality/?vendor_cat=13" class="kh-service-tile" style="--kh-tile-color: #B21E94">
+	<img src="https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-astrology-vastu-768x945.webp" sizes="auto, 260px" alt="Astrology and Vastu expert reviewing a Vastu chart with a client" width="960" height="1181">
 	<span class="kh-service-tile__label">
 		<span class="kh-service-tile__flower"></span>
-		<span class="kh-service-tile__name">Mental Health</span>
+		<span class="kh-service-tile__name">Astrology &amp; Vastu</span>
+		<span class="kh-service-tile__arrow"></span>
+	</span>
+</a>
+</div>
+					<div class="kh-services-marquee__item"><a href="https://khidhki.com/employee-category/religion-spirituality/?vendor_cat=12" class="kh-service-tile" style="--kh-tile-color: #B21E94">
+	<img src="https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-religious-studies-768x945.webp" sizes="auto, 260px" alt="Religious teachers leading a group discussion on Indian faith traditions" width="960" height="1181">
+	<span class="kh-service-tile__label">
+		<span class="kh-service-tile__flower"></span>
+		<span class="kh-service-tile__name">Religious Studies</span>
+		<span class="kh-service-tile__arrow"></span>
+	</span>
+</a>
+</div>
+					<div class="kh-services-marquee__item"><a href="https://khidhki.com/employee-category/language-learning/?vendor_cat=10" class="kh-service-tile" style="--kh-tile-color: #00BFB3">
+	<img src="https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-hindi-768x945.webp" sizes="auto, 260px" alt="Hindi teacher helping a woman learn Hindi" width="960" height="1181">
+	<span class="kh-service-tile__label">
+		<span class="kh-service-tile__flower"></span>
+		<span class="kh-service-tile__name">Hindi</span>
 		<span class="kh-service-tile__arrow"></span>
 	</span>
 </a>
@@ -7085,29 +7113,47 @@ body:not(.show-a) .kh-variant--a, body:not(.show-b) .kh-variant--b { display: no
 	</span>
 </a>
 </div>
-					<div class="kh-services-marquee__item"><a href="https://khidhki.com/employee-category/religion-spirituality/?vendor_cat=13" class="kh-service-tile" style="--kh-tile-color: #B21E94">
-	<img src="https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-astrology-vastu-768x945.webp" sizes="auto, 260px" alt="Astrology and Vastu expert reviewing a Vastu chart with a client" width="960" height="1181">
+					<div class="kh-services-marquee__item"><a href="https://khidhki.com/employee-category/health-wellness/?vendor_cat=9" class="kh-service-tile" style="--kh-tile-color: #FF313F">
+	<img src="https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-mental-health-768x945.webp" sizes="auto, 260px" alt="Mental health counsellor speaking with a woman during a counselling session" width="960" height="1181">
 	<span class="kh-service-tile__label">
 		<span class="kh-service-tile__flower"></span>
-		<span class="kh-service-tile__name">Astrology &amp; Vastu</span>
+		<span class="kh-service-tile__name">Mental Health</span>
 		<span class="kh-service-tile__arrow"></span>
 	</span>
 </a>
 </div>
-					<div class="kh-services-marquee__item"><a href="https://khidhki.com/employee-category/health-wellness/?vendor_cat=7" class="kh-service-tile" style="--kh-tile-color: #FF313F">
-	<img src="https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-dermatology.webp" srcset="https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-dermatology.webp 960w, https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-dermatology-244x300.webp 244w, https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-dermatology-832x1024.webp 832w, https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-dermatology-768x945.webp 768w" sizes="auto, 260px" alt="Dermatologist examining a woman's skin during an online consultation" width="960" height="1181">
+					<div class="kh-services-marquee__item"><a href="https://khidhki.com/employee-category/health-wellness/?vendor_cat=8" class="kh-service-tile" style="--kh-tile-color: #FF313F">
+	<img src="https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-nutrition-diet-768x945.webp" sizes="auto, 260px" alt="Nutritionist discussing healthy Indian food choices with a woman" width="960" height="1181">
 	<span class="kh-service-tile__label">
 		<span class="kh-service-tile__flower"></span>
-		<span class="kh-service-tile__name">Dermatology</span>
+		<span class="kh-service-tile__name">Nutrition &amp; Diet</span>
 		<span class="kh-service-tile__arrow"></span>
 	</span>
 </a>
 </div>
-					<div class="kh-services-marquee__item"><a href="https://khidhki.com/employee-category/religion-spirituality/?vendor_cat=12" class="kh-service-tile" style="--kh-tile-color: #B21E94">
-	<img src="https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-religious-studies.webp" srcset="https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-religious-studies.webp 960w, https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-religious-studies-244x300.webp 244w, https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-religious-studies-832x1024.webp 832w, https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-religious-studies-768x945.webp 768w" sizes="auto, 260px" alt="Religious teachers leading a group discussion on Indian faith traditions" width="960" height="1181">
+					<div class="kh-services-marquee__item"><a href="https://khidhki.com/employee-category/language-learning/?vendor_cat=11" class="kh-service-tile" style="--kh-tile-color: #00BFB3">
+	<img src="https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-regional-languages.webp" srcset="https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-regional-languages.webp 960w, https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-regional-languages-244x300.webp 244w, https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-regional-languages-832x1024.webp 832w, https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-regional-languages-768x945.webp 768w" sizes="auto, 260px" alt="A teacher and mother helping a child learn Indian regional languages" width="960" height="1181">
 	<span class="kh-service-tile__label">
 		<span class="kh-service-tile__flower"></span>
-		<span class="kh-service-tile__name">Religious Studies</span>
+		<span class="kh-service-tile__name">Regional Languages</span>
+		<span class="kh-service-tile__arrow"></span>
+	</span>
+</a>
+</div>
+					<div class="kh-services-marquee__item"><a href="https://khidhki.com/employee-category/arts-culture/?vendor_cat=16" class="kh-service-tile" style="--kh-tile-color: #E36F00">
+	<img src="https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-indian-dance.webp" srcset="https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-indian-dance.webp 960w, https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-indian-dance-244x300.webp 244w, https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-indian-dance-832x1024.webp 832w, https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-indian-dance-768x945.webp 768w" sizes="auto, 260px" alt="Indian dance teachers practising traditional dance movements" width="960" height="1181">
+	<span class="kh-service-tile__label">
+		<span class="kh-service-tile__flower"></span>
+		<span class="kh-service-tile__name">Indian Dance</span>
+		<span class="kh-service-tile__arrow"></span>
+	</span>
+</a>
+</div>
+					<div class="kh-services-marquee__item"><a href="https://khidhki.com/employee-category/arts-culture/?vendor_cat=6" class="kh-service-tile" style="--kh-tile-color: #E36F00">
+	<img src="https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-indian-fashion.webp" srcset="https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-indian-fashion.webp 960w, https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-indian-fashion-244x300.webp 244w, https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-indian-fashion-832x1024.webp 832w, https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-indian-fashion-768x945.webp 768w" sizes="auto, 260px" alt="Indian fashion stylist helping a woman choose traditional clothing and fabrics" width="960" height="1181">
+	<span class="kh-service-tile__label">
+		<span class="kh-service-tile__flower"></span>
+		<span class="kh-service-tile__name">Fashion &amp; Styling</span>
 		<span class="kh-service-tile__arrow"></span>
 	</span>
 </a>
@@ -7117,15 +7163,6 @@ body:not(.show-a) .kh-variant--a, body:not(.show-b) .kh-variant--b { display: no
 	<span class="kh-service-tile__label">
 		<span class="kh-service-tile__flower"></span>
 		<span class="kh-service-tile__name">Financial Planning</span>
-		<span class="kh-service-tile__arrow"></span>
-	</span>
-</a>
-</div>
-					<div class="kh-services-marquee__item"><a href="https://khidhki.com/employee-category/financial-legal/?vendor_cat=18" class="kh-service-tile" style="--kh-tile-color: #FFAD00">
-	<img src="https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-legal-consultation.webp" srcset="https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-legal-consultation.webp 960w, https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-legal-consultation-244x300.webp 244w, https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-legal-consultation-832x1024.webp 832w, https://khidhki.com/wp-content/uploads/2026/05/khidhki-category-legal-consultation-768x945.webp 768w" sizes="auto, 260px" alt="Lawyer discussing a legal document with a couple in a courtroom" width="960" height="1181">
-	<span class="kh-service-tile__label">
-		<span class="kh-service-tile__flower"></span>
-		<span class="kh-service-tile__name">Legal Consultation</span>
 		<span class="kh-service-tile__arrow"></span>
 	</span>
 </a>
@@ -7268,4 +7305,10 @@ body:not(.show-a) .kh-variant--a, body:not(.show-b) .kh-variant--b { display: no
 
 
 
-<script>document.querySelectorAll('.mock-bar [data-v]').forEach(x=>x.onclick=()=>{document.body.classList.remove('show-a','show-b');document.body.classList.add('show-'+x.dataset.v);document.querySelectorAll('.mock-bar [data-v]').forEach(y=>y.setAttribute('aria-pressed',String(y===x)))})</script></body></html>
+<script>
+document.querySelectorAll('.mock-bar [data-v]').forEach(x=>x.onclick=()=>{document.body.classList.remove('style-a','style-b','style-c');document.body.classList.add('style-'+x.dataset.v);document.querySelectorAll('.mock-bar [data-v]').forEach(y=>y.setAttribute('aria-pressed',String(y===x)))});
+document.querySelectorAll('.tB__tabs [data-tab]').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tB__tabs [data-tab]').forEach(x=>x.setAttribute('aria-selected',String(x===b)));document.querySelectorAll('.tB__panel').forEach(p=>p.hidden=p.dataset.panel!==b.dataset.tab)});
+const dlg=document.querySelector('.kh-cred-dialog');
+document.querySelectorAll('.kh-more').forEach(b=>b.onclick=()=>{dlg.querySelector('.kh-cred-dialog__body').replaceChildren(document.getElementById('cred-'+b.dataset.lawyer).content.cloneNode(true));dlg.showModal()});
+dlg.querySelector('.kh-cred-dialog__close').onclick=()=>dlg.close();dlg.onclick=e=>{if(e.target===dlg)dlg.close()};
+</script></body></html>
