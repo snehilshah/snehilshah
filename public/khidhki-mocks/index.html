@@ -31,6 +31,11 @@
   details ul { margin: 12px 0 0; padding-left: 20px; }
   details li { margin-bottom: 6px; }
   @media (max-width: 760px) { .grid, .same { grid-template-columns: 1fr; } }
+  .opt--main { max-width: 760px; }
+  .opt--main img { aspect-ratio: auto; max-height: 420px; object-fit: cover; object-position: top; padding: 0; }
+  details.earlier { margin-top: 28px; }
+  details.earlier .hint { margin-top: 12px; }
+  details.earlier .grid { margin-top: 4px; }
 </style>
 </head>
 <body>
@@ -39,8 +44,16 @@
   <h1>Indian Law Partners on Khidhki</h1>
   <p class="lead">Indian Law Partners (ILP) gets one profile page, like every expert on Khidhki. Its three partners are shown right under the banner. Visitors send an enquiry with <strong>Express Interest</strong>; Khidhki passes it to ILP, and ILP gets in touch.</p>
 
-  <h2>Choose how the three partners are shown</h2>
-  <p class="hint">Only this part differs between the options. Click one to see the full page; it works on phones too.</p>
+  <h2>Updated design</h2>
+  <p class="hint">After your feedback: every partner’s credentials are on the page, nothing to click, with their recognitions highlighted first. It uses the same cards, labels, colours and markers as the other expert pages on Khidhki.</p>
+  <a class="opt opt--main" href="updated-design.html"><img src="updated-design.jpg" alt="Updated design: one card per partner with recognition, education and admission"><div>
+    <h3>Partners with full credentials</h3>
+    <p>One card per partner: Recognition, Education and Admitted, all visible. Works on phones too.</p>
+    <span class="open">See the page →</span></div></a>
+
+  <details class="earlier">
+    <summary>Earlier options (for reference)</summary>
+    <p class="hint">The four first options. Only the partners section differs between them.</p>
   <div class="grid">
     <a class="opt" href="option-1-cards.html"><img src="option-1-cards.jpg" alt="Option 1: three cards side by side"><div>
       <h3><span>1</span>Cards</h3>
@@ -59,8 +72,9 @@
       <p>Three cards with a large photo. Best once we have the partners’ photos; credentials in a pop-up.</p>
       <span class="open">See the page →</span></div></a>
   </div>
+  </details>
 
-  <h2>The same in every option</h2>
+  <h2>The same on the page</h2>
   <ul class="same">
     <li>ILP’s logo, name and a short line about the firm</li>
     <li>The three partners right under the banner</li>
@@ -74,7 +88,8 @@
     <summary>Still needed from ILP</summary>
     <ul>
       <li>Photos of the three partners (the circles show initials for now) and a sharper logo.</li>
-      <li>Approval of a few short lines we wrote from ILP’s profile: the line above the firm’s name, the line under it, the three ticks, “Suitable for”, the line under “About”, each partner’s three key facts and “How it works”.</li>
+      <li>Confirmation that the credentials are complete and correctly worded (taken from ILP’s profile PDF).</li>
+      <li>Approval of a few short lines we wrote from ILP’s profile: the line above the firm’s name, the line under it, the three ticks, “Suitable for”, the line under “About”, and “How it works”.</li>
     </ul>
   </details>
 </main>
