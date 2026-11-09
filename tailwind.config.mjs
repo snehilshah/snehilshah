@@ -4,7 +4,6 @@ import tailwindcssAnimate from 'tailwindcss-animate'
 const config = {
   darkMode: ['class'],
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}'
   ],
@@ -18,7 +17,6 @@ const config = {
         cabinet: ['var(--font-cabinet)'],
         product: ['var(--font-product)'],
         copernicus: ['var(--font-copernicus)'],
-        chubbo: ['var(--font-chubbo)']
       },
       borderRadius: {
         lg: 'var(--radius)',
