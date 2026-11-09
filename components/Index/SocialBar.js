@@ -11,7 +11,7 @@ const SocialBar = () => {
 
   useEffect(() => {
     if (openId === null) return
-    const close = (e) => {
+    const close = e => {
       if (!barRef.current?.contains(e.target)) setOpenId(null)
     }
     document.addEventListener('pointerdown', close)
@@ -24,61 +24,69 @@ const SocialBar = () => {
     setOpenId(id)
   }
 
+  const iconClass = 'size-[22px] shrink-0'
   const socialLinks = [
     {
       id: 1,
-      icon: <LinkedinLogo className='text-2xl shrink-0' />,
+      icon: <LinkedinLogo className={iconClass} />,
       text: 'Linkedin',
-      href: 'https://www.linkedin.com/in/snehil-shah-7794a9209/',
-      style: 'rounded-tl-lg'
+      href: 'https://www.linkedin.com/in/snehil-shah-7794a9209/'
     },
     {
       id: 2,
-      icon: <GithubLogo className='text-2xl shrink-0' />,
+      icon: <GithubLogo className={iconClass} />,
       text: 'Github',
       href: 'https://github.com/snehilshah'
     },
     {
       id: 3,
-      icon: <Mail aria-hidden='true' className='text-2xl shrink-0' />,
+      icon: <Mail aria-hidden='true' className={iconClass} />,
       text: 'Mail',
       href: 'mailto:snehilshah27@gmail.com'
     },
     {
       id: 4,
-      icon: <UserRound aria-hidden='true' className='text-2xl shrink-0' />,
+      icon: <UserRound aria-hidden='true' className={iconClass} />,
       text: 'Resume',
-      href: '/SnehilShahResume.pdf',
-      style: 'rounded-bl-lg'
+      href: '/SnehilShahResume.pdf'
     }
   ]
 
+  const lastId = socialLinks.at(-1).id
+
   return (
-    <div ref={barRef} className='flex flex-col top-[35%] right-0 fixed z-50'>
-      <ul className='divide-y divide-stone-300'>
-        {socialLinks.map(({ icon, text, href, style = '', id }) => (
+    <div ref={barRef} className='fixed right-0 top-[35%] z-50'>
+      {/* Frosted teal glass: each row is a 160px tab showing only its icon until it slides out.
+          The outline runs around the outside of the stack, never between rows. */}
+      <ul className='flex flex-col items-end'>
+        {socialLinks.map(({ icon, text, href, id }) => (
           <li
             key={id}
+            data-open={openId === id}
             className={
-              'w-40 h-14 duration-300 bg-stone-200/95 text-stone-950 shadow-lg shadow-black/40 ' +
-              'hover:translate-x-[10px] hover:rounded-l-lg hover:bg-cyan-200 hover:text-stone-950 ' +
-              'focus-within:translate-x-[10px] focus-within:rounded-l-lg focus-within:bg-cyan-200 ' +
-              (openId === id
-                ? 'translate-x-[10px] rounded-l-lg bg-cyan-200'
-                : 'translate-x-[100px]') +
-              ' ' +
-              style
+              'group h-13 w-40 translate-x-26 border-l border-cyan-200/35 text-cyan-50 backdrop-blur-xl backdrop-saturate-150 ' +
+              'bg-teal-100/20 ' +
+              'transition-[translate,background-color,border-radius] duration-300 ' +
+              'hover:translate-x-0 hover:rounded-l-xl hover:border-y hover:bg-cyan-800/90 ' +
+              'focus-within:translate-x-0 focus-within:rounded-l-xl focus-within:border-y focus-within:bg-cyan-800/90 ' +
+              'data-[open=true]:translate-x-0 data-[open=true]:rounded-l-xl data-[open=true]:border-y data-[open=true]:bg-cyan-800/90 ' +
+              (id === socialLinks[0].id
+                ? 'rounded-tl-2xl border-t shadow-[inset_0_1px_0_rgba(255,255,255,0.3)] '
+                : '') +
+              (id === lastId ? 'rounded-bl-2xl border-b' : '')
             }
           >
             <a
               href={href}
               target='_blank'
               rel='noopener noreferrer'
-              onClick={(e) => handleClick(e, id)}
-              className='flex justify-between items-center w-full h-full px-4 font-semibold tracking-wide focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-stone-950'
+              onClick={e => handleClick(e, id)}
+              className='flex h-full w-full items-center gap-3 px-4 font-semibold tracking-wide rounded-[inherit] focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-cyan-200'
             >
               {icon}
-              <span>{text}</span>
+              <span className='whitespace-nowrap opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100 group-data-[open=true]:opacity-100'>
+                {text}
+              </span>
             </a>
           </li>
         ))}
