@@ -14,7 +14,7 @@ export default function Navbar() {
       to: '#'
     },
     {
-      title: 'experience',
+      title: 'skills',
       to: '#'
     },
     {
@@ -22,7 +22,7 @@ export default function Navbar() {
       to: '#'
     },
     {
-      title: 'positions',
+      title: 'experience',
       to: '#'
     },
     {

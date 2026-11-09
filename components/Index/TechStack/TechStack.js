@@ -36,9 +36,9 @@ export default function TechStack() {
     }
   ]
   return (
-    <div className='section' id='experience'>
+    <div className='section' id='skills'>
       <div className='w-full max-w-(--breakpoint-xl) mx-auto text-white'>
-        <Heading title={'Tech Stack'} details={'Tech I have worked Upon'} />
+        <Heading title={'Tech Stack'} details={'What I build with'} />
       </div>
       <div className='max-w-(--breakpoint-lg) mx-auto p-4 flex flex-col justify-center w-full h-full text-white'>
         <div

@@ -7,7 +7,7 @@ export default function TimelineProgress() {
 
   useEffect(() => {
     const progressLine = progressRef.current
-    const container = progressLine?.closest('#positions')
+    const container = progressLine?.closest('#experience')
     if (!container) return
 
     let frame = 0
