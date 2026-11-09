@@ -3,7 +3,7 @@
 FROM node:24-alpine AS base
 
 FROM base AS build-base
-RUN npm install -g pnpm@12.11.2
+RUN npm install -g pnpm@12.18.0
 
 # Install dependencies only when needed
 FROM build-base AS deps

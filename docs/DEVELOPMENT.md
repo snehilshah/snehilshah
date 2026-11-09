@@ -1,9 +1,9 @@
 # Development
 
-Use Node.js 24 (see `.nvmrc`) and pnpm 12.11.2, pinned in `package.json`.
+Use Node.js 24 (see `.nvmrc`) and pnpm 12.18.0, pinned in `package.json`.
 
 ```sh
-npm install --global pnpm@12.11.2
+npm install --global pnpm@12.18.0
 pnpm install --frozen-lockfile
 pnpm dev
 ```

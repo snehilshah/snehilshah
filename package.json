@@ -3,7 +3,7 @@
   "version": "2.1.1",
   "type": "module",
   "private": false,
-  "description": "Portfolio and Bloggiong Website for Snehil",
+  "description": "Portfolio and blog of Snehil Shah",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/snehilshah/snehilshah.git"
@@ -19,20 +19,18 @@
     "start": "next start",
     "test:music-access": "node --conditions=react-server --test tests/music-access.test.js tests/music-alert.test.js",
     "lint": "eslint . --report-unused-disable-directives",
-    "prettier": "prettier --write .",
-    "eslint": "eslint . --report-unused-disable-directives"
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "@material/material-color-utilities": "^0.4.0",
-    "@radix-ui/react-icons": "^1.3.2",
     "@radix-ui/react-slot": "^1.5.0",
     "@vercel/analytics": "^2.0.1",
     "babel-plugin-react-compiler": "1.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "lucide-react": "^1.58.0",
-    "motion": "^14.3.0",
-    "next": "^16.4.2",
+    "lucide-react": "^1.70.0",
+    "motion": "^14.10.1",
+    "next": "^16.4.5",
     "next-mdx-remote": "^6.0.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
@@ -44,13 +42,13 @@
     "yaml": "^2.9.1"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.3.3",
+    "@tailwindcss/postcss": "^4.3.5",
     "@tailwindcss/typography": "^0.5.20",
-    "eslint": "^10.12.0",
-    "eslint-config-next": "16.4.2",
-    "postcss": "^8.5.30",
+    "eslint": "^10.14.0",
+    "eslint-config-next": "16.4.5",
+    "postcss": "^8.5.32",
     "prettier": "3.9.10",
-    "tailwindcss": "^4.3.3"
+    "tailwindcss": "^4.3.5"
   },
-  "packageManager": "pnpm@12.11.2"
+  "packageManager": "pnpm@12.18.0"
 }
