@@ -23,7 +23,7 @@ function Cards({ title, desc, src, bgColor, accent, link }) {
       />
 
       {/* content: legibility gradient + title/link/desc — revealed on hover, always shown on touch */}
-      <div className='absolute inset-x-0 bottom-0 bg-linear-to-t from-black/85 via-black/20 to-transparent p-6 transition-opacity duration-300 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100'>
+      <div className='absolute inset-x-0 bottom-0 bg-linear-to-t from-black/90 via-black/60 to-transparent p-6 pt-16 transition-opacity duration-300 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100'>
         <div className='flex items-center gap-2'>
           <h3 className={cn('font-supreme text-2xl font-semibold drop-shadow', accent)}>
             {title}
